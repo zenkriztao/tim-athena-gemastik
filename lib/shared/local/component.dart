@@ -308,7 +308,7 @@ Widget myDrawer(BuildContext context, Function tab1, Function tab2,
           ListTile(
             onTap: tab2,
             leading: const Icon(
-              Icons.hub_outlined,
+              Icons.person,
               size: 30,
             ),
             title: const Text(

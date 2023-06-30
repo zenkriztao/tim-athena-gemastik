@@ -4,7 +4,7 @@ import 'package:autismx/screens/common/profile_states.dart';
 import 'package:autismx/screens/parent/sing_up/singup_view.dart';
 import 'package:autismx/shared/local/colors.dart';
 import 'package:autismx/shared/local/component.dart';
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/signin_controller.dart';

@@ -9,7 +9,7 @@ import 'package:autismx/shared/local/component.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smooth_star_rating/smooth_star_rating_null_safety.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);

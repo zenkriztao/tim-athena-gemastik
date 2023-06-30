@@ -8,7 +8,7 @@ import 'package:autismx/screens/surveys/widgets/button.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
-import 'package:grouped_buttons/grouped_buttons_ns.dart';
+import 'package:grouped_buttons/grouped_buttons.dart';
 
 
 class QuestionnaireScreen extends StatefulWidget {

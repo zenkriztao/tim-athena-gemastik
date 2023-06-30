@@ -5,7 +5,7 @@ import 'package:autismx/screens/parent/sing_up/cubit/signup_controller.dart';
 import 'package:autismx/screens/surveys/configs/colors.dart';
 
 import 'package:autismx/shared/local/component.dart';
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

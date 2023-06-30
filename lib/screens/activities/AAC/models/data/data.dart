@@ -20,9 +20,9 @@ String postToJson(Data data) => json.encode(data.toJson());
 
 class Data {
   Data({
-    required this.beginner,
+    this.beginner,
     // this.advanced,
-    required this.folders,
+    this.folders,
   });
 
   List<dynamic> beginner;
@@ -52,9 +52,9 @@ class Data {
 
 class FolderModel {
   FolderModel ({
-    required this.id,
-    required this.name,
-    required this.nameKey,
+    this.id,
+    this.name,
+    this.nameKey,
     this.author,
     this.isPublic,
     this.hidden,

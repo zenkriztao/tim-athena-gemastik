@@ -85,7 +85,7 @@ class _IntroState extends State<Intro> {
                       return null;
                     },
                     label: "Age",
-                    prefix: Icons.numbers),
+                    prefix: Icons.person),
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -92,7 +92,7 @@ class WinnerDialog extends StatelessWidget {
                               Row(
                                 children: [
                                   const Icon(
-                                    Icons.abc
+                                    Icons.person
                                   ),
                                   Text(
                                     parseTime(time),
