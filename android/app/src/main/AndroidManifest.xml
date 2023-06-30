@@ -1,12 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.autismx">
-
-  <uses-permission android:name="android.permission.INTERNET" />
+    package="com.autism.perdiction">
    <application
-   
-        android:label="autismx"
+        android:label="autism_perdiction_app"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -34,5 +31,4 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
-    
 </manifest>

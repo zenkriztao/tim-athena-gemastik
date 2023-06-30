@@ -1,5 +1,0 @@
-enum QuestionnaireType {
-
-  Communication,
-  Imagination
-}

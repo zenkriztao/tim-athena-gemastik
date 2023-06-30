@@ -1,6 +1,6 @@
 {
-    "name": "autismx",
-    "short_name": "autismx",
+    "name": "autism_perdiction_app",
+    "short_name": "autism_perdiction_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

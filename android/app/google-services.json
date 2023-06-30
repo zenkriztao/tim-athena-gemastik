@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "849090647277",
+    "firebase_url": "https://autism-gemastik-default-rtdb.firebaseio.com",
+    "project_id": "autism-gemastik",
+    "storage_bucket": "autism-gemastik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849090647277:android:3400fa8f113e69b41d28e4",
+        "android_client_info": {
+          "package_name": "com.autism.perdiction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849090647277-tn9qboqe2bhk3tob2gd7n306mp5ugukr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHlyvmiwPQqbaIXEHvw12LzNoIhtuHtEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849090647277-7nc3sho3mpvmcu9min38b565q1glvb9t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "849090647277-8gas03qb92m673attij8ajbjgmoso24e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.autismPerdictionApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
