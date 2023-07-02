@@ -109,3 +109,4 @@ TextStyle  caption3Black = TextStyle(fontSize: caption3,color: textColor,height:
 TextStyle  caption3Red = TextStyle(fontSize: caption3,color: redColor,height: 1.3);
 TextStyle  caption3Green = TextStyle(fontSize: caption3,color: primaryColor);
 TextStyle  caption3White = TextStyle(fontSize: caption3,color: Colors.white);
+

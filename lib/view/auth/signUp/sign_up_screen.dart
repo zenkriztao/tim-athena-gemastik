@@ -4,12 +4,14 @@ import 'dart:io';
 import 'package:autism_perdiction_app/constants.dart';
 import 'package:autism_perdiction_app/model/firebase_auth.dart';
 import 'package:autism_perdiction_app/model/input_validator.dart';
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _clinicNameControoler = TextEditingController();
 
   MethodsHandler _methodsHandler = MethodsHandler();
-  String dropdownvalue = 'Select Gender';
+  String dropdownvalue = 'Pilih Jenis Kelamin';
   InputValidator _inputValidator = InputValidator();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool  _imageLoading = false;
@@ -140,9 +142,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
   List items = [
-    'Select Gender',
-    'Male',
-    'Female',
+    'Pilih Jenis Kelamin',
+    'Laki - Laki',
+    'Perempuan',
   ];
 
 
@@ -163,7 +165,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: Colors.white,
 
       //resizeToAvoidBottomInset: false,
       body:
@@ -191,7 +193,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: IconButton(onPressed: (){
                       Navigator.of(context).pop();
 
-                    }, icon: Icon(Icons.arrow_back_ios, size: 18,color: whiteColor,)),
+                    }, icon: Icon(Icons.arrow_back_ios, size: 18,color: blueColor,)),
                   )
 
                 ],),
@@ -221,7 +223,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: SizedBox(
                           height: 100,
                           width: 100,
-                          child: Image.asset('assets/autism.png', fit: BoxFit.scaleDown,
+                          child: Image.asset('assets/logo.png', fit: BoxFit.scaleDown,
                             height: 80,
                             width: 80,),
                         ),
@@ -232,7 +234,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
 
                       Center(
-                          child: Text('Create Account', style: TextStyle(color: Colors.white, fontSize: 16,fontWeight: FontWeight.bold),)
+                          child: Text('Buat Akun', style: GoogleFonts.nunito(color: blueColor, fontSize: 24,fontWeight: FontWeight.bold),)
                       ),
 
                       SizedBox(
@@ -242,12 +244,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                         child: TextFormField(
                           controller: _firstNameControoler,
                           keyboardType: TextInputType.name,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -266,22 +268,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Doctor Name",
+                            hintText: "Nama Dokter",
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -293,12 +294,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                         child: TextFormField(
                           controller: _clinicNameControoler,
                           keyboardType: TextInputType.name,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -317,22 +318,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Clinic Name",
+                            hintText: "Nama Klinik",
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -343,12 +343,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                         child: TextFormField(
                           controller: _emailControoler,
                           keyboardType: TextInputType.emailAddress,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -367,22 +367,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Doctor Email",
+                            hintText: "Email Dokter",
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -395,12 +394,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                         child: TextFormField(
                           controller: _phoneControoler,
                           keyboardType: TextInputType.phone,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
                           ),
@@ -420,22 +419,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Phone Number",
+                            hintText: "Nomor Handphone",
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -448,12 +446,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                         child: TextFormField(
                           controller: _addressControoler,
                           keyboardType: TextInputType.streetAddress,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -472,22 +470,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
                             hintText: "Address",
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -505,7 +502,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           obscureText: true,
                           keyboardType: TextInputType.text,
                           controller: _passwordControoler,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -524,23 +521,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              const BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
                             hintText: "Password",
 
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -552,14 +548,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,top: 0),
                         child: TextFormField(
                           autofocus: true,
                           obscureText: true,
                           keyboardType: TextInputType.text,
                           controller: _confirmPasswordControoler,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -578,23 +574,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              const BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Confirm Password",
+                            hintText: "Konfirmasi Password",
 
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -626,7 +621,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   //  width: size.width*0.15,
                                   alignment: Alignment.centerLeft,
                                   //  height: size.height*0.08,
-                                  child: Center(child: Text('Upload Clinic Image', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                                  child: Center(child: Text('Upload Clinic Image', style: GoogleFonts.nunito(color: Colors.white,fontWeight: FontWeight.bold),)),
                                 ),
                               ),
                             ],),
@@ -674,7 +669,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       _isLoading
                           ? CircularProgressIndicator(
-                        color: buttonColor,
+                        color: darkBlueColor,
                         strokeWidth: 2,
                       )
                           :
@@ -693,8 +688,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               end: Alignment.bottomRight,
                               stops: [0.0, 1.0],
                               colors: [
-                                buttonColor,
-                                buttonColor,
+                                darkBlueColor,
+                                darkBlueColor,
 
                               ],
                             ),
@@ -736,7 +731,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 //     'success' &&
                                 //     _phoneControoler.text.isNotEmpty) {
                                 //   Fluttertoast.showToast(
-                                //       msg: "Phone Number Starts with + followed by code then number (Hint +923346567876)",
+                                //       msg: "Nomor Handphone Starts with + followed by code then number (Hint +923346567876)",
                                 //       toastLength: Toast.LENGTH_SHORT,
                                 //       gravity: ToastGravity.BOTTOM,
                                 //       timeInSecForIosWeb: 1,
@@ -754,7 +749,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         _confirmPasswordControoler
                                             .text.isNotEmpty)) {
                                   Fluttertoast.showToast(
-                                      msg: "Password and Confirm Password must be same",
+                                      msg: "Password and Konfirmasi Password harus sama",
                                       toastLength: Toast.LENGTH_SHORT,
                                       gravity: ToastGravity.BOTTOM,
                                       timeInSecForIosWeb: 1,
@@ -767,7 +762,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 else if (_passwordControoler.text !=
                                     _confirmPasswordControoler.text) {
                                   Fluttertoast.showToast(
-                                      msg: "Password and Confirm Password must be same",
+                                      msg: "Password and Konfirmasi Password harus sama",
                                       toastLength: Toast.LENGTH_SHORT,
                                       gravity: ToastGravity.BOTTOM,
                                       timeInSecForIosWeb: 1,
@@ -780,7 +775,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   if(_firstNameControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Doctor Name is required",
+                                        msg: "Doctor Name harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -793,7 +788,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   // else  if(_clinicNameControoler.text.isEmpty)
                                   // {
                                   //   Fluttertoast.showToast(
-                                  //       msg: "Clinic Name is required",
+                                  //       msg: "Clinic Name harus diisi",
                                   //       toastLength: Toast.LENGTH_SHORT,
                                   //       gravity: ToastGravity.BOTTOM,
                                   //       timeInSecForIosWeb: 1,
@@ -806,7 +801,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_emailControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Email Address is required",
+                                        msg: "Email Address harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -819,7 +814,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_phoneControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Phone number is required",
+                                        msg: "",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -832,7 +827,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_addressControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Address is required",
+                                        msg: "Address harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -845,7 +840,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_passwordControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Password is required",
+                                        msg: "Password harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -857,7 +852,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_confirmPasswordControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Confirm Password is required",
+                                        msg: "Konfirmasi Password harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -869,7 +864,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(profileImage == "")
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Clinic picture is required",
+                                        msg: "Clinic picture harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1042,7 +1037,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: IconButton(onPressed: (){
                       Navigator.of(context).pop();
 
-                    }, icon: Icon(Icons.arrow_back_ios, size: 18,color: whiteColor,)),
+                    }, icon: Icon(Icons.arrow_back_ios, size: 18,color: blueColor,)),
                   )
 
                 ],),
@@ -1083,7 +1078,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
 
                       Center(
-                          child: Text('Create Account', style: TextStyle(color: Colors.white, fontSize: 16,fontWeight: FontWeight.bold),)
+                          child: Text('Buat Akun', style: GoogleFonts.nunito(color: blueColor, fontSize: 24,fontWeight: FontWeight.bold),)
                       ),
 
                       SizedBox(
@@ -1093,12 +1088,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                         child: TextFormField(
                           controller: _firstNameControoler,
                           keyboardType: TextInputType.name,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -1122,17 +1117,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Parent Name",
+                            hintText: "Nama Orang tua",
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -1143,12 +1137,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                         child: TextFormField(
                           controller: _emailControoler,
                           keyboardType: TextInputType.emailAddress,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -1167,22 +1161,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Parent Email",
+                            hintText: "Email Orang tua",
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -1195,12 +1188,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                         child: TextFormField(
                           controller: _phoneControoler,
                           keyboardType: TextInputType.phone,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
                           ),
@@ -1220,22 +1213,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Phone Number",
+                            hintText: "Nomor Handphone",
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -1248,12 +1240,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Container(
                         decoration: BoxDecoration(color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                         margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                         child: TextFormField(
                           controller: _addressControoler,
                           keyboardType: TextInputType.streetAddress,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -1272,22 +1264,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Address",
+                            hintText: "Alamat",
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -1305,7 +1296,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           obscureText: true,
                           keyboardType: TextInputType.text,
                           controller: _passwordControoler,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -1324,23 +1315,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              const BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
                             hintText: "Password",
 
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -1359,7 +1349,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           obscureText: true,
                           keyboardType: TextInputType.text,
                           controller: _confirmPasswordControoler,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -1378,23 +1368,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              const BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Confirm Password",
+                            hintText: "Konfirmasi Password",
 
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -1415,7 +1404,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                           keyboardType: TextInputType.name,
                           controller: _childNameControoler,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -1434,23 +1423,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              const BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Child Name",
+                            hintText: "Nama Anak",
 
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -1470,7 +1458,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                           keyboardType: TextInputType.number,
                           controller: _childAgeControoler,
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                             fontSize: 14,
                             color: Colors.black,
 
@@ -1489,23 +1477,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // errorText: "Error",
 
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
 
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                              const BorderSide(color: darkGreyTextColor1, width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
+                              BorderSide(color: blueColor, width: 1.0),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             fillColor: Colors.grey,
-                            hintText: "Child Age",
+                            hintText: "Umur Anak",
 
 
                             //make hint text
-                            hintStyle: TextStyle(
-                              color: buttonColor,
+                            hintStyle: GoogleFonts.nunito(
+                              color: darkBlueColor,
                               fontSize: 16,
-                              fontFamily: "verdana_regular",
                               fontWeight: FontWeight.w400,
                             ),
 
@@ -1542,7 +1529,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   hint: const Padding(
                                     padding: EdgeInsets.only(left: 8),
                                     child: Text(
-                                      'Select Specialization',
+                                      'Pilih Spesialis',
                                       style: TextStyle(
                                           color: textColor,
                                           fontWeight: FontWeight.w300,
@@ -1557,7 +1544,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     const EdgeInsets.only(right: 8),
                                     child: Icon(
                                       Icons.keyboard_arrow_down,
-                                      color: darkRedColor,
+                                      color: blueColor,
                                     ),
                                   ),
                                   items: items.map((item) {
@@ -1568,10 +1555,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             left: 8),
                                         child: Text(
                                           item,
-                                          style: TextStyle(
+                                          style: GoogleFonts.nunito(
                                               fontWeight:
                                               FontWeight.w400,
-                                              color: darkRedColor,
+                                              color: blueColor,
                                               fontSize: 13),
                                         ),
                                       ),
@@ -1611,11 +1598,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 },
                                 child: Container(
                                   width: size.width * 0.9,
-                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.white, width: 1)),
+                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: darkBlueColor, width: 1)),
                                   //  width: size.width*0.15,
                                   alignment: Alignment.centerLeft,
                                   //  height: size.height*0.08,
-                                  child: Center(child: Text('Upload Child Image', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                                  child: Center(child: Text('Upload foto Anak', style: GoogleFonts.nunito(color: darkBlueColor,fontWeight: FontWeight.bold),)),
                                 ),
                               ),
                             ],),
@@ -1663,7 +1650,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       _isLoading
                           ? CircularProgressIndicator(
-                        color: buttonColor,
+                        color: darkBlueColor,
                         strokeWidth: 2,
                       )
                           :
@@ -1682,8 +1669,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               end: Alignment.bottomRight,
                               stops: [0.0, 1.0],
                               colors: [
-                                buttonColor,
-                                buttonColor,
+                                darkBlueColor,
+                                darkBlueColor,
 
                               ],
                             ),
@@ -1725,7 +1712,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 //     'success' &&
                                 //     _phoneControoler.text.isNotEmpty) {
                                 //   Fluttertoast.showToast(
-                                //       msg: "Phone Number Starts with + followed by code then number (Hint +923346567876)",
+                                //       msg: "Nomor Handphone Starts with + followed by code then number (Hint +923346567876)",
                                 //       toastLength: Toast.LENGTH_SHORT,
                                 //       gravity: ToastGravity.BOTTOM,
                                 //       timeInSecForIosWeb: 1,
@@ -1769,7 +1756,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   if(_firstNameControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Parent Name is required",
+                                        msg: "Nama Orangtua harus diharus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1781,7 +1768,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_emailControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Email Address is required",
+                                        msg: "Email Address harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1794,7 +1781,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_phoneControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Phone number is required",
+                                        msg: "Nomor Handphone harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1807,7 +1794,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_addressControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Address is required",
+                                        msg: "Alamat harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1820,7 +1807,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_passwordControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Password is required",
+                                        msg: "Password harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1832,7 +1819,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_confirmPasswordControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Confirm Password is required",
+                                        msg: "Konfirmasi Password harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1844,7 +1831,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_childNameControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Child name is required",
+                                        msg: "Nama Anak harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1856,7 +1843,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(_childAgeControoler.text.isEmpty)
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Child age is required",
+                                        msg: "Umur Anak harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1865,10 +1852,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         fontSize: 16.0
                                     );
                                   }
-                                  else if(dropdownvalue == "Select Gender")
+                                  else if(dropdownvalue == "Pilih Jenis Kelamin")
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Child gender is required",
+                                        msg: "Child gender harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -1880,7 +1867,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   else if(profileImage == "")
                                   {
                                     Fluttertoast.showToast(
-                                        msg: "Child picture is required",
+                                        msg: "Child picture harus diisi",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -2018,7 +2005,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                                   }
                                 }
-                              }, child: Text('Sign Up', style: buttonStyle)),
+                              }, child: Text('Daftar', style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600))),
                         ),
                       ),
                       SizedBox(

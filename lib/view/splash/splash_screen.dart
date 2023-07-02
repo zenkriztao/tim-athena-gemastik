@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:autism_perdiction_app/constants.dart';
+import 'package:autism_perdiction_app/view/auth/login/login_screen.dart';
 import 'package:autism_perdiction_app/view/auth/userType/usertype_screen.dart';
-import 'package:autism_perdiction_app/view/auth/welcome/welcome_screen.dart';
+import 'package:autism_perdiction_app/view/onboarding/onboarding_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:mec/constants.dart';
@@ -32,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-   Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => UserType()));
+   Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => OnboardingScreen()));
   }
 
   @override
@@ -47,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     return Scaffold(
      // backgroundColor: primaryColor,
-      backgroundColor: primaryColor,
+      backgroundColor: whiteColor,
 
       body: Container(
         width: size.width,
@@ -71,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(
                 height: 150,
                 width: 150,
-                child: Image.asset('assets/autism.png', fit: BoxFit.scaleDown,)),
+                child: Image.asset('assets/logo.png', fit: BoxFit.scaleDown,)),
        //     Text('Autism', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 32),textAlign: TextAlign.center),
 
 

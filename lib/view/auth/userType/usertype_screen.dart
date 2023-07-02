@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/view/auth/login/login_screen.dart';
-import 'package:autism_perdiction_app/view/auth/welcome/welcome_screen.dart';
 
 
 class UserType extends StatefulWidget {
@@ -88,8 +86,7 @@ class _UserTypeState extends State<UserType> {
                   ),
 
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                        LoginScreen(userType: 'Parents',)));
+                   
 
                     // Navigator.push(
                     //   context,
@@ -139,7 +136,6 @@ class _UserTypeState extends State<UserType> {
                   ),
 
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>WelcomeScreen(userType: 'Doctors',)));
 
                     // Navigator.push(
                     //   context,

@@ -1,5 +1,6 @@
 
 
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/doctor/bottomNavBarDoctor/doctor_nav_bar_screen.dart';
 import 'package:autism_perdiction_app/view/parents/bottomNavBar/app_bottom_nav_bar_screen.dart';
 import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
@@ -10,6 +11,7 @@ import 'package:autism_perdiction_app/view/auth/signUp/sign_up_screen.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:autism_perdiction_app/constants.dart';
 
@@ -56,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-     backgroundColor: primaryColor,
+     backgroundColor: darkBlueColor,
       //resizeToAvoidBottomInset: false,
       body:   SingleChildScrollView(
         child: Container(
@@ -69,28 +71,13 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: size.height*0.05,
               ),
-              Container(
-                width: size.width,
-                child: Row(children: [
-
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: IconButton(onPressed: (){
-                      Navigator.of(context).pop();
-
-                    }, icon: Icon(Icons.arrow_back_ios, size: 18,color: whiteColor,)),
-                  )
-
-                ],),
-              ),
-
               SizedBox(
                 height: size.height*0.03,
               ),
 
-              Container(height: size.height*0.7,
+              Container(height: size.height*2,
                 decoration: BoxDecoration(
-                    color: primaryColor,
+                    color: Colors.white,
                     borderRadius: BorderRadius.only(topRight: Radius.circular(30),
                         topLeft: Radius.circular(30)
                     )
@@ -116,17 +103,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: size.height*0.03,
                     ),
 
-                    Center(
-                        child: Text('Welcome Back', style: TextStyle(color: Colors.white, fontSize: 16,fontWeight: FontWeight.bold),)
-                    ),
-
                     SizedBox(
                       height: size.height*0.05,
                     ),
 
                     Container(
                       decoration: BoxDecoration(color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(30)),
                     //  color: Colors.white,
                       margin: EdgeInsets.only(left: 16,right: 16,bottom: 0),
                       child: TextFormField(
@@ -156,17 +139,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: darkGreyTextColor1, width: 1.0),
+                            BorderSide(color: blueColor, width: 1.0),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           fillColor: Colors.white,
                           hintText: "Email",
 
                           //make hint text
-                          hintStyle: TextStyle(
-                            color: buttonColor,
+                          hintStyle: GoogleFonts.nunito(
+                            color: darkBlueColor,
                             fontSize: 16,
-                            fontFamily: "verdana_regular",
                             fontWeight: FontWeight.w400,
                           ),
 
@@ -178,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Container(
                       decoration: BoxDecoration(color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(30)),
                       margin: EdgeInsets.only(left: 16,right: 16,top: 0),
                       child: TextFormField(
                         autofocus: true,
@@ -207,18 +189,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                            const BorderSide(color: darkGreyTextColor1, width: 1.0),
-                            borderRadius: BorderRadius.circular(10.0),
+                            const BorderSide(color: blueColor, width: 1.0),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           fillColor: Colors.grey,
                           hintText: "Password",
 
 
                           //make hint text
-                          hintStyle: TextStyle(
-                            color: buttonColor,
+                          hintStyle: GoogleFonts.nunito(
+                            color: darkBlueColor,
                             fontSize: 16,
-                            fontFamily: "verdana_regular",
                             fontWeight: FontWeight.w400,
                           ),
 
@@ -232,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     _isLoading
                         ? CircularProgressIndicator(
-                      color: buttonColor,
+                      color: blueColor,
                       strokeWidth: 2,
                     )
                         :
@@ -252,22 +233,22 @@ class _LoginScreenState extends State<LoginScreen> {
                             end: Alignment.bottomRight,
                             stops: [0.0, 1.0],
                             colors: [
-                              buttonColor,
-                              buttonColor,
+                              blueColor,
+                              blueColor,
                             ],
                           ),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(100),
                         ),
                         child: ElevatedButton(
                             style: ButtonStyle(
                               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderRadius: BorderRadius.circular(30),
                                 ),
                               ),
                               minimumSize: MaterialStateProperty.all(Size(size.width, 50)),
                               backgroundColor:
-                              MaterialStateProperty.all(buttonColor),
+                              MaterialStateProperty.all(darkBlueColor),
                               // elevation: MaterialStateProperty.all(3),
                               shadowColor:
                               MaterialStateProperty.all(Colors.transparent),
@@ -506,7 +487,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               //   MaterialPageRoute(builder: (context) => HomeScreen()),
                               // );
 
-                            }, child: Text('Login', style: buttonStyle)),
+                            }, child: Text('Login', style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600))),
                       ),
                     ),
                     SizedBox(
@@ -526,8 +507,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Don\'t have an account? ", style: TextStyle(color: Colors.white, fontSize: 13,fontWeight: FontWeight.w500),),
-                              Text(' Sign up', style: TextStyle(color: buttonColor, fontSize: 13,fontWeight: FontWeight.w500),),
+                              Text("Belum punya akun? ", style: GoogleFonts.nunito(color: Colors.black, fontSize: 16,fontWeight: FontWeight.w500),),
+                              Text(' Daftar disini', style: GoogleFonts.nunito(color: darkBlueColor, fontSize: 16,fontWeight: FontWeight.w500),),
                             ],),
                         )
                     ),
