@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:autism_perdiction_app/constants.dart';
+import 'package:autism_perdiction_app/model/behavior_models.dart';
 import 'package:autism_perdiction_app/theme.dart';
+import 'package:autism_perdiction_app/view/article/behavior_dictionary.dart';
 import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
 import 'package:autism_perdiction_app/view/parents/perdict/perdict_screen.dart';
 import 'package:autism_perdiction_app/view/parents/profile/profile_screen.dart';
@@ -30,9 +32,9 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
   List<Widget> _pages = [
 
     HomeScreen(),
-    ResourceScreen(),
-    HomeScreen(),
     SpecialistScreen(),
+    HomeScreen(),
+    BehaviorDictionaryPage(),
     ProfileScreen(),
 
   ];
@@ -168,7 +170,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                       onTap: () {
                         setState(() {
                           _selectedIndex = 3;
-                          _pages[3] = ResourceScreen();
+                          _pages[3] = BehaviorDictionaryPage();
                         });
                       },
                       child:FaIcon(
