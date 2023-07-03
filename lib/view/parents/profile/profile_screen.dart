@@ -14,7 +14,9 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key,}) : super(key: key);
+  const ProfileScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -25,18 +27,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool status = false;
 
-  String? profileImage, docId, userType, driverEmail = '', driverName = '', driverUid = '';
+  String? profileImage,
+      docId,
+      userType,
+      driverEmail = '',
+      driverName = '',
+      driverUid = '';
 
   getDriver() async {
-    SharedPreferences prefs =
-    await SharedPreferences.getInstance();
-setState(() {
-  userType = prefs.getString('userType')!;
-});
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userType = prefs.getString('userType')!;
+    });
 
     await FirebaseFirestore.instance
         .collection('Parents')
-        .where('uid',isEqualTo: _auth.currentUser!.uid)
+        .where('uid', isEqualTo: _auth.currentUser!.uid)
         .get()
         .then((value) {
       setState(() {
@@ -54,345 +60,292 @@ setState(() {
     // TODO: implement initState
 
     setState(() {
-
-      driverEmail = ''; driverName = '';
+      driverEmail = '';
+      driverName = '';
     });
     getDriver();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-
         iconTheme: IconThemeData(color: whiteColor, size: 25),
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: appBarColor,
         title: Text(
           'Profile',
-          style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600,color: Colors.white),
+          style: TextStyle(
+              fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
         ),
         centerTitle: true,
       ),
-
-
       body: SingleChildScrollView(
         child: Column(
           children: [
-
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
 //                height: size.height*0.1,
-                  width: size.width*0.9,
+                  width: size.width * 0.9,
 
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(0.0),
-                        child:    Image.asset(
-                          'assets/autism.png',width: 100,height: 100,),
+                        child: Image.asset(
+                          'assets/autism.png',
+                          width: 100,
+                          height: 100,
+                        ),
                       ),
-
-
-
-
-
-
                     ],
                   ),
                 ),
               ),
             ),
-
             SizedBox(
-              height: size.height * 0.02 ,
+              height: size.height * 0.02,
             ),
-
             Center(
               child: Container(
-
-                width: size.width*0.9,
-                // decoration: BoxDecoration(
-                //   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight:  Radius.circular(30)),
-                //   gradient: LinearGradient(
-                //     begin: Alignment.topCenter,
-                //     end: Alignment.bottomCenter,
-                //     colors: [
-                //
-                //       secondary2Color,
-                //       secondary3Color,
-                //       //Colors.white
-                //     ],
-                //   ),
-                // ),
+                width: size.width * 0.9,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Settings',
+                      'Pengaturan',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
-                          fontWeight: FontWeight.bold
-                      ),
+                          fontWeight: FontWeight.bold),
                     ),
-
-
                   ],
                 ),
               ),
             ),
             SizedBox(
-              height: size.height * 0.02 ,
+              height: size.height * 0.02,
             ),
-
             Padding(
-              padding: const EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
+              padding:
+                  const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
               child: ListTile(
-                shape: RoundedRectangleBorder( //<-- SEE HERE
+                shape: RoundedRectangleBorder(
+                  //<-- SEE HERE
 
                   borderRadius: BorderRadius.circular(10),
                 ),
-
                 tileColor: whiteColor,
                 leading: Container(
                     decoration: BoxDecoration(
-                        color:  Colors.blue,
+                        color: Colors.blueGrey,
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.blue,width: 1 )
-                    ),
+                        border: Border.all(color: Colors.blueGrey, width: 1)),
                     width: 40,
-                    height: 40,//devSize.height*0.05,
-                    child: Icon(Icons.edit,color:Colors.white,size: 20,)
-                ),
+                    height: 40, //devSize.height*0.05,
+                    child: Image.asset("assets/edit_profile20.png")),
                 trailing: Icon(
-                  Icons.arrow_forward_ios, color: Colors.black,size: 15,
+                  Icons.arrow_forward_ios,
+                  color: Colors.black,
+                  size: 15,
                 ),
-                title:  Text('Edit Profile', style: body4Black),
+                title: Text('Ubah Profil', style: body4Black),
                 onTap: () async {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
                       pageBuilder: (c, a1, a2) => UpdateProfileScreen(),
-                      transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                      transitionsBuilder: (c, anim, a2, child) =>
+                          FadeTransition(opacity: anim, child: child),
                       transitionDuration: Duration(milliseconds: 100),
                     ),
                   ).then((value) {
                     getDriver();
-                    setState(() {
-
-                    });
+                    setState(() {});
                   });
                 },
               ),
             ),
+            userType == 'Doctors'
+                ? Container()
+                : Padding(
+                    padding: const EdgeInsets.only(
+                        top: 4, bottom: 4, left: 10, right: 10),
+                    child: ListTile(
+                      shape: RoundedRectangleBorder(
+                        //<-- SEE HERE
 
-            userType == 'Doctors' ? Container() :
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      tileColor: whiteColor,
+                      leading: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.blue, width: 1)),
+                          width: 40,
+                          height: 40, //devSize.height*0.05,
+                          child: Image.asset(
+                            "assets/autism_center20.png",
+                            width: 20,
+                            height: 20,
+                          )),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.black,
+                        size: 15,
+                      ),
+                      title: Text('Autism Center', style: body4Black),
+                      onTap: () async {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (c, a1, a2) => SpecialistScreen(),
+                            transitionsBuilder: (c, anim, a2, child) =>
+                                FadeTransition(opacity: anim, child: child),
+                            transitionDuration: Duration(milliseconds: 100),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+            userType == 'Doctors'
+                ? Container()
+                : Padding(
+                    padding: const EdgeInsets.only(
+                        top: 4, bottom: 4, left: 10, right: 10),
+                    child: ListTile(
+                      shape: RoundedRectangleBorder(
+                        //<-- SEE HERE
+                        side: BorderSide(width: 1, color: whiteColor),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      tileColor: whiteColor,
+                      leading: Container(
+                          decoration: BoxDecoration(
+                              color: authButtontextColor,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                  color: authButtontextColor, width: 1)),
+                          width: 40,
+                          height: 40, //devSize.height*0.05,
+                          child: Image.asset("assets/reports.png")),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.black,
+                        size: 15,
+                      ),
+                      title: Text('Laporan', style: body4Black),
+                      onTap: () async {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (c, a1, a2) => ReportScreen(),
+                            transitionsBuilder: (c, anim, a2, child) =>
+                                FadeTransition(opacity: anim, child: child),
+                            transitionDuration: Duration(milliseconds: 100),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
             Padding(
-              padding: const EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
+              padding:
+                  const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
               child: ListTile(
-                shape: RoundedRectangleBorder( //<-- SEE HERE
-
+                shape: RoundedRectangleBorder(
+                  //<-- SEE HERE
+                  side: BorderSide(width: 1, color: whiteColor),
                   borderRadius: BorderRadius.circular(10),
                 ),
-
-                tileColor: whiteColor,
-                leading: Container(
-                    decoration: BoxDecoration(
-                        color:  oneColor,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: oneColor,width: 1 )
-                    ),
-                    width: 40,
-                    height: 40,//devSize.height*0.05,
-                    child: Icon(Icons.account_balance_outlined,color:Colors.white,size: 20,)
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios, color: Colors.black,size: 15,
-                ),
-                title:  Text('Autism Center', style: body4Black),
-                onTap: () async {
-                  Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                      pageBuilder: (c, a1, a2) => SpecialistScreen(),
-                      transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
-                      transitionDuration: Duration(milliseconds: 100),
-                    ),
-                  );
-                },
-              ),
-            ),
-
-            userType == 'Doctors' ? Container() :
-            Padding(
-              padding: const EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
-              child: ListTile(
-                shape: RoundedRectangleBorder( //<-- SEE HERE
-                  side: BorderSide(width: 1,color: whiteColor),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-
                 tileColor: whiteColor,
                 leading: Container(
                     decoration: BoxDecoration(
                         color: authButtontextColor,
                         shape: BoxShape.circle,
-                        border: Border.all(color: authButtontextColor,width: 1 )
-                    ),
+                        border:
+                            Border.all(color: authButtontextColor, width: 1)),
                     width: 40,
-                    height: 40,//devSize.height*0.05,
-                    child: Icon(Icons.wysiwyg_sharp,color: Colors.white,size: 20,)
-                ),
+                    height: 40, //devSize.height*0.05,
+                    child: Image.asset("assets/booking.png")),
                 trailing: Icon(
-                  Icons.arrow_forward_ios, color: Colors.black,size: 15,
+                  Icons.arrow_forward_ios,
+                  color: Colors.black,
+                  size: 15,
                 ),
-                title:  Text('My Reports', style: body4Black),
+                title: Text('Pesanan', style: body4Black),
                 onTap: () async {
-                  Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                      pageBuilder: (c, a1, a2) => ReportScreen(),
-                      transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
-                      transitionDuration: Duration(milliseconds: 100),
-                    ),
-                  );
-                },
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
-              child: ListTile(
-                shape: RoundedRectangleBorder( //<-- SEE HERE
-                  side: BorderSide(width: 1,color: whiteColor),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-
-                tileColor: whiteColor,
-                leading: Container(
-                    decoration: BoxDecoration(
-                        color: authButtontextColor,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: authButtontextColor,width: 1 )
-                    ),
-                    width: 40,
-                    height: 40,//devSize.height*0.05,
-                    child: Icon(Icons.wysiwyg_sharp,color: Colors.white,size: 20,)
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios, color: Colors.black,size: 15,
-                ),
-                title:  Text('My Bookings', style: body4Black),
-                onTap: () async {
-
-
-                  if(userType == 'Doctors' ) {
-
+                  if (userType == 'Doctors') {
                     Navigator.push(
                       context,
                       PageRouteBuilder(
                         pageBuilder: (c, a1, a2) => DoctorBookingScreen(),
-                        transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                        transitionsBuilder: (c, anim, a2, child) =>
+                            FadeTransition(opacity: anim, child: child),
                         transitionDuration: Duration(milliseconds: 100),
                       ),
                     );
                   } else {
-
                     Navigator.push(
                       context,
                       PageRouteBuilder(
                         pageBuilder: (c, a1, a2) => ParentBookingScreen(),
-                        transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                        transitionsBuilder: (c, anim, a2, child) =>
+                            FadeTransition(opacity: anim, child: child),
                         transitionDuration: Duration(milliseconds: 100),
                       ),
                     );
-
                   }
-
-
                 },
               ),
             ),
-
-            userType == 'Doctors' ? Container() :
-            Padding(
-              padding: const EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
-              child: ListTile(
-                shape: RoundedRectangleBorder( //<-- SEE HERE
-                  side: BorderSide(width: 1,color: whiteColor),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-
-                tileColor: whiteColor,
-                leading: Container(
-                    decoration: BoxDecoration(
-                        color: secondary2Color,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: secondary2Color,width: 1 )
+            userType == 'Doctors'
+                ? Container()
+                : Padding(
+                    padding: const EdgeInsets.only(
+                        top: 4, bottom: 4, left: 10, right: 10),
+                    child: ListTile(
+                      shape: RoundedRectangleBorder(
+                        //<-- SEE HERE
+                        side: BorderSide(width: 1, color: whiteColor),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      tileColor: whiteColor,
+                      leading: Container(
+                          decoration: BoxDecoration(
+                              color: oneColor,
+                              shape: BoxShape.circle,
+                              border:
+                                  Border.all(color: oneColor, width: 1)),
+                          width: 40,
+                          height: 40, //devSize.height*0.05,
+                          child: Image.asset(
+                            "assets/faq24.png",
+                          )),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.black,
+                        size: 15,
+                      ),
+                      title: Text('Pertanyaan Umum', style: body4Black),
+                      onTap: () async {},
                     ),
-                    width: 40,
-                    height: 40,//devSize.height*0.05,
-                    child: Center(child: Text('FAQs', style: TextStyle(fontSize: 12,color: Colors.white,fontWeight: FontWeight.bold,))),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios, color: Colors.black,size: 15,
-                ),
-                title:  Text('FAQs', style: body4Black),
-                onTap: () async {
-
-                },
-              ),
-            ),
-
+                  ),
             Padding(
-              padding: const EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
+              padding:
+                  const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
               child: ListTile(
-                shape: RoundedRectangleBorder( //<-- SEE HERE
-                  side: BorderSide(width: 1,color: whiteColor),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-
-                tileColor: whiteColor,
-                leading: Container(
-                    decoration: BoxDecoration(
-                        color: redColor,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: redColor,width: 1 )
-                    ),
-                    width: 40,
-                    height: 40,//devSize.height*0.05,
-                    child: Icon(Icons.wysiwyg_sharp,color: Colors.white,size: 20,)
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios, color: Colors.black,size: 15,
-                ),
-                title:  Text('About us', style: body4Black),
-                onTap: () async {
-                  Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                      pageBuilder: (c, a1, a2) => AboutUsScreen(),
-                      transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
-                      transitionDuration: Duration(milliseconds: 100),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
-              child: ListTile(
-                shape: RoundedRectangleBorder( //<-- SEE HERE
-                  side: BorderSide(width: 1,color: whiteColor),
+                shape: RoundedRectangleBorder(
+                  //<-- SEE HERE
+                  side: BorderSide(width: 1, color: whiteColor),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 tileColor: whiteColor,
@@ -400,16 +353,56 @@ setState(() {
                     decoration: BoxDecoration(
                         color: threeColor,
                         shape: BoxShape.circle,
-                        border: Border.all(color:threeColor,width: 1 )
-                    ),
+                        border: Border.all(color: threeColor, width: 1)),
                     width: 40,
-                    height: 40,//devSize.height*0.05,
-                    child: Icon(Icons.logout,color: Colors.white,size: 20,)
-                ),
+                    height: 40, //devSize.height*0.05,
+                    child: Image.asset("assets/about_us24.png")),
                 trailing: Icon(
-                  Icons.arrow_forward_ios, color: Colors.black,size: 15,
+                  Icons.arrow_forward_ios,
+                  color: Colors.black,
+                  size: 15,
                 ),
-                title:  Text('Logout', style: body4Black),
+                title: Text('Tentang Kami', style: body4Black),
+                onTap: () async {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (c, a1, a2) => AboutUsScreen(),
+                      transitionsBuilder: (c, anim, a2, child) =>
+                          FadeTransition(opacity: anim, child: child),
+                      transitionDuration: Duration(milliseconds: 100),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+              child: ListTile(
+                shape: RoundedRectangleBorder(
+                  //<-- SEE HERE
+                  side: BorderSide(width: 1, color: whiteColor),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                tileColor: whiteColor,
+                leading: Container(
+                    decoration: BoxDecoration(
+                        color: redColor,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: redColor, width: 1)),
+                    width: 40,
+                    height: 40, //devSize.height*0.05,
+                    child: Image.asset(
+                      "assets/logout.png",
+                      color: Colors.white,
+                    )),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.black,
+                  size: 15,
+                ),
+                title: Text('Keluar', style: body4Black),
                 onTap: () async {
                   _methodsHandler.signOut(context);
                   //SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -419,13 +412,9 @@ setState(() {
                 },
               ),
             ),
-
-
-
           ],
         ),
       ),
-
     );
   }
 }
