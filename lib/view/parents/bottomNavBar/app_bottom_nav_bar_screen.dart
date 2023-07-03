@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:autism_perdiction_app/constants.dart';
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
 import 'package:autism_perdiction_app/view/parents/perdict/perdict_screen.dart';
 import 'package:autism_perdiction_app/view/parents/profile/profile_screen.dart';
@@ -10,6 +11,7 @@ import 'package:autism_perdiction_app/view/splash/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppBottomNavBarScreen extends StatefulWidget {
@@ -27,9 +29,9 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
   int _selectedIndex = 0;
   List<Widget> _pages = [
 
-    ParentHomeScreen(),
+    HomeScreen(),
     ResourceScreen(),
-    ParentHomeScreen(),
+    HomeScreen(),
     SpecialistScreen(),
     ProfileScreen(),
 
@@ -77,7 +79,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
       backgroundColor:  lightGreyColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: _selectedIndex == 2 ? primaryColor : Colors.blue,
+        backgroundColor: _selectedIndex == 2 ? blueColor : darkBlueColor,
         onPressed: () {
           setState(() {
             _selectedIndex = 2;
@@ -85,8 +87,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
           });
 
         },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: FaIcon(FontAwesomeIcons.bolt),
         elevation: 2.0,
       ),
 
@@ -101,7 +102,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
             child:
 
             CupertinoTabBar(
-              activeColor: primaryColor,
+              activeColor: darkBlueColor,
               currentIndex: _selectedIndex,
               backgroundColor: Colors.white,
               iconSize: 40,
@@ -115,18 +116,18 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                       onTap: () {
                         setState(() {
                           _selectedIndex = 0;
-                          _pages[0] = ParentHomeScreen();
+                          _pages[0] = HomeScreen();
                         });
                       },
-                      child: Icon(
-                        Icons.home,
-                        size: 25,
+                      child: FaIcon(
+                        FontAwesomeIcons.home,
+                        size: 23,
+                        ),
                         //color: Color(0xFF3A5A98),
                       ),
                     ),
+                    label: 'Home',
                   ),
-                  label: 'Home',
-                ),
                  BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
@@ -134,17 +135,17 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                       onTap: () {
                         setState(() {
                           _selectedIndex = 1;
-                          _pages[1] = ResourceScreen();
+                          _pages[1] = SpecialistScreen();
                         });
                       },
-                      child: Icon(
-                        Icons.perm_media_outlined,
-                        size: 25,
+                      child: FaIcon(
+                        FontAwesomeIcons.stethoscope,
+                        size: 23,
+                        ), 
                         //color: Color(0xFF3A5A98),
                       ),
                     ),
-                  ),
-                  label: 'Resource',
+                    label: 'Konsultasi',
                 ),
                  BottomNavigationBarItem(
                   icon: Padding(
@@ -156,13 +157,9 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                           _pages[2] = PerdictScreen();
                         });
                       },
-                      child: Icon(
-                        Icons.lightbulb_outline_sharp,
-                        size: 25,
-                      ),
                     ),
                   ),
-                  label: 'Perdiction',
+                  label: 'Prediksi',
                 ),
                  BottomNavigationBarItem(
                   icon: Padding(
@@ -171,17 +168,16 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                       onTap: () {
                         setState(() {
                           _selectedIndex = 3;
-                          _pages[3] = SpecialistScreen();
+                          _pages[3] = ResourceScreen();
                         });
                       },
-                      child: Icon(
-                        Icons.person,
-                        size: 25,
-                        //color: Color(0xFF3A5A98),
-                      ),
+                      child:FaIcon(
+                        FontAwesomeIcons.bookOpen,
+                        size: 23,
+                        ), 
                     ),
                   ),
-                  label: 'Consultants',
+                  label: 'Artikel',
                 ),
                  BottomNavigationBarItem(
                   icon: Padding(
@@ -193,15 +189,14 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                           _pages[4] = ProfileScreen();
                         });
                       },
-                      child: Icon(
-                        Icons.account_circle,
-                        size: 25,
-                      ),
+                      child: FaIcon(
+                        FontAwesomeIcons.bars,
+                        size: 23,
+                        ),  
                     ),
                   ),
-                  label: 'Profile',
+                  label: 'Pengaturan',
                 ),
-
               ],
             ),
           ),

@@ -16,7 +16,6 @@ class SizeConfig {
 }
 
 // Height of the screen size
-
 double getScreenHeight(double inputHeight) {
   double screenHeight = SizeConfig.screenHeight;
 
@@ -24,9 +23,16 @@ double getScreenHeight(double inputHeight) {
 }
 
 // Width of the screen size
-
 double getScreenWidth(double inputWidth) {
   double screenWidth = SizeConfig.screenWidth;
 
   return (inputWidth / 375.0) * screenWidth;
+}
+
+double getRelativeHeight(double percentage) {
+  return percentage * SizeConfig.screenHeight;
+}
+
+double getRelativeWidth(double percentage) {
+  return percentage * SizeConfig.screenWidth;
 }
