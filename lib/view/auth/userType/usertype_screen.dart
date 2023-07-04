@@ -43,7 +43,7 @@ class _UserTypeState extends State<UserType> {
             SizedBox(
               height: 200,
               width: 200,
-              child: Image.asset('assets/autism.png', fit: BoxFit.scaleDown,
+              child: Image.asset('assets/logo.png', fit: BoxFit.scaleDown,
                 height: size.height*0.15,
                 width: size.width*0.7,
               ),

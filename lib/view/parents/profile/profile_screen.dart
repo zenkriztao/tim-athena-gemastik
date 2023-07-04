@@ -1,5 +1,6 @@
 import 'package:autism_perdiction_app/constants.dart';
 import 'package:autism_perdiction_app/model/firebase_auth.dart';
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/aboutUs/about_us_screen.dart';
 import 'package:autism_perdiction_app/view/doctor/bookings/bookings_screen.dart';
 import 'package:autism_perdiction_app/view/parents/myBookings/my_bookings_screen.dart';
@@ -11,6 +12,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -72,13 +74,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: whiteColor, size: 25),
+        iconTheme: IconThemeData(color: Colors.white, size: 25),
         automaticallyImplyLeading: false,
         elevation: 0,
-        backgroundColor: appBarColor,
+        backgroundColor: darkBlueColor,
         title: Text(
           'Profile',
-          style: TextStyle(
+          style: GoogleFonts.nunito(
               fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
         ),
         centerTitle: true,
@@ -100,7 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Padding(
                         padding: const EdgeInsets.all(0.0),
                         child: Image.asset(
-                          'assets/autism.png',
+                          'assets/logo.png',
                           width: 100,
                           height: 100,
                         ),
@@ -122,7 +124,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       'Pengaturan',
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                           color: Colors.black,
                           fontSize: 16,
                           fontWeight: FontWeight.bold),
@@ -143,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                   borderRadius: BorderRadius.circular(10),
                 ),
-                tileColor: whiteColor,
+                tileColor: Colors.white,
                 leading: Container(
                     decoration: BoxDecoration(
                         color: Colors.blueGrey,
@@ -185,7 +187,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      tileColor: whiteColor,
+                      tileColor: Colors.white,
                       leading: Container(
                           decoration: BoxDecoration(
                               color: Colors.blue,
@@ -225,10 +227,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: ListTile(
                       shape: RoundedRectangleBorder(
                         //<-- SEE HERE
-                        side: BorderSide(width: 1, color: whiteColor),
+                        side: BorderSide(width: 1, color: Colors.white),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      tileColor: whiteColor,
+                      tileColor: Colors.white,
                       leading: Container(
                           decoration: BoxDecoration(
                               color: authButtontextColor,
@@ -263,10 +265,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ListTile(
                 shape: RoundedRectangleBorder(
                   //<-- SEE HERE
-                  side: BorderSide(width: 1, color: whiteColor),
+                  side: BorderSide(width: 1, color: Colors.white),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                tileColor: whiteColor,
+                tileColor: Colors.white,
                 leading: Container(
                     decoration: BoxDecoration(
                         color: authButtontextColor,
@@ -315,16 +317,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: ListTile(
                       shape: RoundedRectangleBorder(
                         //<-- SEE HERE
-                        side: BorderSide(width: 1, color: whiteColor),
+                        side: BorderSide(width: 1, color: Colors.white),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      tileColor: whiteColor,
+                      tileColor: Colors.white,
                       leading: Container(
                           decoration: BoxDecoration(
                               color: oneColor,
                               shape: BoxShape.circle,
-                              border:
-                                  Border.all(color: oneColor, width: 1)),
+                              border: Border.all(color: oneColor, width: 1)),
                           width: 40,
                           height: 40, //devSize.height*0.05,
                           child: Image.asset(
@@ -345,10 +346,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ListTile(
                 shape: RoundedRectangleBorder(
                   //<-- SEE HERE
-                  side: BorderSide(width: 1, color: whiteColor),
+                  side: BorderSide(width: 1, color: Colors.white),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                tileColor: whiteColor,
+                tileColor: Colors.white,
                 leading: Container(
                     decoration: BoxDecoration(
                         color: threeColor,
@@ -382,15 +383,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ListTile(
                 shape: RoundedRectangleBorder(
                   //<-- SEE HERE
-                  side: BorderSide(width: 1, color: whiteColor),
+                  side: BorderSide(width: 1, color: Colors.white),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                tileColor: whiteColor,
+                tileColor: Colors.white,
                 leading: Container(
                     decoration: BoxDecoration(
-                        color: redColor,
+                        color: Colors.red,
                         shape: BoxShape.circle,
-                        border: Border.all(color: redColor, width: 1)),
+                        border: Border.all(color: Colors.red, width: 1)),
                     width: 40,
                     height: 40, //devSize.height*0.05,
                     child: Image.asset(

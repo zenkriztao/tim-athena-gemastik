@@ -52,6 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
     print(widget.userType.toString());
     super.initState();
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -91,20 +92,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     Center(
                       child: SizedBox(
-                        height: 100,
-                        width: 100,
-                        child: Image.asset('assets/autism.png', fit: BoxFit.scaleDown,
-                          height: 80,
-                          width: 80,),
+                        child: Image.asset('assets/logo.png', fit: BoxFit.scaleDown,
+                          height: 200,
+                          width: 200,),
                       ),
-                    ),
-
-                    SizedBox(
-                      height: size.height*0.03,
-                    ),
-
-                    SizedBox(
-                      height: size.height*0.05,
                     ),
 
                     Container(

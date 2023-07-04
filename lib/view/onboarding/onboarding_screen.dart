@@ -21,8 +21,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   bool onLastPage = false;
 
+void _selectUserType(String userType) {
+  if (userType == 'Parents') {
+    Get.to(() => LoginScreen(userType: 'Parents'));
+  } else if (userType == 'Doctors') {
+    Get.to(() => LoginScreen(userType: 'Doctors'));
+  }
+}
+
+void _handleTap() {
+  _controller.nextPage(
+    duration: const Duration(milliseconds: 500),
+    curve: Curves.ease,
+  );
+  if (onLastPage) {
+    // Replace 'Parents' with the desired user type
+    _selectUserType('Parents');
+  }
+}
+
+
+
   @override
   Widget build(BuildContext context) {
+    
     return GetMaterialApp(
       // Wrap your app with GetMaterialApp
       home: Scaffold(
@@ -63,15 +85,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: 20,
                   ),
                   GestureDetector(
-                    onTap: () {
-                      _controller.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease,
-                      );
-                      if (onLastPage) {
-                        Get.to(() => LoginScreen(userType: 'Parents'));
-                      }
-                    },
+                    onTap: _handleTap,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24.0),
                       child: Container(

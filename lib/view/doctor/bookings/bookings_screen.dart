@@ -1,10 +1,12 @@
 import 'package:autism_perdiction_app/constants.dart';
 import 'package:autism_perdiction_app/model/firebase_auth.dart';
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/detail/bookingDetail/booking_detail_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class DoctorBookingScreen extends StatefulWidget {
@@ -30,27 +32,20 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
           // backgroundColor: primaryColor,
           appBar: AppBar(
             automaticallyImplyLeading: true,
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back,color: Colors.white,),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            backgroundColor: buttonColor,
-
+            backgroundColor: darkBlueColor,
             bottom: TabBar(
-              indicatorColor: primaryColor,
+              indicatorColor: darkRedColor,
               onTap: (index) {
                 // Tab index when user select it, it start from zero
               },
               tabs: [
-                Tab(text: 'New',),
-                Tab(text: 'Confirmed',),
-                Tab(text: 'Cancelled',),
+                Tab(text: 'Baru',),
+                Tab(text: 'Konfirmasi',),
+                Tab(text: 'Batal',),
               ],
             ),
             centerTitle: true,
-            title: Text('Bookings'),
+            title: Text('Appointment'),
           ),
           body: TabBarView(
             children: [
@@ -112,7 +107,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
 
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: whiteColor,
+                                      color: Colors.white,
                                     ),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
@@ -152,7 +147,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,top: 8),
                                                   child: Text(
                                                     "Booking Id : #" + "${index+1}"
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.black, fontSize: 14, fontWeight: FontWeight.w800, height: 1.3),),
                                                 ),
                                               ),
@@ -168,7 +163,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,),
                                                   child: Text(
                                                     "Child : " + snapshot.data!.docs[index]["childName"].toString()
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 ),
                                               ),
@@ -188,7 +183,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                       snapshot.data!.docs[index]["evaluation"].toString() == "0" ?
                                                       "Evaluation : Not Evaluated" :
                                                     "Evaluation : " + snapshot.data!.docs[index]["evaluation"].toString()
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 ),
                                               ),
@@ -204,7 +199,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,),
                                                   child: Text(
                                                     "Appointment Date : " + snapshot.data!.docs[index]["appointmentTime"].toString()
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.red, fontSize: 12, fontWeight: FontWeight.w600, height: 1.3),),
                                                 ),
                                               ),
@@ -243,7 +238,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                                       child: Text(
                                                                         'No'
 
-                                                                        , style: TextStyle(
+                                                                        , style: GoogleFonts.nunito(
                                                                           color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                                     ),
                                                                   ),
@@ -269,7 +264,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                                       child: Text(
                                                                         'Yes'
 
-                                                                        , style: TextStyle(
+                                                                        , style: GoogleFonts.nunito(
                                                                           color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                                     ),
                                                                   ),
@@ -298,7 +293,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                           child: Text(
                                                             'Approve'
 
-                                                            , style: TextStyle(
+                                                            , style: GoogleFonts.nunito(
                                                               color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                         ),
                                                       ),
@@ -343,7 +338,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                       child: Container(
                                                         decoration: BoxDecoration(
                                                           borderRadius: BorderRadius.circular(10),
-                                                          color: redColor,
+                                                          color: darkBlueColor,
                                                         ),
                                                         width: size.width*0.22,
                                                         alignment: Alignment.center,
@@ -352,7 +347,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                           child: Text(
                                                             'Cancel'
 
-                                                            , style: TextStyle(
+                                                            , style: GoogleFonts.nunito(
                                                               color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                         ),
                                                       ),
@@ -435,7 +430,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
 
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: whiteColor,
+                                      color: darkBlueColor,
                                     ),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
@@ -474,7 +469,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,top: 8),
                                                   child: Text(
                                                     "Booking Id : #" + "${index+1}"
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.black, fontSize: 14, fontWeight: FontWeight.w800, height: 1.3),),
                                                 ),
                                               ),
@@ -490,7 +485,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,),
                                                   child: Text(
                                                     "Child : " + snapshot.data!.docs[index]["childName"].toString()
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 ),
                                               ),
@@ -511,7 +506,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                     snapshot.data!.docs[index]["evaluation"].toString() == "0" ?
                                                     "Evaluation : Not Evaluated" :
                                                     "Evaluation : " + snapshot.data!.docs[index]["evaluation"].toString()
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 ),
                                               ),
@@ -526,7 +521,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,),
                                                   child: Text(
                                                     "Appointment Date : " + snapshot.data!.docs[index]["appointmentTime"].toString()
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.red, fontSize: 12, fontWeight: FontWeight.w600, height: 1.3),),
                                                 ),
                                               ),
@@ -542,7 +537,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                               //     padding: const EdgeInsets.only(left: 8,),
                                               //     child: Text(
                                               //       "Specialization : " + snapshot.data!.docs[index]["doctorSpec"].toString() + " "
-                                              //       , style: TextStyle(
+                                              //       , style: GoogleFonts.nunito(
                                               //         color: Colors.green, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                               //   ),
                                               // ),
@@ -577,7 +572,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                           child: Text(
                                                             snapshot.data!.docs[index]["bookingStatus"].toString()
 
-                                                            , style: TextStyle(
+                                                            , style: GoogleFonts.nunito(
                                                               color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                         ),
                                                       ),
@@ -659,7 +654,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
 
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: whiteColor,
+                                      color: darkBlueColor,
                                     ),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
@@ -698,7 +693,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,top: 8),
                                                   child: Text(
                                                     "Appointment Id : #" + "${index+1}"
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.black, fontSize: 14, fontWeight: FontWeight.w800, height: 1.3),),
                                                 ),
                                               ),
@@ -714,7 +709,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,),
                                                   child: Text(
                                                     "Clinic : " + snapshot.data!.docs[index]["clinicName"].toString()
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 ),
                                               ),
@@ -734,7 +729,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                     snapshot.data!.docs[index]["evaluation"].toString() == "0" ?
                                                     "Evaluation : Not Evaluated" :
                                                     "Evaluation : " + snapshot.data!.docs[index]["evaluation"].toString()
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 ),
                                               ),
@@ -749,7 +744,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,),
                                                   child: Text(
                                                     "Appointment Date : " + snapshot.data!.docs[index]["appointmentTime"].toString()
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.red, fontSize: 12, fontWeight: FontWeight.w600, height: 1.3),),
                                                 ),
                                               ),
@@ -765,7 +760,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                   padding: const EdgeInsets.only(left: 8,),
                                                   child: Text(
                                                     "Specialization : " + snapshot.data!.docs[index]["doctorSpec"].toString() + " "
-                                                    , style: TextStyle(
+                                                    , style: GoogleFonts.nunito(
                                                       color: Colors.green, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 ),
                                               ),
@@ -800,7 +795,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                           child: Text(
                                                             snapshot.data!.docs[index]["bookingStatus"].toString()
 
-                                                            , style: TextStyle(
+                                                            , style: GoogleFonts.nunito(
                                                               color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                         ),
                                                       ),

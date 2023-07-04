@@ -12,27 +12,22 @@ class PerdictScreen extends StatefulWidget {
 }
 
 class _PerdictScreenState extends State<PerdictScreen> {
-
-
-  List<Map<String,dynamic>> perdict = [
+  List<Map<String, dynamic>> perdict = [
     {
       'name': 'Modified Checklist for Autism',
       'image': 'https://i.ytimg.com/vi/C345eCdyJU8/maxresdefault.jpg',
-
     },
     {
       'name': 'Social Communication Questionnaire',
-      'image': 'https://consumer.healthday.com/media-library/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8zMjY0NzgwMi9vcmlnaW4uanBnIiwiZXhwaXJlc19hdCI6MTcxNzYxMTA3Mn0.0PEKXGxXtNRuQpauvofEJJjrw7hWeyMpeiBrtvCmT3g/image.jpg?width=1245&height=700&quality=85&coordinates=0%2C898%2C0%2C898',
-
+      'image':
+          'https://consumer.healthday.com/media-library/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8zMjY0NzgwMi9vcmlnaW4uanBnIiwiZXhwaXJlc19hdCI6MTcxNzYxMTA3Mn0.0PEKXGxXtNRuQpauvofEJJjrw7hWeyMpeiBrtvCmT3g/image.jpg?width=1245&height=700&quality=85&coordinates=0%2C898%2C0%2C898',
     },
     {
       'name': 'Machine Learning',
-      'image': 'https://www.microsoft.com/en-us/research/uploads/prod/2020/07/newsletter-option-8-neural-network-3-1-640x360.png',
+      'image':
+          'https://www.microsoft.com/en-us/research/uploads/prod/2020/07/newsletter-option-8-neural-network-3-1-640x360.png',
     },
-
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +41,16 @@ class _PerdictScreenState extends State<PerdictScreen> {
           child: SizedBox(
             height: 40,
             width: 40,
-            child: Image.asset('assets/autism.png', fit: BoxFit.scaleDown,
+            child: Image.asset(
+              'assets/logo.png',
+              fit: BoxFit.scaleDown,
               height: 80,
-              width: 80,),
+              width: 80,
+            ),
           ),
         ),
         centerTitle: true,
       ),
-
       body: Center(
         child: Container(
           width: size.width * 0.95,
@@ -64,40 +61,32 @@ class _PerdictScreenState extends State<PerdictScreen> {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-
-                  if(index == 0) {
-
+                  if (index == 0) {
                     Navigator.push(
                       context,
                       PageRouteBuilder(
-                        pageBuilder: (c, a1, a2) => QuestionareScreen(number: 1,type: 'MChat'),
-                        transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                        pageBuilder: (c, a1, a2) =>
+                            QuestionareScreen(number: 1, type: 'MChat'),
+                        transitionsBuilder: (c, anim, a2, child) =>
+                            FadeTransition(opacity: anim, child: child),
                         transitionDuration: Duration(milliseconds: 100),
                       ),
-                    ).then((value) {
-
-                    });
-
-                  }
-                  else if(index == 1) {
-
+                    ).then((value) {});
+                  } else if (index == 1) {
                     Navigator.push(
                       context,
                       PageRouteBuilder(
-                        pageBuilder: (c, a1, a2) => QuestionareScreen(number: 1,type: 'SCQ'),
-                        transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                        pageBuilder: (c, a1, a2) =>
+                            QuestionareScreen(number: 1, type: 'SCQ'),
+                        transitionsBuilder: (c, anim, a2, child) =>
+                            FadeTransition(opacity: anim, child: child),
                         transitionDuration: Duration(milliseconds: 100),
                       ),
-                    ).then((value) {
-
-                    });
-
-
+                    ).then((value) {});
                   }
-
                 },
                 child: Container(
-                  margin:  EdgeInsets.all(0),
+                  margin: EdgeInsets.all(0),
                   decoration: BoxDecoration(
                       // boxShadow:  [
                       //   BoxShadow(
@@ -124,7 +113,6 @@ class _PerdictScreenState extends State<PerdictScreen> {
                       borderRadius: BorderRadius.circular(15)),
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.25,
-
                     child: Card(
                       child: Column(
                         children: [
@@ -133,18 +121,22 @@ class _PerdictScreenState extends State<PerdictScreen> {
                             height: MediaQuery.of(context).size.height * 0.2,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child:  CachedNetworkImage(
+                              child: CachedNetworkImage(
                                 height: size.height * 0.25,
-
-                                width: size.width ,
+                                width: size.width,
                                 fit: BoxFit.cover,
                                 imageUrl: perdict[index]["image"].toString(),
                                 placeholder: (context, url) => Container(
-                                    height: 50, width: 50,
-                                    child: Center(child: CircularProgressIndicator(color: lightButtonGreyColor,))),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
+                                    height: 50,
+                                    width: 50,
+                                    child: Center(
+                                        child: CircularProgressIndicator(
+                                      color: lightButtonGreyColor,
+                                    ))),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
                               ),
-                          ),
+                            ),
                           ),
                           const Spacer(),
                           FittedBox(
@@ -152,7 +144,9 @@ class _PerdictScreenState extends State<PerdictScreen> {
                               perdict[index]["name"].toString(),
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                  fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                           const Spacer(),
@@ -167,8 +161,6 @@ class _PerdictScreenState extends State<PerdictScreen> {
           ),
         ),
       ),
-
-
     );
   }
 }

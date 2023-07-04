@@ -1,8 +1,12 @@
 import 'dart:io';
 
 import 'package:autism_perdiction_app/constants.dart';
+import 'package:autism_perdiction_app/model/behavior_models.dart';
+import 'package:autism_perdiction_app/theme.dart';
+import 'package:autism_perdiction_app/view/article/behavior_dictionary.dart';
+import 'package:autism_perdiction_app/view/chat/chats.dart';
+import 'package:autism_perdiction_app/view/detail/bookingDetail/booking_detail_screen.dart';
 import 'package:autism_perdiction_app/view/doctor/bookings/bookings_screen.dart';
-import 'package:autism_perdiction_app/view/doctor/home/doctor_home_screen.dart';
 import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
 import 'package:autism_perdiction_app/view/parents/perdict/perdict_screen.dart';
 import 'package:autism_perdiction_app/view/parents/profile/profile_screen.dart';
@@ -12,6 +16,7 @@ import 'package:autism_perdiction_app/view/splash/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppDoctorBottomNavBarScreen extends StatefulWidget {
@@ -29,7 +34,8 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
   int _selectedIndex = 0;
   List<Widget> _pages = [
 
-    DoctorHomeScreen(),
+    HomeScreen(),
+    Chats(),
     DoctorBookingScreen(),
     ProfileScreen(),
 
@@ -55,7 +61,14 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
     // TODO: implement initState
     super.initState();
     print('UserType');
+
     getToken();
+    // if (widget.index == 1) {
+    //   setState(() {
+    //     _selectedIndex = 2;
+    //     _pages[2] = SessionHistory();
+    //   });
+    // }
 
   }
 
@@ -68,21 +81,7 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
     return Scaffold(
       extendBody: true,
       backgroundColor:  lightGreyColor,
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: _selectedIndex == 2 ? primaryColor : Colors.blue,
-      //   onPressed: () {
-      //     setState(() {
-      //       _selectedIndex = 2;
-      //       _pages[2] = PerdictScreen();
-      //     });
-      //
-      //   },
-      //   tooltip: 'Increment',
-      //   child: Icon(Icons.add),
-      //   elevation: 2.0,
-      // ),
-
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: _pages.elementAt(_selectedIndex),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
@@ -94,70 +93,87 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
             child:
 
             CupertinoTabBar(
-              activeColor: primaryColor,
+              activeColor: darkBlueColor,
               currentIndex: _selectedIndex,
               backgroundColor: Colors.white,
               iconSize: 40,
               onTap: _onItemTapped,
               items: [
 
-                BottomNavigationBarItem(
+                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
                       onTap: () {
                         setState(() {
                           _selectedIndex = 0;
-                          _pages[0] = DoctorHomeScreen();
+                          _pages[0] = HomeScreen();
                         });
                       },
-                      child: Icon(
-                        Icons.home,
-                        size: 25,
+                      child: FaIcon(
+                        FontAwesomeIcons.home,
+                        size: 23,
+                        ),
                         //color: Color(0xFF3A5A98),
                       ),
                     ),
+                    label: 'Home',
                   ),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
+                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
                       onTap: () {
                         setState(() {
                           _selectedIndex = 1;
-                          _pages[1] = DoctorBookingScreen();
+                          _pages[1] = Chats();
                         });
                       },
-                      child: Icon(
-                        Icons.perm_media_outlined,
-                        size: 25,
+                      child: FaIcon(
+                        FontAwesomeIcons.message,
+                        size: 23,
+                        ), 
                         //color: Color(0xFF3A5A98),
                       ),
                     ),
-                  ),
-                  label: 'Bookings',
+                    label: 'Chat',
                 ),
-                BottomNavigationBarItem(
+                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          _selectedIndex = 4;
-                          _pages[4] = ProfileScreen();
+                          _selectedIndex = 2;
+                          _pages[2] = DoctorBookingScreen();
                         });
                       },
-                      child: Icon(
-                        Icons.account_circle,
-                        size: 25,
-                      ),
+                      child:FaIcon(
+                        FontAwesomeIcons.bookMedical,
+                        size: 23,
+                        ), 
                     ),
                   ),
-                  label: 'Profile',
+                  label: 'Appointment',
                 ),
-
+                 BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: EdgeInsets.only(bottom: 4),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = 3;
+                          _pages[3] = ProfileScreen();
+                        });
+                      },
+                      child: FaIcon(
+                        FontAwesomeIcons.bars,
+                        size: 23,
+                        ),  
+                    ),
+                  ),
+                  label: 'Pengaturan',
+                ),
               ],
             ),
           ),

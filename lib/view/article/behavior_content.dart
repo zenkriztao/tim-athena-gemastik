@@ -49,9 +49,9 @@ class _BehaviorContentPageState extends State<BehaviorContentPage>
       appBar: AppBar(
         backgroundColor: darkBlueColor,
         title: Text('Artikel',
-        style: GoogleFonts.nunito(
-          fontSize: 25,
-        )),
+            style: GoogleFonts.nunito(
+              fontSize: 25,
+            )),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -101,21 +101,13 @@ class _BehaviorContentPageState extends State<BehaviorContentPage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          widget.behaviorOverview.title,
-                          style: GoogleFonts.nunito(
-                            fontSize: 30,
-                            color: Colors.white
-                          )
-                        ),
+                        Text(widget.behaviorOverview.title,
+                            style: GoogleFonts.nunito(
+                                fontSize: 30, color: Colors.white)),
                         const SizedBox(height: 8),
-                        Text(
-                          widget.behaviorOverview.description,
-                          style: GoogleFonts.nunito(
-                            fontSize: 20,
-                            color: Colors.white
-                          )
-                        ),
+                        Text(widget.behaviorOverview.description,
+                            style: GoogleFonts.nunito(
+                                fontSize: 20, color: Colors.white)),
                       ],
                     ),
                   ),
@@ -127,12 +119,21 @@ class _BehaviorContentPageState extends State<BehaviorContentPage>
         body: Column(
           children: [
             TabBar(
-              tabs: const [
+              labelColor: darkBlueColor,
+              indicatorColor: darkBlueColor,
+              unselectedLabelColor: Color.fromARGB(255, 184, 171, 171),
+              tabs: [
                 Tab(
-                  text: 'Overview',
+                  child: Text(
+                    "Deskripsi",
+                    style: GoogleFonts.nunito(fontWeight: FontWeight.w500),
+                  ),
                 ),
                 Tab(
-                  text: 'How to address',
+                  child: Text(
+                    "Bagaimana",
+                    style: GoogleFonts.nunito(fontWeight: FontWeight.w500),
+                  ),
                 )
               ],
               controller: tabController,
