@@ -1,5 +1,6 @@
 import 'package:autism_perdiction_app/size_config.dart';
 import 'package:autism_perdiction_app/theme.dart';
+import 'package:autism_perdiction_app/view/parents/perdict/perdict_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,7 +15,14 @@ class DoctorBanner extends StatelessWidget {
         context); // Initialize SizeConfig before using screenWidth and screenHeight
     return Stack(
       children: [
-        Container(
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PerdictScreen())
+            );
+          },
+          child: Container(
           width: getRelativeWidth(0.94),
           height: getRelativeHeight(0.22),
           child: Stack(
@@ -119,6 +127,8 @@ class DoctorBanner extends StatelessWidget {
             ],
           ),
         ),
+        ),
+        
         Positioned.fill(
           child: Align(
             alignment: Alignment.topLeft,

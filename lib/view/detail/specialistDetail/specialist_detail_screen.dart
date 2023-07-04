@@ -1,5 +1,6 @@
 import 'package:autism_perdiction_app/constants.dart';
 import 'package:autism_perdiction_app/model/firebase_auth.dart';
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/chat/chat_room.dart';
 import 'package:autism_perdiction_app/view/chat/chats.dart';
 import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
@@ -10,6 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -171,12 +173,12 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
     return widget.userIs == 'Clinic'
         ? Scaffold(
             appBar: AppBar(
-              iconTheme: IconThemeData(color: whiteColor, size: 25),
+              iconTheme: IconThemeData(color: Colors.white, size: 25),
               automaticallyImplyLeading: true,
               elevation: 0,
-              backgroundColor: appBarColor,
+              backgroundColor: darkBlueColor,
               title: Text(
-                'Booking',
+                'Konsultasi',
                 style: GoogleFonts.nunito(
                     fontSize: 19,
                     fontWeight: FontWeight.w600,
@@ -756,7 +758,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                   }
                                                 },
                                                 style: ElevatedButton.styleFrom(
-                                                  primary: primaryColor,
+                                                  primary: darkBlueColor,
                                                   shadowColor:
                                                       Colors.transparent,
                                                   shape: RoundedRectangleBorder(
@@ -769,22 +771,6 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                           ),
                                   ],
                                 ),
-                          SizedBox(
-                              height: size.height * 0.02,
-                              child: ElevatedButton(
-                                child: const Text('Chat'),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => ChatRoom(
-                                          user2Id: 'doctorID',
-                                          user2Name: 'userName',
-                                          profileUrl: 'image',
-                                        ),
-                                      ));
-                                },
-                              )),
                         ],
                       ),
                     ),
@@ -795,12 +781,12 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
           )
         : Scaffold(
             appBar: AppBar(
-              iconTheme: IconThemeData(color: whiteColor, size: 25),
+              iconTheme: IconThemeData(color: Colors.white, size: 25),
               automaticallyImplyLeading: true,
               elevation: 0,
-              backgroundColor: appBarColor,
+              backgroundColor: darkBlueColor,
               title: Text(
-                'Booking',
+                'Konsultasi',
                 style: GoogleFonts.nunito(
                     fontSize: 19,
                     fontWeight: FontWeight.w600,
@@ -811,6 +797,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
             body: SingleChildScrollView(
               child: Column(
                 children: [
+                  Padding(padding: EdgeInsets.all(20.0)),
                   SizedBox(
                     height: size.height * 0.01,
                   ),
@@ -859,6 +846,25 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Padding(padding: EdgeInsets.all(30.0)),
+                            ElevatedButton(
+                            child: const FaIcon(FontAwesomeIcons.message),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ChatRoom(
+                                      user2Id: 'userid',
+                                      user2Name: widget.name,
+                                      profileUrl: widget.image,
+                                    ),
+                                  ));
+                            },
+                          )
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -885,13 +891,16 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                 ),
                                 Container(
                                   width: size.width * .9,
-                                  child: Text(
+                                  child: Center(
+                                    child: Text(
                                     ' Date & Time',
                                     style: GoogleFonts.nunito(
                                         fontSize: 18,
                                         color: Colors.black,
-                                        fontWeight: FontWeight.w600),
+                                        fontWeight: FontWeight.w800),
+                                        
                                   ),
+                                  )
                                 ),
                                 SizedBox(
                                   height: 8,
@@ -1030,17 +1039,16 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                         }
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        primary: primaryColor,
+                                        primary: darkBlueColor,
                                         shadowColor: Colors.transparent,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(6)),
                                       ),
-                                      child: Text("Add Report",
-                                          style: GoogleFonts.nunito(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white))),
+                                      child: FaIcon(
+                                        FontAwesomeIcons.add
+                                      )),
+                                              
                                 ),
                               ],
                             ),
@@ -1062,7 +1070,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                         return Center(
                                             child: CircularProgressIndicator(
                                           strokeWidth: 1,
-                                          color: primaryColor,
+                                          color: darkBlueColor,
                                         ));
                                       } else if (snapshot.hasData &&
                                           snapshot.data!.docs.isEmpty) {
@@ -1149,7 +1157,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                         border: Border.all(
                                                             width: 0.5,
                                                             color:
-                                                                primaryColor1),
+                                                              blueColor),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(10),
@@ -1523,7 +1531,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                         }
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        primary: primaryColor,
+                                        primary: darkBlueColor,
                                         shadowColor: Colors.transparent,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
@@ -1537,23 +1545,6 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                       SizedBox(
                         height: 30,
                       ),
-                      SizedBox(
-                          height: size.height * 0.06,
-                          width: size.width * 0.9,
-                          child: ElevatedButton(
-                            child: const Text('Chat'),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ChatRoom(
-                                      user2Id: 'userid',
-                                      user2Name: widget.name,
-                                      profileUrl: widget.image,
-                                    ),
-                                  ));
-                            },
-                          )),
                     ],
                   ),
                 ],

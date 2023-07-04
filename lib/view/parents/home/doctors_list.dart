@@ -1,7 +1,13 @@
 import 'package:autism_perdiction_app/constants.dart';
 import 'package:autism_perdiction_app/data/data.dart';
+import 'package:autism_perdiction_app/model/doctor_model.dart';
 import 'package:autism_perdiction_app/size_config.dart';
 import 'package:autism_perdiction_app/theme.dart';
+import 'package:autism_perdiction_app/view/auth/login/login_screen.dart';
+import 'package:autism_perdiction_app/view/onboarding/onboarding_1.dart';
+import 'package:autism_perdiction_app/view/parents/gamification/widget_tree.dart';
+import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
+import 'package:autism_perdiction_app/view/parents/parenting/parenting.view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,11 +15,36 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DoctorsList extends StatelessWidget {
   const DoctorsList({
-   Key? key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    void navigateScreenAutism(Doctor doctor) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => WidgetTree()));
+    }
+
+    void navigateScreenGamification(Doctor doctor) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => HomeScreen()));
+    }
+
+    void navigateScreenParenting(Doctor doctor) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ParentingView()));
+    }
+
+    void featuresAction(Doctor doctor) {
+      if (doctor.name == "Tanya Autism bot") {
+        navigateScreenAutism(doctor);
+      } else if (doctor.name == "Gamification") {
+        navigateScreenGamification(doctor);
+      } else if (doctor.name == "Parenting") {
+        navigateScreenParenting(doctor);
+      } else {}
+    }
+
     SizeConfig.init(context);
     return Container(
       height: getRelativeHeight(0.35),
@@ -28,7 +59,9 @@ class DoctorsList extends StatelessWidget {
           final cardWidth = getRelativeWidth(0.48);
           return Row(
             children: [
-              Container(
+              GestureDetector(
+                onTap: () => featuresAction(doctor),
+                child: Container(
                 width: cardWidth,
                 child: Stack(
                   children: [
@@ -133,7 +166,6 @@ class DoctorsList extends StatelessWidget {
                                       fontSize: getRelativeWidth(0.032)),
                                 ),
                                 SizedBox(height: getRelativeHeight(0.005)),
-                                
                               ],
                             ),
                           ),
@@ -143,6 +175,8 @@ class DoctorsList extends StatelessWidget {
                   ],
                 ),
               ),
+              ),
+              
               SizedBox(width: getRelativeWidth(0.04))
             ],
           );

@@ -1,7 +1,6 @@
 
 
 import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/auth/login/doctor_login_screen.dart';
 import 'package:autism_perdiction_app/view/doctor/bottomNavBarDoctor/doctor_nav_bar_screen.dart';
 import 'package:autism_perdiction_app/view/parents/bottomNavBar/app_bottom_nav_bar_screen.dart';
 import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
@@ -17,15 +16,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:autism_perdiction_app/constants.dart';
 
 
-class LoginScreen extends StatefulWidget {
+class DoctorLoginScreen extends StatefulWidget {
   final String userType;
-  const LoginScreen({Key? key, required this.userType}) : super(key: key);
+  const DoctorLoginScreen({Key? key, required this.userType}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _DoctorLoginScreenState createState() => _DoctorLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _DoctorLoginScreenState extends State<DoctorLoginScreen> {
   final TextEditingController _emailAddressController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -479,53 +478,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               //   MaterialPageRoute(builder: (context) => HomeScreen()),
                               // );
 
-                            }, child: Text('Login', style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600))),
+                            }, child: Text('Login Dokter', style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600))),
                       ),
                     ),
                     SizedBox(
                       height: size.height*0.1,
                     ),
-
-                    widget.userType == "Admin" || widget.userType == "Clinic" ? Container() :
-                    Padding(
-                        padding: const EdgeInsets.only(left: 16,right: 16),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => SignUpScreen(userType: widget.userType,)),
-                            );
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Belum punya akun? ", style: GoogleFonts.nunito(color: Colors.black, fontSize: 16,fontWeight: FontWeight.w500),),
-                              Text(' Daftar disini', style: GoogleFonts.nunito(color: darkBlueColor, fontSize: 16,fontWeight: FontWeight.w500),),
-                            ],),
-                        )
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.only(left: 16,right: 16),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => DoctorLoginScreen(userType: 'Doctors')),
-                            );
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Kamu Dokter? ", style: GoogleFonts.nunito(color: Color.fromARGB(255, 136, 140, 153), fontSize: 16,fontWeight: FontWeight.w500),),
-                              Text(' Login disini', style: GoogleFonts.nunito(color: darkBlueColor, fontSize: 16,fontWeight: FontWeight.w500),),
-                            ],),
-                        )
-                    ),
-
-
                   ],
                 ),
 
