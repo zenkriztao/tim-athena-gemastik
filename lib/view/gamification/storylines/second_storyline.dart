@@ -1,6 +1,6 @@
+import 'package:autism_perdiction_app/view/gamification/components/base_storyline.dart';
 import 'package:autism_perdiction_app/view/gamification/components/from_index.dart';
 import 'package:autism_perdiction_app/view/gamification/db.dart';
-import 'package:autism_perdiction_app/view/parents/gamification/components/base_storyline.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
