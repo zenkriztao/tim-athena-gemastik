@@ -30,8 +30,8 @@ class _ToggleButtonState extends State<ToggleButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: darkBlueColor,
-        foregroundColor: whiteColor,
+        backgroundColor: whiteColor,
+        foregroundColor: darkBlueColor,
         shape: const CircleBorder(),
         padding: const EdgeInsets.all(15),
       ),
@@ -40,13 +40,15 @@ class _ToggleButtonState extends State<ToggleButton> {
           : widget._inputMode == InputMode.text
               ? widget._sendTextMessage
               : widget._sendVoiceMessage,
-      child: Icon(
-        widget._inputMode == InputMode.text
-            ? Icons.send
-            : widget._isListening
-                ? Icons.mic_off
-                : Icons.mic,
-      ),
+      
+      child: Image.asset(
+       widget._inputMode == InputMode.text 
+        ? "assets/send.png"
+        : widget._isListening 
+            ? "assets/micoff.png"
+            : "assets/mic.png",
+        height: 30,
+      )
     );
   }
 }

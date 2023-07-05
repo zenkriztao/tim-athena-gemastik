@@ -122,7 +122,7 @@ void _handleTap() {
                         )
                       : GestureDetector(
                           onTap: () {
-                            Get.to(() => UserType());
+                            Get.to(() => LoginScreen(userType: 'Doctors',));
                           },
                           child: Text(
                             'Lewati',

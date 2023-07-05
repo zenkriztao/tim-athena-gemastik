@@ -92,7 +92,7 @@ class _DoctorLoginScreenState extends State<DoctorLoginScreen> {
 
                     Center(
                       child: SizedBox(
-                        child: Image.asset('assets/logo.png', fit: BoxFit.scaleDown,
+                        child: Image.asset('assets/aksondokter.png', fit: BoxFit.scaleDown,
                           height: 200,
                           width: 200,),
                       ),

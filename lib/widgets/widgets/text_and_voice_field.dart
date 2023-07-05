@@ -52,17 +52,17 @@ class _TextAndVoiceFieldState extends ConsumerState<TextAndVoiceField> {
                   ? setInputMode(InputMode.text)
                   : setInputMode(InputMode.voice);
             },
-            cursorColor: Theme.of(context).colorScheme.onPrimary,
+            cursorColor: darkBlueColor,
             decoration: InputDecoration(
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(25),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: darkBlueColor,
                 ),
                 borderRadius: BorderRadius.circular(
-                  12,
+                  25,
                 ),
               ),
             ),
