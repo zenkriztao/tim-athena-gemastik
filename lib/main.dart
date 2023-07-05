@@ -4,15 +4,13 @@ import 'package:autism_perdiction_app/view/parents/bottomNavBar/app_bottom_nav_b
 import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
 import 'package:autism_perdiction_app/view/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
 
   if (Firebase.apps.length == 0) {
 
@@ -39,7 +37,7 @@ void main() async {
 
   }
 
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {

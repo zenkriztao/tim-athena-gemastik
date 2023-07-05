@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../model/chat_model.dart';
-import '../../../providers/chats_provider.dart';
+import '../../providers/chats_provider.dart';
 import '../../../services/ai_handler.dart';
 import '../../../services/voice_handler.dart';
 import 'toggle_button.dart';
