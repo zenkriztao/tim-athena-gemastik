@@ -1,4 +1,6 @@
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ChatItem extends StatelessWidget {
   final String text;
@@ -30,8 +32,8 @@ class ChatItem extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: isMe
-                  ? Theme.of(context).colorScheme.secondary
-                  : Colors.grey.shade800,
+                  ? darkBlueColor 
+                  : Color.fromARGB(255, 236, 236, 236),
               borderRadius: BorderRadius.only(
                 topLeft: const Radius.circular(15),
                 topRight: const Radius.circular(15),
@@ -41,8 +43,9 @@ class ChatItem extends StatelessWidget {
             ),
             child: Text(
               text,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSecondary,
+              style: GoogleFonts.nunito(
+                color: isMe ? Colors.white : Colors.black,
+                fontWeight: isMe ? FontWeight.w400 : FontWeight.w600
               ),
             ),
           ),
@@ -70,8 +73,8 @@ class ProfileContainer extends StatelessWidget {
       height: 40,
       decoration: BoxDecoration(
         color: isMe
-            ? Theme.of(context).colorScheme.secondary
-            : Colors.grey.shade800,
+            ? Colors.white
+            : Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: const Radius.circular(10),
           topRight: const Radius.circular(10),
@@ -79,10 +82,9 @@ class ProfileContainer extends StatelessWidget {
           bottomRight: Radius.circular(isMe ? 15 : 0),
         ),
       ),
-      child: Icon(
-        isMe ? Icons.person : Icons.computer,
-        color: Theme.of(context).colorScheme.onSecondary,
-      ),
+      child: Image.asset(
+        isMe ? 'assets/user.png' : 'assets/aksonai.png',
+      )
     );
   }
 }

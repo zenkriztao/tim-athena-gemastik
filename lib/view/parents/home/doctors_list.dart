@@ -23,7 +23,7 @@ class DoctorsList extends StatelessWidget {
   Widget build(BuildContext context) {
     void navigateScreenAutism(Doctor doctor) {
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ChatScreen()));
+          MaterialPageRoute(builder: (context) => ChatScreenBot()));
     }
 
     void navigateScreenGamification(Doctor doctor) {

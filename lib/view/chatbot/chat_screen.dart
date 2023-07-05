@@ -1,3 +1,4 @@
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/widgets/widgets/chat_item.dart';
 import 'package:autism_perdiction_app/widgets/widgets/my_app_bar.dart';
 import 'package:autism_perdiction_app/widgets/widgets/text_and_voice_field.dart';
@@ -6,8 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/chats_provider.dart';
 
 
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+class ChatScreenBot extends StatelessWidget {
+  const ChatScreenBot({super.key});
 
   @override
   Widget build(BuildContext context) {

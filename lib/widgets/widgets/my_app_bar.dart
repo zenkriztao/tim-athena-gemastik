@@ -1,5 +1,7 @@
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
@@ -7,9 +9,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: darkBlueColor,
       title: Text(
-        'Flutter GPT',
-        style: TextStyle(
+        'Akson Bot AI',
+        style: GoogleFonts.nunito(
           color: Theme.of(context).colorScheme.onPrimary,
         ),
       ),

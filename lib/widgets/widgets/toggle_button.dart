@@ -1,3 +1,4 @@
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'text_and_voice_field.dart';
 
@@ -29,8 +30,8 @@ class _ToggleButtonState extends State<ToggleButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-        foregroundColor: Theme.of(context).colorScheme.onSecondary,
+        backgroundColor: darkBlueColor,
+        foregroundColor: whiteColor,
         shape: const CircleBorder(),
         padding: const EdgeInsets.all(15),
       ),

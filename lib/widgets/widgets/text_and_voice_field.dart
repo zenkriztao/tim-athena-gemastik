@@ -1,3 +1,4 @@
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../model/chat_model.dart';
@@ -58,7 +59,7 @@ class _TextAndVoiceFieldState extends ConsumerState<TextAndVoiceField> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: darkBlueColor,
                 ),
                 borderRadius: BorderRadius.circular(
                   12,
@@ -110,7 +111,7 @@ class _TextAndVoiceFieldState extends ConsumerState<TextAndVoiceField> {
   void sendTextMessage(String message) async {
     setReplyingState(true);
     addToChatList(message, true, DateTime.now().toString());
-    addToChatList('Typing...', false, 'typing');
+    addToChatList('Mengetik...', false, 'typing');
     setInputMode(InputMode.voice);
     final aiResponse = await _openAI.getResponse(message);
     removeTyping();
