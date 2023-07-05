@@ -72,6 +72,8 @@ dependencies:
   flutter_dotenv: ^5.0.2
   
   velocity_x: ^3.6.0
+  flutter_riverpod: ^2.3.6
+  speech_to_text: ^6.3.0
    
 
 dev_dependencies:

@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:autism_perdiction_app/view/parents/gamification/components/custom_container.dart';
-import 'package:autism_perdiction_app/view/parents/gamification/components/from_index_dc.dart';
-import 'package:autism_perdiction_app/view/parents/gamification/db.dart';
+import 'package:autism_perdiction_app/view/gamification/components/custom_container.dart';
+import 'package:autism_perdiction_app/view/gamification/components/from_index_dc.dart';
+import 'package:autism_perdiction_app/view/gamification/db.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

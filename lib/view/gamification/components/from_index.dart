@@ -1,6 +1,7 @@
 
-import 'package:autism_perdiction_app/view/parents/gamification/storylines/txt/story1_txt.dart';
-import 'package:autism_perdiction_app/view/parents/gamification/storylines/txt/story2_txt.dart';
+
+import 'package:autism_perdiction_app/view/gamification/storylines/txt/story1_txt.dart';
+import 'package:autism_perdiction_app/view/gamification/storylines/txt/story2_txt.dart';
 
 List<String> questionFromIndex(int story, int index) {
   List<String> question;

@@ -1,6 +1,6 @@
+import 'package:autism_perdiction_app/view/gamification/components/from_index.dart';
+import 'package:autism_perdiction_app/view/gamification/db.dart';
 import 'package:autism_perdiction_app/view/parents/gamification/components/base_storyline.dart';
-import 'package:autism_perdiction_app/view/parents/gamification/components/from_index.dart';
-import 'package:autism_perdiction_app/view/parents/gamification/db.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +8,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-class FirstStoryLine extends HookWidget {
+class SecondStoryLine extends HookWidget {
   final User? user;
-  const FirstStoryLine({super.key, required this.user});
+  const SecondStoryLine({super.key, required this.user});
 
   Color? getOptionColor(int index, int selectedOption, int correctOption) {
     if (selectedOption == index) {
@@ -25,7 +25,7 @@ class FirstStoryLine extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return baseWidget(context, "First Story Line", _body(context), user);
+    return baseWidget(context, "Second Story Line", _body(context), user);
   }
 
   Widget _body(BuildContext context) {
@@ -41,7 +41,7 @@ class FirstStoryLine extends HookWidget {
     final displayQuestion = useState(false);
     tts.setSpeechRate(0.6);
 
-    final parsableText = questionFromIndex(1, questionIndex.value);
+    final parsableText = questionFromIndex(2, questionIndex.value);
     final text = parsableText
         .map((paragraph) => TypewriterAnimatedText(
               paragraph,
@@ -55,7 +55,7 @@ class FirstStoryLine extends HookWidget {
             ))
         .toList();
     List<ListTile> options = [];
-    List<String> parsableOptions = optionsFromIndex(1, questionIndex.value);
+    List<String> parsableOptions = optionsFromIndex(2, questionIndex.value);
     for (var i = 1; i <= parsableOptions.length; i++) {
       options.add(ListTile(
           tileColor:
@@ -73,14 +73,15 @@ class FirstStoryLine extends HookWidget {
           ])));
     }
     return Column(children: [
-      const Text("Henry: The Autistic Parrot",
+      const Text("Claudio: The Dyslexic Turtle",
           style: TextStyle(
             fontFamily: 'LuckiestGuy',
             fontSize: 20,
           )),
       const SizedBox(height: 10),
       const CircleAvatar(
-          backgroundImage: AssetImage("lib/images/Pheonix.png"), radius: 50),
+          backgroundImage: AssetImage("lib/images/Unicorndalle.png"),
+          radius: 50),
       const SizedBox(height: 5),
       (displayQuestion.value)
           ? Container(
@@ -90,7 +91,9 @@ class FirstStoryLine extends HookWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: AnimatedTextKit(
                 animatedTexts: text,
+                displayFullTextOnTap: true,
                 repeatForever: false,
+                stopPauseOnTap: true,
                 pause: const Duration(seconds: 5),
                 totalRepeatCount: 1,
                 onFinished: () {
@@ -105,7 +108,8 @@ class FirstStoryLine extends HookWidget {
                 },
               ),
             )
-          : const SizedBox(height: 10),
+          : const SizedBox(height: 0, width: 0),
+      const SizedBox(height: 10),
       (displayOptions.value)
           ? Column(children: [
               (displayReply.value)
@@ -125,18 +129,18 @@ class FirstStoryLine extends HookWidget {
                                     fontSize: 20,
                                     fontFamily: 'Hind',
                                     fontWeight: FontWeight.w400),
-                                replyFromIndex(1, selectedOption.value,
+                                replyFromIndex(2, selectedOption.value,
                                     correctOption.value, questionIndex.value))
                           ],
+                          pause: const Duration(seconds: 5),
                           repeatForever: false,
                           totalRepeatCount: 1,
-                          pause: const Duration(seconds: 5),
                           onFinished: () {
                             submitted.value = true;
                           },
                           onNextBeforePause: (idx, b) async {
                             await tts.speak(replyFromIndex(
-                                1,
+                                2,
                                 selectedOption.value,
                                 correctOption.value,
                                 questionIndex.value));
@@ -145,7 +149,8 @@ class FirstStoryLine extends HookWidget {
                             await tts.awaitSpeakCompletion(true);
                           }),
                     )
-                  : const SizedBox(height: 10),
+                  : const SizedBox(height: 0, width: 0),
+              const SizedBox(height: 10),
               Column(children: [
                 ListBody(children: options),
               ]),
@@ -175,7 +180,7 @@ class FirstStoryLine extends HookWidget {
                                 .collection('questions')
                                 .where('qid',
                                     isEqualTo:
-                                        int.parse("1${questionIndex.value}"))
+                                        int.parse("2${questionIndex.value}"))
                                 .get()
                                 .then((value) {
                               correctOption.value = value.docs[0].get("answer");
@@ -279,7 +284,7 @@ class FirstStoryLine extends HookWidget {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(10))),
                   child: const Text(
-                      "\nZhafran lupa survei kebhinekaan, diagnosed with autism and the hardships as well as the positives it experienced throughout its life.  We learn how people with autism are affected from this story.",
+                      "\nZhafran lupo survei kebhinekaan, a turtle in the pet world, diagnosed with dyslexia and the hardships as well as the positives it experienced throughout its life.  We learn how people with dyslexia are affected from this story.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontFamily: "Raleway",
