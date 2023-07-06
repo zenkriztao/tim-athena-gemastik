@@ -1,8 +1,8 @@
-import 'package:autism_perdiction_app/size_config.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/gamification/auth.dart';
-import 'package:autism_perdiction_app/view/gamification/storylines/first_storyline.dart';
-import 'package:autism_perdiction_app/view/gamification/storylines/second_storyline.dart';
+import 'package:aksonhealth/size_config.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/gamification/auth.dart';
+import 'package:aksonhealth/view/gamification/storylines/first_storyline.dart';
+import 'package:aksonhealth/view/gamification/storylines/second_storyline.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

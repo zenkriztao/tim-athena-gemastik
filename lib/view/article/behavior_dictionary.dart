@@ -1,9 +1,8 @@
-import 'package:autism_perdiction_app/model/behavior_models.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/article/behavior_list_item.dart';
+import 'package:aksonhealth/model/behavior_models.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/article/behavior_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class BehaviorDictionaryPage extends StatefulWidget {
   const BehaviorDictionaryPage({super.key});
@@ -43,9 +42,7 @@ class _BehaviorDictionaryPageState extends State<BehaviorDictionaryPage> {
               Text(
                 'Artikel',
                 style: GoogleFonts.nunito(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold
-                ),
+                    fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -71,12 +68,8 @@ class _BehaviorDictionaryPageState extends State<BehaviorDictionaryPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Cari Artikel',
-                          style: GoogleFonts.nunito(
-                            fontSize: 15
-                          )
-                        ),
+                        Text('Cari Artikel',
+                            style: GoogleFonts.nunito(fontSize: 15)),
                         const Icon(Icons.search),
                       ],
                     ),

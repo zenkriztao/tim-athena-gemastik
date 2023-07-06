@@ -1,6 +1,6 @@
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/chat/chat_dao.dart';
-import 'package:autism_perdiction_app/view/chat/chat_room.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/chat/chat_dao.dart';
+import 'package:aksonhealth/view/chat/chat_room.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';

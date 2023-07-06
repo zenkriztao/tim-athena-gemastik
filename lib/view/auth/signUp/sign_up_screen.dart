@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/model/firebase_auth.dart';
-import 'package:autism_perdiction_app/model/input_validator.dart';
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/model/firebase_auth.dart';
+import 'package:aksonhealth/model/input_validator.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';

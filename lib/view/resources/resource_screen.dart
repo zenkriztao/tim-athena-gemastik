@@ -1,5 +1,5 @@
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/view/videos/videos_screen.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/view/videos/videos_screen.dart';
 import 'package:flutter/material.dart';
 
 class ResourceScreen extends StatefulWidget {

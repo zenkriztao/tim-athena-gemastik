@@ -1,7 +1,7 @@
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/gamification/components/base_storyline.dart';
-import 'package:autism_perdiction_app/view/gamification/components/from_index.dart';
-import 'package:autism_perdiction_app/view/gamification/db.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/gamification/components/base_storyline.dart';
+import 'package:aksonhealth/view/gamification/components/from_index.dart';
+import 'package:aksonhealth/view/gamification/db.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -50,9 +50,8 @@ class SecondStoryLine extends HookWidget {
               cursor: '',
               speed: const Duration(milliseconds: 75),
               textAlign: TextAlign.center,
-              textStyle: GoogleFonts.nunito(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400),
+              textStyle:
+                  GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w400),
             ))
         .toList();
     List<ListTile> options = [];
@@ -65,16 +64,14 @@ class SecondStoryLine extends HookWidget {
           title: Column(children: [
             Text(
               parsableOptions[i - 1],
-              style: GoogleFonts.nunito(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400),
+              style:
+                  GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w400),
             ),
             const Divider(
               height: 10,
-            thickness: 3,
-            endIndent: 0,
-            color: Colors.white,
-              
+              thickness: 3,
+              endIndent: 0,
+              color: Colors.white,
             ),
           ])));
     }
@@ -132,14 +129,15 @@ class SecondStoryLine extends HookWidget {
                   ? Container(
                       width: MediaQuery.of(context).size.width - 20,
                       decoration: BoxDecoration(
-                        boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                           color: Colors.white,
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10))),
@@ -150,8 +148,7 @@ class SecondStoryLine extends HookWidget {
                                 speed: const Duration(milliseconds: 75),
                                 textAlign: TextAlign.center,
                                 textStyle: GoogleFonts.nunito(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400),
+                                    fontSize: 20, fontWeight: FontWeight.w400),
                                 replyFromIndex(2, selectedOption.value,
                                     correctOption.value, questionIndex.value))
                           ],
@@ -337,14 +334,14 @@ class SecondStoryLine extends HookWidget {
                   width: MediaQuery.of(context).size.width - 20,
                   height: MediaQuery.of(context).size.height / 4,
                   decoration: BoxDecoration(
-                    boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
                       color: Color.fromARGB(255, 242, 242, 242),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(10))),

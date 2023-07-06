@@ -1,5 +1,5 @@
-import 'package:autism_perdiction_app/model/category_model.dart';
-import 'package:autism_perdiction_app/model/doctor_model.dart';
+import 'package:aksonhealth/model/category_model.dart';
+import 'package:aksonhealth/model/doctor_model.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +46,5 @@ class Data {
         image: "assets/images/parenting.png",
         reviews: 19,
         reviewScore: 3),
-   
   ];
 }

@@ -1,4 +1,4 @@
-name: autism_perdiction_app
+name: aksonhealth
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -70,11 +70,10 @@ dependencies:
   flutter_hooks: ^0.18.6
   animated_text_kit: ^4.2.2
   flutter_dotenv: ^5.0.2
-  
+
   velocity_x: ^3.6.0
   flutter_riverpod: ^2.3.6
   speech_to_text: ^6.3.0
-   
 
 dev_dependencies:
   flutter_launcher_icons: "^0.11.0"

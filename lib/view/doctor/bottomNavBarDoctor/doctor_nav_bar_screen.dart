@@ -1,18 +1,18 @@
 import 'dart:io';
 
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/model/behavior_models.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/article/behavior_dictionary.dart';
-import 'package:autism_perdiction_app/view/chat/chats.dart';
-import 'package:autism_perdiction_app/view/detail/bookingDetail/booking_detail_screen.dart';
-import 'package:autism_perdiction_app/view/doctor/bookings/bookings_screen.dart';
-import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
-import 'package:autism_perdiction_app/view/parents/perdict/perdict_screen.dart';
-import 'package:autism_perdiction_app/view/parents/profile/profile_screen.dart';
-import 'package:autism_perdiction_app/view/resources/resource_screen.dart';
-import 'package:autism_perdiction_app/view/specialists/doctor_screen.dart';
-import 'package:autism_perdiction_app/view/splash/splash_screen.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/model/behavior_models.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/article/behavior_dictionary.dart';
+import 'package:aksonhealth/view/chat/chats.dart';
+import 'package:aksonhealth/view/detail/bookingDetail/booking_detail_screen.dart';
+import 'package:aksonhealth/view/doctor/bookings/bookings_screen.dart';
+import 'package:aksonhealth/view/parents/home/home_screen.dart';
+import 'package:aksonhealth/view/parents/perdict/perdict_screen.dart';
+import 'package:aksonhealth/view/parents/profile/profile_screen.dart';
+import 'package:aksonhealth/view/resources/resource_screen.dart';
+import 'package:aksonhealth/view/specialists/doctor_screen.dart';
+import 'package:aksonhealth/view/splash/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,21 +24,26 @@ class AppDoctorBottomNavBarScreen extends StatefulWidget {
   final String title;
   final String subTitle;
 
-  const AppDoctorBottomNavBarScreen({Key? key, required this.index, required this.title, required this.subTitle,}) : super(key: key);
+  const AppDoctorBottomNavBarScreen({
+    Key? key,
+    required this.index,
+    required this.title,
+    required this.subTitle,
+  }) : super(key: key);
 
   @override
-  _AppDoctorBottomNavBarScreenState createState() => _AppDoctorBottomNavBarScreenState();
+  _AppDoctorBottomNavBarScreenState createState() =>
+      _AppDoctorBottomNavBarScreenState();
 }
 
-class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScreen> {
+class _AppDoctorBottomNavBarScreenState
+    extends State<AppDoctorBottomNavBarScreen> {
   int _selectedIndex = 0;
   List<Widget> _pages = [
-
     HomeScreen(),
     Chats(),
     DoctorBookingScreen(),
     ProfileScreen(),
-
   ];
 
   void _onItemTapped(int index) {
@@ -50,10 +55,10 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
   getToken() async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
     print('customerAccessToken');
-    print( _pref.getString('customerAccessToken'));
+    print(_pref.getString('customerAccessToken'));
 
     print('adminAccessToken');
-    print( _pref.getString('adminAccessToken'));
+    print(_pref.getString('adminAccessToken'));
   }
 
   @override
@@ -69,10 +74,7 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
     //     _pages[2] = SessionHistory();
     //   });
     // }
-
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +82,7 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
     //getToken();
     return Scaffold(
       extendBody: true,
-      backgroundColor:  lightGreyColor,
+      backgroundColor: lightGreyColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: _pages.elementAt(_selectedIndex),
       bottomNavigationBar: BottomAppBar(
@@ -90,17 +92,14 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
           //  color: Colors.white,
           child: SizedBox(
             height: 70,
-            child:
-
-            CupertinoTabBar(
+            child: CupertinoTabBar(
               activeColor: darkBlueColor,
               currentIndex: _selectedIndex,
               backgroundColor: Colors.white,
               iconSize: 40,
               onTap: _onItemTapped,
               items: [
-
-                 BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
@@ -113,13 +112,13 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
                       child: FaIcon(
                         FontAwesomeIcons.home,
                         size: 23,
-                        ),
-                        //color: Color(0xFF3A5A98),
                       ),
+                      //color: Color(0xFF3A5A98),
                     ),
-                    label: 'Home',
                   ),
-                 BottomNavigationBarItem(
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
@@ -132,13 +131,13 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
                       child: FaIcon(
                         FontAwesomeIcons.message,
                         size: 23,
-                        ), 
-                        //color: Color(0xFF3A5A98),
                       ),
+                      //color: Color(0xFF3A5A98),
                     ),
-                    label: 'Chat',
+                  ),
+                  label: 'Chat',
                 ),
-                 BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
@@ -148,15 +147,15 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
                           _pages[2] = DoctorBookingScreen();
                         });
                       },
-                      child:FaIcon(
+                      child: FaIcon(
                         FontAwesomeIcons.bookMedical,
                         size: 23,
-                        ), 
+                      ),
                     ),
                   ),
                   label: 'Appointment',
                 ),
-                 BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
@@ -169,7 +168,7 @@ class _AppDoctorBottomNavBarScreenState extends State<AppDoctorBottomNavBarScree
                       child: FaIcon(
                         FontAwesomeIcons.bars,
                         size: 23,
-                        ),  
+                      ),
                     ),
                   ),
                   label: 'Pengaturan',

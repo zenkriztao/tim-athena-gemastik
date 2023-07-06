@@ -3,12 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'package:autism_perdiction_app/view/auth/login/login_screen.dart';
-import 'package:autism_perdiction_app/view/auth/userType/usertype_screen.dart';
-import 'package:autism_perdiction_app/view/onboarding/onboarding_1.dart';
-import 'package:autism_perdiction_app/view/onboarding/onboarding_2.dart';
-import 'package:autism_perdiction_app/view/onboarding/onboarding_3.dart';
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/view/auth/login/login_screen.dart';
+import 'package:aksonhealth/view/auth/userType/usertype_screen.dart';
+import 'package:aksonhealth/view/onboarding/onboarding_1.dart';
+import 'package:aksonhealth/view/onboarding/onboarding_2.dart';
+import 'package:aksonhealth/view/onboarding/onboarding_3.dart';
+import 'package:aksonhealth/theme.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -21,30 +21,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   bool onLastPage = false;
 
-void _selectUserType(String userType) {
-  if (userType == 'Parents') {
-    Get.to(() => LoginScreen(userType: 'Parents'));
-  } else if (userType == 'Doctors') {
-    Get.to(() => LoginScreen(userType: 'Doctors'));
+  void _selectUserType(String userType) {
+    if (userType == 'Parents') {
+      Get.to(() => LoginScreen(userType: 'Parents'));
+    } else if (userType == 'Doctors') {
+      Get.to(() => LoginScreen(userType: 'Doctors'));
+    }
   }
-}
 
-void _handleTap() {
-  _controller.nextPage(
-    duration: const Duration(milliseconds: 500),
-    curve: Curves.ease,
-  );
-  if (onLastPage) {
-    // Replace 'Parents' with the desired user type
-    _selectUserType('Parents');
+  void _handleTap() {
+    _controller.nextPage(
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.ease,
+    );
+    if (onLastPage) {
+      // Replace 'Parents' with the desired user type
+      _selectUserType('Parents');
+    }
   }
-}
-
-
 
   @override
   Widget build(BuildContext context) {
-    
     return GetMaterialApp(
       // Wrap your app with GetMaterialApp
       home: Scaffold(
@@ -122,7 +119,9 @@ void _handleTap() {
                         )
                       : GestureDetector(
                           onTap: () {
-                            Get.to(() => LoginScreen(userType: 'Doctors',));
+                            Get.to(() => LoginScreen(
+                                  userType: 'Doctors',
+                                ));
                           },
                           child: Text(
                             'Lewati',

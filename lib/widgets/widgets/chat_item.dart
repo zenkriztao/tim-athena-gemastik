@@ -1,4 +1,4 @@
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,9 +31,7 @@ class ChatItem extends StatelessWidget {
               maxWidth: MediaQuery.of(context).size.width * 0.60,
             ),
             decoration: BoxDecoration(
-              color: isMe
-                  ? darkBlueColor 
-                  : Color.fromARGB(255, 236, 236, 236),
+              color: isMe ? darkBlueColor : Color.fromARGB(255, 236, 236, 236),
               borderRadius: BorderRadius.only(
                 topLeft: const Radius.circular(15),
                 topRight: const Radius.circular(15),
@@ -44,9 +42,8 @@ class ChatItem extends StatelessWidget {
             child: Text(
               text,
               style: GoogleFonts.nunito(
-                color: isMe ? Colors.white : Colors.black,
-                fontWeight: isMe ? FontWeight.w400 : FontWeight.w600
-              ),
+                  color: isMe ? Colors.white : Colors.black,
+                  fontWeight: isMe ? FontWeight.w400 : FontWeight.w600),
             ),
           ),
           if (isMe) const SizedBox(width: 15),
@@ -68,23 +65,20 @@ class ProfileContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        color: isMe
-            ? Colors.white
-            : Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: const Radius.circular(10),
-          topRight: const Radius.circular(10),
-          bottomLeft: Radius.circular(isMe ? 0 : 15),
-          bottomRight: Radius.circular(isMe ? 15 : 0),
+        alignment: Alignment.center,
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: isMe ? Colors.white : Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: const Radius.circular(10),
+            topRight: const Radius.circular(10),
+            bottomLeft: Radius.circular(isMe ? 0 : 15),
+            bottomRight: Radius.circular(isMe ? 15 : 0),
+          ),
         ),
-      ),
-      child: Image.asset(
-        isMe ? 'assets/user.png' : 'assets/aksonai.png',
-      )
-    );
+        child: Image.asset(
+          isMe ? 'assets/user.png' : 'assets/aksonai.png',
+        ));
   }
 }

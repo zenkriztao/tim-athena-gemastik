@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/article/behavior_dictionary.dart';
-import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
-import 'package:autism_perdiction_app/view/parents/perdict/perdict_screen.dart';
-import 'package:autism_perdiction_app/view/parents/profile/profile_screen.dart';
-import 'package:autism_perdiction_app/view/specialists/consult_screen.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/article/behavior_dictionary.dart';
+import 'package:aksonhealth/view/parents/home/home_screen.dart';
+import 'package:aksonhealth/view/parents/perdict/perdict_screen.dart';
+import 'package:aksonhealth/view/parents/profile/profile_screen.dart';
+import 'package:aksonhealth/view/specialists/consult_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,7 +17,12 @@ class AppBottomNavBarScreen extends StatefulWidget {
   final String title;
   final String subTitle;
 
-  const AppBottomNavBarScreen({Key? key, required this.index, required this.title, required this.subTitle,}) : super(key: key);
+  const AppBottomNavBarScreen({
+    Key? key,
+    required this.index,
+    required this.title,
+    required this.subTitle,
+  }) : super(key: key);
 
   @override
   _AppBottomNavBarScreenState createState() => _AppBottomNavBarScreenState();
@@ -26,13 +31,11 @@ class AppBottomNavBarScreen extends StatefulWidget {
 class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
   int _selectedIndex = 0;
   List<Widget> _pages = [
-
     HomeScreen(),
     ConsultScreen(),
     HomeScreen(),
     BehaviorDictionaryPage(),
     ProfileScreen(),
-
   ];
 
   void _onItemTapped(int index) {
@@ -44,10 +47,10 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
   getToken() async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
     print('customerAccessToken');
-    print( _pref.getString('customerAccessToken'));
+    print(_pref.getString('customerAccessToken'));
 
     print('adminAccessToken');
-    print( _pref.getString('adminAccessToken'));
+    print(_pref.getString('adminAccessToken'));
   }
 
   @override
@@ -63,10 +66,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
     //     _pages[2] = SessionHistory();
     //   });
     // }
-
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -74,17 +74,14 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
     //getToken();
     return Scaffold(
       extendBody: true,
-      backgroundColor:  lightGreyColor,
+      backgroundColor: lightGreyColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: _selectedIndex == 2 ? blueColor : darkBlueColor,
-        onPressed: () {
-
-        },
+        onPressed: () {},
         child: FaIcon(FontAwesomeIcons.bolt),
         elevation: 2.0,
       ),
-
       body: _pages.elementAt(_selectedIndex),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
@@ -93,17 +90,14 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
           //  color: Colors.white,
           child: SizedBox(
             height: 70,
-            child:
-
-            CupertinoTabBar(
+            child: CupertinoTabBar(
               activeColor: darkBlueColor,
               currentIndex: _selectedIndex,
               backgroundColor: Colors.white,
               iconSize: 40,
               onTap: _onItemTapped,
               items: [
-
-                 BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
@@ -116,13 +110,13 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                       child: FaIcon(
                         FontAwesomeIcons.home,
                         size: 23,
-                        ),
-                        //color: Color(0xFF3A5A98),
                       ),
+                      //color: Color(0xFF3A5A98),
                     ),
-                    label: 'Home',
                   ),
-                 BottomNavigationBarItem(
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
@@ -135,24 +129,22 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                       child: FaIcon(
                         FontAwesomeIcons.stethoscope,
                         size: 23,
-                        ), 
-                        //color: Color(0xFF3A5A98),
                       ),
+                      //color: Color(0xFF3A5A98),
                     ),
-                    label: 'Konsultasi',
+                  ),
+                  label: 'Konsultasi',
                 ),
-                 BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
-                      onTap: () {
-                        
-                      },
+                      onTap: () {},
                     ),
                   ),
                   label: 'Social',
                 ),
-                 BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
@@ -162,15 +154,15 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                           _pages[3] = BehaviorDictionaryPage();
                         });
                       },
-                      child:FaIcon(
+                      child: FaIcon(
                         FontAwesomeIcons.bookOpen,
                         size: 23,
-                        ), 
+                      ),
                     ),
                   ),
                   label: 'Artikel',
                 ),
-                 BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
@@ -183,7 +175,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                       child: FaIcon(
                         FontAwesomeIcons.bars,
                         size: 23,
-                        ),  
+                      ),
                     ),
                   ),
                   label: 'Pengaturan',

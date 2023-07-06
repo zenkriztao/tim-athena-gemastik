@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Doctor {
   final String name, speciality, image;
   final int reviews;

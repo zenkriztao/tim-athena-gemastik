@@ -1,4 +1,4 @@
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
@@ -38,7 +38,6 @@ class ColorController extends GetxController {
       return blackColor;
     }
   }
-
 
   Color getUserChatColor() {
     if (Get.isDarkMode) {

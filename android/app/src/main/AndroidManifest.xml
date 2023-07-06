@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.autism.perdiction">
+    package="com.aksonhealth">
    <application
-        android:label="autism_perdiction_app"
+        android:label="aksonhealth"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

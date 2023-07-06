@@ -1,8 +1,8 @@
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/size_config.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/specialists/consult_banner.dart';
-import 'package:autism_perdiction_app/view/specialists/doctor_screen.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/size_config.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/specialists/consult_banner.dart';
+import 'package:aksonhealth/view/specialists/doctor_screen.dart';
 import 'package:flutter/material.dart';
 
 class ConsultScreen extends StatefulWidget {
@@ -22,12 +22,8 @@ class _ConsultScreenState extends State<ConsultScreen> {
           child: Column(
             children: [
               AppBar(
-                title: const Text(
-                  "Konsultasi",
-                style: TextStyle(
-                  color: darkBlueColor
-                )
-                ),
+                title: const Text("Konsultasi",
+                    style: TextStyle(color: darkBlueColor)),
                 backgroundColor: Colors.white,
               ),
               SizedBox(height: 30),

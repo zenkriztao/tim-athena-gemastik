@@ -1,8 +1,7 @@
-import 'package:autism_perdiction_app/model/behavior_models.dart';
-import 'package:autism_perdiction_app/view/article/behavior_content.dart';
+import 'package:aksonhealth/model/behavior_models.dart';
+import 'package:aksonhealth/view/article/behavior_content.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class BehaviorListItem extends StatelessWidget {
   final BehaviorOverview behaviorOverview;
@@ -24,16 +23,11 @@ class BehaviorListItem extends StatelessWidget {
       ),
       title: Text(
         behaviorOverview.title,
-        style: GoogleFonts.nunito(
-          fontSize: 18,
-          fontWeight: FontWeight.w600
-        ),
+        style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w600),
       ),
       subtitle: Text(
         behaviorOverview.description,
-        style: GoogleFonts.nunito(
-          fontSize: 15
-        ),
+        style: GoogleFonts.nunito(fontSize: 15),
         overflow: TextOverflow.ellipsis,
         maxLines: 2,
       ),

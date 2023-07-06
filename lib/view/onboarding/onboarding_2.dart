@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:get/get.dart';
 
 class Onboarding2Screen extends StatelessWidget {
   const Onboarding2Screen({Key? key, this.color}) : super(key: key);
@@ -37,7 +36,7 @@ class Onboarding2Screen extends StatelessWidget {
             child: Image.asset('assets/images/childhelp.png'),
           ),
         ),
-         Align(
+        Align(
           alignment: Alignment.topCenter,
           child: Padding(
             padding:
@@ -73,10 +72,9 @@ class Onboarding2Screen extends StatelessWidget {
                     Text(
                       "Cepat!",
                       style: GoogleFonts.spectral(
-                       fontSize: 45,
-                       fontWeight: FontWeight.bold,
-                       color: darkBlueColor 
-                      ),
+                          fontSize: 45,
+                          fontWeight: FontWeight.bold,
+                          color: darkBlueColor),
                     ),
                     SizedBox(
                       height: 12,

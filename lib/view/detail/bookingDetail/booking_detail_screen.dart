@@ -1,7 +1,7 @@
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/model/firebase_auth.dart';
-import 'package:autism_perdiction_app/view/doctor/doctorReportDetail/doctor_report_detail_screen.dart';
-import 'package:autism_perdiction_app/view/reports/report_detail_screen.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/model/firebase_auth.dart';
+import 'package:aksonhealth/view/doctor/doctorReportDetail/doctor_report_detail_screen.dart';
+import 'package:aksonhealth/view/reports/report_detail_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -32,7 +32,6 @@ class BookingDetailScreen extends StatefulWidget {
   final String userIs;
   final String docId;
 
-
   const BookingDetailScreen({
     Key? key,
     required this.childImage,
@@ -62,19 +61,34 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
   final TextEditingController _cardCVCControler = TextEditingController();
   final TextEditingController _cardDateControler = TextEditingController();
   MethodsHandler _methodsHandler = MethodsHandler();
-  List<Map<String,dynamic>> _reports = [];
+  List<Map<String, dynamic>> _reports = [];
   PaymentType _site = PaymentType.ConDelivery;
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  String isCreated = '',  endTime = '' ;
+  String isCreated = '', endTime = '';
   DateTime? _chosenDateTime;
-  int y=0, index1 = -1;
+  int y = 0, index1 = -1;
   String? renterEmail = '', renterName = '', renterUid = '', isSelected = 'no';
-  String? selectedDoctorEmail = '', selectedDoctorName = '', selectedDoctorUid = '',selectedDoctorPhone = ''
-  ,selectedDoctorImage= '',selectedDoctorSpec= '',selectedDoctorCategory= '';
+  String? selectedDoctorEmail = '',
+      selectedDoctorName = '',
+      selectedDoctorUid = '',
+      selectedDoctorPhone = '',
+      selectedDoctorImage = '',
+      selectedDoctorSpec = '',
+      selectedDoctorCategory = '';
   bool _isLoading = false;
 
-  String name = '' , email = '',uid = '',childName = '', age = '',gender = '',
-      childImage = '', showReport = '', childCase = '', childAdvice = '', date = '',selectedIndex = '';
+  String name = '',
+      email = '',
+      uid = '',
+      childName = '',
+      age = '',
+      gender = '',
+      childImage = '',
+      showReport = '',
+      childCase = '',
+      childAdvice = '',
+      date = '',
+      selectedIndex = '';
   String text = '';
   int score = 0;
 
@@ -84,7 +98,7 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
     setState(() {
       isSelected = 'no';
       showReport = '';
-      y=0;
+      y = 0;
       renterName = '';
       renterEmail = '';
       renterUid = '';
@@ -97,12 +111,12 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
 
   getRenter() async {
     setState(() {
-      y=1;
+      y = 1;
     });
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await FirebaseFirestore.instance
         .collection('Parents')
-        .where('uid',isEqualTo: _auth.currentUser!.uid)
+        .where('uid', isEqualTo: _auth.currentUser!.uid)
         .get()
         .then((value) {
       setState(() {
@@ -115,14 +129,12 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
     print(renterEmail.toString() + ' name is here');
   }
 
-
-
-
-
   getData() async {
-
-
-    FirebaseFirestore.instance.collection('Parents').where('uid',isEqualTo: widget.parentUid).get().then((value) {
+    FirebaseFirestore.instance
+        .collection('Parents')
+        .where('uid', isEqualTo: widget.parentUid)
+        .get()
+        .then((value) {
       setState(() {
         childName = value.docs[0]['childName'];
         gender = value.docs[0]['gender'];
@@ -130,89 +142,83 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
         childImage = value.docs[0]['childImage'];
       });
     });
-
-
-
   }
-
 
   @override
   Widget build(BuildContext context) {
-
     final size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: whiteColor, size: 25),
-          automaticallyImplyLeading: true,
-          elevation: 0,
-          backgroundColor: appBarColor,
-          title: Text(
-            'Booking',
-            style: TextStyle(
-                fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
-          ),
-          centerTitle: true,
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: whiteColor, size: 25),
+        automaticallyImplyLeading: true,
+        elevation: 0,
+        backgroundColor: appBarColor,
+        title: Text(
+          'Booking',
+          style: TextStyle(
+              fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: size.height * 0.01,
-              ),
-              Container(
-                height: size.height * 0.15,
-                width: size.width*0.95,
-                decoration: BoxDecoration(
-                    color: buttonColor.withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(10)
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundImage: NetworkImage(widget.childImage.toString(),),
-
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height * 0.01,
+            ),
+            Container(
+              height: size.height * 0.15,
+              width: size.width * 0.95,
+              decoration: BoxDecoration(
+                  color: buttonColor.withOpacity(0.9),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: NetworkImage(
+                        widget.childImage.toString(),
                       ),
                     ),
-
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.childName,
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
-                        ),
-                        Text(
-                          widget.age,
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w300, color: Colors.white),
-                        ),
-                        Text(
-                          widget.gender,
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w300, color: Colors.white),
-                        ),
-                      ],
-                    ),
-
-
-                  ],),
-
-
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.childName,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      ),
+                      Text(
+                        widget.age,
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white),
+                      ),
+                      Text(
+                        widget.gender,
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              SizedBox(
-                height: size.height * 0.02,
-              ),
-
-
-              Container(
-                decoration: BoxDecoration(
+            ),
+            SizedBox(
+              height: size.height * 0.02,
+            ),
+            Container(
+              decoration: BoxDecoration(
                   // boxShadow: [
                   //   BoxShadow(
                   //     color: Colors.grey.withOpacity(0.4),
@@ -225,97 +231,101 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                   //     blurRadius: 5,
                   //   ),
                   // ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(children: [
-
+                  ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
                     SizedBox(
                       height: size.height * 0.02,
                     ),
 
-                    Column(children: [
-
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Card(
-                          child: Container(
-                            height: size.height * 0.055,
-                            color: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Parent Name ',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  Text(
-                                    widget.parentName.toString(),
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ],
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Card(
+                            child: Container(
+                              height: size.height * 0.055,
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Parent Name ',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Text(
+                                      widget.parentName.toString(),
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Card(
-                          child: Container(
-                            height: size.height * 0.055,
-                             color: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Parent Email ',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  Text(
-                                    widget.parentEmail.toString(),
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ],
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Card(
+                            child: Container(
+                              height: size.height * 0.055,
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Parent Email ',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Text(
+                                      widget.parentEmail.toString(),
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-
-                    ],),
+                      ],
+                    ),
 
                     SizedBox(
                       height: size.height * 0.02,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 16,right: 16),
+                      padding: const EdgeInsets.only(left: 16, right: 16),
                       child: Container(
-
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                                color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
+                                color: Colors.black26,
+                                offset: Offset(0, 4),
+                                blurRadius: 5.0)
                           ],
-                          border: Border.all(color: Colors.white.withOpacity(0.5)),
+                          border:
+                              Border.all(color: Colors.white.withOpacity(0.5)),
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
@@ -329,25 +339,26 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                         ),
                         child: ElevatedButton(
                             style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                               ),
-                              minimumSize: MaterialStateProperty.all(Size(size.width, 50)),
+                              minimumSize: MaterialStateProperty.all(
+                                  Size(size.width, 50)),
                               backgroundColor:
-                              MaterialStateProperty.all(buttonColor),
+                                  MaterialStateProperty.all(buttonColor),
                               // elevation: MaterialStateProperty.all(3),
                               shadowColor:
-                              MaterialStateProperty.all(Colors.transparent),
+                                  MaterialStateProperty.all(Colors.transparent),
                             ),
-
                             onPressed: () async {
-
                               Navigator.push(
                                 context,
                                 PageRouteBuilder(
-                                  pageBuilder: (c, a1, a2) => DoctorReportDetailScreen(
+                                  pageBuilder: (c, a1, a2) =>
+                                      DoctorReportDetailScreen(
                                     childName: childName,
                                     childAge: age,
                                     childGender: gender,
@@ -357,16 +368,17 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                                     total: widget.score,
                                     parentUid: widget.parentUid,
                                     docId: widget.docId,
-
                                     user: 'doctor',
                                   ),
                                   transitionsBuilder: (c, anim, a2, child) =>
-                                      FadeTransition(opacity: anim, child: child),
-                                  transitionDuration: Duration(milliseconds: 100),
+                                      FadeTransition(
+                                          opacity: anim, child: child),
+                                  transitionDuration:
+                                      Duration(milliseconds: 100),
                                 ),
                               );
-
-                            }, child: Text('View Report', style: buttonStyle)),
+                            },
+                            child: Text('View Report', style: buttonStyle)),
                       ),
                     ),
 
@@ -419,15 +431,13 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                     // SizedBox(
                     //   height: size.height * 0.02,
                     // ),
-
-                  ],),
+                  ],
                 ),
               ),
-
-
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 }

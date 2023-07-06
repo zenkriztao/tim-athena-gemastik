@@ -1,20 +1,16 @@
 import 'dart:io';
-import 'package:autism_perdiction_app/view/doctor/bottomNavBarDoctor/doctor_nav_bar_screen.dart';
-import 'package:autism_perdiction_app/view/parents/bottomNavBar/app_bottom_nav_bar_screen.dart';
-import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
-import 'package:autism_perdiction_app/view/splash/splash_screen.dart';
+import 'package:aksonhealth/view/doctor/bottomNavBarDoctor/doctor_nav_bar_screen.dart';
+import 'package:aksonhealth/view/parents/bottomNavBar/app_bottom_nav_bar_screen.dart';
+import 'package:aksonhealth/view/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
 
   if (Firebase.apps.length == 0) {
-
-
     if (Platform.isIOS) {
       // await Firebase.initializeApp(
       //     options: FirebaseOptions(apiKey: 'AIzaSyAFFk4hXMpio9X_Gz0wVCQvk4a5QAzllXM',
@@ -23,18 +19,16 @@ void main() async {
       //         storageBucket:  "agriculture-store-flutter.appspot.com",
       //         projectId: 'agriculture-store-flutter')
       // );
-    }
-    else {
+    } else {
       await Firebase.initializeApp(
-          options: FirebaseOptions(apiKey: 'AIzaSyBHlyvmiwPQqbaIXEHvw12LzNoIhtuHtEY',
-          appId: '1:849090647277:android:3400fa8f113e69b41d28e4',
-          messagingSenderId: '849090647277',
-          projectId: 'autism-gemastik',
-          storageBucket: 'autism-gemastik.appspot.com',
-          )
-      );
+          options: FirebaseOptions(
+        apiKey: 'AIzaSyBHlyvmiwPQqbaIXEHvw12LzNoIhtuHtEY',
+        appId: '1:849090647277:android:3400fa8f113e69b41d28e4',
+        messagingSenderId: '849090647277',
+        projectId: 'autism-gemastik',
+        storageBucket: 'autism-gemastik.appspot.com',
+      ));
     }
-
   }
 
   runApp(const ProviderScope(child: MyApp()));
@@ -50,15 +44,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
 
-  String userType = '',email = '', uid = '';
-
-
+  String userType = '', email = '', uid = '';
 
   getData() async {
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
     print('Starting usertype ' + prefs.getString('userType').toString());
-    if(prefs.getString('userType') != null) {
+    if (prefs.getString('userType') != null) {
       setState(() {
         userType = prefs.getString('userType')!;
         email = prefs.getString('userEmail')!;
@@ -68,9 +59,8 @@ class _MyAppState extends State<MyApp> {
     } else {
       print('Starting usertype');
     }
-
-
   }
+
   @override
   void initState() {
     print('Starting usertype');
@@ -103,12 +93,19 @@ class _MyAppState extends State<MyApp> {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:
-      userType == 'Parents' ? AppBottomNavBarScreen(index: 0, title: '', subTitle: '',) :
-      userType == 'Doctors' ? AppDoctorBottomNavBarScreen(index: 0, title: '', subTitle: '',)  :
-      SplashScreen(),
+      home: userType == 'Parents'
+          ? AppBottomNavBarScreen(
+              index: 0,
+              title: '',
+              subTitle: '',
+            )
+          : userType == 'Doctors'
+              ? AppDoctorBottomNavBarScreen(
+                  index: 0,
+                  title: '',
+                  subTitle: '',
+                )
+              : SplashScreen(),
     );
   }
 }
-
-

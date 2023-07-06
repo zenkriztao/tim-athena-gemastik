@@ -1,7 +1,7 @@
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/size_config.dart';
-import 'package:autism_perdiction_app/view/parents/home/banner.dart';
-import 'package:autism_perdiction_app/view/parents/home/doctors_list.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/size_config.dart';
+import 'package:aksonhealth/view/parents/home/banner.dart';
+import 'package:aksonhealth/view/parents/home/doctors_list.dart';
 import 'package:flutter/material.dart';
 import 'appbar.dart';
 import 'categories_list.dart';

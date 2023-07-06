@@ -1,5 +1,5 @@
-import 'package:autism_perdiction_app/size_config.dart';
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/size_config.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,10 +8,10 @@ class FeaturesAppBar extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-  SizeConfig.init(context); // Initialize SizeConfig before using screenWidth and screenHeight
+    SizeConfig.init(
+        context); // Initialize SizeConfig before using screenWidth and screenHeight
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: getRelativeWidth(0.04)),
       child: Row(

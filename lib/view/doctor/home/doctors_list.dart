@@ -1,15 +1,13 @@
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/data/data.dart';
-import 'package:autism_perdiction_app/size_config.dart';
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/data/data.dart';
+import 'package:aksonhealth/size_config.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DoctorsList extends StatelessWidget {
   const DoctorsList({
-   Key? key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -133,7 +131,6 @@ class DoctorsList extends StatelessWidget {
                                       fontSize: getRelativeWidth(0.032)),
                                 ),
                                 SizedBox(height: getRelativeHeight(0.005)),
-                                
                               ],
                             ),
                           ),

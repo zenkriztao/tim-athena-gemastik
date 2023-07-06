@@ -1,4 +1,4 @@
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../model/chat_model.dart';

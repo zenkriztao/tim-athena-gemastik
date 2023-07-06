@@ -1,4 +1,4 @@
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'text_and_voice_field.dart';
 
@@ -29,26 +29,24 @@ class _ToggleButtonState extends State<ToggleButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: whiteColor,
-        foregroundColor: darkBlueColor,
-        shape: const CircleBorder(),
-        padding: const EdgeInsets.all(15),
-      ),
-      onPressed: widget._isReplying
-          ? null
-          : widget._inputMode == InputMode.text
-              ? widget._sendTextMessage
-              : widget._sendVoiceMessage,
-      
-      child: Image.asset(
-       widget._inputMode == InputMode.text 
-        ? "assets/send.png"
-        : widget._isListening 
-            ? "assets/micoff.png"
-            : "assets/mic.png",
-        height: 30,
-      )
-    );
+        style: ElevatedButton.styleFrom(
+          backgroundColor: whiteColor,
+          foregroundColor: darkBlueColor,
+          shape: const CircleBorder(),
+          padding: const EdgeInsets.all(15),
+        ),
+        onPressed: widget._isReplying
+            ? null
+            : widget._inputMode == InputMode.text
+                ? widget._sendTextMessage
+                : widget._sendVoiceMessage,
+        child: Image.asset(
+          widget._inputMode == InputMode.text
+              ? "assets/send.png"
+              : widget._isListening
+                  ? "assets/micoff.png"
+                  : "assets/mic.png",
+          height: 30,
+        ));
   }
 }

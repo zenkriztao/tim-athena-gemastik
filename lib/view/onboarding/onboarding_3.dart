@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -37,7 +37,7 @@ class Onboarding3Screen extends StatelessWidget {
             child: Image.asset('assets/images/aihelp2.png'),
           ),
         ),
-         Align(
+        Align(
           alignment: Alignment.topCenter,
           child: Padding(
             padding:
@@ -73,10 +73,9 @@ class Onboarding3Screen extends StatelessWidget {
                     Text(
                       "bantuan AI!",
                       style: GoogleFonts.spectral(
-                       fontSize: 45,
-                       fontWeight: FontWeight.bold,
-                       color: darkBlueColor 
-                      ),
+                          fontSize: 45,
+                          fontWeight: FontWeight.bold,
+                          color: darkBlueColor),
                     ),
                     SizedBox(
                       height: 12,

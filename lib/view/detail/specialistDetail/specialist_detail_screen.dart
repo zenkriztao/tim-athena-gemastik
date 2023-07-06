@@ -1,10 +1,10 @@
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/model/firebase_auth.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/chat/chat_room.dart';
-import 'package:autism_perdiction_app/view/chat/chats.dart';
-import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
-import 'package:autism_perdiction_app/view/reports/report_detail_screen.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/model/firebase_auth.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/chat/chat_room.dart';
+import 'package:aksonhealth/view/chat/chats.dart';
+import 'package:aksonhealth/view/parents/home/home_screen.dart';
+import 'package:aksonhealth/view/reports/report_detail_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -850,19 +850,19 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                           children: [
                             Padding(padding: EdgeInsets.all(30.0)),
                             ElevatedButton(
-                            child: const FaIcon(FontAwesomeIcons.message),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ChatRoom(
-                                      user2Id: 'userid',
-                                      user2Name: widget.name,
-                                      profileUrl: widget.image,
-                                    ),
-                                  ));
-                            },
-                          )
+                              child: const FaIcon(FontAwesomeIcons.message),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ChatRoom(
+                                        user2Id: 'userid',
+                                        user2Name: widget.name,
+                                        profileUrl: widget.image,
+                                      ),
+                                    ));
+                              },
+                            )
                           ],
                         )
                       ],
@@ -890,18 +890,16 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                   height: 10,
                                 ),
                                 Container(
-                                  width: size.width * .9,
-                                  child: Center(
-                                    child: Text(
-                                    ' Date & Time',
-                                    style: GoogleFonts.nunito(
-                                        fontSize: 18,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w800),
-                                        
-                                  ),
-                                  )
-                                ),
+                                    width: size.width * .9,
+                                    child: Center(
+                                      child: Text(
+                                        ' Date & Time',
+                                        style: GoogleFonts.nunito(
+                                            fontSize: 18,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                    )),
                                 SizedBox(
                                   height: 8,
                                 ),
@@ -1045,10 +1043,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(6)),
                                       ),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.add
-                                      )),
-                                              
+                                      child: FaIcon(FontAwesomeIcons.add)),
                                 ),
                               ],
                             ),
@@ -1156,8 +1151,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                       decoration: BoxDecoration(
                                                         border: Border.all(
                                                             width: 0.5,
-                                                            color:
-                                                              blueColor),
+                                                            color: blueColor),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(10),

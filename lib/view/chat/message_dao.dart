@@ -1,4 +1,4 @@
-import 'package:autism_perdiction_app/view/chat/message.dart';
+import 'package:aksonhealth/view/chat/message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' as store;
 import 'package:firebase_database/firebase_database.dart';
 

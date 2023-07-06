@@ -1,4 +1,4 @@
-import 'package:autism_perdiction_app/view/auth/userType/usertype_screen.dart';
+import 'package:aksonhealth/view/auth/userType/usertype_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +11,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
-final CollectionReference _mainCollection = firestoreInstance.collection('notes');
+final CollectionReference _mainCollection =
+    firestoreInstance.collection('notes');
+
 class UserData {
   final String? uid;
 
   UserData({this.uid});
 }
 
-class MethodsHandler{
-
+class MethodsHandler {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // Future<User?> createAccount({String? name,String? email,String? password, BuildContext? context}) async {
@@ -70,7 +71,8 @@ class MethodsHandler{
     return user == null ? null : UserData(uid: user.uid);
   }
 
-  Future signInWithEmailAndPassword(String email, String password, BuildContext context) async {
+  Future signInWithEmailAndPassword(
+      String email, String password, BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       final result = await _auth.signInWithEmailAndPassword(
@@ -167,19 +169,19 @@ class MethodsHandler{
     }
   }
 
-  Future registerWithEmailAndPassword(String email, String password, BuildContext context) async {
+  Future registerWithEmailAndPassword(
+      String email, String password, BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       User? result = (await _auth.createUserWithEmailAndPassword(
-          email: email.trim(), password: password.trim())).user;
+              email: email.trim(), password: password.trim()))
+          .user;
       var user = result;
-      firestoreInstance.collection('users').doc(user!.uid).set(
-          {
-            "email": email.trim(),
-            "password": password,
-            "uid": user.uid,
-          }
-      ).then((value) => print('success'));
+      firestoreInstance.collection('users').doc(user!.uid).set({
+        "email": email.trim(),
+        "password": password,
+        "uid": user.uid,
+      }).then((value) => print('success'));
       prefs.setString('userEmail', email);
       prefs.setString('userPassword', password.toString());
       prefs.setString('userId', user.uid);
@@ -192,9 +194,13 @@ class MethodsHandler{
       );
 
       try {
-        await FirebaseFirestore.instance.collection('greetings').doc(user.uid).get().then((doc) {
+        await FirebaseFirestore.instance
+            .collection('greetings')
+            .doc(user.uid)
+            .get()
+            .then((doc) {
           bool exist = doc.exists;
-          if(exist == true){
+          if (exist == true) {
             // Navigator.push(
             //   context,
             //   PageRouteBuilder(
@@ -222,7 +228,6 @@ class MethodsHandler{
             // );
           }
         });
-
       } catch (e) {
         // If any error
         return false;
@@ -232,8 +237,7 @@ class MethodsHandler{
       // await DatabaseService(uid: user.uid).updateUserData('', '', 37.4220, -122.0840, '', '', DateTime.now());
 
       return userFromFirebase(user);
-    }
-    catch (e) {
+    } catch (e) {
       return null;
     }
   }
@@ -246,9 +250,8 @@ class MethodsHandler{
         prefs.remove('userType');
         prefs.remove('userPassword');
         prefs.remove('userId');
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>UserType()));
-
-
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => UserType()));
       });
     } catch (e) {
       return null;
@@ -257,22 +260,21 @@ class MethodsHandler{
 
   Future<void> resetPassword(String email, BuildContext context) async {
     await _auth.sendPasswordResetEmail(email: email).then((value) {
-      showAlertDialog(context, 'Reset Password', 'Reset Password Email Sent Successfully');
+      showAlertDialog(
+          context, 'Reset Password', 'Reset Password Email Sent Successfully');
       // Fluttertoast.showToast(
       //   msg: "Reset Password Email Sent Successfully",
       //   toastLength: Toast.LENGTH_SHORT,
       //   gravity: ToastGravity.BOTTOM,
       //   timeInSecForIosWeb: 4,
       // );
-
     });
   }
 
   showAlertDialog(BuildContext context, String title, String content) {
-
     // set up the button
 
-    CupertinoAlertDialog alert =  CupertinoAlertDialog(
+    CupertinoAlertDialog alert = CupertinoAlertDialog(
       title: Text("$title"),
       content: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -288,13 +290,11 @@ class MethodsHandler{
         // ),
         CupertinoDialogAction(
             child: Text("OK"),
-            onPressed: (){
+            onPressed: () {
               Navigator.of(context).pop();
-            }
-        )
+            })
       ],
     );
-
 
     // show the dialog
     showDialog(
@@ -304,10 +304,4 @@ class MethodsHandler{
       },
     );
   }
-
 }
-
-
-
-
-

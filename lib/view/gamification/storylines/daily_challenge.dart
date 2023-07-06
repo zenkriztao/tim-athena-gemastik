@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:autism_perdiction_app/view/gamification/components/custom_container.dart';
-import 'package:autism_perdiction_app/view/gamification/components/from_index_dc.dart';
-import 'package:autism_perdiction_app/view/gamification/db.dart';
+import 'package:aksonhealth/view/gamification/components/custom_container.dart';
+import 'package:aksonhealth/view/gamification/components/from_index_dc.dart';
+import 'package:aksonhealth/view/gamification/db.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -108,20 +108,19 @@ class DailyChallenge extends HookWidget {
                         child: const Text("Submit"))
                     : ElevatedButton(
                         onPressed: () async {
-                            FirebaseFirestore.instance
-                                .collection('users')
-                                .where('name', isEqualTo: user?.email)
-                                .get()
-                                .then((matches) async {
-                              int userTokens = matches.docs[0].get('tokens');
-                              int inc = 5;
-                              int mult = matches.docs[0].get('multiplier');
-                              if (answer.value == selectedOption.value)
-                                inc = 10;
-                              await DatabaseManager().updateUserTokens(
-                                  email: user?.email,
-                                  tokens: userTokens + inc * mult);
-                            });
+                          FirebaseFirestore.instance
+                              .collection('users')
+                              .where('name', isEqualTo: user?.email)
+                              .get()
+                              .then((matches) async {
+                            int userTokens = matches.docs[0].get('tokens');
+                            int inc = 5;
+                            int mult = matches.docs[0].get('multiplier');
+                            if (answer.value == selectedOption.value) inc = 10;
+                            await DatabaseManager().updateUserTokens(
+                                email: user?.email,
+                                tokens: userTokens + inc * mult);
+                          });
                           await DatabaseManager().updateUserCompletedDc(
                               email: user?.email, completedDc: dayId);
                           await DatabaseManager().updateUserLastDailyChallenge(

@@ -1,7 +1,7 @@
-import 'package:autism_perdiction_app/size_config.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/parents/perdict/perdict_screen.dart';
-import 'package:autism_perdiction_app/view/parents/questionare/questionare_screen.dart';
+import 'package:aksonhealth/size_config.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/parents/perdict/perdict_screen.dart';
+import 'package:aksonhealth/view/parents/questionare/questionare_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -69,9 +69,7 @@ class _DoctorBannerState extends State<DoctorBanner> {
     return Stack(
       children: [
         GestureDetector(
-          onTap: () {
-           
-          },
+          onTap: () {},
           child: Container(
             width: getRelativeWidth(0.94),
             height: getRelativeHeight(0.22),
@@ -128,38 +126,44 @@ class _DoctorBannerState extends State<DoctorBanner> {
                             },
                             child: GestureDetector(
                               onTap: () {
-                  if (index == 0) {
-                    Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                        pageBuilder: (c, a1, a2) =>
-                            QuestionareScreen(number: 1, type: 'MChat'),
-                        transitionsBuilder: (c, anim, a2, child) =>
-                            FadeTransition(opacity: anim, child: child),
-                        transitionDuration: Duration(milliseconds: 100),
-                      ),
-                    ).then((value) {});
-                  } else if (index == 1) {
-                    Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                        pageBuilder: (c, a1, a2) =>
-                            QuestionareScreen(number: 1, type: 'SCQ'),
-                        transitionsBuilder: (c, anim, a2, child) =>
-                            FadeTransition(opacity: anim, child: child),
-                        transitionDuration: Duration(milliseconds: 100),
-                      ),
-                    ).then((value) {});
-                  }
-                },
+                                if (index == 0) {
+                                  Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      pageBuilder: (c, a1, a2) =>
+                                          QuestionareScreen(
+                                              number: 1, type: 'MChat'),
+                                      transitionsBuilder:
+                                          (c, anim, a2, child) =>
+                                              FadeTransition(
+                                                  opacity: anim, child: child),
+                                      transitionDuration:
+                                          Duration(milliseconds: 100),
+                                    ),
+                                  ).then((value) {});
+                                } else if (index == 1) {
+                                  Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      pageBuilder: (c, a1, a2) =>
+                                          QuestionareScreen(
+                                              number: 1, type: 'SCQ'),
+                                      transitionsBuilder:
+                                          (c, anim, a2, child) =>
+                                              FadeTransition(
+                                                  opacity: anim, child: child),
+                                      transitionDuration:
+                                          Duration(milliseconds: 100),
+                                    ),
+                                  ).then((value) {});
+                                }
+                              },
                               child: Container(
                                 margin: EdgeInsets.symmetric(
                                     horizontal: getRelativeWidth(0.03)),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
-                                  boxShadow: [
-                                   
-                                  ],
+                                  boxShadow: [],
                                 ),
                                 child: Row(
                                   mainAxisAlignment:

@@ -1,13 +1,12 @@
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/model/firebase_auth.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/detail/bookingDetail/booking_detail_screen.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/model/firebase_auth.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/detail/bookingDetail/booking_detail_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class DoctorBookingScreen extends StatefulWidget {
   const DoctorBookingScreen({Key? key}) : super(key: key);
@@ -39,9 +38,15 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                 // Tab index when user select it, it start from zero
               },
               tabs: [
-                Tab(text: 'Baru',),
-                Tab(text: 'Konfirmasi',),
-                Tab(text: 'Batal',),
+                Tab(
+                  text: 'Baru',
+                ),
+                Tab(
+                  text: 'Konfirmasi',
+                ),
+                Tab(
+                  text: 'Batal',
+                ),
               ],
             ),
             centerTitle: true,
@@ -50,231 +55,371 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
           body: TabBarView(
             children: [
               StreamBuilder(
-                stream: FirebaseFirestore.instance.collection("Bookings").where("doctorId", isEqualTo: _auth.currentUser!.uid.toString() ).where("bookingStatus", isEqualTo: "Pending" ).snapshots(),
+                stream: FirebaseFirestore.instance
+                    .collection("Bookings")
+                    .where("doctorId",
+                        isEqualTo: _auth.currentUser!.uid.toString())
+                    .where("bookingStatus", isEqualTo: "Pending")
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return Center(child: CircularProgressIndicator(
+                    return Center(
+                        child: CircularProgressIndicator(
                       strokeWidth: 1,
                       color: primaryColor,
                     ));
-                  }
-                  else if(snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                     // got data from snapshot but it is empty
 
                     return Center(child: Text("No Data Found"));
-                  }
-                  else {
+                  } else {
                     return Container(
-                      width: size.width*0.95,
-
-                      child:   ListView.builder(
+                      width: size.width * 0.95,
+                      child: ListView.builder(
                           scrollDirection: Axis.vertical,
-                          itemCount:snapshot.data!.docs.length,
+                          itemCount: snapshot.data!.docs.length,
                           shrinkWrap: true,
                           itemBuilder: (context, int index) {
-                            return   Padding(
-                              padding: const EdgeInsets.only(left: 8,right: 8,top: 0),
+                            return Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8, right: 8, top: 0),
                               child: GestureDetector(
                                 onTap: () {
-
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => BookingDetailScreen(
-                                      childName: snapshot.data!.docs[index]["childName"].toString(),
-                                      childImage: snapshot.data!.docs[index]["childImage"].toString(),
-                                      age: snapshot.data!.docs[index]["age"].toString(),
-                                      childCase: snapshot.data!.docs[index]["case"].toString(),
-                                      advice: snapshot.data!.docs[index]["advice"].toString(),
-                                      parentName: snapshot.data!.docs[index]["parentName"].toString(),
-                                      parentEmail: snapshot.data!.docs[index]["parentEmail"].toString(),
-                                      parentUid: snapshot.data!.docs[index]["parentId"].toString(),
-                                      gender: snapshot.data!.docs[index]["gender"].toString(),
-                                      score: snapshot.data!.docs[index]["score"],
-                                      status: "view",
-                                      docId: snapshot.data!.docs[index].id,
-                                      payment: snapshot.data!.docs[index]["paymentMethod"].toString() ,
-                                      userIs: "Doctor", date: snapshot.data!.docs[index]["date"].toString(),
-                                    )),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            BookingDetailScreen(
+                                              childName: snapshot.data!
+                                                  .docs[index]["childName"]
+                                                  .toString(),
+                                              childImage: snapshot.data!
+                                                  .docs[index]["childImage"]
+                                                  .toString(),
+                                              age: snapshot
+                                                  .data!.docs[index]["age"]
+                                                  .toString(),
+                                              childCase: snapshot
+                                                  .data!.docs[index]["case"]
+                                                  .toString(),
+                                              advice: snapshot
+                                                  .data!.docs[index]["advice"]
+                                                  .toString(),
+                                              parentName: snapshot.data!
+                                                  .docs[index]["parentName"]
+                                                  .toString(),
+                                              parentEmail: snapshot.data!
+                                                  .docs[index]["parentEmail"]
+                                                  .toString(),
+                                              parentUid: snapshot
+                                                  .data!.docs[index]["parentId"]
+                                                  .toString(),
+                                              gender: snapshot
+                                                  .data!.docs[index]["gender"]
+                                                  .toString(),
+                                              score: snapshot.data!.docs[index]
+                                                  ["score"],
+                                              status: "view",
+                                              docId:
+                                                  snapshot.data!.docs[index].id,
+                                              payment: snapshot.data!
+                                                  .docs[index]["paymentMethod"]
+                                                  .toString(),
+                                              userIs: "Doctor",
+                                              date: snapshot
+                                                  .data!.docs[index]["date"]
+                                                  .toString(),
+                                            )),
                                   );
-
-
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 8),
                                   child: Container(
-                                    width: size.width*0.95,
-
-
+                                    width: size.width * 0.95,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       color: Colors.white,
                                     ),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
-
                                         Container(
                                           // color: redColor,
-                                          width: size.width*0.25,
-                                          height: size.height*0.15,
-                                          child:  ClipRRect(
-                                            borderRadius: BorderRadius.circular(10),
-                                            child:  CachedNetworkImage(
+                                          width: size.width * 0.25,
+                                          height: size.height * 0.15,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: CachedNetworkImage(
                                               height: size.height * 0.25,
-
-                                              width: size.width ,
+                                              width: size.width,
                                               fit: BoxFit.cover,
-                                              imageUrl: snapshot.data!.docs[index]["doctorImage"].toString(),
-                                              placeholder: (context, url) => Container(
-                                                  height: 50, width: 50,
-                                                  child: Center(child: CircularProgressIndicator(color: lightButtonGreyColor,))),
-                                              errorWidget: (context, url, error) => Icon(Icons.error),
+                                              imageUrl: snapshot.data!
+                                                  .docs[index]["doctorImage"]
+                                                  .toString(),
+                                              placeholder: (context, url) =>
+                                                  Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      child: Center(
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                        color:
+                                                            lightButtonGreyColor,
+                                                      ))),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Icon(Icons.error),
                                             ),
                                           ),
                                         ),
                                         Container(
                                           //   color: redColor,
-                                          width: size.width*0.6,
+                                          width: size.width * 0.6,
 
-                                          child:  Column(
+                                          child: Column(
                                             //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-
-
                                               Container(
                                                 alignment: Alignment.centerLeft,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,top: 8),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8, top: 8),
                                                   child: Text(
-                                                    "Booking Id : #" + "${index+1}"
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.black, fontSize: 14, fontWeight: FontWeight.w800, height: 1.3),),
+                                                    "Booking Id : #" +
+                                                        "${index + 1}",
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.black,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
-
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
                                               Container(
                                                 alignment: Alignment.centerLeft,
 
                                                 //  color: Colors.green,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
                                                   child: Text(
-                                                    "Child : " + snapshot.data!.docs[index]["childName"].toString()
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                    "Child : " +
+                                                        snapshot
+                                                            .data!
+                                                            .docs[index]
+                                                                ["childName"]
+                                                            .toString(),
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.black,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
-
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
-
                                               Container(
                                                 alignment: Alignment.centerLeft,
 
                                                 //  color: Colors.green,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
                                                   child: Text(
-
-                                                      snapshot.data!.docs[index]["evaluation"].toString() == "0" ?
-                                                      "Evaluation : Not Evaluated" :
-                                                    "Evaluation : " + snapshot.data!.docs[index]["evaluation"].toString()
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                    snapshot
+                                                                .data!
+                                                                .docs[index][
+                                                                    "evaluation"]
+                                                                .toString() ==
+                                                            "0"
+                                                        ? "Evaluation : Not Evaluated"
+                                                        : "Evaluation : " +
+                                                            snapshot
+                                                                .data!
+                                                                .docs[index][
+                                                                    "evaluation"]
+                                                                .toString(),
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.black,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
-
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
-
                                               Container(
                                                 alignment: Alignment.centerLeft,
-
-                                                child:   Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
                                                   child: Text(
-                                                    "Appointment Date : " + snapshot.data!.docs[index]["appointmentTime"].toString()
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.red, fontSize: 12, fontWeight: FontWeight.w600, height: 1.3),),
+                                                    "Appointment Date : " +
+                                                        snapshot
+                                                            .data!
+                                                            .docs[index][
+                                                                "appointmentTime"]
+                                                            .toString(),
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.red,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
-
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
-
                                               Container(
-
-                                                width: size.width*0.6,
+                                                width: size.width * 0.6,
                                                 child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
                                                   children: [
                                                     GestureDetector(
-                                                      onTap:() {
+                                                      onTap: () {
                                                         showDialog(
                                                           context: context,
                                                           builder: (context) {
                                                             return AlertDialog(
-                                                              title: const Text('Approve Booking'),
+                                                              title: const Text(
+                                                                  'Approve Booking'),
                                                               actions: [
                                                                 TextButton(
-                                                                  onPressed: () {
-                                                                    Navigator.of(context).pop();
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.of(
+                                                                            context)
+                                                                        .pop();
                                                                   },
-                                                                  child: Container(
-                                                                    decoration: BoxDecoration(
-                                                                      borderRadius: BorderRadius.circular(10),
-                                                                      color: Colors.red,
+                                                                  child:
+                                                                      Container(
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10),
+                                                                      color: Colors
+                                                                          .red,
                                                                     ),
-                                                                    width: size.width*0.22,
-                                                                    alignment: Alignment.center,
-                                                                    child: Padding(
-                                                                      padding: const EdgeInsets.all(8),
-                                                                      child: Text(
-                                                                        'No'
-
-                                                                        , style: GoogleFonts.nunito(
-                                                                          color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                                    width: size
+                                                                            .width *
+                                                                        0.22,
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8),
+                                                                      child:
+                                                                          Text(
+                                                                        'No',
+                                                                        style: GoogleFonts.nunito(
+                                                                            color: Colors
+                                                                                .white,
+                                                                            fontSize:
+                                                                                12,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                            height: 1.3),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
                                                                 TextButton(
-                                                                  onPressed: () async {
-                                                                    FirebaseFirestore.instance.collection("Bookings").
-                                                                    doc(snapshot.data!.docs[index].id.toString()).update({
-                                                                      "bookingStatus": "Confirmed"
-                                                                    }).whenComplete((){
-                                                                      Navigator.of(context).pop();
+                                                                  onPressed:
+                                                                      () async {
+                                                                    FirebaseFirestore
+                                                                        .instance
+                                                                        .collection(
+                                                                            "Bookings")
+                                                                        .doc(snapshot
+                                                                            .data!
+                                                                            .docs[
+                                                                                index]
+                                                                            .id
+                                                                            .toString())
+                                                                        .update({
+                                                                      "bookingStatus":
+                                                                          "Confirmed"
+                                                                    }).whenComplete(
+                                                                            () {
+                                                                      Navigator.of(
+                                                                              context)
+                                                                          .pop();
                                                                     });
                                                                   },
-                                                                  child:Container(
-                                                                    decoration: BoxDecoration(
-                                                                      borderRadius: BorderRadius.circular(10),
-                                                                      color: Colors.green,
+                                                                  child:
+                                                                      Container(
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10),
+                                                                      color: Colors
+                                                                          .green,
                                                                     ),
-                                                                    width: size.width*0.22,
-                                                                    alignment: Alignment.center,
-                                                                    child: Padding(
-                                                                      padding: const EdgeInsets.all(8),
-                                                                      child: Text(
-                                                                        'Yes'
-
-                                                                        , style: GoogleFonts.nunito(
-                                                                          color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                                    width: size
+                                                                            .width *
+                                                                        0.22,
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8),
+                                                                      child:
+                                                                          Text(
+                                                                        'Yes',
+                                                                        style: GoogleFonts.nunito(
+                                                                            color: Colors
+                                                                                .white,
+                                                                            fontSize:
+                                                                                12,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                            height: 1.3),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ],
                                                               content: Column(
-                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                mainAxisSize: MainAxisSize.min,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
                                                                 children: [
-                                                                  const Text('Are you sure you want to approve this booking?'),
+                                                                  const Text(
+                                                                      'Are you sure you want to approve this booking?'),
                                                                 ],
                                                               ),
                                                             );
@@ -282,19 +427,35 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                         );
                                                       },
                                                       child: Container(
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(10),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
                                                           color: Colors.green,
                                                         ),
-                                                        width: size.width*0.22,
-                                                        alignment: Alignment.center,
+                                                        width:
+                                                            size.width * 0.22,
+                                                        alignment:
+                                                            Alignment.center,
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(8),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8),
                                                           child: Text(
-                                                            'Approve'
-
-                                                            , style: GoogleFonts.nunito(
-                                                              color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                            'Approve',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        12,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    height:
+                                                                        1.3),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -304,31 +465,58 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                           context: context,
                                                           builder: (context) {
                                                             return AlertDialog(
-                                                              title: const Text('Cancel booking'),
+                                                              title: const Text(
+                                                                  'Cancel booking'),
                                                               actions: [
                                                                 TextButton(
-                                                                  onPressed: () {
-                                                                    Navigator.of(context).pop();
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.of(
+                                                                            context)
+                                                                        .pop();
                                                                   },
-                                                                  child: const Text('No'),
+                                                                  child:
+                                                                      const Text(
+                                                                          'No'),
                                                                 ),
                                                                 TextButton(
-                                                                  onPressed: () async {
-                                                                    FirebaseFirestore.instance.collection("Bookings").
-                                                                    doc(snapshot.data!.docs[index].id.toString()).update({
-                                                                      "bookingStatus": "Cancelled"
-                                                                    }).whenComplete((){
-                                                                      Navigator.of(context).pop();
+                                                                  onPressed:
+                                                                      () async {
+                                                                    FirebaseFirestore
+                                                                        .instance
+                                                                        .collection(
+                                                                            "Bookings")
+                                                                        .doc(snapshot
+                                                                            .data!
+                                                                            .docs[
+                                                                                index]
+                                                                            .id
+                                                                            .toString())
+                                                                        .update({
+                                                                      "bookingStatus":
+                                                                          "Cancelled"
+                                                                    }).whenComplete(
+                                                                            () {
+                                                                      Navigator.of(
+                                                                              context)
+                                                                          .pop();
                                                                     });
                                                                   },
-                                                                  child: const Text('Yes'),
+                                                                  child:
+                                                                      const Text(
+                                                                          'Yes'),
                                                                 ),
                                                               ],
                                                               content: Column(
-                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                mainAxisSize: MainAxisSize.min,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
                                                                 children: [
-                                                                  const Text('Are you sure you want to cancel this bookings?'),
+                                                                  const Text(
+                                                                      'Are you sure you want to cancel this bookings?'),
                                                                 ],
                                                               ),
                                                             );
@@ -336,31 +524,46 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                         );
                                                       },
                                                       child: Container(
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(10),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
                                                           color: darkBlueColor,
                                                         ),
-                                                        width: size.width*0.22,
-                                                        alignment: Alignment.center,
+                                                        width:
+                                                            size.width * 0.22,
+                                                        alignment:
+                                                            Alignment.center,
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(8),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8),
                                                           child: Text(
-                                                            'Cancel'
-
-                                                            , style: GoogleFonts.nunito(
-                                                              color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                            'Cancel',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        12,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    height:
+                                                                        1.3),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-
-
-                                                  ],),
+                                                  ],
+                                                ),
                                               ),
-
                                               SizedBox(
-                                                height: size.height*0.02,
+                                                height: size.height * 0.02,
                                               ),
-                                            ],),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -371,161 +574,245 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                           }),
                     );
                   }
-
-
                 },
               ),
               StreamBuilder(
-                stream: FirebaseFirestore.instance.collection("Bookings").where("doctorId", isEqualTo: _auth.currentUser!.uid.toString() ).where("bookingStatus", isEqualTo: "Confirmed" ).snapshots(),
+                stream: FirebaseFirestore.instance
+                    .collection("Bookings")
+                    .where("doctorId",
+                        isEqualTo: _auth.currentUser!.uid.toString())
+                    .where("bookingStatus", isEqualTo: "Confirmed")
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return Center(child: CircularProgressIndicator(
+                    return Center(
+                        child: CircularProgressIndicator(
                       strokeWidth: 1,
                       color: primaryColor,
                     ));
-                  }
-                  else if(snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                     // got data from snapshot but it is empty
 
                     return Center(child: Text("No Data Found"));
-                  }
-                  else {
+                  } else {
                     return Container(
-                      width: size.width*0.95,
-
-                      child:   ListView.builder(
+                      width: size.width * 0.95,
+                      child: ListView.builder(
                           scrollDirection: Axis.vertical,
-                          itemCount:snapshot.data!.docs.length,
+                          itemCount: snapshot.data!.docs.length,
                           shrinkWrap: true,
                           itemBuilder: (context, int index) {
-                            return   Padding(
+                            return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => BookingDetailScreen(
-                                      childName: snapshot.data!.docs[index]["childName"].toString(),
-                                      childImage: snapshot.data!.docs[index]["childImage"].toString(),
-                                      age: snapshot.data!.docs[index]["age"].toString(),
-                                      docId: snapshot.data!.docs[index].id,
-                                      childCase: snapshot.data!.docs[index]["case"].toString(),
-                                      advice: snapshot.data!.docs[index]["advice"].toString(),
-                                      parentName: snapshot.data!.docs[index]["parentName"].toString(),
-                                      parentEmail: snapshot.data!.docs[index]["parentEmail"].toString(),
-                                      parentUid: snapshot.data!.docs[index]["parentId"].toString(),
-                                      gender: snapshot.data!.docs[index]["gender"].toString(),
-                                      score: snapshot.data!.docs[index]["score"],
-                                      status: "view",
-                                      payment: snapshot.data!.docs[index]["paymentMethod"].toString() ,
-                                      userIs: "Doctor", date: snapshot.data!.docs[index]["date"].toString(),
-                                    )),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            BookingDetailScreen(
+                                              childName: snapshot.data!
+                                                  .docs[index]["childName"]
+                                                  .toString(),
+                                              childImage: snapshot.data!
+                                                  .docs[index]["childImage"]
+                                                  .toString(),
+                                              age: snapshot
+                                                  .data!.docs[index]["age"]
+                                                  .toString(),
+                                              docId:
+                                                  snapshot.data!.docs[index].id,
+                                              childCase: snapshot
+                                                  .data!.docs[index]["case"]
+                                                  .toString(),
+                                              advice: snapshot
+                                                  .data!.docs[index]["advice"]
+                                                  .toString(),
+                                              parentName: snapshot.data!
+                                                  .docs[index]["parentName"]
+                                                  .toString(),
+                                              parentEmail: snapshot.data!
+                                                  .docs[index]["parentEmail"]
+                                                  .toString(),
+                                              parentUid: snapshot
+                                                  .data!.docs[index]["parentId"]
+                                                  .toString(),
+                                              gender: snapshot
+                                                  .data!.docs[index]["gender"]
+                                                  .toString(),
+                                              score: snapshot.data!.docs[index]
+                                                  ["score"],
+                                              status: "view",
+                                              payment: snapshot.data!
+                                                  .docs[index]["paymentMethod"]
+                                                  .toString(),
+                                              userIs: "Doctor",
+                                              date: snapshot
+                                                  .data!.docs[index]["date"]
+                                                  .toString(),
+                                            )),
                                   );
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.all(10),
                                   child: Container(
-                                    width: size.width*0.95,
-
-
+                                    width: size.width * 0.95,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       color: darkBlueColor,
                                     ),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
-
                                         Container(
                                           // color: redColor,
-                                          width: size.width*0.25,
-                                          height: size.height*0.15,
-                                          child:  ClipRRect(
-                                            borderRadius: BorderRadius.circular(10),
-                                            child:  CachedNetworkImage(
+                                          width: size.width * 0.25,
+                                          height: size.height * 0.15,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: CachedNetworkImage(
                                               height: size.height * 0.25,
-
-                                              width: size.width ,
+                                              width: size.width,
                                               fit: BoxFit.cover,
-                                              imageUrl: snapshot.data!.docs[index]["doctorImage"].toString(),
-                                              placeholder: (context, url) => Container(
-                                                  height: 50, width: 50,
-                                                  child: Center(child: CircularProgressIndicator(color: lightButtonGreyColor,))),
-                                              errorWidget: (context, url, error) => Icon(Icons.error),
+                                              imageUrl: snapshot.data!
+                                                  .docs[index]["doctorImage"]
+                                                  .toString(),
+                                              placeholder: (context, url) =>
+                                                  Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      child: Center(
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                        color:
+                                                            lightButtonGreyColor,
+                                                      ))),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Icon(Icons.error),
                                             ),
                                           ),
                                         ),
                                         Container(
                                           //   color: redColor,
-                                          width: size.width*0.6,
+                                          width: size.width * 0.6,
 
-                                          child:  Column(
+                                          child: Column(
                                             //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-
                                               Container(
                                                 alignment: Alignment.centerLeft,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,top: 8),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8, top: 8),
                                                   child: Text(
-                                                    "Booking Id : #" + "${index+1}"
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.black, fontSize: 14, fontWeight: FontWeight.w800, height: 1.3),),
+                                                    "Booking Id : #" +
+                                                        "${index + 1}",
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.black,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
 
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
                                               Container(
                                                 alignment: Alignment.centerLeft,
 
                                                 //  color: Colors.green,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
                                                   child: Text(
-                                                    "Child : " + snapshot.data!.docs[index]["childName"].toString()
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                    "Child : " +
+                                                        snapshot
+                                                            .data!
+                                                            .docs[index]
+                                                                ["childName"]
+                                                            .toString(),
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.black,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
 
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
-
 
                                               Container(
                                                 alignment: Alignment.centerLeft,
 
                                                 //  color: Colors.green,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
                                                   child: Text(
-
-                                                    snapshot.data!.docs[index]["evaluation"].toString() == "0" ?
-                                                    "Evaluation : Not Evaluated" :
-                                                    "Evaluation : " + snapshot.data!.docs[index]["evaluation"].toString()
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                    snapshot
+                                                                .data!
+                                                                .docs[index][
+                                                                    "evaluation"]
+                                                                .toString() ==
+                                                            "0"
+                                                        ? "Evaluation : Not Evaluated"
+                                                        : "Evaluation : " +
+                                                            snapshot
+                                                                .data!
+                                                                .docs[index][
+                                                                    "evaluation"]
+                                                                .toString(),
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.black,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
 
                                               Container(
                                                 alignment: Alignment.centerLeft,
-
-                                                child:   Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
                                                   child: Text(
-                                                    "Appointment Date : " + snapshot.data!.docs[index]["appointmentTime"].toString()
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.red, fontSize: 12, fontWeight: FontWeight.w600, height: 1.3),),
+                                                    "Appointment Date : " +
+                                                        snapshot
+                                                            .data!
+                                                            .docs[index][
+                                                                "appointmentTime"]
+                                                            .toString(),
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.red,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
-
 
                                               // SizedBox(
                                               //   height: size.height*0.01,
@@ -543,48 +830,72 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                               // ),
 
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
 
                                               Container(
-
-                                                width: size.width*0.6,
+                                                width: size.width * 0.6,
                                                 child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
                                                   children: [
                                                     GestureDetector(
-                                                      onTap:() {
-
-                                                      },
+                                                      onTap: () {},
                                                       child: Container(
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(10),
-                                                          color:
-                                                          snapshot.data!.docs[index]["bookingStatus"].toString() == 'Confirmed' ?
-                                                          Colors.green :
-
-                                                          primaryColor,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          color: snapshot
+                                                                      .data!
+                                                                      .docs[
+                                                                          index]
+                                                                          [
+                                                                          "bookingStatus"]
+                                                                      .toString() ==
+                                                                  'Confirmed'
+                                                              ? Colors.green
+                                                              : primaryColor,
                                                         ),
-                                                        width: size.width*0.4,
-                                                        alignment: Alignment.center,
+                                                        width: size.width * 0.4,
+                                                        alignment:
+                                                            Alignment.center,
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(8),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8),
                                                           child: Text(
-                                                            snapshot.data!.docs[index]["bookingStatus"].toString()
-
-                                                            , style: GoogleFonts.nunito(
-                                                              color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                            snapshot
+                                                                .data!
+                                                                .docs[index][
+                                                                    "bookingStatus"]
+                                                                .toString(),
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        12,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    height:
+                                                                        1.3),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-
-                                                  ],),
+                                                  ],
+                                                ),
                                               ),
 
                                               SizedBox(
-                                                height: size.height*0.02,
+                                                height: size.height * 0.02,
                                               ),
-                                            ],),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -595,219 +906,332 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                           }),
                     );
                   }
-
-
                 },
               ),
               StreamBuilder(
-                stream: FirebaseFirestore.instance.collection("Bookings").where("doctorId", isEqualTo: _auth.currentUser!.uid.toString() ).where("bookingStatus", isEqualTo: "Cancelled" ).snapshots(),
+                stream: FirebaseFirestore.instance
+                    .collection("Bookings")
+                    .where("doctorId",
+                        isEqualTo: _auth.currentUser!.uid.toString())
+                    .where("bookingStatus", isEqualTo: "Cancelled")
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return Center(child: CircularProgressIndicator(
+                    return Center(
+                        child: CircularProgressIndicator(
                       strokeWidth: 1,
                       color: primaryColor,
                     ));
-                  }
-                  else if(snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                     // got data from snapshot but it is empty
 
                     return Center(child: Text("No Data Found"));
-                  }
-                  else {
+                  } else {
                     return Container(
-                      width: size.width*0.95,
-
-                      child:   ListView.builder(
+                      width: size.width * 0.95,
+                      child: ListView.builder(
                           scrollDirection: Axis.vertical,
-                          itemCount:snapshot.data!.docs.length,
+                          itemCount: snapshot.data!.docs.length,
                           shrinkWrap: true,
                           itemBuilder: (context, int index) {
-                            return   Padding(
+                            return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => BookingDetailScreen(
-                                      childName: snapshot.data!.docs[index]["childName"].toString(),
-                                      childImage: snapshot.data!.docs[index]["childImage"].toString(),
-                                      age: snapshot.data!.docs[index]["age"].toString(),
-                                      childCase: snapshot.data!.docs[index]["case"].toString(),
-                                      advice: snapshot.data!.docs[index]["advice"].toString(),
-                                      parentName: snapshot.data!.docs[index]["parentName"].toString(),
-                                      parentEmail: snapshot.data!.docs[index]["parentEmail"].toString(),
-                                      parentUid: snapshot.data!.docs[index]["parentId"].toString(),
-                                      gender: snapshot.data!.docs[index]["gender"].toString(),
-                                      score: snapshot.data!.docs[index]["score"],
-                                      status: "view",
-                                      payment: snapshot.data!.docs[index]["paymentMethod"].toString() ,
-                                      userIs: "Doctor", date: snapshot.data!.docs[index]["date"].toString(),
-                                      docId: snapshot.data!.docs[index].id,
-                                    )),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            BookingDetailScreen(
+                                              childName: snapshot.data!
+                                                  .docs[index]["childName"]
+                                                  .toString(),
+                                              childImage: snapshot.data!
+                                                  .docs[index]["childImage"]
+                                                  .toString(),
+                                              age: snapshot
+                                                  .data!.docs[index]["age"]
+                                                  .toString(),
+                                              childCase: snapshot
+                                                  .data!.docs[index]["case"]
+                                                  .toString(),
+                                              advice: snapshot
+                                                  .data!.docs[index]["advice"]
+                                                  .toString(),
+                                              parentName: snapshot.data!
+                                                  .docs[index]["parentName"]
+                                                  .toString(),
+                                              parentEmail: snapshot.data!
+                                                  .docs[index]["parentEmail"]
+                                                  .toString(),
+                                              parentUid: snapshot
+                                                  .data!.docs[index]["parentId"]
+                                                  .toString(),
+                                              gender: snapshot
+                                                  .data!.docs[index]["gender"]
+                                                  .toString(),
+                                              score: snapshot.data!.docs[index]
+                                                  ["score"],
+                                              status: "view",
+                                              payment: snapshot.data!
+                                                  .docs[index]["paymentMethod"]
+                                                  .toString(),
+                                              userIs: "Doctor",
+                                              date: snapshot
+                                                  .data!.docs[index]["date"]
+                                                  .toString(),
+                                              docId:
+                                                  snapshot.data!.docs[index].id,
+                                            )),
                                   );
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.all(10),
                                   child: Container(
-                                    width: size.width*0.95,
-
-
+                                    width: size.width * 0.95,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       color: darkBlueColor,
                                     ),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
-
                                         Container(
                                           // color: redColor,
-                                          width: size.width*0.25,
-                                          height: size.height*0.15,
-                                          child:  ClipRRect(
-                                            borderRadius: BorderRadius.circular(10),
-                                            child:  CachedNetworkImage(
+                                          width: size.width * 0.25,
+                                          height: size.height * 0.15,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: CachedNetworkImage(
                                               height: size.height * 0.25,
-
-                                              width: size.width ,
+                                              width: size.width,
                                               fit: BoxFit.cover,
-                                              imageUrl: snapshot.data!.docs[index]["doctorImage"].toString(),
-                                              placeholder: (context, url) => Container(
-                                                  height: 50, width: 50,
-                                                  child: Center(child: CircularProgressIndicator(color: lightButtonGreyColor,))),
-                                              errorWidget: (context, url, error) => Icon(Icons.error),
+                                              imageUrl: snapshot.data!
+                                                  .docs[index]["doctorImage"]
+                                                  .toString(),
+                                              placeholder: (context, url) =>
+                                                  Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      child: Center(
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                        color:
+                                                            lightButtonGreyColor,
+                                                      ))),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Icon(Icons.error),
                                             ),
                                           ),
                                         ),
                                         Container(
                                           //   color: redColor,
-                                          width: size.width*0.6,
+                                          width: size.width * 0.6,
 
-                                          child:  Column(
+                                          child: Column(
                                             //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-
                                               Container(
                                                 alignment: Alignment.centerLeft,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,top: 8),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8, top: 8),
                                                   child: Text(
-                                                    "Appointment Id : #" + "${index+1}"
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.black, fontSize: 14, fontWeight: FontWeight.w800, height: 1.3),),
+                                                    "Appointment Id : #" +
+                                                        "${index + 1}",
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.black,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
-
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
                                               Container(
                                                 alignment: Alignment.centerLeft,
 
                                                 //  color: Colors.green,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
                                                   child: Text(
-                                                    "Clinic : " + snapshot.data!.docs[index]["clinicName"].toString()
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                    "Clinic : " +
+                                                        snapshot
+                                                            .data!
+                                                            .docs[index]
+                                                                ["clinicName"]
+                                                            .toString(),
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.black,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
-
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
-
                                               Container(
                                                 alignment: Alignment.centerLeft,
 
                                                 //  color: Colors.green,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
                                                   child: Text(
-
-                                                    snapshot.data!.docs[index]["evaluation"].toString() == "0" ?
-                                                    "Evaluation : Not Evaluated" :
-                                                    "Evaluation : " + snapshot.data!.docs[index]["evaluation"].toString()
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                    snapshot
+                                                                .data!
+                                                                .docs[index][
+                                                                    "evaluation"]
+                                                                .toString() ==
+                                                            "0"
+                                                        ? "Evaluation : Not Evaluated"
+                                                        : "Evaluation : " +
+                                                            snapshot
+                                                                .data!
+                                                                .docs[index][
+                                                                    "evaluation"]
+                                                                .toString(),
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.black,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
                                               SizedBox(
-                                                height: size.height*0.01,
-                                              ),
-
-                                              Container(
-                                                alignment: Alignment.centerLeft,
-
-                                                child:   Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
-                                                  child: Text(
-                                                    "Appointment Date : " + snapshot.data!.docs[index]["appointmentTime"].toString()
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.red, fontSize: 12, fontWeight: FontWeight.w600, height: 1.3),),
-                                                ),
-                                              ),
-
-
-                                              SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
                                               Container(
-
                                                 alignment: Alignment.centerLeft,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8,),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
                                                   child: Text(
-                                                    "Specialization : " + snapshot.data!.docs[index]["doctorSpec"].toString() + " "
-                                                    , style: GoogleFonts.nunito(
-                                                      color: Colors.green, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                    "Appointment Date : " +
+                                                        snapshot
+                                                            .data!
+                                                            .docs[index][
+                                                                "appointmentTime"]
+                                                            .toString(),
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.red,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.3),
+                                                  ),
                                                 ),
                                               ),
-
                                               SizedBox(
-                                                height: size.height*0.01,
+                                                height: size.height * 0.01,
                                               ),
-
                                               Container(
-
-                                                width: size.width*0.6,
+                                                alignment: Alignment.centerLeft,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
+                                                  child: Text(
+                                                    "Specialization : " +
+                                                        snapshot
+                                                            .data!
+                                                            .docs[index]
+                                                                ["doctorSpec"]
+                                                            .toString() +
+                                                        " ",
+                                                    style: GoogleFonts.nunito(
+                                                        color: Colors.green,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        height: 1.3),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: size.height * 0.01,
+                                              ),
+                                              Container(
+                                                width: size.width * 0.6,
                                                 child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   children: [
                                                     GestureDetector(
-                                                      onTap:() {
-
-                                                      },
+                                                      onTap: () {},
                                                       child: Container(
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(10),
-                                                          color:
-                                                          snapshot.data!.docs[index]["bookingStatus"].toString() == 'Cancelled' ?
-                                                          Colors.red :
-
-                                                          primaryColor,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          color: snapshot
+                                                                      .data!
+                                                                      .docs[
+                                                                          index]
+                                                                          [
+                                                                          "bookingStatus"]
+                                                                      .toString() ==
+                                                                  'Cancelled'
+                                                              ? Colors.red
+                                                              : primaryColor,
                                                         ),
-                                                        width: size.width*0.4,
-                                                        alignment: Alignment.center,
+                                                        width: size.width * 0.4,
+                                                        alignment:
+                                                            Alignment.center,
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(8),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8),
                                                           child: Text(
-                                                            snapshot.data!.docs[index]["bookingStatus"].toString()
-
-                                                            , style: GoogleFonts.nunito(
-                                                              color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
+                                                            snapshot
+                                                                .data!
+                                                                .docs[index][
+                                                                    "bookingStatus"]
+                                                                .toString(),
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        12,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    height:
+                                                                        1.3),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-
-                                                  ],),
+                                                  ],
+                                                ),
                                               ),
-
                                               SizedBox(
-                                                height: size.height*0.02,
+                                                height: size.height * 0.02,
                                               ),
-                                            ],),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -818,8 +1242,6 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                           }),
                     );
                   }
-
-
                 },
               ),
             ],

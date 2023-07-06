@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:get/get.dart';
 
 class Onboarding1Screen extends StatelessWidget {
   const Onboarding1Screen({Key? key, this.color}) : super(key: key);
@@ -34,7 +33,9 @@ class Onboarding1Screen extends StatelessWidget {
           child: Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.02),
-            child: Image.asset('assets/images/doctorhelp2.png',),
+            child: Image.asset(
+              'assets/images/doctorhelp2.png',
+            ),
           ),
         ),
         Align(
@@ -42,7 +43,9 @@ class Onboarding1Screen extends StatelessWidget {
           child: Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.13),
-            child: Image.asset('assets/images/doctorhelp.png',),
+            child: Image.asset(
+              'assets/images/doctorhelp.png',
+            ),
           ),
         ),
         Align(
@@ -73,10 +76,9 @@ class Onboarding1Screen extends StatelessWidget {
                     Text(
                       "membantumu!",
                       style: GoogleFonts.spectral(
-                       fontSize: 45,
-                       fontWeight: FontWeight.bold,
-                       color: darkBlueColor 
-                      ),
+                          fontSize: 45,
+                          fontWeight: FontWeight.bold,
+                          color: darkBlueColor),
                     ),
                     SizedBox(
                       height: 12,

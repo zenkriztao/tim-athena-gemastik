@@ -1,6 +1,4 @@
-
-
-import 'package:autism_perdiction_app/view/gamification/storylines/txt/dailychallenge_txt.dart';
+import 'package:aksonhealth/view/gamification/storylines/txt/dailychallenge_txt.dart';
 
 String questionFromIndex(int index) {
   String question = "";

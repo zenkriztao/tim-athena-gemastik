@@ -45,39 +45,43 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyAeUFPUPS9orVb04dZfBGG_SjgsQn-FH3M',
-    appId: '1:849090647277:web:d0f50d733b9d436f1d28e4',
+    appId: '1:849090647277:web:400196f2d630c97e1d28e4',
     messagingSenderId: '849090647277',
     projectId: 'autism-gemastik',
     authDomain: 'autism-gemastik.firebaseapp.com',
+    databaseURL: 'https://autism-gemastik-default-rtdb.firebaseio.com',
     storageBucket: 'autism-gemastik.appspot.com',
-    measurementId: 'G-SHCP90658F',
+    measurementId: 'G-6SMXSZ4VMH',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBHlyvmiwPQqbaIXEHvw12LzNoIhtuHtEY',
-    appId: '1:849090647277:android:3400fa8f113e69b41d28e4',
+    appId: '1:849090647277:android:4d99c632cbed32b01d28e4',
     messagingSenderId: '849090647277',
     projectId: 'autism-gemastik',
+    databaseURL: 'https://autism-gemastik-default-rtdb.firebaseio.com',
     storageBucket: 'autism-gemastik.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBMlLWhUQlQ2ylxbo5ncXi8Q6O-zeDfJVI',
-    appId: '1:849090647277:ios:1b98b336b09b90a51d28e4',
+    appId: '1:849090647277:ios:4542927a5b2c12d51d28e4',
     messagingSenderId: '849090647277',
     projectId: 'autism-gemastik',
+    databaseURL: 'https://autism-gemastik-default-rtdb.firebaseio.com',
     storageBucket: 'autism-gemastik.appspot.com',
-    iosClientId: '849090647277-8gas03qb92m673attij8ajbjgmoso24e.apps.googleusercontent.com',
-    iosBundleId: 'com.example.autismPerdictionApp',
+    iosClientId: '849090647277-4i61cgbh312iiqtj9bj5gpm113unejma.apps.googleusercontent.com',
+    iosBundleId: 'com.aksonhealthp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyBMlLWhUQlQ2ylxbo5ncXi8Q6O-zeDfJVI',
-    appId: '1:849090647277:ios:1b98b336b09b90a51d28e4',
+    appId: '1:849090647277:ios:4542927a5b2c12d51d28e4',
     messagingSenderId: '849090647277',
     projectId: 'autism-gemastik',
+    databaseURL: 'https://autism-gemastik-default-rtdb.firebaseio.com',
     storageBucket: 'autism-gemastik.appspot.com',
-    iosClientId: '849090647277-8gas03qb92m673attij8ajbjgmoso24e.apps.googleusercontent.com',
-    iosBundleId: 'com.example.autismPerdictionApp',
+    iosClientId: '849090647277-4i61cgbh312iiqtj9bj5gpm113unejma.apps.googleusercontent.com',
+    iosBundleId: 'com.aksonhealthp',
   );
 }

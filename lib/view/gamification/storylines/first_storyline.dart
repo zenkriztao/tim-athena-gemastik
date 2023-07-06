@@ -1,8 +1,8 @@
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/gamification/components/base_storyline.dart';
-import 'package:autism_perdiction_app/view/gamification/components/from_index.dart';
-import 'package:autism_perdiction_app/view/gamification/db.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/gamification/components/base_storyline.dart';
+import 'package:aksonhealth/view/gamification/components/from_index.dart';
+import 'package:aksonhealth/view/gamification/db.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class FirstStoryLine extends HookWidget {
   final User? user;
   const FirstStoryLine({super.key, required this.user});
 
- Color? getOptionColor(int index, int selectedOption, int correctOption) {
+  Color? getOptionColor(int index, int selectedOption, int correctOption) {
     if (selectedOption == index) {
       if (correctOption == index) return Colors.greenAccent;
       if (correctOption == -1) return Colors.orangeAccent;
@@ -51,9 +51,8 @@ class FirstStoryLine extends HookWidget {
               cursor: '',
               speed: const Duration(milliseconds: 75),
               textAlign: TextAlign.center,
-              textStyle: GoogleFonts.nunito(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400),
+              textStyle:
+                  GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w400),
             ))
         .toList();
     List<ListTile> options = [];
@@ -66,26 +65,23 @@ class FirstStoryLine extends HookWidget {
           title: Column(children: [
             Text(
               parsableOptions[i - 1],
-              style: GoogleFonts.nunito(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400),
+              style:
+                  GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w400),
             ),
             const Divider(
               height: 10,
-            thickness: 3,
-            endIndent: 0,
-            color: Colors.white,
-              
+              thickness: 3,
+              endIndent: 0,
+              color: Colors.white,
             ),
           ])));
     }
     return Column(children: [
-      Padding(padding: EdgeInsets.only(right: 100),
-      child: Text("Claudio: The Dyslexic Turtle",
-          style: GoogleFonts.nunito(
-            fontSize: 20,
-            fontWeight: FontWeight.w700
-          )),
+      Padding(
+        padding: EdgeInsets.only(right: 100),
+        child: Text("Claudio: The Dyslexic Turtle",
+            style:
+                GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w700)),
       ),
       const SizedBox(height: 70),
       Image.asset(
@@ -97,7 +93,7 @@ class FirstStoryLine extends HookWidget {
           ? Container(
               width: MediaQuery.of(context).size.width - 20,
               decoration: BoxDecoration(
-                boxShadow: [
+                  boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 1,
@@ -131,14 +127,15 @@ class FirstStoryLine extends HookWidget {
                   ? Container(
                       width: MediaQuery.of(context).size.width - 20,
                       decoration: BoxDecoration(
-                        boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                           color: Color.fromARGB(255, 242, 242, 242),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10))),
@@ -149,8 +146,7 @@ class FirstStoryLine extends HookWidget {
                                 speed: const Duration(milliseconds: 75),
                                 textAlign: TextAlign.center,
                                 textStyle: GoogleFonts.nunito(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400),
+                                    fontSize: 20, fontWeight: FontWeight.w400),
                                 replyFromIndex(1, selectedOption.value,
                                     correctOption.value, questionIndex.value))
                           ],
@@ -178,86 +174,85 @@ class FirstStoryLine extends HookWidget {
               const SizedBox(height: 10),
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                 (!submitted.value)
-                    ? 
-                    SizedBox(
-                      height: 60,
-                      width: 200,
-                      child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 118, 117, 117), // Background color
-  ),
-                        onPressed: () {
-                          startStory.value = false;
-                          displayText.value = "Start";
-                          displayOptions.value = false;
-                          selectedOption.value = -1;
-                          correctOption.value = -1;
-                          displayReply.value = false;
-                          displayQuestion.value = false;
-                          submitted.value = false;
-                        },
-                        child: Text(displayText.value,
-                            style: GoogleFonts.nunito(
-                                backgroundColor: Colors.transparent,
-                                textStyle: TextStyle(
-                                  fontSize: 20,
-                                )))),
+                    ? SizedBox(
+                        height: 60,
+                        width: 200,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromARGB(
+                                  255, 118, 117, 117), // Background color
+                            ),
+                            onPressed: () {
+                              startStory.value = false;
+                              displayText.value = "Start";
+                              displayOptions.value = false;
+                              selectedOption.value = -1;
+                              correctOption.value = -1;
+                              displayReply.value = false;
+                              displayQuestion.value = false;
+                              submitted.value = false;
+                            },
+                            child: Text(displayText.value,
+                                style: GoogleFonts.nunito(
+                                    backgroundColor: Colors.transparent,
+                                    textStyle: TextStyle(
+                                      fontSize: 20,
+                                    )))),
                       )
-                      
                     : const SizedBox(height: 0, width: 0),
                 (!submitted.value)
-                    ? 
-                    SizedBox(
-                      height: 60,
-                      width: 200,
-                        child:  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-    primary: greenColor, // Background color
-  ),  
-                        onPressed: () {
-                          if (selectedOption.value != -1) {
-                            FirebaseFirestore.instance
-                                .collection('questions')
-                                .where('qid',
-                                    isEqualTo:
-                                        int.parse("1${questionIndex.value}"))
-                                .get()
-                                .then((value) {
-                              correctOption.value = value.docs[0].get("answer");
-                              int inc = 1;
-                              if (correctOption.value == selectedOption.value) {
-                                inc = 5;
+                    ? SizedBox(
+                        height: 60,
+                        width: 200,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: greenColor, // Background color
+                            ),
+                            onPressed: () {
+                              if (selectedOption.value != -1) {
+                                FirebaseFirestore.instance
+                                    .collection('questions')
+                                    .where('qid',
+                                        isEqualTo: int.parse(
+                                            "1${questionIndex.value}"))
+                                    .get()
+                                    .then((value) {
+                                  correctOption.value =
+                                      value.docs[0].get("answer");
+                                  int inc = 1;
+                                  if (correctOption.value ==
+                                      selectedOption.value) {
+                                    inc = 5;
+                                  }
+                                  FirebaseFirestore.instance
+                                      .collection('users')
+                                      .where('name', isEqualTo: user?.email)
+                                      .get()
+                                      .then((value) async {
+                                    int multiplier =
+                                        value.docs[0].get('multiplier');
+                                    await DatabaseManager().updateUserTokens(
+                                        email: user?.email,
+                                        tokens: value.docs[0].get('tokens') +
+                                            inc * multiplier);
+                                  });
+                                  displayReply.value = true;
+                                  displayQuestion.value = false;
+                                  submitted.value = true;
+                                });
                               }
-                              FirebaseFirestore.instance
-                                  .collection('users')
-                                  .where('name', isEqualTo: user?.email)
-                                  .get()
-                                  .then((value) async {
-                                int multiplier =
-                                    value.docs[0].get('multiplier');
-                                await DatabaseManager().updateUserTokens(
-                                    email: user?.email,
-                                    tokens: value.docs[0].get('tokens') +
-                                        inc * multiplier);
-                              });
-                              displayReply.value = true;
-                              displayQuestion.value = false;
-                              submitted.value = true;
-                            });
-                          }
-                        },
-                        child: Text("Submit",
-                            style:
-                                GoogleFonts.nunito(backgroundColor: Colors.transparent,
-                                textStyle: TextStyle(
-                                  fontSize: 20,
-                                )))),
-                    )
-                   
+                            },
+                            child: Text("Submit",
+                                style: GoogleFonts.nunito(
+                                    backgroundColor: Colors.transparent,
+                                    textStyle: TextStyle(
+                                      fontSize: 20,
+                                    )))),
+                      )
                     : ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-    primary: darkBlueColor, // Background color
-  ),
+                        style: ElevatedButton.styleFrom(
+                          primary: darkBlueColor, // Background color
+                        ),
                         onPressed: () {
                           questionIndex.value++;
                           if (questionIndex.value <= 4) {
@@ -295,23 +290,26 @@ class FirstStoryLine extends HookWidget {
                                             SizedBox(
                                               height: 50,
                                               width: 200,
-                                              child:  ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-    primary: darkBlueColor, // Background color
-  ),
-                                                child: const Text("Ok"),
-                                                onPressed: () {
-                                                  DatabaseManager()
-                                                      .updateUserMultiplier(
-                                                          email: user?.email,
-                                                          multiplier: 2)
-                                                      .then((_) {
-                                                    Navigator.of(context).pop();
-                                                    Navigator.of(context).pop();
-                                                  });
-                                                }),
+                                              child: ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    primary:
+                                                        darkBlueColor, // Background color
+                                                  ),
+                                                  child: const Text("Ok"),
+                                                  onPressed: () {
+                                                    DatabaseManager()
+                                                        .updateUserMultiplier(
+                                                            email: user?.email,
+                                                            multiplier: 2)
+                                                        .then((_) {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    });
+                                                  }),
                                             )
-                                           
                                           ],
                                         );
                                       });
@@ -324,7 +322,7 @@ class FirstStoryLine extends HookWidget {
                         },
                         child: Text(
                             (questionIndex.value + 1 <= 5) ? "Next" : "Finish",
-                            style:  GoogleFonts.nunito(
+                            style: GoogleFonts.nunito(
                                 backgroundColor: Colors.transparent))),
               ]),
             ])
@@ -336,14 +334,14 @@ class FirstStoryLine extends HookWidget {
                   width: MediaQuery.of(context).size.width - 20,
                   height: MediaQuery.of(context).size.height / 4,
                   decoration: BoxDecoration(
-                    boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
                       color: Color.fromARGB(255, 242, 242, 242),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(10))),
@@ -351,25 +349,24 @@ class FirstStoryLine extends HookWidget {
                       "\nDiagnosis dengan autisme dan kesulitan serta hal positif yang dialami sepanjang hidupnya. Kami belajar bagaimana orang dengan autisme terpengaruh dari cerita ini.",
                       textAlign: TextAlign.center,
                       style: GoogleFonts.nunito(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 20))),
+                          fontWeight: FontWeight.w400, fontSize: 20))),
               const SizedBox(height: 20),
               SizedBox(
-                height: 50,
-                width: 300,
-                child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                primary: darkBlueColor, // Background color
-),
-                  onPressed: () {
-                    startStory.value = true;
-                    displayQuestion.value = true;
-                  },
-                  child: Text("Mulai", style: 
-                  GoogleFonts.nunito(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
-                  ),))),
+                  height: 50,
+                  width: 300,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: darkBlueColor, // Background color
+                      ),
+                      onPressed: () {
+                        startStory.value = true;
+                        displayQuestion.value = true;
+                      },
+                      child: Text(
+                        "Mulai",
+                        style: GoogleFonts.nunito(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ))),
             ])
           : const SizedBox(height: 0, width: 0),
     ]);

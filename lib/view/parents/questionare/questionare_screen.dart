@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/model/questionare_model.dart';
-import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/parents/bottomNavBar/app_bottom_nav_bar_screen.dart';
-import 'package:autism_perdiction_app/view/specialists/consult_screen.dart';
-import 'package:autism_perdiction_app/view/specialists/doctor_screen.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/model/questionare_model.dart';
+import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/parents/bottomNavBar/app_bottom_nav_bar_screen.dart';
+import 'package:aksonhealth/view/specialists/consult_screen.dart';
+import 'package:aksonhealth/view/specialists/doctor_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -175,14 +175,13 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
-                        child: Image.asset(
+                      child: Image.asset(
                         'assets/logo.png',
                         fit: BoxFit.scaleDown,
                         height: 100,
                         width: 300,
                       ),
                     ),
-                    
                   ),
                 ),
                 SizedBox(
@@ -391,7 +390,6 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                 SizedBox(
                   height: size.height * 0.05,
                 ),
-                
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Container(
@@ -507,7 +505,6 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    
                   ),
                 ),
               ],

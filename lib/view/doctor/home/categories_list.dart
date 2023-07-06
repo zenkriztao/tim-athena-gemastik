@@ -1,16 +1,15 @@
-import 'package:autism_perdiction_app/data/data.dart';
-import 'package:autism_perdiction_app/size_config.dart';
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/data/data.dart';
+import 'package:aksonhealth/size_config.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class CategoriesList extends StatelessWidget {
   const CategoriesList({
     Key? key,
   }) : super(key: key);
 
-@override
+  @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Container(

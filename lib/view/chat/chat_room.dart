@@ -1,13 +1,11 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:autism_perdiction_app/theme.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iconsax/iconsax.dart';
-
 import 'message.dart';
 import 'message_dao.dart';
 
@@ -92,15 +90,11 @@ class _ChatRoomState extends State<ChatRoom> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: const FaIcon(
-              FontAwesomeIcons.video
-            ),
+            icon: const FaIcon(FontAwesomeIcons.video),
             onPressed: () {},
           ),
           IconButton(
-            icon: const FaIcon(
-              FontAwesomeIcons.circleInfo
-            ),
+            icon: const FaIcon(FontAwesomeIcons.circleInfo),
             onPressed: () {},
           ),
         ],
