@@ -104,10 +104,9 @@ class _BehaviorContentPageState extends State<BehaviorContentPage>
                         Text(widget.behaviorOverview.title,
                             style: GoogleFonts.nunito(
                                 fontSize: 30, color: Colors.white)),
-                        const SizedBox(height: 8),
-                        Text(widget.behaviorOverview.description,
-                            style: GoogleFonts.nunito(
-                                fontSize: 20, color: Colors.white)),
+                        SizedBox(
+                          height: 130,
+                        )
                       ],
                     ),
                   ),

@@ -11,7 +11,7 @@ import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
 import 'package:autism_perdiction_app/view/parents/perdict/perdict_screen.dart';
 import 'package:autism_perdiction_app/view/parents/profile/profile_screen.dart';
 import 'package:autism_perdiction_app/view/resources/resource_screen.dart';
-import 'package:autism_perdiction_app/view/specialists/specialist_screen.dart';
+import 'package:autism_perdiction_app/view/specialists/doctor_screen.dart';
 import 'package:autism_perdiction_app/view/splash/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

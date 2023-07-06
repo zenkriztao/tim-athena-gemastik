@@ -54,6 +54,7 @@ class _TextAndVoiceFieldState extends ConsumerState<TextAndVoiceField> {
             },
             cursorColor: darkBlueColor,
             decoration: InputDecoration(
+              hintText: "Ketik disini",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
               ),

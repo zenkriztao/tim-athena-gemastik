@@ -1,6 +1,6 @@
 import 'package:autism_perdiction_app/constants.dart';
 import 'package:autism_perdiction_app/view/parents/bottomNavBar/app_bottom_nav_bar_screen.dart';
-import 'package:autism_perdiction_app/view/specialists/specialist_screen.dart';
+import 'package:autism_perdiction_app/view/specialists/doctor_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

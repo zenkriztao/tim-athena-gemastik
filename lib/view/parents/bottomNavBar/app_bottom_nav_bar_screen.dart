@@ -1,18 +1,14 @@
 import 'dart:io';
 
 import 'package:autism_perdiction_app/constants.dart';
-import 'package:autism_perdiction_app/model/behavior_models.dart';
 import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/article/behavior_dictionary.dart';
 import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
 import 'package:autism_perdiction_app/view/parents/perdict/perdict_screen.dart';
 import 'package:autism_perdiction_app/view/parents/profile/profile_screen.dart';
-import 'package:autism_perdiction_app/view/resources/resource_screen.dart';
-import 'package:autism_perdiction_app/view/specialists/specialist_screen.dart';
-import 'package:autism_perdiction_app/view/splash/splash_screen.dart';
+import 'package:autism_perdiction_app/view/specialists/consult_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,7 +28,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
   List<Widget> _pages = [
 
     HomeScreen(),
-    SpecialistScreen(),
+    ConsultScreen(),
     HomeScreen(),
     BehaviorDictionaryPage(),
     ProfileScreen(),
@@ -83,10 +79,6 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: _selectedIndex == 2 ? blueColor : darkBlueColor,
         onPressed: () {
-          setState(() {
-            _selectedIndex = 2;
-            _pages[2] = PerdictScreen();
-          });
 
         },
         child: FaIcon(FontAwesomeIcons.bolt),
@@ -137,7 +129,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                       onTap: () {
                         setState(() {
                           _selectedIndex = 1;
-                          _pages[1] = SpecialistScreen();
+                          _pages[1] = ConsultScreen();
                         });
                       },
                       child: FaIcon(
@@ -154,14 +146,11 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
                       onTap: () {
-                        setState(() {
-                          _selectedIndex = 2;
-                          _pages[2] = PerdictScreen();
-                        });
+                        
                       },
                     ),
                   ),
-                  label: 'Prediksi',
+                  label: 'Social',
                 ),
                  BottomNavigationBarItem(
                   icon: Padding(

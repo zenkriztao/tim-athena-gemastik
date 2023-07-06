@@ -3,8 +3,8 @@ import 'package:autism_perdiction_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DoctorAppBar extends StatelessWidget {
-  const DoctorAppBar({
+class FeaturesAppBar extends StatelessWidget {
+  const FeaturesAppBar({
     Key? key,
   }) : super(key: key);
 
@@ -21,15 +21,15 @@ class DoctorAppBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Hi Akson",
+                "Features",
                 style: GoogleFonts.nunito(
                     color: darkBlueColor,
                     fontWeight: FontWeight.w800,
-                    fontSize: getRelativeWidth(0.09)),
+                    fontSize: getRelativeWidth(0.06)),
               ),
               SizedBox(height: getRelativeHeight(0.003)),
               Text(
-                "Kamu bisa prediksi disini",
+                "Mulai dari Artificial, game dan juga fitur Parenting",
                 style: GoogleFonts.nunito(
                     color: Colors.blueGrey[400],
                     fontSize: getRelativeWidth(0.036)),
