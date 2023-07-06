@@ -3,16 +3,10 @@ import 'package:autism_perdiction_app/data/data.dart';
 import 'package:autism_perdiction_app/model/doctor_model.dart';
 import 'package:autism_perdiction_app/size_config.dart';
 import 'package:autism_perdiction_app/theme.dart';
-import 'package:autism_perdiction_app/view/auth/login/login_screen.dart';
 import 'package:autism_perdiction_app/view/chatbot/chat_screen.dart';
 import 'package:autism_perdiction_app/view/gamification/pages/home_page.dart';
-import 'package:autism_perdiction_app/view/gamification/widget_tree.dart';
-import 'package:autism_perdiction_app/view/onboarding/onboarding_1.dart';
 import 'package:autism_perdiction_app/view/parenting/parenting.view.dart';
-import 'package:autism_perdiction_app/view/parents/home/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DoctorsList extends StatelessWidget {
