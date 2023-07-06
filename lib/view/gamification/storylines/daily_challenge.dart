@@ -58,7 +58,7 @@ class DailyChallenge extends HookWidget {
             )),
         const SizedBox(height: 10),
         const CircleAvatar(
-            backgroundImage: AssetImage("lib/images/Kitsune.png"), radius: 50),
+            backgroundImage: AssetImage("images/Kitsune.png"), radius: 50),
         const SizedBox(height: 5),
         (dayId != -1)
             ? Container(

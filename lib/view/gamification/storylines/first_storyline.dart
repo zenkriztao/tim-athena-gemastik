@@ -1,3 +1,5 @@
+import 'package:autism_perdiction_app/constants.dart';
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/gamification/components/base_storyline.dart';
 import 'package:autism_perdiction_app/view/gamification/components/from_index.dart';
 import 'package:autism_perdiction_app/view/gamification/db.dart';
@@ -7,19 +9,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FirstStoryLine extends HookWidget {
   final User? user;
   const FirstStoryLine({super.key, required this.user});
 
-  Color? getOptionColor(int index, int selectedOption, int correctOption) {
+ Color? getOptionColor(int index, int selectedOption, int correctOption) {
     if (selectedOption == index) {
       if (correctOption == index) return Colors.greenAccent;
       if (correctOption == -1) return Colors.orangeAccent;
       return Colors.redAccent;
     } else {
       if (correctOption == index) return Colors.greenAccent;
-      return Colors.lightBlue[50];
+      return Color.fromARGB(255, 230, 230, 230);
     }
   }
 
@@ -48,9 +51,8 @@ class FirstStoryLine extends HookWidget {
               cursor: '',
               speed: const Duration(milliseconds: 75),
               textAlign: TextAlign.center,
-              textStyle: const TextStyle(
+              textStyle: GoogleFonts.nunito(
                   fontSize: 20,
-                  fontFamily: 'Hind',
                   fontWeight: FontWeight.w400),
             ))
         .toList();
@@ -64,29 +66,46 @@ class FirstStoryLine extends HookWidget {
           title: Column(children: [
             Text(
               parsableOptions[i - 1],
-              style: const TextStyle(
+              style: GoogleFonts.nunito(
                   fontSize: 20,
-                  fontFamily: 'Hind',
                   fontWeight: FontWeight.w400),
             ),
-            const Divider(),
+            const Divider(
+              height: 10,
+            thickness: 3,
+            endIndent: 0,
+            color: Colors.white,
+              
+            ),
           ])));
     }
     return Column(children: [
-      const Text("Henry: The Autistic Parrot",
-          style: TextStyle(
-            fontFamily: 'LuckiestGuy',
+      Padding(padding: EdgeInsets.only(right: 100),
+      child: Text("Claudio: The Dyslexic Turtle",
+          style: GoogleFonts.nunito(
             fontSize: 20,
+            fontWeight: FontWeight.w700
           )),
-      const SizedBox(height: 10),
-      const CircleAvatar(
-          backgroundImage: AssetImage("lib/images/Pheonix.png"), radius: 50),
+      ),
+      const SizedBox(height: 70),
+      Image.asset(
+        "assets/images/autismgame.png",
+        height: 300,
+      ),
       const SizedBox(height: 5),
       (displayQuestion.value)
           ? Container(
               width: MediaQuery.of(context).size.width - 20,
               decoration: BoxDecoration(
-                  color: Colors.lightBlue[50],
+                boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                  color: Color.fromARGB(255, 242, 242, 242),
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: AnimatedTextKit(
                 animatedTexts: text,
@@ -112,7 +131,15 @@ class FirstStoryLine extends HookWidget {
                   ? Container(
                       width: MediaQuery.of(context).size.width - 20,
                       decoration: BoxDecoration(
-                          color: Colors.lightBlue[50],
+                        boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                          color: Color.fromARGB(255, 242, 242, 242),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10))),
                       child: AnimatedTextKit(
@@ -121,9 +148,8 @@ class FirstStoryLine extends HookWidget {
                                 cursor: '',
                                 speed: const Duration(milliseconds: 75),
                                 textAlign: TextAlign.center,
-                                textStyle: const TextStyle(
+                                textStyle: GoogleFonts.nunito(
                                     fontSize: 20,
-                                    fontFamily: 'Hind',
                                     fontWeight: FontWeight.w400),
                                 replyFromIndex(1, selectedOption.value,
                                     correctOption.value, questionIndex.value))
@@ -152,7 +178,14 @@ class FirstStoryLine extends HookWidget {
               const SizedBox(height: 10),
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                 (!submitted.value)
-                    ? ElevatedButton(
+                    ? 
+                    SizedBox(
+                      height: 60,
+                      width: 200,
+                      child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 118, 117, 117), // Background color
+  ),
                         onPressed: () {
                           startStory.value = false;
                           displayText.value = "Start";
@@ -164,11 +197,23 @@ class FirstStoryLine extends HookWidget {
                           submitted.value = false;
                         },
                         child: Text(displayText.value,
-                            style: const TextStyle(
-                                backgroundColor: Colors.transparent)))
+                            style: GoogleFonts.nunito(
+                                backgroundColor: Colors.transparent,
+                                textStyle: TextStyle(
+                                  fontSize: 20,
+                                )))),
+                      )
+                      
                     : const SizedBox(height: 0, width: 0),
                 (!submitted.value)
-                    ? ElevatedButton(
+                    ? 
+                    SizedBox(
+                      height: 60,
+                      width: 200,
+                        child:  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+    primary: greenColor, // Background color
+  ),  
                         onPressed: () {
                           if (selectedOption.value != -1) {
                             FirebaseFirestore.instance
@@ -201,10 +246,18 @@ class FirstStoryLine extends HookWidget {
                             });
                           }
                         },
-                        child: const Text("Submit",
+                        child: Text("Submit",
                             style:
-                                TextStyle(backgroundColor: Colors.transparent)))
+                                GoogleFonts.nunito(backgroundColor: Colors.transparent,
+                                textStyle: TextStyle(
+                                  fontSize: 20,
+                                )))),
+                    )
+                   
                     : ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+    primary: darkBlueColor, // Background color
+  ),
                         onPressed: () {
                           questionIndex.value++;
                           if (questionIndex.value <= 4) {
@@ -239,7 +292,13 @@ class FirstStoryLine extends HookWidget {
                                               child: Text(
                                                   "You have unlocked your token multiplier for the day!")),
                                           actions: <Widget>[
-                                            ElevatedButton(
+                                            SizedBox(
+                                              height: 50,
+                                              width: 200,
+                                              child:  ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+    primary: darkBlueColor, // Background color
+  ),
                                                 child: const Text("Ok"),
                                                 onPressed: () {
                                                   DatabaseManager()
@@ -250,7 +309,9 @@ class FirstStoryLine extends HookWidget {
                                                     Navigator.of(context).pop();
                                                     Navigator.of(context).pop();
                                                   });
-                                                })
+                                                }),
+                                            )
+                                           
                                           ],
                                         );
                                       });
@@ -263,7 +324,7 @@ class FirstStoryLine extends HookWidget {
                         },
                         child: Text(
                             (questionIndex.value + 1 <= 5) ? "Next" : "Finish",
-                            style: const TextStyle(
+                            style:  GoogleFonts.nunito(
                                 backgroundColor: Colors.transparent))),
               ]),
             ])
@@ -275,23 +336,40 @@ class FirstStoryLine extends HookWidget {
                   width: MediaQuery.of(context).size.width - 20,
                   height: MediaQuery.of(context).size.height / 4,
                   decoration: BoxDecoration(
-                      color: Colors.lightBlue[50],
+                    boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                      color: Color.fromARGB(255, 242, 242, 242),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(10))),
-                  child: const Text(
-                      "\nZhafran lupa survei kebhinekaan, diagnosed with autism and the hardships as well as the positives it experienced throughout its life.  We learn how people with autism are affected from this story.",
+                  child: Text(
+                      "\nDiagnosis dengan autisme dan kesulitan serta hal positif yang dialami sepanjang hidupnya. Kami belajar bagaimana orang dengan autisme terpengaruh dari cerita ini.",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontFamily: "Raleway",
+                      style: GoogleFonts.nunito(
                           fontWeight: FontWeight.w400,
                           fontSize: 20))),
               const SizedBox(height: 20),
-              ElevatedButton(
+              SizedBox(
+                height: 50,
+                width: 300,
+                child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                primary: darkBlueColor, // Background color
+),
                   onPressed: () {
                     startStory.value = true;
                     displayQuestion.value = true;
                   },
-                  child: Text(displayText.value)),
+                  child: Text("Mulai", style: 
+                  GoogleFonts.nunito(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                  ),))),
             ])
           : const SizedBox(height: 0, width: 0),
     ]);

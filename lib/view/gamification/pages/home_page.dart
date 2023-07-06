@@ -1,169 +1,191 @@
+import 'package:autism_perdiction_app/size_config.dart';
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/gamification/auth.dart';
-import 'package:autism_perdiction_app/view/gamification/components/custom_container.dart';
-import 'package:autism_perdiction_app/view/gamification/storylines/daily_challenge.dart';
 import 'package:autism_perdiction_app/view/gamification/storylines/first_storyline.dart';
 import 'package:autism_perdiction_app/view/gamification/storylines/second_storyline.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key? key});
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
-  final User? user = Auth().currentUser;
+final User? user = Auth().currentUser;
 
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return customContainer(
-      Scaffold(
-          backgroundColor: Colors.transparent,
-          body: SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: Column(children: [
-              Padding(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.width / 12,
-                      bottom: MediaQuery.of(context).size.width / 6),
-                  child: Column(children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          const Text("Welcome!",
-                              style: TextStyle(
-                                fontSize: 35,
-                                color: Colors.black87,
-                                fontFamily: 'LuckiestGuy',
-                              )),
-                        ]),
-                    const SizedBox(height: 30),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        FirstStoryLine(user: user)));
-                              },
-                              child: Column(children: const [
-                                CircleAvatar(
-                                  backgroundImage:
-                                      AssetImage("lib/images/story.png"),
-                                  radius: 50,
-                                  foregroundColor: Colors.transparent,
-                                ),
-                                SizedBox(height: 10),
-                                Text("Henry: The Autistic",
-                                    style: TextStyle(
-                                      fontFamily: 'Hind',
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15,
-                                    )),
-                                Text("Parrot",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontFamily: 'Hind',
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15,
-                                    )),
-                              ])),
-                          GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        SecondStoryLine(user: user)));
-                              },
-                              child: Column(children: const [
-                                CircleAvatar(
-                                  backgroundImage:
-                                      AssetImage("lib/images/story.png"),
-                                  radius: 50,
-                                  foregroundColor: Colors.transparent,
-                                ),
-                                SizedBox(height: 10),
-                                Text("Claudio: The Dyslexic",
-                                    style: TextStyle(
-                                      fontFamily: 'Hind',
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15,
-                                    )),
-                                Text("Turtle",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontFamily: 'Hind',
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15,
-                                    )),
-                              ])),
-                        ]),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                      DailyChallenge(user: user)));
-                            },
-                            child: Column(children: const [
-                              CircleAvatar(
-                                backgroundImage:
-                                    AssetImage("lib/images/story.png"),
-                                radius: 50,
-                              ),
-                              SizedBox(height: 10),
-                              Text("Daily Challenge",
-                                  style: TextStyle(
-                                    fontFamily: 'Hind',
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 15,
-                                  )),
-                            ])),
-                      ],
-                    )
-                  ])),
-              const SizedBox(height: 20),
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
               Container(
-                  height: MediaQuery.of(context).size.height / 6,
-                  width: MediaQuery.of(context).size.width - 20,
+                height: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Color.fromARGB(66, 168, 168, 168),
+                        offset: Offset(0.0, 2.0),
+                        blurRadius: 6.0),
+                  ],
+                ),
+                child: Hero(
+                  tag: 'assets/logo.png',
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: Image(
+                      image: AssetImage("assets/images/game.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 20.0,
+                bottom: 20.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "Gamification",
+                      style: GoogleFonts.nunito(
+                        color: darkBlueColor,
+                        fontSize: 35.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => FirstStoryLine(user: user)));
+            },
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: getRelativeWidth(0.90),
+                  height: getRelativeHeight(0.20),
                   decoration: BoxDecoration(
-                      color: Colors.lightBlue[50],
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(15))),
-                  child: Column(children: [
-                    const Text("Reminder",
-                        style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold)),
-                    const Divider(),
-                    const SizedBox(height: 40),
-                    StreamBuilder<QuerySnapshot>(
-                        stream: FirebaseFirestore.instance
-                            .collection('users')
-                            .where('name', isEqualTo: user?.email)
-                            .snapshots(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            if (2 - snapshot.data?.docs.first.get('completed') <
-                                0) {
-                              return const Text(
-                                  "You have 0 modules left for the day!!",
-                                  style: TextStyle(
-                                      color: Colors.black45, fontSize: 20));
-                            }
-                            return Text(
-                                "You have ${2 - snapshot.data?.docs.first.get('completed')} modules left for the day!!",
-                                style: const TextStyle(
-                                    color: Colors.black45, fontSize: 20));
-                          }
-                          return const Text("Loading...");
-                        })
-                  ]))
-            ]),
-          )),
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.green),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: getRelativeWidth(0.03)),
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Flexible(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Game untuk penyandang Autisme",
+                                  style: GoogleFonts.nunito(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                SizedBox(height: getRelativeHeight(0.02)),
+                              ],
+                            ),
+                          ),
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/autism1.png',
+                                height: 300,
+                                width: 100,
+                              )
+                            ],
+                          ),
+                          SizedBox(width: getRelativeWidth(0.012)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SecondStoryLine(user: user)));
+            },
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: getRelativeWidth(0.90),
+                  height: getRelativeHeight(0.20),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Color.fromARGB(255, 12, 91, 156)),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: getRelativeWidth(0.03)),
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Flexible(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Game untuk penyandang Dislexia",
+                                  style: GoogleFonts.nunito(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                SizedBox(height: getRelativeHeight(0.02)),
+                              ],
+                            ),
+                          ),
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/dyslexia1.png',
+                                height: 300,
+                                width: 100,
+                              )
+                            ],
+                          ),
+                          SizedBox(width: getRelativeWidth(0.012)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

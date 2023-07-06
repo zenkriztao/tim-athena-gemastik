@@ -53,21 +53,6 @@ class ConsultBanner extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: getRelativeHeight(0.02)),
-                              Row(
-                                children: [
-                                  Flexible(
-                                    child: ElevatedButton(
-                                      onPressed: () {  },
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(blueColor),
-                                      ),
-                                      child: Text(
-                                        'Cari Dokter'
-                                      ),
-                                    )
-                                  ),
-                                ],
-                              ),
                             ],
                           ),
                         ),
@@ -93,34 +78,6 @@ class ConsultBanner extends StatelessWidget {
         ),
         ),
         
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-                height: getRelativeWidth(0.12),
-                width: getRelativeWidth(0.12),
-                child: Image.asset("assets/images/gradient.png")),
-          ),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.topLeft,
-          ),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: getRelativeHeight(0.01),
-                  horizontal: getRelativeWidth(0.07)),
-              child: Container(
-                  height: getRelativeWidth(0.08),
-                  width: getRelativeWidth(0.08),
-                  child: Image.asset("assets/images/gradient.png")),
-            ),
-          ),
-        )
       ],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/gamification/components/base_storyline.dart';
 import 'package:autism_perdiction_app/view/gamification/components/from_index.dart';
 import 'package:autism_perdiction_app/view/gamification/db.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SecondStoryLine extends HookWidget {
   final User? user;
@@ -19,7 +21,7 @@ class SecondStoryLine extends HookWidget {
       return Colors.redAccent;
     } else {
       if (correctOption == index) return Colors.greenAccent;
-      return Colors.lightBlue[50];
+      return Color.fromARGB(255, 230, 230, 230);
     }
   }
 
@@ -48,9 +50,8 @@ class SecondStoryLine extends HookWidget {
               cursor: '',
               speed: const Duration(milliseconds: 75),
               textAlign: TextAlign.center,
-              textStyle: const TextStyle(
+              textStyle: GoogleFonts.nunito(
                   fontSize: 20,
-                  fontFamily: 'Hind',
                   fontWeight: FontWeight.w400),
             ))
         .toList();
@@ -64,30 +65,45 @@ class SecondStoryLine extends HookWidget {
           title: Column(children: [
             Text(
               parsableOptions[i - 1],
-              style: const TextStyle(
+              style: GoogleFonts.nunito(
                   fontSize: 20,
-                  fontFamily: 'Hind',
                   fontWeight: FontWeight.w400),
             ),
-            const Divider(),
+            const Divider(
+              height: 10,
+            thickness: 3,
+            endIndent: 0,
+            color: Colors.white,
+              
+            ),
           ])));
     }
     return Column(children: [
-      const Text("Claudio: The Dyslexic Turtle",
-          style: TextStyle(
-            fontFamily: 'LuckiestGuy',
-            fontSize: 20,
-          )),
-      const SizedBox(height: 10),
-      const CircleAvatar(
-          backgroundImage: AssetImage("lib/images/Unicorndalle.png"),
-          radius: 50),
-      const SizedBox(height: 5),
+      Padding(
+        padding: EdgeInsets.only(right: 100),
+        child: Text("Claudio: The Dyslexic Turtle",
+            style:
+                GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w700)),
+      ),
+      const SizedBox(height: 70),
+      Image.asset(
+        "assets/images/dyslexiagame.png",
+        height: 200,
+      ),
+      const SizedBox(height: 20),
       (displayQuestion.value)
           ? Container(
               width: MediaQuery.of(context).size.width - 20,
               decoration: BoxDecoration(
-                  color: Colors.lightBlue[50],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                  color: const Color.fromARGB(255, 227, 227, 227),
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: AnimatedTextKit(
                 animatedTexts: text,
@@ -116,7 +132,15 @@ class SecondStoryLine extends HookWidget {
                   ? Container(
                       width: MediaQuery.of(context).size.width - 20,
                       decoration: BoxDecoration(
-                          color: Colors.lightBlue[50],
+                        boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                          color: Colors.white,
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10))),
                       child: AnimatedTextKit(
@@ -125,9 +149,8 @@ class SecondStoryLine extends HookWidget {
                                 cursor: '',
                                 speed: const Duration(milliseconds: 75),
                                 textAlign: TextAlign.center,
-                                textStyle: const TextStyle(
+                                textStyle: GoogleFonts.nunito(
                                     fontSize: 20,
-                                    fontFamily: 'Hind',
                                     fontWeight: FontWeight.w400),
                                 replyFromIndex(2, selectedOption.value,
                                     correctOption.value, questionIndex.value))
@@ -157,58 +180,81 @@ class SecondStoryLine extends HookWidget {
               const SizedBox(height: 10),
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                 (!submitted.value)
-                    ? ElevatedButton(
-                        onPressed: () {
-                          startStory.value = false;
-                          displayText.value = "Start";
-                          displayOptions.value = false;
-                          selectedOption.value = -1;
-                          correctOption.value = -1;
-                          displayReply.value = false;
-                          displayQuestion.value = false;
-                          submitted.value = false;
-                        },
-                        child: Text(displayText.value,
-                            style: const TextStyle(
-                                backgroundColor: Colors.transparent)))
+                    ? SizedBox(
+                        height: 60,
+                        width: 200,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromARGB(
+                                  255, 118, 117, 117), // Background color
+                            ),
+                            onPressed: () {
+                              startStory.value = false;
+                              displayText.value = "Start";
+                              displayOptions.value = false;
+                              selectedOption.value = -1;
+                              correctOption.value = -1;
+                              displayReply.value = false;
+                              displayQuestion.value = false;
+                              submitted.value = false;
+                            },
+                            child: Text(displayText.value,
+                                style: GoogleFonts.nunito(
+                                    backgroundColor: Colors.transparent,
+                                    textStyle: GoogleFonts.nunito(
+                                      fontSize: 20,
+                                    )))),
+                      )
                     : const SizedBox(height: 0, width: 0),
                 (!submitted.value)
-                    ? ElevatedButton(
-                        onPressed: () {
-                          if (selectedOption.value != -1) {
-                            FirebaseFirestore.instance
-                                .collection('questions')
-                                .where('qid',
-                                    isEqualTo:
-                                        int.parse("2${questionIndex.value}"))
-                                .get()
-                                .then((value) {
-                              correctOption.value = value.docs[0].get("answer");
-                              int inc = 1;
-                              if (correctOption.value == selectedOption.value) {
-                                inc = 5;
+                    ? SizedBox(
+                        height: 60,
+                        width: 200,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: greenColor, // Background color
+                            ),
+                            onPressed: () {
+                              if (selectedOption.value != -1) {
+                                FirebaseFirestore.instance
+                                    .collection('questions')
+                                    .where('qid',
+                                        isEqualTo: int.parse(
+                                            "1${questionIndex.value}"))
+                                    .get()
+                                    .then((value) {
+                                  correctOption.value =
+                                      value.docs[0].get("answer");
+                                  int inc = 1;
+                                  if (correctOption.value ==
+                                      selectedOption.value) {
+                                    inc = 5;
+                                  }
+                                  FirebaseFirestore.instance
+                                      .collection('users')
+                                      .where('name', isEqualTo: user?.email)
+                                      .get()
+                                      .then((value) async {
+                                    int multiplier =
+                                        value.docs[0].get('multiplier');
+                                    await DatabaseManager().updateUserTokens(
+                                        email: user?.email,
+                                        tokens: value.docs[0].get('tokens') +
+                                            inc * multiplier);
+                                  });
+                                  displayReply.value = true;
+                                  displayQuestion.value = false;
+                                  submitted.value = true;
+                                });
                               }
-                              FirebaseFirestore.instance
-                                  .collection('users')
-                                  .where('name', isEqualTo: user?.email)
-                                  .get()
-                                  .then((value) async {
-                                int multiplier =
-                                    value.docs[0].get('multiplier');
-                                await DatabaseManager().updateUserTokens(
-                                    email: user?.email,
-                                    tokens: value.docs[0].get('tokens') +
-                                        inc * multiplier);
-                              });
-                              displayReply.value = true;
-                              displayQuestion.value = false;
-                              submitted.value = true;
-                            });
-                          }
-                        },
-                        child: const Text("Submit",
-                            style:
-                                TextStyle(backgroundColor: Colors.transparent)))
+                            },
+                            child: Text("Submit",
+                                style: GoogleFonts.nunito(
+                                    backgroundColor: Colors.transparent,
+                                    textStyle: GoogleFonts.nunito(
+                                      fontSize: 20,
+                                    )))),
+                      )
                     : ElevatedButton(
                         onPressed: () {
                           questionIndex.value++;
@@ -244,18 +290,29 @@ class SecondStoryLine extends HookWidget {
                                               child: Text(
                                                   "You have unlocked your token multiplier for the day!")),
                                           actions: <Widget>[
-                                            ElevatedButton(
-                                                child: const Text("Ok"),
-                                                onPressed: () {
-                                                  DatabaseManager()
-                                                      .updateUserMultiplier(
-                                                          email: user?.email,
-                                                          multiplier: 2)
-                                                      .then((_) {
-                                                    Navigator.of(context).pop();
-                                                    Navigator.of(context).pop();
-                                                  });
-                                                })
+                                            SizedBox(
+                                              height: 50,
+                                              width: 200,
+                                              child: ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    primary:
+                                                        darkBlueColor, // Background color
+                                                  ),
+                                                  child: const Text("Ok"),
+                                                  onPressed: () {
+                                                    DatabaseManager()
+                                                        .updateUserMultiplier(
+                                                            email: user?.email,
+                                                            multiplier: 2)
+                                                        .then((_) {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    });
+                                                  }),
+                                            )
                                           ],
                                         );
                                       });
@@ -268,7 +325,7 @@ class SecondStoryLine extends HookWidget {
                         },
                         child: Text(
                             (questionIndex.value + 1 <= 5) ? "Next" : "Finish",
-                            style: const TextStyle(
+                            style: GoogleFonts.nunito(
                                 backgroundColor: Colors.transparent))),
               ]),
             ])
@@ -280,23 +337,39 @@ class SecondStoryLine extends HookWidget {
                   width: MediaQuery.of(context).size.width - 20,
                   height: MediaQuery.of(context).size.height / 4,
                   decoration: BoxDecoration(
-                      color: Colors.lightBlue[50],
+                    boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                      color: Color.fromARGB(255, 242, 242, 242),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(10))),
-                  child: const Text(
-                      "\nZhafran lupo survei kebhinekaan, a turtle in the pet world, diagnosed with dyslexia and the hardships as well as the positives it experienced throughout its life.  We learn how people with dyslexia are affected from this story.",
+                  child: Text(
+                      "\nDiagnosis dengan disleksia dan kesulitan serta hal positif yang dialami sepanjang hidupnya. Kami belajar bagaimana orang dengan disleksia terpengaruh dari cerita ini.",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontFamily: "Raleway",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 20))),
+                      style: GoogleFonts.nunito(
+                          fontWeight: FontWeight.w600, fontSize: 20))),
               const SizedBox(height: 20),
-              ElevatedButton(
-                  onPressed: () {
-                    startStory.value = true;
-                    displayQuestion.value = true;
-                  },
-                  child: Text(displayText.value)),
+              SizedBox(
+                  height: 50,
+                  width: 300,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: darkBlueColor, // Background color
+                      ),
+                      onPressed: () {
+                        startStory.value = true;
+                        displayQuestion.value = true;
+                      },
+                      child: Text(
+                        "Mulai",
+                        style: GoogleFonts.nunito(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ))),
             ])
           : const SizedBox(height: 0, width: 0),
     ]);

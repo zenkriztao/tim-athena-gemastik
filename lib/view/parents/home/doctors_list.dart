@@ -5,6 +5,7 @@ import 'package:autism_perdiction_app/size_config.dart';
 import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/auth/login/login_screen.dart';
 import 'package:autism_perdiction_app/view/chatbot/chat_screen.dart';
+import 'package:autism_perdiction_app/view/gamification/pages/home_page.dart';
 import 'package:autism_perdiction_app/view/gamification/widget_tree.dart';
 import 'package:autism_perdiction_app/view/onboarding/onboarding_1.dart';
 import 'package:autism_perdiction_app/view/parenting/parenting.view.dart';
@@ -28,7 +29,7 @@ class DoctorsList extends StatelessWidget {
 
     void navigateScreenGamification(Doctor doctor) {
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => WidgetTree()));
+          MaterialPageRoute(builder: (context) => HomePage()));
     }
 
     void navigateScreenParenting(Doctor doctor) {

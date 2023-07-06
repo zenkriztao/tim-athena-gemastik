@@ -1,89 +1,89 @@
 const List<String> story2Question1 = [
-  "Hi there, nice to meet you, I am Miss Unicorn and I'm a very close friend of Mr. Phoenix",
-  "I am going to tell you the story of Claudio the turtle",
-  "On the bank of the river Snockerdoodle, lived a turtle by the name Claudio. His parents were Mr. Mario and Mrs. Marinara",
-  "Claudio had a heart of gold and was a good and extroverted turtle but he was different from the others.",
-  "He had difficulty in grasping things quickly which resulted in some trouble in his academics.",
-  "His parents were worried that he was falling behind in his studies due to some kind of a problem and took him to a doctor",
-  "The doctor diagnosed him with dyslexia, and advised him to focus a lot more on speaking, reading, writing and listening skills.",
-  "Here are a few instances, through which the doctor was able to identify he had dyslexia."
-  "Try to get the correct answer as to how Claudio would have reacted in these situations.",
-  "One day in school, Claudio's teacher Mrs. Suzie gave the students a dictation test, one of the words was 'ball'",
-  "What do you think Claudio wrote its spelling as?",
+  "Halo, senang bertemu denganmu, saya Miss Unicorn dan saya adalah teman dekat Mr. Phoenix",
+  "Saya akan bercerita tentang Claudio sang kura-kura",
+  "Di tepi sungai Snockerdoodle, hiduplah seekor kura-kura bernama Claudio. Orangtuanya adalah Mr. Mario dan Mrs. Marinara",
+  "Claudio memiliki hati yang baik dan dia adalah kura-kura yang baik dan ekstrovert namun dia berbeda dari yang lain.",
+  "Dia mengalami kesulitan dalam memahami hal-hal dengan cepat yang mengakibatkan beberapa masalah dalam akademiknya.",
+  "Orangtuanya khawatir bahwa dia tertinggal dalam studinya karena ada masalah tertentu dan membawanya ke dokter",
+  "Dokter mendiagnosisnya dengan disleksia, dan menyarankannya untuk lebih fokus pada keterampilan berbicara, membaca, menulis, dan mendengarkan.",
+  "Berikut beberapa kejadian, melalui mana dokter dapat mengidentifikasi bahwa dia memiliki disleksia.",
+  "Cobalah untuk mendapatkan jawaban yang benar tentang bagaimana Claudio akan bereaksi dalam situasi-situasi ini.",
+  "Suatu hari di sekolah, guru Claudio, Mrs. Suzie, memberikan tes diktat kepada siswa, salah satu kata adalah 'bola'",
+  "Apa menurutmu cara penulisan kata 'bola' oleh Claudio?",
 ];
 
 const String story2Question1Correct =
-    "That’s amazing. People with dyslexia have confusion over letters that look similar and put the letters the wrong way around such as writing d instead of b.";
+    "Luar biasa. Orang-orang dengan disleksia mengalami kebingungan antara huruf-huruf yang terlihat mirip dan menempatkan huruf-huruf dengan cara yang salah, seperti menulis d alih-alih b.";
 
 const String story2Question1Wrong =
-    "Not quite! People with dyslexia have confusion over letters that look similar and put the letters the wrong way around such as writing d instead of b.";
+    "Belum tepat! Orang-orang dengan disleksia mengalami kebingungan antara huruf-huruf yang terlihat mirip dan menempatkan huruf-huruf dengan cara yang salah, seperti menulis d alih-alih b.";
 
 const List<String> story2Options1 = [
-  "A. Claudio wrote the word ball without any mistakes.",
-  "B. Claudio wrote dall instead of ball.",
-  "C. Claudio didnt write the word",
-  "D. Claudio left the classroom",
+  "A. Claudio menulis kata 'bola' tanpa kesalahan.",
+  "B. Claudio menulis kata 'dall' alih-alih 'bola'.",
+  "C. Claudio tidak menulis kata itu",
+  "D. Claudio meninggalkan ruang kelas",
 ];
 
 const List<String> story2Question2 = [
-  "On another day, a few weeks later..., in the library period in his school, all the students were asked to pick a book",
-  "All the students took the book they wanted to read, but Claudio went and sat in the corner solemnly without anything in his hand",
-  "The librarian saw this and asked what the problem was",
-  "How do you think Claudio replied to it?",
+  "Pada hari lain, beberapa minggu kemudian..., dalam sesi perpustakaan di sekolahnya, semua siswa diminta untuk mengambil buku",
+  "Semua siswa mengambil buku yang mereka ingin baca, tetapi Claudio pergi dan duduk di pojok dengan sedih tanpa membawa apa pun di tangannya",
+  "Pustakawan melihat ini dan bertanya apa masalahnya",
+  "Bagaimana menurutmu jawaban Claudio terhadap pertanyaan itu?",
 ];
 
 const List<String> story2Options2 = [
-  "A.	Claudio chose Harry potter to read.",
-  "B.	Claudio told his librarian that he doesn’t like to read and asked whether he could go out and play.",
-  "C.	Claudio tore the book his librarian gave him",
-  "D.	Claudio hid behind a shelf of books",
+  "A. Claudio memilih untuk membaca Harry Potter.",
+  "B. Claudio mengatakan kepada pustakawannya bahwa dia tidak suka membaca dan bertanya apakah dia bisa keluar dan bermain.",
+  "C. Claudio merobek buku yang diberikan oleh pustakawannya",
+  "D. Claudio bersembunyi di balik rak buku",
 ];
 
 const String story2Question2Correct =
-    "Amazing job! People with dyslexia do not prefer reading as it frustrates them. This is why they must be taught in more effective and innovative ways so that they come back to enjoy reading.";
+    "Kerja yang luar biasa! Orang-orang dengan disleksia tidak menyukai membaca karena hal itu membuat frustrasi bagi mereka. Oleh karena itu, mereka harus diajarkan dengan cara yang lebih efektif dan inovatif agar mereka kembali menikmati membaca.";
 
 const String story2Question2Wrong =
-    "Not quite! People with dyslexia do not prefer reading as it frustrates them. This is why they must be taught in more effective and innovative ways so that they come back to enjoy reading.";
+    "Belum tepat! Orang-orang dengan disleksia tidak menyukai membaca karena hal itu membuat frustrasi bagi mereka. Oleh karena itu, mereka harus diajarkan dengan cara yang lebih efektif dan inovatif agar mereka kembali menikmati membaca.";
 
 const List<String> story2Question3 = [
-  "The teacher Mrs. Suzie told the kids to remember the tables of 5 having explained the children a lot of times. How do you think Claudio did?",
+  "Guru Mrs. Suzie mengatakan kepada anak-anak untuk mengingat tabel perkalian 5 setelah menjelaskan kepada mereka berkali-kali. Bagaimana menurutmu Claudio melakukannya?",
 ];
 
 const String story2Question3Correct =
-    "Excellent work! People with dyslexia have trouble remembering and memorising. It must be ensured that they are made to love the subject and instead of memorising, help them remember things.";
+    "Kerja yang luar biasa! Orang-orang dengan disleksia mengalami kesulitan dalam mengingat dan menghafal. Harus dipastikan bahwa mereka diajarkan untuk menyukai mata pelajaran tersebut dan bukan menghafal, membantu mereka mengingat hal-hal.";
 
 const String story2Question3Wrong =
-    "Not quite! People with dyslexia have trouble remembering and memorising.It must be ensured that they are made to love the subject and instead of memorising, help them remember things.";
+    "Belum tepat! Orang-orang dengan disleksia mengalami kesulitan dalam mengingat dan menghafal. Harus dipastikan bahwa mereka diajarkan untuk menyukai mata pelajaran tersebut dan bukan menghafal, membantu mereka mengingat hal-hal.";
 
 const List<String> story2Options3 = [
-  "A.	Claudio is very efficient with tables of 5",
-  "B.	Claudio fails to remember tables of 5.",
-  "C.	Claudio answers back to his teacher.",
-  "D.	Claudio left the class.",
+  "A. Claudio sangat lancar dengan tabel perkalian 5",
+  "B. Claudio gagal mengingat tabel perkalian 5.",
+  "C. Claudio membalas guru",
+  "D. Claudio meninggalkan kelas",
 ];
 
 const List<String> story2Question4 = [
-  "It was exam time and the paper was super easy. Everyone finished the paper in an average of 30 min. How do you think Claudio likely did on the test?",
+  "Ini waktu ujian dan soalnya sangat mudah. Semua orang menyelesaikan soal dalam waktu rata-rata 30 menit. Bagaimana menurutmu Claudio kemungkinan berprestasi dalam tes ini?",
 ];
 
 const String story2Question4Correct =
-    "Amazing! People with dyslexia find it hard to finish things on time and take more time to do their work or don’t finish their work in the stipulated timeframe.";
+    "Luar biasa! Orang-orang dengan disleksia kesulitan menyelesaikan tugas tepat waktu dan membutuhkan lebih banyak waktu untuk mengerjakan tugas mereka atau tidak menyelesaikan tugas mereka sesuai dengan waktu yang ditentukan.";
 
 const String story2Question4Wrong =
-    "Not quite! People with dyslexia find it hard to finish things on time and take more time to do their work or don’t finish their work in the stipulated timeframe.";
+    "Belum tepat! Orang-orang dengan disleksia kesulitan menyelesaikan tugas tepat waktu dan membutuhkan lebih banyak waktu untuk mengerjakan tugas mereka atau tidak menyelesaikan tugas mereka sesuai dengan waktu yang ditentukan.";
 
 const List<String> story2Options4 = [
-  "A.	Claudio did super awesome and finished the test in 15 min.",
-  "B.	Claudio couldn’t finish the test in time.",
-  "C.	Claudio retaliated at his teacher for giving the test.",
-  "D.	Claudio slept during the test.",
+  "A. Claudio melakukan dengan sangat baik dan menyelesaikan tes dalam 15 menit.",
+  "B. Claudio tidak dapat menyelesaikan tes tepat waktu.",
+  "C. Claudio membalas guru karena memberikan tes.",
+  "D. Claudio tidur saat tes.",
 ];
 
 const List<String> story2Outro = [
-  "This is the story of what Claudio goes through at his school.",
-  "Congratulations on helping Dr. Basu diagnose him very well and helping Claudio get the best treatment possible!",
-  "We need more people like you who understand other people and oneself helping everyone lead a fruitful life. ",
-  "Few symptoms of Dyslexia are not being able to recollect, spelling problems, avoiding reading being clumsy and more. ",
-  "There is lots of help out there in this app and in the world for such people and don’t miss out!!!",
-  " I will meet you again in the stories in the future! We love you!",
+  "Ini adalah kisah tentang apayang dialami Claudio di sekolahnya.",
+  "Selamat telah membantu Dr. Basu mendiagnosis dengan baik dan membantu Claudio mendapatkan perawatan terbaik yang mungkin!",
+  "Kita membutuhkan lebih banyak orang seperti kamu yang memahami orang lain dan diri sendiri untuk membantu semua orang menjalani kehidupan yang bermakna.",
+  "Beberapa gejala disleksia adalah sulit mengingat, masalah ejaan, menghindari membaca, ceroboh, dan lainnya.",
+  "Ada banyak bantuan di aplikasi ini dan di dunia untuk orang-orang seperti itu, jangan sampai ketinggalan!",
+  "Aku akan bertemu denganmu lagi di cerita-cerita di masa depan! Kami mencintaimu!",
 ];

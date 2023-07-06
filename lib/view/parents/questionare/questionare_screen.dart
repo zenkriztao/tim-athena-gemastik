@@ -4,6 +4,7 @@ import 'package:autism_perdiction_app/constants.dart';
 import 'package:autism_perdiction_app/model/questionare_model.dart';
 import 'package:autism_perdiction_app/theme.dart';
 import 'package:autism_perdiction_app/view/parents/bottomNavBar/app_bottom_nav_bar_screen.dart';
+import 'package:autism_perdiction_app/view/specialists/consult_screen.dart';
 import 'package:autism_perdiction_app/view/specialists/doctor_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -467,7 +468,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                             Navigator.push(
                               context,
                               PageRouteBuilder(
-                                pageBuilder: (c, a1, a2) => SpecialistScreen(),
+                                pageBuilder: (c, a1, a2) => ConsultScreen(),
                                 transitionsBuilder: (c, anim, a2, child) =>
                                     FadeTransition(opacity: anim, child: child),
                                 transitionDuration: Duration(milliseconds: 100),

@@ -505,8 +505,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         )
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
+                    const Divider(
+                                height: 10,
+                                thickness: 1,
+                                indent: 80,
+                                endIndent: 80,
+                                color: darkBlueColor,
+                              ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    
                     Padding(
                         padding: const EdgeInsets.only(left: 16,right: 16),
                         child: GestureDetector(

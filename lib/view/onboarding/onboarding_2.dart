@@ -63,7 +63,7 @@ class Onboarding2Screen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Pulihkan Social ',
+                      'Pulih Lebih',
                       style: GoogleFonts.spectral(
                         fontSize: 45,
                         fontWeight: FontWeight.bold,
@@ -71,7 +71,7 @@ class Onboarding2Screen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Skills!",
+                      "Cepat!",
                       style: GoogleFonts.spectral(
                        fontSize: 45,
                        fontWeight: FontWeight.bold,

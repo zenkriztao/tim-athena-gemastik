@@ -17,13 +17,13 @@ class DoctorBanner extends StatefulWidget {
 class _DoctorBannerState extends State<DoctorBanner> {
   final List<Map<String, String>> cardData = [
     {
-      'title': 'Autism',
+      'title': 'Autism MCT',
       'description':
           'Test berdasarkan studi kasus yang kami buat dari survey Mchat dengan keakuratan 90%',
       'image': 'assets/images/testautism.png',
     },
     {
-      'title': 'Dsylexia',
+      'title': 'Autism SCQ Data',
       'description':
           'Test berdasarkan studi kasus yang kami buat dari survey SCQData dengan keakuratan 90%',
       'image': 'assets/images/dyslexia.png',
