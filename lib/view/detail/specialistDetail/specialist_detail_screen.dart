@@ -1,6 +1,7 @@
 import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/model/firebase_auth.dart';
 import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/chat/chat_dao.dart';
 import 'package:aksonhealth/view/chat/chat_room.dart';
 import 'package:aksonhealth/view/reports/report_detail_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -28,21 +29,25 @@ class SpecialistDetailScreen extends StatefulWidget {
   final String status;
   final String payment;
   final String userIs;
+  final String userId;
+  final String profileUrl;
 
   const SpecialistDetailScreen({
     Key? key,
+    required this.userId,
+    required this.userName,
     required this.image,
     required this.name,
     required this.doctorId,
     required this.specialization,
     required this.category,
     required this.phone,
-    required this.userName,
     required this.userEmail,
     required this.email,
     required this.status,
     required this.payment,
     required this.userIs,
+    required this.profileUrl,
   }) : super(key: key);
 
   @override
@@ -50,6 +55,19 @@ class SpecialistDetailScreen extends StatefulWidget {
 }
 
 class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
+  final ScrollController _scrollController = ScrollController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  late User user;
+  late var chatDao;
+
+  Future<void> _getUser() async {
+    user = _auth.currentUser!;
+  }
+
+  Future<void> _set() async {
+    chatDao = ChatDao(user.uid);
+  }
+
   final TextEditingController _cardUserControler = TextEditingController();
   final TextEditingController _cardNumberControler = TextEditingController();
   final TextEditingController _cardCVCControler = TextEditingController();
@@ -57,7 +75,6 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
   MethodsHandler _methodsHandler = MethodsHandler();
   List<Map<String, dynamic>> _reports = [];
   PaymentType _site = PaymentType.ConDelivery;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   String isCreated = '', endTime = '';
   DateTime? _chosenDateTime;
   int y = 0, index1 = -1;
@@ -89,6 +106,8 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
   @override
   void initState() {
     getData();
+    _getUser();
+    _set();
     setState(() {
       isSelected = 'no';
       showReport = '';
@@ -358,7 +377,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                           Container(
                                             width: size.width * .9,
                                             child: Text(
-                                              ' Booking Date & Time',
+                                              'Janji Tanggal dan Waktu',
                                               style: GoogleFonts.nunito(
                                                   fontSize: 18,
                                                   color: Colors.black,
@@ -510,7 +529,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                         .showSnackBar(
                                                             const SnackBar(
                                                                 content: Text(
-                                                                    'Choose Date & Time. Sunday is off. Choose time between 10:00AM to 11:00PM.')));
+                                                                    'Pilih Tanggal & Waktu.')));
                                                   } else if (_chosenDateTime!
                                                       .isBefore(
                                                           DateTime.now())) {
@@ -762,7 +781,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                           BorderRadius.circular(
                                                               6)),
                                                 ),
-                                                child: Text("Book Appointment",
+                                                child: Text("Book",
                                                     style: subtitleWhite)),
                                           ),
                                   ],
@@ -846,25 +865,26 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                           ),
                           Row(
                             children: [
-                              Padding(padding: EdgeInsets.all(20.0)),
+                              Padding(padding: EdgeInsets.all(5.0)),
                               Column(
                                 children: [
-                                    SizedBox(
-                                height: 30,
-                              ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
                                   ClipRRect(
-                                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50)),
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: greenColor
-                                      ),
-                                      child: const FaIcon(FontAwesomeIcons.message),
+                                          backgroundColor: greenColor),
+                                      child: const FaIcon(
+                                          FontAwesomeIcons.message),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) => ChatRoom(
-                                                user2Id: 'userid',
+                                                user2Id: widget.userId,
                                                 user2Name: widget.name,
                                                 profileUrl: widget.image,
                                               ),
@@ -875,9 +895,8 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                   Text(
                                     "Chat",
                                     style: GoogleFonts.nunito(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold
-                                    ),
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
                                   )
                                 ],
                               )
@@ -925,7 +944,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                     onTap: () async {
                                       SharedPreferences prefs =
                                           await SharedPreferences.getInstance();
-            
+
                                       showCupertinoModalPopup(
                                           context: context,
                                           builder: (_) => Container(
@@ -936,54 +955,57 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                   children: [
                                                     SizedBox(
                                                       height: 400,
-                                                      child: CupertinoDatePicker(
-                                                          mode:
-                                                              CupertinoDatePickerMode
+                                                      child:
+                                                          CupertinoDatePicker(
+                                                              mode: CupertinoDatePickerMode
                                                                   .dateAndTime,
-                                                          use24hFormat: true,
-                                                          minimumDate:
-                                                              DateTime.now()
+                                                              use24hFormat:
+                                                                  true,
+                                                              minimumDate: DateTime
+                                                                      .now()
                                                                   .subtract(
                                                                       Duration(
                                                                           days:
                                                                               1)),
-                                                          initialDateTime:
-                                                              DateTime.now(),
-                                                          onDateTimeChanged:
-                                                              (val) {
-                                                            Duration diff =
-                                                                val.difference(
-                                                                    DateTime
-                                                                        .now());
-                                                            //DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm");
-            
-                                                            setState(() {
-                                                              _chosenDateTime =
-                                                                  val;
-                                                              String string1 =
-                                                                  DateFormat()
-                                                                      .add_yMMMd()
-                                                                      .format(
-                                                                          val);
-                                                              String time3 =
-                                                                  DateFormat()
-                                                                      .add_jm()
-                                                                      .format(
-                                                                          val);
-            
-                                                              endTime = string1
-                                                                      .toString() +
-                                                                  ' at ' +
-                                                                  time3
-                                                                      .toString();
-                                                            });
-                                                            prefs.setString(
-                                                                'selectedMorningTime',
-                                                                endTime
-                                                                    .toString());
-                                                          }),
+                                                              initialDateTime:
+                                                                  DateTime
+                                                                      .now(),
+                                                              onDateTimeChanged:
+                                                                  (val) {
+                                                                Duration diff =
+                                                                    val.difference(
+                                                                        DateTime
+                                                                            .now());
+                                                                //DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm");
+
+                                                                setState(() {
+                                                                  _chosenDateTime =
+                                                                      val;
+                                                                  String
+                                                                      string1 =
+                                                                      DateFormat()
+                                                                          .add_yMMMd()
+                                                                          .format(
+                                                                              val);
+                                                                  String time3 =
+                                                                      DateFormat()
+                                                                          .add_jm()
+                                                                          .format(
+                                                                              val);
+
+                                                                  endTime = string1
+                                                                          .toString() +
+                                                                      ' at ' +
+                                                                      time3
+                                                                          .toString();
+                                                                });
+                                                                prefs.setString(
+                                                                    'selectedMorningTime',
+                                                                    endTime
+                                                                        .toString());
+                                                              }),
                                                     ),
-            
+
                                                     // Close the modal
                                                     CupertinoButton(
                                                       child: const Text('OK'),
@@ -1088,9 +1110,9 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                         } else if (snapshot.hasData &&
                                             snapshot.data!.docs.isEmpty) {
                                           // got data from snapshot but it is empty
-            
+
                                           return Center(
-                                              child: Text("No Data Found"));
+                                              child: Text("Tidak Ada Data"));
                                         } else {
                                           return Center(
                                             child: Container(
@@ -1099,8 +1121,8 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                 itemCount:
                                                     snapshot.data!.docs.length,
                                                 itemBuilder: (context, index) {
-                                                  DocumentSnapshot ds =
-                                                      snapshot.data!.docs[index];
+                                                  DocumentSnapshot ds = snapshot
+                                                      .data!.docs[index];
                                                   return GestureDetector(
                                                     onTap: () {
                                                       Navigator.push(
@@ -1111,8 +1133,8 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                               ReportDetailScreen(
                                                             childName: snapshot
                                                                 .data!
-                                                                .docs[index]
-                                                                    ["childName"]
+                                                                .docs[index][
+                                                                    "childName"]
                                                                 .toString(),
                                                             childAge: snapshot
                                                                 .data!
@@ -1139,7 +1161,8 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                                 .docs[index]
                                                                     ["date"]
                                                                 .toString(),
-                                                            total: snapshot.data!
+                                                            total: snapshot
+                                                                    .data!
                                                                     .docs[index]
                                                                 ["score"],
                                                           ),
@@ -1165,8 +1188,10 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                               left: 0,
                                                               right: 0),
                                                       child: Container(
-                                                        width: size.width * 0.95,
-                                                        decoration: BoxDecoration(
+                                                        width:
+                                                            size.width * 0.95,
+                                                        decoration:
+                                                            BoxDecoration(
                                                           border: Border.all(
                                                               width: 0.5,
                                                               color: blueColor),
@@ -1181,7 +1206,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                           //
                                                           //   <Color>[Color((math.Random().nextDouble() * 0xFFFFFF).toInt()),Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.5), ],
                                                           // ),
-            
+
                                                           //whiteColor,
                                                         ),
                                                         child: Padding(
@@ -1199,9 +1224,8 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                10),
+                                                                        BorderRadius.circular(
+                                                                            10),
                                                                     // color: Colors.green,
                                                                   ),
                                                                   width:
@@ -1218,17 +1242,17 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                                         .toString(),
                                                                     fit: BoxFit
                                                                         .scaleDown,
-                                                                    width:
-                                                                        size.width *
-                                                                            0.17,
-                                                                    height:
-                                                                        size.height *
-                                                                            0.06,
+                                                                    width: size
+                                                                            .width *
+                                                                        0.17,
+                                                                    height: size
+                                                                            .height *
+                                                                        0.06,
                                                                   )),
                                                               Container(
                                                                 //  color: redColor,
                                                                 // width: size.width * 0.73,
-            
+
                                                                 child: Column(
                                                                   //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
@@ -1236,8 +1260,8 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                                       children: [
                                                                         Container(
                                                                           //  color: Colors.orange,
-                                                                          width: size.width *
-                                                                              0.48,
+                                                                          width:
+                                                                              size.width * 0.48,
                                                                           child:
                                                                               Column(
                                                                             crossAxisAlignment:
@@ -1289,7 +1313,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                                                 selectedIndex = "";
                                                                               });
                                                                             }
-            
+
                                                                             // Navigator.push(
                                                                             //   context,
                                                                             //   PageRouteBuilder(
@@ -1353,23 +1377,26 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                     height: size.height * 0.06,
                                     width: size.width * 0.9,
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
                                       child: ElevatedButton(
                                           onPressed: () async {
                                             getRenter();
                                             print(_site.toString());
                                             // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SingnIn()));
-                                                
-                                            if (selectedIndex.toString() == '') {
+
+                                            if (selectedIndex.toString() ==
+                                                '') {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(const SnackBar(
                                                       content: Text(
-                                                          'Choose child report.')));
-                                            } else if (endTime.toString() == '') {
+                                                          'Harus dipilih laporan dulu')));
+                                            } else if (endTime.toString() ==
+                                                '') {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(const SnackBar(
                                                       content: Text(
-                                                          'Choose Date & Time. Sunday is off. Choose time between 10:00AM to 11:00PM.')));
+                                                          'Pilih Jam dan Tanggal')));
                                             } else if (_chosenDateTime!
                                                 .isBefore(DateTime.now())) {
                                               ScaffoldMessenger.of(context)
@@ -1407,15 +1434,17 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                   setState(() {
                                                     _isLoading = true;
                                                   });
-                                                  print('we are in BookingVehicle');
+                                                  print(
+                                                      'we are in BookingVehicle');
                                                   FirebaseFirestore.instance
-                                                      .collection('Appointments')
+                                                      .collection(
+                                                          'Appointments')
                                                       .doc()
                                                       .set({
                                                     "doctorName":
                                                         widget.name.toString(),
-                                                    "doctorId":
-                                                        widget.doctorId.toString(),
+                                                    "doctorId": widget.doctorId
+                                                        .toString(),
                                                     "doctorImage":
                                                         widget.image.toString(),
                                                     "doctorPhone":
@@ -1446,7 +1475,8 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                     "cardCVC":
                                                         _cardCVCControler.text,
                                                     "cardHolderCardNumber":
-                                                        _cardNumberControler.text,
+                                                        _cardNumberControler
+                                                            .text,
                                                     "date": date,
                                                     "childName": childName,
                                                     "childImage": childImage,
@@ -1460,12 +1490,14 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                       _isLoading = false;
                                                     });
                                                     Navigator.pop(context);
-                                                
+
                                                     Fluttertoast.showToast(
-                                                      msg: "Successfully Booked",
+                                                      msg:
+                                                          "Successfully Booked",
                                                       toastLength:
                                                           Toast.LENGTH_SHORT,
-                                                      gravity: ToastGravity.BOTTOM,
+                                                      gravity:
+                                                          ToastGravity.BOTTOM,
                                                       timeInSecForIosWeb: 4,
                                                     );
                                                   });
@@ -1474,15 +1506,16 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                 setState(() {
                                                   _isLoading = true;
                                                 });
-                                                print('we are in BookingVehicle');
+                                                print(
+                                                    'we are in BookingVehicle');
                                                 FirebaseFirestore.instance
                                                     .collection('Bookings')
                                                     .doc()
                                                     .set({
                                                   "doctorName":
                                                       widget.name.toString(),
-                                                  "doctorId":
-                                                      widget.doctorId.toString(),
+                                                  "doctorId": widget.doctorId
+                                                      .toString(),
                                                   "doctorImage":
                                                       widget.image.toString(),
                                                   "doctorPhone":
@@ -1493,14 +1526,16 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                   "parentEmail": renterEmail,
                                                   "parentName": renterName,
                                                   "evaluation": 0,
-                                                  "parentId": _auth.currentUser!.uid
+                                                  "parentId": _auth
+                                                      .currentUser!.uid
                                                       .toString(),
                                                   "paymentMethod": _site
                                                               .toString() ==
                                                           'PaymentType.Credit_Debit'
                                                       ? 'Credit/Debit Card'
                                                       : 'Cash',
-                                                  "paymentPaid": _site.toString() ==
+                                                  "paymentPaid": _site
+                                                              .toString() ==
                                                           'PaymentType.Credit_Debit'
                                                       ? 'yes'
                                                       : 'no',
@@ -1508,7 +1543,8 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                       _cardUserControler.text,
                                                   "cardDate":
                                                       _cardDateControler.text,
-                                                  "cardCVC": _cardCVCControler.text,
+                                                  "cardCVC":
+                                                      _cardCVCControler.text,
                                                   "cardHolderCardNumber":
                                                       _cardNumberControler.text,
                                                   "date": date,
@@ -1524,7 +1560,7 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                     _isLoading = false;
                                                   });
                                                   // Navigator.pop(context)
-                                                
+
                                                   Navigator.of(context).pop();
                                                   // Navigator.push(
                                                   //   context,
@@ -1536,8 +1572,10 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
                                                   // );
                                                   Fluttertoast.showToast(
                                                     msg: "Successfully Booked",
-                                                    toastLength: Toast.LENGTH_SHORT,
-                                                    gravity: ToastGravity.BOTTOM,
+                                                    toastLength:
+                                                        Toast.LENGTH_SHORT,
+                                                    gravity:
+                                                        ToastGravity.BOTTOM,
                                                     timeInSecForIosWeb: 4,
                                                   );
                                                 });

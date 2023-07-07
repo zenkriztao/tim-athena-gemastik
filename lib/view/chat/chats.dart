@@ -121,7 +121,7 @@ class ChatCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   backgroundImage: NetworkImage(profileUrl),
-                  backgroundColor: Color(0xFFBF717E),
+                  backgroundColor: darkBlueColor,
                   radius: 30,
                 ),
                 const SizedBox(
@@ -140,7 +140,7 @@ class ChatCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Counselor Expert for Women",
+                      "Dokter",
                       style: GoogleFonts.nunito(
                         fontWeight: FontWeight.w500,
                         fontSize: 15,

@@ -48,7 +48,7 @@ class _UserTypeState extends State<UserType> {
               ),
             ),
 
-            //  Text('Autism', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 32),textAlign: TextAlign.center),
+            //  Text('Autism', style: GoogleFonts.nunito(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 32),textAlign: TextAlign.center),
 
             SizedBox(
               height: size.height * 0.05,

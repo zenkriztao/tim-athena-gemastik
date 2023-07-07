@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'message.dart';
 import 'message_dao.dart';
 
@@ -201,7 +202,7 @@ class MessageWidget extends StatelessWidget {
         ),
         child: Text(
           message,
-          style: TextStyle(
+          style: GoogleFonts.nunito(
               fontSize: 16,
               color: isMe ? Colors.white : Colors.black,
               fontWeight: FontWeight.w600),

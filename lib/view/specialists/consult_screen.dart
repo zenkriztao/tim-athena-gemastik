@@ -3,6 +3,7 @@ import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/specialists/consult_banner.dart';
 import 'package:aksonhealth/view/specialists/doctor_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ConsultScreen extends StatefulWidget {
   @override
@@ -21,8 +22,8 @@ class _ConsultScreenState extends State<ConsultScreen> {
           child: Column(
             children: [
               AppBar(
-                title: const Text("Konsultasi",
-                    style: TextStyle(color: darkBlueColor)),
+                title: Text("Konsultasi",
+                    style: GoogleFonts.nunito(color: darkBlueColor)),
                 backgroundColor: Colors.white,
               ),
               SizedBox(height: 30),

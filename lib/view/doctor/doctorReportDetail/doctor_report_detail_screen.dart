@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -50,8 +51,8 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
         elevation: 0,
         backgroundColor: appBarColor,
         title: Text(
-          'Report',
-          style: TextStyle(
+          'Laporan',
+          style: GoogleFonts.nunito(
               fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
         ),
         centerTitle: true,
@@ -76,8 +77,8 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
                     child: Text(
-                  'Autism Prediction',
-                  style: TextStyle(
+                  'Prediksi',
+                  style: GoogleFonts.nunito(
                       color: Colors.blue,
                       fontWeight: FontWeight.w600,
                       fontSize: 15),
@@ -117,8 +118,8 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          'Date',
-                          style: TextStyle(
+                          'Tanggal',
+                          style: GoogleFonts.nunito(
                               color: Colors.blue,
                               fontWeight: FontWeight.w600,
                               fontSize: 13),
@@ -134,7 +135,7 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           DateFormat('dd-MM-yyyy').format(DateTime.now()),
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                               color: Colors.black,
                               fontWeight: FontWeight.w600,
                               fontSize: 14),
@@ -161,8 +162,8 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Child Name',
-                        style: TextStyle(
+                        'Nama Anak',
+                        style: GoogleFonts.nunito(
                             color: Colors.blue,
                             fontWeight: FontWeight.w600,
                             fontSize: 13),
@@ -178,7 +179,7 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         widget.childName,
-                        style: TextStyle(
+                        style: GoogleFonts.nunito(
                             color: Colors.black,
                             fontWeight: FontWeight.w500,
                             fontSize: 14),
@@ -204,8 +205,8 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Age',
-                        style: TextStyle(
+                        'Umur',
+                        style: GoogleFonts.nunito(
                             color: Colors.blue,
                             fontWeight: FontWeight.w600,
                             fontSize: 13),
@@ -222,8 +223,8 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        widget.childAge.toString() + ' years old',
-                        style: TextStyle(
+                        widget.childAge.toString() + ' tahun',
+                        style: GoogleFonts.nunito(
                             color: Colors.black,
                             fontWeight: FontWeight.w500,
                             fontSize: 14),
@@ -249,51 +250,8 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Gender',
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 13),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: size.width * 0.58,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        widget.childGender,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: size.height * 0.01,
-            ),
-            Container(
-              width: size.width * 0.9,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5)),
-                    width: size.width * 0.3,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Score',
-                        style: TextStyle(
+                        'Hasil',
+                        style: GoogleFonts.nunito(
                             color: Colors.blue,
                             fontWeight: FontWeight.w600,
                             fontSize: 13),
@@ -309,7 +267,7 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         widget.total.toString() + ' / 10',
-                        style: TextStyle(
+                        style: GoogleFonts.nunito(
                             color: Colors.black,
                             fontWeight: FontWeight.w500,
                             fontSize: 14),
@@ -335,8 +293,8 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Case',
-                        style: TextStyle(
+                        'Prediksi',
+                        style: GoogleFonts.nunito(
                             color: Colors.blue,
                             fontWeight: FontWeight.w600,
                             fontSize: 13),
@@ -351,67 +309,22 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        widget.total <= 4
-                            ? 'This score indicates Low risk of autism'
-                            : widget.total > 4 && widget.total <= 6
-                                ? 'This score indicates Medium risk of autism'
-                                : widget.total > 6
-                                    ? 'This score indicates High risk of autism'
-                                    : 'Calculation Autism',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: size.height * 0.01,
-            ),
-            Container(
-              width: size.width * 0.9,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5)),
-                    width: size.width * 0.3,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Advice',
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 13),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: size.width * 0.58,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        widget.total <= 4
-                            ? 'Low risk don\'t need to take your child to doctor'
-                            : widget.total > 4 && widget.total <= 9
-                                ? 'You should take your child to his/her doctor to follow up screening.You can also seek early intervention services for your child.'
-                                : widget.total == 10
-                                    ? 'You must have to take your child to his/her doctor to follow up screening.You can also seek early intervention services for your child.'
-                                    : 'Calculation Autism',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14),
-                      ),
+                            widget.total <= 4
+                                ? 'Hasil ini menunjukkan risiko rendah autisme, tidak perlu membawa anak Anda ke dokter'
+                                : widget.total > 4 && widget.total <= 6
+                                    ? 'Hasil ini menunjukkan risiko autisme sedang, Anda diharuskan membawa anak Anda ke dokter untuk pemeriksaan lanjutan. Anda juga dapat mencari layanan intervensi dini untuk anak Anda di Aplikasi Akson.'
+                                    : widget.total > 6
+                                        ? 'Hasil ini menunjukkan risiko tinggi autisme, Anda wajib membawa anak Anda ke dokter untuk pemeriksaan lanjutan. Anda juga dapat mencari layanan intervensi dini untuk anak Anda di Aplikasi Akson'
+                                        : 'Kalkulasi Autisme',
+                            style: GoogleFonts.nunito(
+                                color: widget.total <= 4
+                                    ? Colors.green
+                                    : widget.total > 4 && widget.total <= 6
+                                        ? Colors.blue
+                                        : Colors.red,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14),
+                          ),
                     ),
                   ),
                 ],
@@ -476,7 +389,7 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                                       child: TextFormField(
                                         controller: _evaluateControoler,
                                         keyboardType: TextInputType.name,
-                                        style: TextStyle(
+                                        style: GoogleFonts.nunito(
                                           fontSize: 14,
                                           color: Colors.black,
                                         ),
@@ -510,10 +423,9 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                                           hintText: "Evaluate",
 
                                           //make hint text
-                                          hintStyle: TextStyle(
+                                          hintStyle: GoogleFonts.nunito(
                                             color: buttonColor,
                                             fontSize: 16,
-                                            fontFamily: "verdana_regular",
                                             fontWeight: FontWeight.w400,
                                           ),
                                         ),
@@ -527,7 +439,7 @@ class _DoctorReportDetailScreenState extends State<DoctorReportDetailScreen> {
                                         },
                                       ),
                                       TextButton(
-                                        child: Text("Evaluate"),
+                                        child: Text("Evaluasi"),
                                         onPressed: () async {
                                           if (_evaluateControoler
                                               .text.isEmpty) {

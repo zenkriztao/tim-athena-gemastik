@@ -94,7 +94,7 @@ class _DoctorLoginScreenState extends State<DoctorLoginScreen> {
                       child: TextFormField(
                         controller: _emailAddressController,
                         keyboardType: TextInputType.emailAddress,
-                        style: TextStyle(
+                        style: GoogleFonts.nunito(
                           fontSize: 14,
                           color: Colors.black,
                         ),
@@ -145,7 +145,7 @@ class _DoctorLoginScreenState extends State<DoctorLoginScreen> {
                         autofocus: true,
                         controller: _passwordController,
                         obscureText: true,
-                        style: TextStyle(
+                        style: GoogleFonts.nunito(
                           fontSize: 14,
                           color: Colors.black,
                         ),

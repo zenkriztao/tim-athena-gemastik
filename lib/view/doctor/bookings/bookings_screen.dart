@@ -50,7 +50,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
               ],
             ),
             centerTitle: true,
-            title: Text('Appointment'),
+            title: Text('Janji Temu'),
           ),
           body: TabBarView(
             children: [
@@ -71,7 +71,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                   } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                     // got data from snapshot but it is empty
 
-                    return Center(child: Text("No Data Found"));
+                    return Center(child: Text("Tidak Ada Data"));
                   } else {
                     return Container(
                       width: size.width * 0.95,
@@ -181,24 +181,6 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                           child: Column(
                                             //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
-                                                alignment: Alignment.centerLeft,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 8, top: 8),
-                                                  child: Text(
-                                                    "Booking Id : #" +
-                                                        "${index + 1}",
-                                                    style: GoogleFonts.nunito(
-                                                        color: Colors.black,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w800,
-                                                        height: 1.3),
-                                                  ),
-                                                ),
-                                              ),
                                               SizedBox(
                                                 height: size.height * 0.01,
                                               ),
@@ -212,7 +194,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                     left: 8,
                                                   ),
                                                   child: Text(
-                                                    "Child : " +
+                                                    "Anak : " +
                                                         snapshot
                                                             .data!
                                                             .docs[index]
@@ -246,8 +228,8 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                                     "evaluation"]
                                                                 .toString() ==
                                                             "0"
-                                                        ? "Evaluation : Not Evaluated"
-                                                        : "Evaluation : " +
+                                                        ? "Hasil : Belum evaluasi"
+                                                        : "Hasil Evaluasi : " +
                                                             snapshot
                                                                 .data!
                                                                 .docs[index][
@@ -273,7 +255,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                     left: 8,
                                                   ),
                                                   child: Text(
-                                                    "Appointment Date : " +
+                                                    "Tanggal dibuat : " +
                                                         snapshot
                                                             .data!
                                                             .docs[index][
@@ -305,7 +287,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                           builder: (context) {
                                                             return AlertDialog(
                                                               title: const Text(
-                                                                  'Approve Booking'),
+                                                                  'Terima'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed:
@@ -419,7 +401,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                                         .min,
                                                                 children: [
                                                                   const Text(
-                                                                      'Are you sure you want to approve this booking?'),
+                                                                      'Apakah kamu ingin terima janji temu?'),
                                                                 ],
                                                               ),
                                                             );
@@ -443,7 +425,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                               const EdgeInsets
                                                                   .all(8),
                                                           child: Text(
-                                                            'Approve',
+                                                            'Terima',
                                                             style: GoogleFonts
                                                                 .nunito(
                                                                     color: Colors
@@ -466,7 +448,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                           builder: (context) {
                                                             return AlertDialog(
                                                               title: const Text(
-                                                                  'Cancel booking'),
+                                                                  'Batalkan'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed:
@@ -516,7 +498,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                                         .min,
                                                                 children: [
                                                                   const Text(
-                                                                      'Are you sure you want to cancel this bookings?'),
+                                                                      'Apakah kamu ingin batalkan Janji?'),
                                                                 ],
                                                               ),
                                                             );
@@ -593,7 +575,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                   } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                     // got data from snapshot but it is empty
 
-                    return Center(child: Text("No Data Found"));
+                    return Center(child: Text("Tidak Ada Data"));
                   } else {
                     return Container(
                       width: size.width * 0.95,
@@ -702,25 +684,6 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                           child: Column(
                                             //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
-                                                alignment: Alignment.centerLeft,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 8, top: 8),
-                                                  child: Text(
-                                                    "Booking Id : #" +
-                                                        "${index + 1}",
-                                                    style: GoogleFonts.nunito(
-                                                        color: Colors.black,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w800,
-                                                        height: 1.3),
-                                                  ),
-                                                ),
-                                              ),
-
                                               SizedBox(
                                                 height: size.height * 0.01,
                                               ),
@@ -734,7 +697,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                     left: 8,
                                                   ),
                                                   child: Text(
-                                                    "Child : " +
+                                                    "Anak : " +
                                                         snapshot
                                                             .data!
                                                             .docs[index]
@@ -770,8 +733,8 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                                     "evaluation"]
                                                                 .toString() ==
                                                             "0"
-                                                        ? "Evaluation : Not Evaluated"
-                                                        : "Evaluation : " +
+                                                        ? "Hasil : Belum Evaluasi"
+                                                        : "Hasil Evaluasi: " +
                                                             snapshot
                                                                 .data!
                                                                 .docs[index][
@@ -798,7 +761,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                     left: 8,
                                                   ),
                                                   child: Text(
-                                                    "Appointment Date : " +
+                                                    "Tanggal dibuat: " +
                                                         snapshot
                                                             .data!
                                                             .docs[index][
@@ -925,7 +888,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                   } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                     // got data from snapshot but it is empty
 
-                    return Center(child: Text("No Data Found"));
+                    return Center(child: Text("Tidak Ada Data"));
                   } else {
                     return Container(
                       width: size.width * 0.95,
@@ -1041,7 +1004,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                       const EdgeInsets.only(
                                                           left: 8, top: 8),
                                                   child: Text(
-                                                    "Appointment Id : #" +
+                                                    "Nomor : " +
                                                         "${index + 1}",
                                                     style: GoogleFonts.nunito(
                                                         color: Colors.black,
@@ -1065,7 +1028,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                     left: 8,
                                                   ),
                                                   child: Text(
-                                                    "Clinic : " +
+                                                    "Nama Dokter : " +
                                                         snapshot
                                                             .data!
                                                             .docs[index]
@@ -1099,8 +1062,8 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                                     "evaluation"]
                                                                 .toString() ==
                                                             "0"
-                                                        ? "Evaluation : Not Evaluated"
-                                                        : "Evaluation : " +
+                                                        ? "Hasil : Belum Evaluasi"
+                                                        : "Hasil Evaluasi : " +
                                                             snapshot
                                                                 .data!
                                                                 .docs[index][
@@ -1126,7 +1089,7 @@ class _DoctorBookingScreenState extends State<DoctorBookingScreen> {
                                                     left: 8,
                                                   ),
                                                   child: Text(
-                                                    "Appointment Date : " +
+                                                    "Tanggal dibuat : " +
                                                         snapshot
                                                             .data!
                                                             .docs[index][

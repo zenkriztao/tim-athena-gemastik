@@ -27,7 +27,7 @@ class _SpecialistScreenState extends State<SpecialistScreen> {
         } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
           // got data from snapshot but it is empty
 
-          return Center(child: Text("No Data Found"));
+          return Center(child: Text("Tidak Ada Data"));
         } else {
           return Container(
             width: size.width,
@@ -47,6 +47,10 @@ class _SpecialistScreenState extends State<SpecialistScreen> {
                                 name: snapshot.data!.docs[index]["clinicName"]
                                     .toString(),
                                 userEmail: snapshot.data!.docs[index]["email"]
+                                    .toString(),
+                                userId: snapshot.data!.docs[index]["uid"]
+                                    .toString(),
+                                profileUrl: snapshot.data!.docs[index]["image"]
                                     .toString(),
                                 userName: snapshot
                                     .data!.docs[index]["clinicName"]

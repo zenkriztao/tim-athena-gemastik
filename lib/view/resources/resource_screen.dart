@@ -1,5 +1,6 @@
 import 'package:aksonhealth/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ResourceScreen extends StatefulWidget {
   const ResourceScreen({super.key});
@@ -44,7 +45,7 @@ class _ResourceScreenState extends State<ResourceScreen> {
         elevation: 0,
         title: Text(
           'Sumber Daya',
-          style: TextStyle(
+          style: GoogleFonts.nunito(
               fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
         ),
         centerTitle: true,
@@ -79,7 +80,7 @@ class _ResourceScreenState extends State<ResourceScreen> {
                       child: Center(
                         child: Text(
                           "#${hastag[index]}",
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                               fontSize: 22,
                               color: Colors.blue,
                               fontWeight: FontWeight.w300),
@@ -93,7 +94,8 @@ class _ResourceScreenState extends State<ResourceScreen> {
             SizedBox(height: 36),
             Text(
               "My Feed",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              style:
+                  GoogleFonts.nunito(fontWeight: FontWeight.bold, fontSize: 24),
             ),
             SizedBox(height: 16),
             SizedBox(
@@ -116,7 +118,7 @@ class _ResourceScreenState extends State<ResourceScreen> {
                           ),
                           Text(
                             "English language teaching for Autism Spectrum Disorders Disorders ",
-                            style: TextStyle(
+                            style: GoogleFonts.nunito(
                                 fontWeight: FontWeight.bold, fontSize: 22),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -150,7 +152,7 @@ class _ResourceScreenState extends State<ResourceScreen> {
                             height: 320 / (16 / 9),
                           ),
                           Text("What about Neuron?",
-                              style: TextStyle(
+                              style: GoogleFonts.nunito(
                                   fontWeight: FontWeight.bold, fontSize: 22)),
                         ],
                       ),
@@ -162,7 +164,7 @@ class _ResourceScreenState extends State<ResourceScreen> {
 
             // Text(
             //   "English language teaching for Autism Spectrum Disorders",
-            //   style: TextStyle(
+            //   style: GoogleFonts.nunito(
             //     fontWeight: FontWeight.bold,
             //     fontSize: 16,
             //   ),
@@ -187,7 +189,7 @@ class _ResourceScreenState extends State<ResourceScreen> {
             //     ),
             //     Text(
             //       "English language teaching for Autism Spectrum Disorders",
-            //       style: TextStyle(
+            //       style: GoogleFonts.nunito(
             //           fontWeight: FontWeight.bold, fontSize: 16),
             //     )
             //   ],
@@ -206,7 +208,7 @@ class _ResourceScreenState extends State<ResourceScreen> {
     //     backgroundColor: appBarColor,
     //     title: Text(
     //       'Resources',
-    //       style: TextStyle(
+    //       style: GoogleFonts.nunito(
     //           fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
     //     ),
     //     centerTitle: true,
@@ -292,7 +294,7 @@ class _ResourceScreenState extends State<ResourceScreen> {
     //                           .toString(),
     //                       overflow: TextOverflow.fade,
     //                       maxLines: 1,
-    //                       style:  TextStyle(
+    //                       style:  GoogleFonts.nunito(
     //                           fontSize: 16,
     //                           fontWeight:
     //                           FontWeight.bold,

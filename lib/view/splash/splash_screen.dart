@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   'assets/logo.png',
                   fit: BoxFit.scaleDown,
                 )),
-            //     Text('Autism', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 32),textAlign: TextAlign.center),
+            //     Text('Autism', style: GoogleFonts.nunito(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 32),textAlign: TextAlign.center),
           ],
         ),
       ),

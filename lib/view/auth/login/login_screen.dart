@@ -11,6 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 class LoginScreen extends StatefulWidget {
   final String userType;
   const LoginScreen({Key? key, required this.userType}) : super(key: key);
@@ -55,7 +56,6 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         child: Container(
           height: 1000,
-
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: TextFormField(
                         controller: _emailAddressController,
                         keyboardType: TextInputType.emailAddress,
-                        style: TextStyle(
+                        style: GoogleFonts.nunito(
                           fontSize: 14,
                           color: Colors.black,
                         ),
@@ -147,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         autofocus: true,
                         controller: _passwordController,
                         obscureText: true,
-                        style: TextStyle(
+                        style: GoogleFonts.nunito(
                           fontSize: 14,
                           color: Colors.black,
                         ),

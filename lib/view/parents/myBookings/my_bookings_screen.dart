@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ParentBookingScreen extends StatefulWidget {
@@ -86,7 +87,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
               ],
             ),
             centerTitle: true,
-            title: Text('Janji temu'),
+            title: Text('Janji Temu'),
           ),
           body: TabBarView(
             children: [
@@ -107,7 +108,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                   } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                     // got data from snapshot but it is empty
 
-                    return Center(child: Text("No Data Found"));
+                    return Center(child: Text("Tidak Ada Data"));
                   } else {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -236,9 +237,8 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                         const EdgeInsets.only(
                                                             left: 8, top: 8),
                                                     child: Text(
-                                                      "Booking Id : #" +
                                                           "${index + 1}",
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.nunito(
                                                           color: Colors.black,
                                                           fontSize: 14,
                                                           fontWeight:
@@ -262,13 +262,13 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                       left: 8,
                                                     ),
                                                     child: Text(
-                                                      "Clinic : " +
+                                                      "Nama Dokter: " +
                                                           snapshot
                                                               .data!
                                                               .docs[index]
                                                                   ["doctorName"]
                                                               .toString(),
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.nunito(
                                                           color: Colors.black,
                                                           fontSize: 12,
                                                           fontWeight:
@@ -290,13 +290,13 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                       left: 8,
                                                     ),
                                                     child: Text(
-                                                      "Appointment Date : " +
+                                                      "Tanggal dibuat : " +
                                                           snapshot
                                                               .data!
                                                               .docs[index][
                                                                   "appointmentTime"]
                                                               .toString(),
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.nunito(
                                                           color: Colors.red,
                                                           fontSize: 12,
                                                           fontWeight:
@@ -337,7 +337,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                               .docs[index][
                                                                   "bookingStatus"]
                                                               .toString(),
-                                                          style: TextStyle(
+                                                          style: GoogleFonts.nunito(
                                                               color:
                                                                   Colors.white,
                                                               fontSize: 12,
@@ -389,7 +389,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                 //               child: Text(
                                                 //                 "Feedback"
                                                 //
-                                                //                 , style: TextStyle(
+                                                //                 , style: GoogleFonts.nunito(
                                                 //                   color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 //             ),
                                                 //           ),
@@ -423,7 +423,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                 //               child: Text(
                                                 //                 "Report"
                                                 //
-                                                //                 , style: TextStyle(
+                                                //                 , style: GoogleFonts.nunito(
                                                 //                   color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 //             ),
                                                 //           ),
@@ -469,7 +469,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                   } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                     // got data from snapshot but it is empty
 
-                    return Center(child: Text("No Data Found"));
+                    return Center(child: Text("Tidak Ada Data"));
                   } else {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -602,9 +602,8 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                         const EdgeInsets.only(
                                                             left: 8, top: 8),
                                                     child: Text(
-                                                      "Booking Id : #" +
                                                           "${index + 1}",
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.nunito(
                                                           color: Colors.black,
                                                           fontSize: 14,
                                                           fontWeight:
@@ -628,13 +627,13 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                       left: 8,
                                                     ),
                                                     child: Text(
-                                                      "Clinic : " +
+                                                      "Nama Dokter : " +
                                                           snapshot
                                                               .data!
                                                               .docs[index]
                                                                   ["doctorName"]
                                                               .toString(),
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.nunito(
                                                           color: Colors.black,
                                                           fontSize: 12,
                                                           fontWeight:
@@ -656,13 +655,13 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                       left: 8,
                                                     ),
                                                     child: Text(
-                                                      "Appointment Date : " +
+                                                      "Tanggal dibuat : " +
                                                           snapshot
                                                               .data!
                                                               .docs[index][
                                                                   "appointmentTime"]
                                                               .toString(),
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.nunito(
                                                           color: Colors.red,
                                                           fontSize: 12,
                                                           fontWeight:
@@ -702,7 +701,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                               .docs[index][
                                                                   "bookingStatus"]
                                                               .toString(),
-                                                          style: TextStyle(
+                                                          style: GoogleFonts.nunito(
                                                               color:
                                                                   Colors.white,
                                                               fontSize: 12,
@@ -754,7 +753,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                 //               child: Text(
                                                 //                 "Feedback"
                                                 //
-                                                //                 , style: TextStyle(
+                                                //                 , style: GoogleFonts.nunito(
                                                 //                   color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 //             ),
                                                 //           ),
@@ -788,7 +787,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                 //               child: Text(
                                                 //                 "Report"
                                                 //
-                                                //                 , style: TextStyle(
+                                                //                 , style: GoogleFonts.nunito(
                                                 //                   color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 //             ),
                                                 //           ),
@@ -834,7 +833,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                   } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                     // got data from snapshot but it is empty
 
-                    return Center(child: Text("No Data Found"));
+                    return Center(child: Text("Tidak Ada Data"));
                   } else {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -963,9 +962,8 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                         const EdgeInsets.only(
                                                             left: 8, top: 8),
                                                     child: Text(
-                                                      "Booking Id : #" +
                                                           "${index + 1}",
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.nunito(
                                                           color: Colors.black,
                                                           fontSize: 14,
                                                           fontWeight:
@@ -989,13 +987,13 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                       left: 8,
                                                     ),
                                                     child: Text(
-                                                      "Clinic : " +
+                                                      "Nama Dokter : " +
                                                           snapshot
                                                               .data!
                                                               .docs[index]
                                                                   ["doctorName"]
                                                               .toString(),
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.nunito(
                                                           color: Colors.black,
                                                           fontSize: 12,
                                                           fontWeight:
@@ -1017,13 +1015,13 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                       left: 8,
                                                     ),
                                                     child: Text(
-                                                      "Appointment Date : " +
+                                                      "Tanggal dibuat : " +
                                                           snapshot
                                                               .data!
                                                               .docs[index][
                                                                   "appointmentTime"]
                                                               .toString(),
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.nunito(
                                                           color: Colors.red,
                                                           fontSize: 12,
                                                           fontWeight:
@@ -1043,7 +1041,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                 //     padding: const EdgeInsets.only(left: 8,),
                                                 //     child: Text(
                                                 //       "Specialization : " + snapshot.data!.docs[index]["doctorSpec"].toString() + " "
-                                                //       , style: TextStyle(
+                                                //       , style: GoogleFonts.nunito(
                                                 //         color: Colors.green, fontSize: 12, fontWeight: FontWeight.w500, height: 1.3),),
                                                 //   ),
                                                 // ),
@@ -1078,7 +1076,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                               .docs[index][
                                                                   "bookingStatus"]
                                                               .toString(),
-                                                          style: TextStyle(
+                                                          style: GoogleFonts.nunito(
                                                               color:
                                                                   Colors.white,
                                                               fontSize: 12,
@@ -1146,7 +1144,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                                       right: 8),
                                                               child: Text(
                                                                 "Feedback",
-                                                                style: TextStyle(
+                                                                style: GoogleFonts.nunito(
                                                                     color: Colors
                                                                         .white,
                                                                     fontSize:
@@ -1205,7 +1203,7 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
                                                                       right: 8),
                                                               child: Text(
                                                                 "Report",
-                                                                style: TextStyle(
+                                                                style: GoogleFonts.nunito(
                                                                     color: Colors
                                                                         .white,
                                                                     fontSize:

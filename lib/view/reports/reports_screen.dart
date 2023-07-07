@@ -3,6 +3,7 @@ import 'package:aksonhealth/view/reports/report_detail_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({super.key});
@@ -25,7 +26,7 @@ class _ReportScreenState extends State<ReportScreen> {
         backgroundColor: appBarColor,
         title: Text(
           'Laporan',
-          style: TextStyle(
+          style: GoogleFonts.nunito(
               fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
         ),
         centerTitle: true,
@@ -45,7 +46,7 @@ class _ReportScreenState extends State<ReportScreen> {
           } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
             // got data from snapshot but it is empty
 
-            return Center(child: Text("No Data Found"));
+            return Center(child: Text("Tidak Ada Data"));
           } else {
             return Center(
               child: Container(
@@ -150,7 +151,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                                         " Report) ",
                                                     overflow:
                                                         TextOverflow.ellipsis,
-                                                    style: TextStyle(
+                                                    style: GoogleFonts.nunito(
                                                         color: secondaryColor1,
                                                         fontSize: 13,
                                                         fontWeight:
@@ -167,7 +168,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                                         .toString(),
                                                     overflow:
                                                         TextOverflow.ellipsis,
-                                                    style: TextStyle(
+                                                    style: GoogleFonts.nunito(
                                                         color: secondaryColor1,
                                                         fontSize: 12,
                                                         fontWeight:
@@ -232,7 +233,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                                 child: Center(
                                                   child: Text(
                                                     "Lihat",
-                                                    style: TextStyle(
+                                                    style: GoogleFonts.nunito(
                                                         fontSize: 13,
                                                         fontWeight:
                                                             FontWeight.w500,

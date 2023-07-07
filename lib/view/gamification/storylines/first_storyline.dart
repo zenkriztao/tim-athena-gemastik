@@ -194,7 +194,7 @@ class FirstStoryLine extends HookWidget {
                             child: Text(displayText.value,
                                 style: GoogleFonts.nunito(
                                     backgroundColor: Colors.transparent,
-                                    textStyle: TextStyle(
+                                    textStyle: GoogleFonts.nunito(
                                       fontSize: 20,
                                     )))),
                       )
@@ -244,7 +244,7 @@ class FirstStoryLine extends HookWidget {
                             child: Text("Submit",
                                 style: GoogleFonts.nunito(
                                     backgroundColor: Colors.transparent,
-                                    textStyle: TextStyle(
+                                    textStyle: GoogleFonts.nunito(
                                       fontSize: 20,
                                     )))),
                       )

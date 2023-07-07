@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -152,8 +153,8 @@ class _ParentBookingDetailScreenState extends State<ParentBookingDetailScreen> {
         elevation: 0,
         backgroundColor: appBarColor,
         title: Text(
-          'Booking',
-          style: TextStyle(
+          'Janji',
+          style: GoogleFonts.nunito(
               fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
         ),
         centerTitle: true,
@@ -188,21 +189,21 @@ class _ParentBookingDetailScreenState extends State<ParentBookingDetailScreen> {
                     children: [
                       Text(
                         widget.childName,
-                        style: TextStyle(
+                        style: GoogleFonts.nunito(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Colors.white),
                       ),
                       Text(
                         widget.age,
-                        style: TextStyle(
+                        style: GoogleFonts.nunito(
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
                             color: Colors.white),
                       ),
                       Text(
                         widget.gender,
-                        style: TextStyle(
+                        style: GoogleFonts.nunito(
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
                             color: Colors.white),
@@ -230,9 +231,9 @@ class _ParentBookingDetailScreenState extends State<ParentBookingDetailScreen> {
                 child: Center(
                     child: Text(
                   widget.evaluation == 0
-                      ? 'Not Evaluated Yet'
-                      : 'Doctor Autism Evaluation',
-                  style: TextStyle(
+                      ? 'Belum ada Evaluasi'
+                      : 'Evaluasi dari Dokter diberikan hasil',
+                  style: GoogleFonts.nunito(
                       color: Colors.blue,
                       fontWeight: FontWeight.w600,
                       fontSize: 15),
@@ -296,15 +297,15 @@ class _ParentBookingDetailScreenState extends State<ParentBookingDetailScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Parent Name ',
-                                      style: TextStyle(
+                                      'Nama Orang Tua',
+                                      style: GoogleFonts.nunito(
                                           color: Colors.black,
                                           fontSize: 16,
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
                                       widget.parentName.toString(),
-                                      style: TextStyle(
+                                      style: GoogleFonts.nunito(
                                           color: Colors.black,
                                           fontSize: 16,
                                           fontWeight: FontWeight.w400),
@@ -329,15 +330,15 @@ class _ParentBookingDetailScreenState extends State<ParentBookingDetailScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Parent Email ',
-                                      style: TextStyle(
+                                      'Email ',
+                                      style: GoogleFonts.nunito(
                                           color: Colors.black,
                                           fontSize: 16,
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
                                       widget.parentEmail.toString(),
-                                      style: TextStyle(
+                                      style: GoogleFonts.nunito(
                                           color: Colors.black,
                                           fontSize: 16,
                                           fontWeight: FontWeight.w400),
@@ -417,7 +418,7 @@ class _ParentBookingDetailScreenState extends State<ParentBookingDetailScreen> {
                                 ),
                               );
                             },
-                            child: Text('View Report', style: buttonStyle)),
+                            child: Text('Lihat Prediksi', style: buttonStyle)),
                       ),
                     ),
                     SizedBox(

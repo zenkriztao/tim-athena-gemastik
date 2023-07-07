@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class DailyChallenge extends HookWidget {
@@ -40,9 +41,8 @@ class DailyChallenge extends HookWidget {
           title: Column(children: [
             Text(
               options[i - 1],
-              style: const TextStyle(
+              style: GoogleFonts.nunito(
                   fontSize: 20,
-                  fontFamily: 'Hind',
                   fontWeight: FontWeight.w400),
             ),
             const Divider(),
@@ -51,9 +51,8 @@ class DailyChallenge extends HookWidget {
     return Column(
       children: [
         const SizedBox(height: 40),
-        const Text("Daily Challenge",
-            style: TextStyle(
-              fontFamily: 'LuckiestGuy',
+        Text("Daily Challenge",
+            style: GoogleFonts.nunito(
               fontSize: 20,
             )),
         const SizedBox(height: 10),
@@ -73,9 +72,8 @@ class DailyChallenge extends HookWidget {
                       cursor: '',
                       speed: const Duration(milliseconds: 50),
                       textAlign: TextAlign.center,
-                      textStyle: const TextStyle(
+                      textStyle: GoogleFonts.nunito(
                           fontSize: 20,
-                          fontFamily: 'Hind',
                           fontWeight: FontWeight.w400),
                     )
                   ],
@@ -171,16 +169,14 @@ class DailyChallenge extends HookWidget {
             (!challengeCompleted.value)
                 ? _startDailyChallenge(
                     context, dayId.value, formattedCurrentDate.value)
-                : Column(children: const [
+                : Column(children:  [
                     SizedBox(height: 50),
                     Text("Daily Challenge Completed!",
-                        style: TextStyle(
-                          fontFamily: 'LuckiestGuy',
+                        style: GoogleFonts.nunito(
                           fontSize: 20,
                         )),
                     Text("Come back tomorrow!",
-                        style: TextStyle(
-                          fontFamily: 'LuckiestGuy',
+                        style: GoogleFonts.nunito(
                           fontSize: 20,
                         ))
                   ])

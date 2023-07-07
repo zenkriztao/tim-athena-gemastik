@@ -129,7 +129,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
         iconTheme: IconThemeData(color: darkBlueColor),
         title: showResult == 'yes' && _question == null
             ? Text(
-                'Report',
+                'Laporan',
                 style: GoogleFonts.nunito(
                     color: Colors.white, fontWeight: FontWeight.bold),
               )
@@ -553,6 +553,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                             width: MediaQuery.of(context).size.width - 50,
                             animation: true,
                             lineHeight: 20.0,
+                            barRadius: Radius.circular(20),
                             // animationDuration: 2500,
                             percent: widget.number / 10,
                             // center: Text("80.0%"),

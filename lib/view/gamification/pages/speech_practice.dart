@@ -2,6 +2,7 @@ import 'package:aksonhealth/view/gamification/components/custom_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SpeechPractice extends StatefulWidget {
   final User? user;
@@ -77,11 +78,10 @@ class _SpeechPracticeState extends State<SpeechPractice> {
             child: Column(
               children: [
                 const SizedBox(height: 15),
-                const Text(
+                Text(
                   "Text-To-Speech",
-                  style: TextStyle(
+                  style: GoogleFonts.nunito(
                     fontSize: 30,
-                    fontFamily: 'Hind',
                     fontWeight: FontWeight.w900,
                   ),
                 ),
