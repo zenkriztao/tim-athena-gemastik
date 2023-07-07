@@ -213,21 +213,6 @@ class _DoctorBannerState extends State<DoctorBanner> {
                                               SizedBox(
                                                   width:
                                                       getRelativeWidth(0.03)),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: Colors.white
-                                                      .withOpacity(0.2),
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                ),
-                                                padding: EdgeInsets.all(
-                                                    getRelativeWidth(0.012)),
-                                                child: Icon(
-                                                  Icons.arrow_forward_ios,
-                                                  color: Colors.white,
-                                                  size: getRelativeWidth(0.038),
-                                                ),
-                                              ),
                                             ],
                                           ),
                                         ],

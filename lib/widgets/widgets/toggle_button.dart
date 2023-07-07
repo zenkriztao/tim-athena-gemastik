@@ -42,10 +42,10 @@ class _ToggleButtonState extends State<ToggleButton> {
                 : widget._sendVoiceMessage,
         child: Image.asset(
           widget._inputMode == InputMode.text
-              ? "assets/send.png"
+              ? "assets/icons/send.png"
               : widget._isListening
-                  ? "assets/micoff.png"
-                  : "assets/mic.png",
+                  ? "assets/icons/micoff.png"
+                  : "assets/icons/mic.png",
           height: 30,
         ));
   }

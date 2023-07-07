@@ -50,7 +50,7 @@ class DoctorsList extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: getRelativeWidth(0.035)),
         itemBuilder: (context, index) {
           final doctor = Data.doctorsList[index];
-          final color = secondaryColor;
+          final color = Color.fromARGB(255, 199, 209, 231);
           final circleColor = darkBlueColor;
           final cardWidth = getRelativeWidth(0.48);
           return Row(

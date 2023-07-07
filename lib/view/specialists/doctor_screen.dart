@@ -160,23 +160,26 @@ class _SpecialistScreenState extends State<SpecialistScreen> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsets.only(bottom: 5),
+                                              const EdgeInsets.only(left: 20),
                                           child: FittedBox(
                                             child: Row(
                                               children: [
                                                 Image.asset(
-                                                  "assets/logo.png",
+                                                  "assets/icons/whatsapp.png",
                                                   height: 30,
                                                 ),
-                                                Text(
-                                                  snapshot
-                                                      .data!.docs[index]["phone"]
-                                                      .toString(),
-                                                  overflow: TextOverflow.fade,
-                                                  maxLines: 1,
-                                                  style: GoogleFonts.nunito(
-                                                    fontSize: 15,
-                                                    color: Colors.black,
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 10),
+                                                  child: Text(
+                                                    snapshot
+                                                        .data!.docs[index]["phone"]
+                                                        .toString(),
+                                                    overflow: TextOverflow.fade,
+                                                    maxLines: 1,
+                                                    style: GoogleFonts.nunito(
+                                                      fontSize: 15,
+                                                      color: Colors.black,
+                                                    ),
                                                   ),
                                                 ),
                                               ],

@@ -107,7 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                        ),
                     width: 40,
                     height: 40, //devSize.height*0.05,
-                    child: Image.asset("assets/edit_profile20.png")),
+                    child: Image.asset("assets/icons/edit.png")),
                 trailing: Icon(
                   Icons.arrow_forward,
                   color: Colors.black,
@@ -155,7 +155,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                           width: 40,
                           height: 40, //devSize.height*0.05,
-                          child: Image.asset("assets/reports.png")),
+                          child: Image.asset("assets/icons/laporan.png")),
                       trailing: Icon(
                         Icons.arrow_forward,
                         color: Colors.black,
@@ -191,7 +191,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                     width: 40,
                     height: 40, //devSize.height*0.05,
-                    child: Image.asset("assets/booking.png")),
+                    child: Image.asset("assets/icons/janji.png")),
                 trailing: Icon(
                   Icons.arrow_forward,
                   color: Colors.black,
@@ -245,7 +245,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                     width: 40,
                     height: 40, //devSize.height*0.05,
-                    child: Image.asset("assets/about_us24.png")),
+                    child: Image.asset("assets/icons/about.png")),
                 trailing: Icon(
                   Icons.arrow_forward,
                   color: Colors.black,
@@ -282,7 +282,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: 40,
                     height: 40, //devSize.height*0.05,
                     child: Image.asset(
-                      "assets/logout.png",
+                      "assets/icons/keluar.png",
                       color: Colors.blueGrey,
                     )),
                 trailing: Icon(

@@ -78,7 +78,7 @@ class ProfileContainer extends StatelessWidget {
           ),
         ),
         child: Image.asset(
-          isMe ? 'assets/user.png' : 'assets/aksonai.png',
+          isMe ? 'assets/icons/user.png' : 'assets/icons/aksonai.png',
         ));
   }
 }
