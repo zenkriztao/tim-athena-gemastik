@@ -1,5 +1,6 @@
 import 'package:aksonhealth/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AboutUsScreen extends StatefulWidget {
   const AboutUsScreen({super.key});
@@ -20,7 +21,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               Navigator.of(context).pop();
             },
             icon: Icon(
-              Icons.arrow_back_ios,
+              Icons.arrow_back,
               size: 18,
               color: whiteColor,
             )),
@@ -28,8 +29,8 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
         elevation: 0,
         backgroundColor: appBarColor,
         title: Text(
-          'About Us',
-          style: TextStyle(
+          'Tentang Kami',
+          style: GoogleFonts.nunito(
               fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
         ),
         centerTitle: true,
@@ -40,18 +41,39 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
             height: 10,
           ),
           Center(
-            child: Container(
-              width: size.width * 0.95,
-              child: Text(
-                'About Us\n\n'
-                'In this app we are creating awareness for autism predection\n\n'
-                'Autism spectrum disorder (ASD) is a developmental disability caused by differences in the brain. People with ASD often have problems with social communication and interaction, and restricted or repetitive behaviors or interests. '
-                '\n\nPeople with ASD may also have different ways of learning, moving, or paying attention.',
-                style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black),
-              ),
+            child: Column(
+              children: [
+                Container(
+                  width: size.width * 0.95,
+                  child: Image.asset(
+                    "assets/logo.png",
+                    height: 100,
+                    width: 100,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(30),
+                  child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Fitur aplikasi ASD nya\n"
+                    "- Diagnosis berdasarkan survei pada Anak ASD (menggunakan form dan gambar)\n"
+                    "- AI chatbot untuk orang tua yang ingin mendapatkan informasi dengan jelas\n"
+                    "- Konsultasi dgn ahli via real-time chat dengan orang tua (Firebase)\n"
+                    "- Berbagi aktivitas sesama orangtua ASD dan tindakan informasi (seperti P92 Meta atau Threads)\n"
+                    "- Gamification pada anak ASD\n"
+                    "- Social Skills\n"
+                    "- Imaginations\n"
+                    "- Fitur parenting seperti, Multiple Literacies, Recognitive, dan HSP",
+                    style: GoogleFonts.nunito(
+                      fontSize: 12
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                )
+                
+              ],
             ),
           ),
         ],

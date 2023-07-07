@@ -2,10 +2,7 @@ import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/model/firebase_auth.dart';
 import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/chat/chat_room.dart';
-import 'package:aksonhealth/view/chat/chats.dart';
-import 'package:aksonhealth/view/parents/home/home_screen.dart';
 import 'package:aksonhealth/view/reports/report_detail_screen.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,7 +12,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 enum PaymentType { Credit_Debit, ConDelivery }
 
@@ -794,754 +790,780 @@ class _SpecialistDetailScreenState extends State<SpecialistDetailScreen> {
               ),
               centerTitle: true,
             ),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Padding(padding: EdgeInsets.all(20.0)),
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
-                  Container(
-                    height: size.height * 0.15,
-                    width: size.width * 0.95,
-                    decoration: BoxDecoration(
-                        color: buttonColor.withOpacity(0.9),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: CircleAvatar(
-                            radius: 50,
-                            backgroundImage: NetworkImage(
-                              widget.image.toString(),
+            body: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(padding: EdgeInsets.all(20.0)),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    Container(
+                      height: size.height * 0.15,
+                      width: size.width * 0.95,
+                      decoration: BoxDecoration(
+                          color: buttonColor.withOpacity(0.9),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: CircleAvatar(
+                              radius: 50,
+                              backgroundImage: NetworkImage(
+                                widget.image.toString(),
+                              ),
                             ),
                           ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              widget.name,
-                              style: GoogleFonts.nunito(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              widget.email,
-                              style: GoogleFonts.nunito(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              widget.phone,
-                              style: GoogleFonts.nunito(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Padding(padding: EdgeInsets.all(30.0)),
-                            ElevatedButton(
-                              child: const FaIcon(FontAwesomeIcons.message),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ChatRoom(
-                                        user2Id: 'userid',
-                                        user2Name: widget.name,
-                                        profileUrl: widget.image,
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.name,
+                                style: GoogleFonts.nunito(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              ),
+                              Text(
+                                widget.email,
+                                style: GoogleFonts.nunito(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white),
+                              ),
+                              Text(
+                                widget.phone,
+                                style: GoogleFonts.nunito(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Padding(padding: EdgeInsets.all(20.0)),
+                              Column(
+                                children: [
+                                    SizedBox(
+                                height: 30,
+                              ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: greenColor
                                       ),
-                                    ));
-                              },
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  Column(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            width: size.width * .9,
-                            decoration: BoxDecoration(
-                                color: greyColor.withOpacity(0.3),
-                                borderRadius: BorderRadius.circular(8)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                    width: size.width * .9,
-                                    child: Center(
-                                      child: Text(
-                                        ' Date & Time',
-                                        style: GoogleFonts.nunito(
-                                            fontSize: 18,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w800),
-                                      ),
-                                    )),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                GestureDetector(
-                                  onTap: () async {
-                                    SharedPreferences prefs =
-                                        await SharedPreferences.getInstance();
-
-                                    showCupertinoModalPopup(
-                                        context: context,
-                                        builder: (_) => Container(
-                                              height: 500,
-                                              color: const Color.fromARGB(
-                                                  255, 255, 255, 255),
-                                              child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 400,
-                                                    child: CupertinoDatePicker(
-                                                        mode:
-                                                            CupertinoDatePickerMode
-                                                                .dateAndTime,
-                                                        use24hFormat: true,
-                                                        minimumDate:
-                                                            DateTime.now()
-                                                                .subtract(
-                                                                    Duration(
-                                                                        days:
-                                                                            1)),
-                                                        initialDateTime:
-                                                            DateTime.now(),
-                                                        onDateTimeChanged:
-                                                            (val) {
-                                                          Duration diff =
-                                                              val.difference(
-                                                                  DateTime
-                                                                      .now());
-                                                          //DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm");
-
-                                                          setState(() {
-                                                            _chosenDateTime =
-                                                                val;
-                                                            String string1 =
-                                                                DateFormat()
-                                                                    .add_yMMMd()
-                                                                    .format(
-                                                                        val);
-                                                            String time3 =
-                                                                DateFormat()
-                                                                    .add_jm()
-                                                                    .format(
-                                                                        val);
-
-                                                            endTime = string1
-                                                                    .toString() +
-                                                                ' at ' +
-                                                                time3
-                                                                    .toString();
-                                                          });
-                                                          prefs.setString(
-                                                              'selectedMorningTime',
-                                                              endTime
-                                                                  .toString());
-                                                        }),
-                                                  ),
-
-                                                  // Close the modal
-                                                  CupertinoButton(
-                                                    child: const Text('OK'),
-                                                    onPressed: () {
-                                                      Navigator.of(context,
-                                                              rootNavigator:
-                                                                  true)
-                                                          .pop();
-                                                      //  _zonedScheduleNotification(selectedSeconds, morningH,morningM,'morning');
-                                                      //}
-                                                    },
-                                                  )
-                                                ],
+                                      child: const FaIcon(FontAwesomeIcons.message),
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => ChatRoom(
+                                                user2Id: 'userid',
+                                                user2Name: widget.name,
+                                                profileUrl: widget.image,
                                               ),
                                             ));
-                                  },
-                                  child: Container(
-                                    width: size.width * 0.9,
-                                    height: size.height * 0.05,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      //  color: greyColor.withOpacity(0.3),
-                                      borderRadius: BorderRadius.circular(10),
+                                      },
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        endTime.toString() == ''
-                                            ? 'Pick Date & Time'
-                                            : endTime.toString(),
-                                        style: GoogleFonts.nunito(
-                                            color: endTime == ''
-                                                ? Colors.grey.withOpacity(0.5)
-                                                : Colors.black,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w400),
+                                  ),
+                                  Text(
+                                    "Chat",
+                                    style: GoogleFonts.nunito(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.02,
+                    ),
+                    SizedBox(
+                      height: size.height * 0.02,
+                    ),
+                    Column(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              width: size.width * .9,
+                              decoration: BoxDecoration(
+                                  color: greyColor.withOpacity(0.3),
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                      width: size.width * .9,
+                                      child: Center(
+                                        child: Text(
+                                          'Kalender',
+                                          style: GoogleFonts.nunito(
+                                              fontSize: 18,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w800),
+                                        ),
+                                      )),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      SharedPreferences prefs =
+                                          await SharedPreferences.getInstance();
+            
+                                      showCupertinoModalPopup(
+                                          context: context,
+                                          builder: (_) => Container(
+                                                height: 500,
+                                                color: const Color.fromARGB(
+                                                    255, 255, 255, 255),
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 400,
+                                                      child: CupertinoDatePicker(
+                                                          mode:
+                                                              CupertinoDatePickerMode
+                                                                  .dateAndTime,
+                                                          use24hFormat: true,
+                                                          minimumDate:
+                                                              DateTime.now()
+                                                                  .subtract(
+                                                                      Duration(
+                                                                          days:
+                                                                              1)),
+                                                          initialDateTime:
+                                                              DateTime.now(),
+                                                          onDateTimeChanged:
+                                                              (val) {
+                                                            Duration diff =
+                                                                val.difference(
+                                                                    DateTime
+                                                                        .now());
+                                                            //DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm");
+            
+                                                            setState(() {
+                                                              _chosenDateTime =
+                                                                  val;
+                                                              String string1 =
+                                                                  DateFormat()
+                                                                      .add_yMMMd()
+                                                                      .format(
+                                                                          val);
+                                                              String time3 =
+                                                                  DateFormat()
+                                                                      .add_jm()
+                                                                      .format(
+                                                                          val);
+            
+                                                              endTime = string1
+                                                                      .toString() +
+                                                                  ' at ' +
+                                                                  time3
+                                                                      .toString();
+                                                            });
+                                                            prefs.setString(
+                                                                'selectedMorningTime',
+                                                                endTime
+                                                                    .toString());
+                                                          }),
+                                                    ),
+            
+                                                    // Close the modal
+                                                    CupertinoButton(
+                                                      child: const Text('OK'),
+                                                      onPressed: () {
+                                                        Navigator.of(context,
+                                                                rootNavigator:
+                                                                    true)
+                                                            .pop();
+                                                        //  _zonedScheduleNotification(selectedSeconds, morningH,morningM,'morning');
+                                                        //}
+                                                      },
+                                                    )
+                                                  ],
+                                                ),
+                                              ));
+                                    },
+                                    child: Container(
+                                      width: size.width * 0.9,
+                                      height: size.height * 0.05,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        //  color: greyColor.withOpacity(0.3),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          endTime.toString() == ''
+                                              ? 'Pilih Tanggal dan Jam'
+                                              : endTime.toString(),
+                                          style: GoogleFonts.nunito(
+                                              color: endTime == ''
+                                                  ? Colors.grey.withOpacity(0.5)
+                                                  : Colors.black,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w400),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                              ],
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: size.height * 0.04,
-                          ),
-                          SizedBox(
-                            height: size.height * 0.06,
-                            width: size.width * 0.9,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  height: size.height * 0.06,
-                                  width: size.width * 0.3,
-                                  child: ElevatedButton(
-                                      onPressed: () async {
-                                        if (showReport == '') {
-                                          setState(() {
-                                            showReport = 'show';
-                                          });
+                            SizedBox(
+                              height: size.height * 0.04,
+                            ),
+                            SizedBox(
+                              height: size.height * 0.06,
+                              width: size.width * 0.9,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: size.height * 0.06,
+                                    width: size.width * 0.3,
+                                    child: ElevatedButton(
+                                        onPressed: () async {
+                                          if (showReport == '') {
+                                            setState(() {
+                                              showReport = 'show';
+                                            });
+                                          } else {
+                                            setState(() {
+                                              showReport = '';
+                                            });
+                                          }
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary: darkBlueColor,
+                                          shadowColor: Colors.transparent,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(6)),
+                                        ),
+                                        child: FaIcon(FontAwesomeIcons.add)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            showReport == ''
+                                ? SizedBox()
+                                : Container(
+                                    width: size.width * 0.95,
+                                    height: size.height * 0.2,
+                                    child: StreamBuilder(
+                                      stream: FirebaseFirestore.instance
+                                          .collection('Reports')
+                                          .where('uid',
+                                              isEqualTo: _auth.currentUser!.uid
+                                                  .toString())
+                                          .snapshots(),
+                                      builder: (context, snapshot) {
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                              child: CircularProgressIndicator(
+                                            strokeWidth: 1,
+                                            color: darkBlueColor,
+                                          ));
+                                        } else if (snapshot.hasData &&
+                                            snapshot.data!.docs.isEmpty) {
+                                          // got data from snapshot but it is empty
+            
+                                          return Center(
+                                              child: Text("No Data Found"));
                                         } else {
-                                          setState(() {
-                                            showReport = '';
-                                          });
-                                        }
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: darkBlueColor,
-                                        shadowColor: Colors.transparent,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(6)),
-                                      ),
-                                      child: FaIcon(FontAwesomeIcons.add)),
-                                ),
-                              ],
-                            ),
-                          ),
-                          showReport == ''
-                              ? SizedBox()
-                              : Container(
-                                  width: size.width * 0.95,
-                                  height: size.height * 0.2,
-                                  child: StreamBuilder(
-                                    stream: FirebaseFirestore.instance
-                                        .collection('Reports')
-                                        .where('uid',
-                                            isEqualTo: _auth.currentUser!.uid
-                                                .toString())
-                                        .snapshots(),
-                                    builder: (context, snapshot) {
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                            child: CircularProgressIndicator(
-                                          strokeWidth: 1,
-                                          color: darkBlueColor,
-                                        ));
-                                      } else if (snapshot.hasData &&
-                                          snapshot.data!.docs.isEmpty) {
-                                        // got data from snapshot but it is empty
-
-                                        return Center(
-                                            child: Text("No Data Found"));
-                                      } else {
-                                        return Center(
-                                          child: Container(
-                                            width: size.width * 0.95,
-                                            child: ListView.builder(
-                                              itemCount:
-                                                  snapshot.data!.docs.length,
-                                              itemBuilder: (context, index) {
-                                                DocumentSnapshot ds =
-                                                    snapshot.data!.docs[index];
-                                                return GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      PageRouteBuilder(
-                                                        pageBuilder: (c, a1,
-                                                                a2) =>
-                                                            ReportDetailScreen(
-                                                          childName: snapshot
-                                                              .data!
-                                                              .docs[index]
-                                                                  ["childName"]
-                                                              .toString(),
-                                                          childAge: snapshot
-                                                              .data!
-                                                              .docs[index]
-                                                                  ["age"]
-                                                              .toString(),
-                                                          childGender: snapshot
-                                                              .data!
-                                                              .docs[index]
-                                                                  ["gender"]
-                                                              .toString(),
-                                                          childCase: snapshot
-                                                              .data!
-                                                              .docs[index]
-                                                                  ["case"]
-                                                              .toString(),
-                                                          childAdvice: snapshot
-                                                              .data!
-                                                              .docs[index]
-                                                                  ["advice"]
-                                                              .toString(),
-                                                          date: snapshot
-                                                              .data!
-                                                              .docs[index]
-                                                                  ["date"]
-                                                              .toString(),
-                                                          total: snapshot.data!
-                                                                  .docs[index]
-                                                              ["score"],
+                                          return Center(
+                                            child: Container(
+                                              width: size.width * 0.95,
+                                              child: ListView.builder(
+                                                itemCount:
+                                                    snapshot.data!.docs.length,
+                                                itemBuilder: (context, index) {
+                                                  DocumentSnapshot ds =
+                                                      snapshot.data!.docs[index];
+                                                  return GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                        context,
+                                                        PageRouteBuilder(
+                                                          pageBuilder: (c, a1,
+                                                                  a2) =>
+                                                              ReportDetailScreen(
+                                                            childName: snapshot
+                                                                .data!
+                                                                .docs[index]
+                                                                    ["childName"]
+                                                                .toString(),
+                                                            childAge: snapshot
+                                                                .data!
+                                                                .docs[index]
+                                                                    ["age"]
+                                                                .toString(),
+                                                            childGender: snapshot
+                                                                .data!
+                                                                .docs[index]
+                                                                    ["gender"]
+                                                                .toString(),
+                                                            childCase: snapshot
+                                                                .data!
+                                                                .docs[index]
+                                                                    ["case"]
+                                                                .toString(),
+                                                            childAdvice: snapshot
+                                                                .data!
+                                                                .docs[index]
+                                                                    ["advice"]
+                                                                .toString(),
+                                                            date: snapshot
+                                                                .data!
+                                                                .docs[index]
+                                                                    ["date"]
+                                                                .toString(),
+                                                            total: snapshot.data!
+                                                                    .docs[index]
+                                                                ["score"],
+                                                          ),
+                                                          transitionsBuilder: (c,
+                                                                  anim,
+                                                                  a2,
+                                                                  child) =>
+                                                              FadeTransition(
+                                                                  opacity: anim,
+                                                                  child: child),
+                                                          transitionDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      100),
                                                         ),
-                                                        transitionsBuilder: (c,
-                                                                anim,
-                                                                a2,
-                                                                child) =>
-                                                            FadeTransition(
-                                                                opacity: anim,
-                                                                child: child),
-                                                        transitionDuration:
-                                                            Duration(
-                                                                milliseconds:
-                                                                    100),
-                                                      ),
-                                                    );
-                                                  },
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 8,
-                                                            bottom: 8,
-                                                            left: 0,
-                                                            right: 0),
-                                                    child: Container(
-                                                      width: size.width * 0.95,
-                                                      decoration: BoxDecoration(
-                                                        border: Border.all(
-                                                            width: 0.5,
-                                                            color: blueColor),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        //color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
-                                                        // gradient:  LinearGradient(
-                                                        //   begin: Alignment.centerRight,
-                                                        //   end: Alignment.centerLeft,
-                                                        //   colors:
-                                                        //
-                                                        //   <Color>[Color((math.Random().nextDouble() * 0xFFFFFF).toInt()),Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.5), ],
-                                                        // ),
-
-                                                        //whiteColor,
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                top: 8,
-                                                                bottom: 8),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Container(
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10),
-                                                                  // color: Colors.green,
-                                                                ),
-                                                                width:
-                                                                    size.width *
-                                                                        0.17,
-                                                                child: Image
-                                                                    .network(
-                                                                  snapshot
-                                                                      .data!
-                                                                      .docs[
-                                                                          index]
-                                                                          [
-                                                                          "childImage"]
-                                                                      .toString(),
-                                                                  fit: BoxFit
-                                                                      .scaleDown,
+                                                      );
+                                                    },
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 8,
+                                                              bottom: 8,
+                                                              left: 0,
+                                                              right: 0),
+                                                      child: Container(
+                                                        width: size.width * 0.95,
+                                                        decoration: BoxDecoration(
+                                                          border: Border.all(
+                                                              width: 0.5,
+                                                              color: blueColor),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          //color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
+                                                          // gradient:  LinearGradient(
+                                                          //   begin: Alignment.centerRight,
+                                                          //   end: Alignment.centerLeft,
+                                                          //   colors:
+                                                          //
+                                                          //   <Color>[Color((math.Random().nextDouble() * 0xFFFFFF).toInt()),Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.5), ],
+                                                          // ),
+            
+                                                          //whiteColor,
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  top: 8,
+                                                                  bottom: 8),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(
+                                                                                10),
+                                                                    // color: Colors.green,
+                                                                  ),
                                                                   width:
                                                                       size.width *
                                                                           0.17,
-                                                                  height:
-                                                                      size.height *
-                                                                          0.06,
-                                                                )),
-                                                            Container(
-                                                              //  color: redColor,
-                                                              // width: size.width * 0.73,
-
-                                                              child: Column(
-                                                                //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                children: [
-                                                                  Row(
-                                                                    children: [
-                                                                      Container(
-                                                                        //  color: Colors.orange,
-                                                                        width: size.width *
-                                                                            0.48,
-                                                                        child:
-                                                                            Column(
-                                                                          crossAxisAlignment:
-                                                                              CrossAxisAlignment.start,
-                                                                          children: [
-                                                                            Container(
-                                                                              // color: Colors.yellow,
-                                                                              alignment: Alignment.topLeft,
-                                                                              child: Text(
-                                                                                snapshot.data!.docs[index]["childName"].toString() + " (" + snapshot.data!.docs[index]["type"].toString() + " Report) ",
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                style: GoogleFonts.nunito(color: secondaryColor1, fontSize: 13, fontWeight: FontWeight.w800, height: 1.3),
+                                                                  child: Image
+                                                                      .network(
+                                                                    snapshot
+                                                                        .data!
+                                                                        .docs[
+                                                                            index]
+                                                                            [
+                                                                            "childImage"]
+                                                                        .toString(),
+                                                                    fit: BoxFit
+                                                                        .scaleDown,
+                                                                    width:
+                                                                        size.width *
+                                                                            0.17,
+                                                                    height:
+                                                                        size.height *
+                                                                            0.06,
+                                                                  )),
+                                                              Container(
+                                                                //  color: redColor,
+                                                                // width: size.width * 0.73,
+            
+                                                                child: Column(
+                                                                  //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                  children: [
+                                                                    Row(
+                                                                      children: [
+                                                                        Container(
+                                                                          //  color: Colors.orange,
+                                                                          width: size.width *
+                                                                              0.48,
+                                                                          child:
+                                                                              Column(
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.start,
+                                                                            children: [
+                                                                              Container(
+                                                                                // color: Colors.yellow,
+                                                                                alignment: Alignment.topLeft,
+                                                                                child: Text(
+                                                                                  snapshot.data!.docs[index]["childName"].toString() + " (" + snapshot.data!.docs[index]["type"].toString() + " Report) ",
+                                                                                  overflow: TextOverflow.ellipsis,
+                                                                                  style: GoogleFonts.nunito(color: secondaryColor1, fontSize: 13, fontWeight: FontWeight.w800, height: 1.3),
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                            Container(
-                                                                              // color: Colors.yellow,
-                                                                              alignment: Alignment.topLeft,
-                                                                              child: Text(
-                                                                                snapshot.data!.docs[index]["date"].toString(),
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                style: GoogleFonts.nunito(color: secondaryColor1, fontSize: 12, fontWeight: FontWeight.w400, height: 1.3),
+                                                                              Container(
+                                                                                // color: Colors.yellow,
+                                                                                alignment: Alignment.topLeft,
+                                                                                child: Text(
+                                                                                  snapshot.data!.docs[index]["date"].toString(),
+                                                                                  overflow: TextOverflow.ellipsis,
+                                                                                  style: GoogleFonts.nunito(color: secondaryColor1, fontSize: 12, fontWeight: FontWeight.w400, height: 1.3),
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                          ],
+                                                                            ],
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                      SizedBox(
-                                                                        width:
-                                                                            5,
-                                                                      ),
-                                                                      GestureDetector(
-                                                                        onTap:
-                                                                            () {
-                                                                          if (selectedIndex ==
-                                                                              "") {
-                                                                            setState(() {
-                                                                              selectedIndex = index.toString();
-                                                                              age = snapshot.data!.docs[index]["age"].toString();
-                                                                              childAdvice = snapshot.data!.docs[index]["advice"].toString();
-                                                                              childCase = snapshot.data!.docs[index]["case"].toString();
-                                                                              childName = snapshot.data!.docs[index]["childName"].toString();
-                                                                              childImage = snapshot.data!.docs[index]["childImage"].toString();
-                                                                              date = snapshot.data!.docs[index]["date"].toString();
-                                                                              score = snapshot.data!.docs[index]["score"];
-                                                                              gender = snapshot.data!.docs[index]["gender"].toString();
-                                                                            });
-                                                                          } else {
-                                                                            setState(() {
-                                                                              selectedIndex = "";
-                                                                            });
-                                                                          }
-
-                                                                          // Navigator.push(
-                                                                          //   context,
-                                                                          //   PageRouteBuilder(
-                                                                          //     pageBuilder: (c, a1, a2) => ReportDetailScreen(
-                                                                          //       childName: snapshot.data!.docs[index]["childName"].toString(),
-                                                                          //       childAge: snapshot.data!.docs[index]["age"].toString(),
-                                                                          //       childGender: snapshot.data!.docs[index]["gender"].toString(),
-                                                                          //       childCase: snapshot.data!.docs[index]["case"].toString(),
-                                                                          //       childAdvice: snapshot.data!.docs[index]["advice"].toString(),
-                                                                          //       date: snapshot.data!.docs[index]["date"].toString(),
-                                                                          //       total: snapshot.data!.docs[index]["score"],
-                                                                          //     ),
-                                                                          //     transitionsBuilder: (c, anim, a2, child) =>
-                                                                          //         FadeTransition(opacity: anim, child: child),
-                                                                          //     transitionDuration: Duration(milliseconds: 100),
-                                                                          //   ),
-                                                                          // );
-                                                                        },
-                                                                        child: Container(
-                                                                            height: size.height * 0.045,
-                                                                            width: size.width * 0.25,
-                                                                            decoration: BoxDecoration(color: selectedIndex == index.toString() ? Colors.green : buttonColor, borderRadius: BorderRadius.circular(10)),
-                                                                            child: Center(
-                                                                              child: selectedIndex == index.toString()
-                                                                                  ? Icon(
-                                                                                      Icons.check,
-                                                                                      color: Colors.white,
-                                                                                    )
-                                                                                  : Text(
-                                                                                      "Select",
-                                                                                      style: GoogleFonts.nunito(fontSize: 13, fontWeight: FontWeight.w500, color: Colors.white),
-                                                                                    ),
-                                                                            )),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ],
+                                                                        SizedBox(
+                                                                          width:
+                                                                              5,
+                                                                        ),
+                                                                        GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            if (selectedIndex ==
+                                                                                "") {
+                                                                              setState(() {
+                                                                                selectedIndex = index.toString();
+                                                                                age = snapshot.data!.docs[index]["age"].toString();
+                                                                                childAdvice = snapshot.data!.docs[index]["advice"].toString();
+                                                                                childCase = snapshot.data!.docs[index]["case"].toString();
+                                                                                childName = snapshot.data!.docs[index]["childName"].toString();
+                                                                                childImage = snapshot.data!.docs[index]["childImage"].toString();
+                                                                                date = snapshot.data!.docs[index]["date"].toString();
+                                                                                score = snapshot.data!.docs[index]["score"];
+                                                                                gender = snapshot.data!.docs[index]["gender"].toString();
+                                                                              });
+                                                                            } else {
+                                                                              setState(() {
+                                                                                selectedIndex = "";
+                                                                              });
+                                                                            }
+            
+                                                                            // Navigator.push(
+                                                                            //   context,
+                                                                            //   PageRouteBuilder(
+                                                                            //     pageBuilder: (c, a1, a2) => ReportDetailScreen(
+                                                                            //       childName: snapshot.data!.docs[index]["childName"].toString(),
+                                                                            //       childAge: snapshot.data!.docs[index]["age"].toString(),
+                                                                            //       childGender: snapshot.data!.docs[index]["gender"].toString(),
+                                                                            //       childCase: snapshot.data!.docs[index]["case"].toString(),
+                                                                            //       childAdvice: snapshot.data!.docs[index]["advice"].toString(),
+                                                                            //       date: snapshot.data!.docs[index]["date"].toString(),
+                                                                            //       total: snapshot.data!.docs[index]["score"],
+                                                                            //     ),
+                                                                            //     transitionsBuilder: (c, anim, a2, child) =>
+                                                                            //         FadeTransition(opacity: anim, child: child),
+                                                                            //     transitionDuration: Duration(milliseconds: 100),
+                                                                            //   ),
+                                                                            // );
+                                                                          },
+                                                                          child: Container(
+                                                                              height: size.height * 0.045,
+                                                                              width: size.width * 0.25,
+                                                                              decoration: BoxDecoration(color: selectedIndex == index.toString() ? Colors.green : buttonColor, borderRadius: BorderRadius.circular(10)),
+                                                                              child: Center(
+                                                                                child: selectedIndex == index.toString()
+                                                                                    ? Icon(
+                                                                                        Icons.check,
+                                                                                        color: Colors.white,
+                                                                                      )
+                                                                                    : Text(
+                                                                                        "Select",
+                                                                                        style: GoogleFonts.nunito(fontSize: 13, fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                      ),
+                                                                              )),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                );
-                                              },
-                                              //Container(child: Text('AdminHome'),),
+                                                  );
+                                                },
+                                                //Container(child: Text('AdminHome'),),
+                                              ),
                                             ),
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
-                                ),
-                          SizedBox(
-                            height: size.height * 0.04,
-                          ),
-                          _isLoading
-                              ? Center(child: CircularProgressIndicator())
-                              : SizedBox(
-                                  height: size.height * 0.06,
-                                  width: size.width * 0.9,
-                                  child: ElevatedButton(
-                                      onPressed: () async {
-                                        getRenter();
-                                        print(_site.toString());
-                                        // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SingnIn()));
-
-                                        if (selectedIndex.toString() == '') {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(const SnackBar(
-                                                  content: Text(
-                                                      'Choose child report.')));
-                                        } else if (endTime.toString() == '') {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(const SnackBar(
-                                                  content: Text(
-                                                      'Choose Date & Time. Sunday is off. Choose time between 10:00AM to 11:00PM.')));
-                                        } else if (_chosenDateTime!
-                                            .isBefore(DateTime.now())) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(const SnackBar(
-                                                  content: Text(
-                                                      'Sorry Date is in past')));
-                                        } else {
-                                          if (_site.toString() ==
-                                              'PaymentType.Credit_Debit') {
-                                            if (_cardUserControler
-                                                .text.isEmpty) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(const SnackBar(
-                                                      content: Text(
-                                                          'Enter Card User Name')));
-                                            } else if (_cardNumberControler
-                                                .text.isEmpty) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(const SnackBar(
-                                                      content: Text(
-                                                          'Enter Card Number')));
-                                            } else if (_cardDateControler
-                                                .text.isEmpty) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(const SnackBar(
-                                                      content: Text(
-                                                          'Enter Card Date')));
-                                            } else if (_cardCVCControler
-                                                .text.isEmpty) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(const SnackBar(
-                                                      content: Text(
-                                                          'Enter Card CVV')));
-                                            } else {
-                                              setState(() {
-                                                _isLoading = true;
-                                              });
-                                              print('we are in BookingVehicle');
-                                              FirebaseFirestore.instance
-                                                  .collection('Appointments')
-                                                  .doc()
-                                                  .set({
-                                                "doctorName":
-                                                    widget.name.toString(),
-                                                "doctorId":
-                                                    widget.doctorId.toString(),
-                                                "doctorImage":
-                                                    widget.image.toString(),
-                                                "doctorPhone":
-                                                    widget.phone.toString(),
-                                                "bookingStatus": "Pending",
-                                                "appointmentTime":
-                                                    endTime.toString(),
-                                                "parentEmail": renterEmail,
-                                                "parentName": renterName,
-                                                "evaluation": 0,
-                                                "parentId": _auth
-                                                    .currentUser!.uid
-                                                    .toString(),
-                                                "paymentMethod": _site
-                                                            .toString() ==
-                                                        'PaymentType.Credit_Debit'
-                                                    ? 'Credit/Debit Card'
-                                                    : 'Cash',
-                                                "paymentPaid": _site
-                                                            .toString() ==
-                                                        'PaymentType.Credit_Debit'
-                                                    ? 'yes'
-                                                    : 'no',
-                                                "cardHolderName":
-                                                    _cardUserControler.text,
-                                                "cardDate":
-                                                    _cardDateControler.text,
-                                                "cardCVC":
-                                                    _cardCVCControler.text,
-                                                "cardHolderCardNumber":
-                                                    _cardNumberControler.text,
-                                                "date": date,
-                                                "childName": childName,
-                                                "childImage": childImage,
-                                                "gender": gender,
-                                                "age": age,
-                                                "case": childCase,
-                                                "advice": childAdvice,
-                                                "score": score,
-                                              }).then((value) {
-                                                setState(() {
-                                                  _isLoading = false;
-                                                });
-                                                Navigator.pop(context);
-
-                                                Fluttertoast.showToast(
-                                                  msg: "Successfully Booked",
-                                                  toastLength:
-                                                      Toast.LENGTH_SHORT,
-                                                  gravity: ToastGravity.BOTTOM,
-                                                  timeInSecForIosWeb: 4,
-                                                );
-                                              });
-                                            }
-                                          } else {
-                                            setState(() {
-                                              _isLoading = true;
-                                            });
-                                            print('we are in BookingVehicle');
-                                            FirebaseFirestore.instance
-                                                .collection('Bookings')
-                                                .doc()
-                                                .set({
-                                              "doctorName":
-                                                  widget.name.toString(),
-                                              "doctorId":
-                                                  widget.doctorId.toString(),
-                                              "doctorImage":
-                                                  widget.image.toString(),
-                                              "doctorPhone":
-                                                  widget.phone.toString(),
-                                              "bookingStatus": "Pending",
-                                              "appointmentTime":
-                                                  endTime.toString(),
-                                              "parentEmail": renterEmail,
-                                              "parentName": renterName,
-                                              "evaluation": 0,
-                                              "parentId": _auth.currentUser!.uid
-                                                  .toString(),
-                                              "paymentMethod": _site
-                                                          .toString() ==
-                                                      'PaymentType.Credit_Debit'
-                                                  ? 'Credit/Debit Card'
-                                                  : 'Cash',
-                                              "paymentPaid": _site.toString() ==
-                                                      'PaymentType.Credit_Debit'
-                                                  ? 'yes'
-                                                  : 'no',
-                                              "cardHolderName":
-                                                  _cardUserControler.text,
-                                              "cardDate":
-                                                  _cardDateControler.text,
-                                              "cardCVC": _cardCVCControler.text,
-                                              "cardHolderCardNumber":
-                                                  _cardNumberControler.text,
-                                              "date": date,
-                                              "childName": childName,
-                                              "childImage": childImage,
-                                              "gender": gender,
-                                              "age": age,
-                                              "case": childCase,
-                                              "advice": childAdvice,
-                                              "score": score,
-                                            }).then((value) {
-                                              setState(() {
-                                                _isLoading = false;
-                                              });
-                                              // Navigator.pop(context)
-
-                                              Navigator.of(context).pop();
-                                              // Navigator.push(
-                                              //   context,
-                                              //   PageRouteBuilder(
-                                              //     pageBuilder: (c, a1, a2) => AppBottomNavBarScreen(index: 0, title: "", subTitle:""),
-                                              //     transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
-                                              //     transitionDuration: Duration(milliseconds: 100),
-                                              //   ),
-                                              // );
-                                              Fluttertoast.showToast(
-                                                msg: "Successfully Booked",
-                                                toastLength: Toast.LENGTH_SHORT,
-                                                gravity: ToastGravity.BOTTOM,
-                                                timeInSecForIosWeb: 4,
-                                              );
-                                            });
-                                          }
+                                          );
                                         }
                                       },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: darkBlueColor,
-                                        shadowColor: Colors.transparent,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(6)),
-                                      ),
-                                      child: Text("Book Appointment",
-                                          style: subtitleWhite)),
-                                ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                    ],
-                  ),
-                ],
+                                    ),
+                                  ),
+                            SizedBox(
+                              height: size.height * 0.04,
+                            ),
+                            _isLoading
+                                ? Center(child: CircularProgressIndicator())
+                                : SizedBox(
+                                    height: size.height * 0.06,
+                                    width: size.width * 0.9,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      child: ElevatedButton(
+                                          onPressed: () async {
+                                            getRenter();
+                                            print(_site.toString());
+                                            // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SingnIn()));
+                                                
+                                            if (selectedIndex.toString() == '') {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(const SnackBar(
+                                                      content: Text(
+                                                          'Choose child report.')));
+                                            } else if (endTime.toString() == '') {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(const SnackBar(
+                                                      content: Text(
+                                                          'Choose Date & Time. Sunday is off. Choose time between 10:00AM to 11:00PM.')));
+                                            } else if (_chosenDateTime!
+                                                .isBefore(DateTime.now())) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(const SnackBar(
+                                                      content: Text(
+                                                          'Sorry Date is in past')));
+                                            } else {
+                                              if (_site.toString() ==
+                                                  'PaymentType.Credit_Debit') {
+                                                if (_cardUserControler
+                                                    .text.isEmpty) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(const SnackBar(
+                                                          content: Text(
+                                                              'Enter Card User Name')));
+                                                } else if (_cardNumberControler
+                                                    .text.isEmpty) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(const SnackBar(
+                                                          content: Text(
+                                                              'Enter Card Number')));
+                                                } else if (_cardDateControler
+                                                    .text.isEmpty) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(const SnackBar(
+                                                          content: Text(
+                                                              'Enter Card Date')));
+                                                } else if (_cardCVCControler
+                                                    .text.isEmpty) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(const SnackBar(
+                                                          content: Text(
+                                                              'Enter Card CVV')));
+                                                } else {
+                                                  setState(() {
+                                                    _isLoading = true;
+                                                  });
+                                                  print('we are in BookingVehicle');
+                                                  FirebaseFirestore.instance
+                                                      .collection('Appointments')
+                                                      .doc()
+                                                      .set({
+                                                    "doctorName":
+                                                        widget.name.toString(),
+                                                    "doctorId":
+                                                        widget.doctorId.toString(),
+                                                    "doctorImage":
+                                                        widget.image.toString(),
+                                                    "doctorPhone":
+                                                        widget.phone.toString(),
+                                                    "bookingStatus": "Pending",
+                                                    "appointmentTime":
+                                                        endTime.toString(),
+                                                    "parentEmail": renterEmail,
+                                                    "parentName": renterName,
+                                                    "evaluation": 0,
+                                                    "parentId": _auth
+                                                        .currentUser!.uid
+                                                        .toString(),
+                                                    "paymentMethod": _site
+                                                                .toString() ==
+                                                            'PaymentType.Credit_Debit'
+                                                        ? 'Credit/Debit Card'
+                                                        : 'Cash',
+                                                    "paymentPaid": _site
+                                                                .toString() ==
+                                                            'PaymentType.Credit_Debit'
+                                                        ? 'yes'
+                                                        : 'no',
+                                                    "cardHolderName":
+                                                        _cardUserControler.text,
+                                                    "cardDate":
+                                                        _cardDateControler.text,
+                                                    "cardCVC":
+                                                        _cardCVCControler.text,
+                                                    "cardHolderCardNumber":
+                                                        _cardNumberControler.text,
+                                                    "date": date,
+                                                    "childName": childName,
+                                                    "childImage": childImage,
+                                                    "gender": gender,
+                                                    "age": age,
+                                                    "case": childCase,
+                                                    "advice": childAdvice,
+                                                    "score": score,
+                                                  }).then((value) {
+                                                    setState(() {
+                                                      _isLoading = false;
+                                                    });
+                                                    Navigator.pop(context);
+                                                
+                                                    Fluttertoast.showToast(
+                                                      msg: "Successfully Booked",
+                                                      toastLength:
+                                                          Toast.LENGTH_SHORT,
+                                                      gravity: ToastGravity.BOTTOM,
+                                                      timeInSecForIosWeb: 4,
+                                                    );
+                                                  });
+                                                }
+                                              } else {
+                                                setState(() {
+                                                  _isLoading = true;
+                                                });
+                                                print('we are in BookingVehicle');
+                                                FirebaseFirestore.instance
+                                                    .collection('Bookings')
+                                                    .doc()
+                                                    .set({
+                                                  "doctorName":
+                                                      widget.name.toString(),
+                                                  "doctorId":
+                                                      widget.doctorId.toString(),
+                                                  "doctorImage":
+                                                      widget.image.toString(),
+                                                  "doctorPhone":
+                                                      widget.phone.toString(),
+                                                  "bookingStatus": "Pending",
+                                                  "appointmentTime":
+                                                      endTime.toString(),
+                                                  "parentEmail": renterEmail,
+                                                  "parentName": renterName,
+                                                  "evaluation": 0,
+                                                  "parentId": _auth.currentUser!.uid
+                                                      .toString(),
+                                                  "paymentMethod": _site
+                                                              .toString() ==
+                                                          'PaymentType.Credit_Debit'
+                                                      ? 'Credit/Debit Card'
+                                                      : 'Cash',
+                                                  "paymentPaid": _site.toString() ==
+                                                          'PaymentType.Credit_Debit'
+                                                      ? 'yes'
+                                                      : 'no',
+                                                  "cardHolderName":
+                                                      _cardUserControler.text,
+                                                  "cardDate":
+                                                      _cardDateControler.text,
+                                                  "cardCVC": _cardCVCControler.text,
+                                                  "cardHolderCardNumber":
+                                                      _cardNumberControler.text,
+                                                  "date": date,
+                                                  "childName": childName,
+                                                  "childImage": childImage,
+                                                  "gender": gender,
+                                                  "age": age,
+                                                  "case": childCase,
+                                                  "advice": childAdvice,
+                                                  "score": score,
+                                                }).then((value) {
+                                                  setState(() {
+                                                    _isLoading = false;
+                                                  });
+                                                  // Navigator.pop(context)
+                                                
+                                                  Navigator.of(context).pop();
+                                                  // Navigator.push(
+                                                  //   context,
+                                                  //   PageRouteBuilder(
+                                                  //     pageBuilder: (c, a1, a2) => AppBottomNavBarScreen(index: 0, title: "", subTitle:""),
+                                                  //     transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                                                  //     transitionDuration: Duration(milliseconds: 100),
+                                                  //   ),
+                                                  // );
+                                                  Fluttertoast.showToast(
+                                                    msg: "Successfully Booked",
+                                                    toastLength: Toast.LENGTH_SHORT,
+                                                    gravity: ToastGravity.BOTTOM,
+                                                    timeInSecForIosWeb: 4,
+                                                  );
+                                                });
+                                              }
+                                            }
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            primary: greenColor,
+                                            shadowColor: Colors.transparent,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(6)),
+                                          ),
+                                          child: Text("Buat Janji",
+                                              style: subtitleWhite)),
+                                    ),
+                                  ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           );

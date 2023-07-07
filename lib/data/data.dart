@@ -1,29 +1,28 @@
 import 'package:aksonhealth/model/category_model.dart';
 import 'package:aksonhealth/model/doctor_model.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:flutter/material.dart';
 
 class Data {
   static final categoriesList = [
     Category(
-      title: "Lorem",
+      title: "Coming Soon",
       doctorsNumber: 15,
-      icon: Icons.favorite,
+      icon: LineIcons.spinner,
     ),
     Category(
-      title: "Lorem",
+      title: "Coming Soon",
       doctorsNumber: 8,
-      icon: LineIcons.child,
+      icon: LineIcons.spinner,
     ),
     Category(
-      title: "Lorem",
+      title: "Coming Soon",
       doctorsNumber: 7,
-      icon: Icons.line_style,
+      icon: LineIcons.spinner,
     ),
     Category(
-      title: "Lorem",
+      title: "Coming Soon",
       doctorsNumber: 10,
-      icon: LineIcons.eye,
+      icon: LineIcons.spinner,
     ),
   ];
 

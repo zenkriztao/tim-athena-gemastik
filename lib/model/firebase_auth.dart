@@ -1,3 +1,4 @@
+import 'package:aksonhealth/view/auth/login/login_screen.dart';
 import 'package:aksonhealth/view/auth/userType/usertype_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -251,7 +252,7 @@ class MethodsHandler {
         prefs.remove('userPassword');
         prefs.remove('userId');
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => UserType()));
+            context, MaterialPageRoute(builder: (context) => LoginScreen(userType: 'Parents',)));
       });
     } catch (e) {
       return null;

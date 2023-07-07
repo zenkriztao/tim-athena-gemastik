@@ -65,7 +65,7 @@ class CategoriesList extends StatelessWidget {
                             ),
                             SizedBox(height: getRelativeHeight(0.005)),
                             Text(
-                              category.doctorsNumber.toString() + " autism",
+                             " Akan ada fitur baru",
                               style: GoogleFonts.nunito(
                                   color: Colors.black.withOpacity(0.48),
                                   fontSize: getRelativeWidth(0.03)),

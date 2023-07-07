@@ -87,7 +87,7 @@ class DoctorsList extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               border: Border.all(
                                                   width: 15,
-                                                  color: circleColor
+                                                  color: darkBlueColor
                                                       .withOpacity(0.6)),
                                               shape: BoxShape.circle,
                                             ),
@@ -101,7 +101,7 @@ class DoctorsList extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               border: Border.all(
                                                   width: 15,
-                                                  color: circleColor
+                                                  color: darkBlueColor 
                                                       .withOpacity(0.25)),
                                               shape: BoxShape.circle,
                                             ),
@@ -115,7 +115,7 @@ class DoctorsList extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               border: Border.all(
                                                   width: 15,
-                                                  color: circleColor
+                                                  color: darkBlueColor
                                                       .withOpacity(0.17)),
                                               shape: BoxShape.circle,
                                             ),

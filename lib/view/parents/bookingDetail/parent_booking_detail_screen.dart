@@ -1,17 +1,12 @@
 import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/model/firebase_auth.dart';
 import 'package:aksonhealth/view/doctor/doctorReportDetail/doctor_report_detail_screen.dart';
-import 'package:aksonhealth/view/reports/report_detail_screen.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 enum PaymentType { Credit_Debit, ConDelivery }
 

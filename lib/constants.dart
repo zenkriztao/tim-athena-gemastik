@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const lightRedColor = Color(0xff00BF62);
-const darkRedColor = Color(0xff00BF62);
+const lightRedColor = Color(0xff2C64C5);
+const darkRedColor = Color(0xff2C64C5);
 const lightGreenColor = Color(0xffEAFFBE);
 const darkGreenColor = Color(0xfff7f6f1);
 const lightPeachColor = Color(0xffFECEB3);
@@ -14,8 +14,8 @@ const lightblackColor = Color(0xff2F2F2F);
 const darkGreyTextColor = Color(0xffC2C2C4);
 const darkGreyTextColor1 = Color(0xffAEACB2);
 const authButtonColor = Color(0xffB4B49C);
-const authButtontextColor = Color(0xffA8C234);
-const primaryColor = Color(0xff00BF62);
+const authButtontextColor = Color(0xff2C64C5);
+const primaryColor = Color(0xff2C64C5);
 const buttonColor = Color(0xff2C64C5);
 const textColor = Color(0xff545043);
 const whiteColor = Color(0xffFFFFFF);
@@ -31,13 +31,13 @@ const whiteColor = Color(0xffFFFFFF);
 // double fontSizeOverLarge = Get.context.width >= 1300 ? 28 : 24;
 
 const primaryColor1 = Color(0xffaddfb9); //Color(0xff37A000);
-const secondaryColor1 = Color(0xff00BF62); //Color(0xff37A000);
+const secondaryColor1 = Color(0xff2C64C5);//Color(0xff37A000); 
 //const lightGreenColor = Color(0xffD9E9D1);
 const lightGreyColor = Color(0xfff6f6f6);
 const secondaryColor = Color(0xffaddfb9);
-const secondary2Color = Color(0xff00BF62); //Color(0xff033f7c);
-const secondary3Color = Color(0xff00BF62); //Color(0xff4565ba);
-const appBarColor = Color(0xff00BF62); //Color(0xff1564c0);
+const secondary2Color = Color(0xff2C64C5); //Color(0xff033f7c);
+const secondary3Color = Color(0xff2C64C5);//Color(0xff4565ba);
+const appBarColor = Color(0xff2C64C5); //Color(0xff1564c0);
 
 const greyColor = Color(0xffB4C2CD);
 const greyColor1 = Color(0xffDEDEDE);
@@ -47,7 +47,7 @@ const redColor = Color(0xffFF6644);
 const bgColor = Color(0xffd8b56e);
 
 const oneColor = Color(0xff25898B);
-const oneColor1 = Color(0xff89C5C3);
+const oneColor1 = Color(0xff2C64C5);
 const twoColor = Color(0xff100BA9);
 const twoColor1 = Color(0xff8580D7);
 const threeColor = Color(0xff840BFE);

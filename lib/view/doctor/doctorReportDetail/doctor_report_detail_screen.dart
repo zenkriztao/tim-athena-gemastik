@@ -1,6 +1,4 @@
 import 'package:aksonhealth/constants.dart';
-import 'package:aksonhealth/view/parents/bottomNavBar/app_bottom_nav_bar_screen.dart';
-import 'package:aksonhealth/view/specialists/doctor_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

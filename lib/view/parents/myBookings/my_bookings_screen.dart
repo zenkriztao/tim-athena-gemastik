@@ -5,7 +5,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ParentBookingScreen extends StatefulWidget {
@@ -76,18 +75,18 @@ class _ParentBookingScreenState extends State<ParentBookingScreen> {
               },
               tabs: [
                 Tab(
-                  text: 'New',
+                  text: 'Baru',
                 ),
                 Tab(
-                  text: 'Approved',
+                  text: 'Diterima',
                 ),
                 Tab(
-                  text: 'Cancelled',
+                  text: 'Batalkan',
                 ),
               ],
             ),
             centerTitle: true,
-            title: Text('Bookings'),
+            title: Text('Janji temu'),
           ),
           body: TabBarView(
             children: [

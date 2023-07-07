@@ -24,7 +24,7 @@ class _ReportScreenState extends State<ReportScreen> {
         elevation: 0,
         backgroundColor: appBarColor,
         title: Text(
-          'My Reports',
+          'Laporan',
           style: TextStyle(
               fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white),
         ),
@@ -231,7 +231,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                                             10)),
                                                 child: Center(
                                                   child: Text(
-                                                    "View",
+                                                    "Lihat",
                                                     style: TextStyle(
                                                         fontSize: 13,
                                                         fontWeight:

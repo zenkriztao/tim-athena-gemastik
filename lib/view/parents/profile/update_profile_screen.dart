@@ -1,11 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/model/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:http/http.dart' as http;
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -209,8 +208,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         centerTitle: true,
         backgroundColor: Colors.white,
         title: Text(
-          'Edit Profile',
-          style: TextStyle(
+          'Ubah Profil',
+          style: GoogleFonts.nunito(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
         ),
       ),
@@ -225,7 +224,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 child: Center(
                   child: Text(
                     '$name',
-                    style: TextStyle(
+                    style: GoogleFonts.nunito(
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
@@ -249,7 +248,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     margin: EdgeInsets.only(left: 16, right: 16, bottom: 0),
                     child: TextFormField(
                       controller: _nameController,
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                         fontSize: 14,
                         color: Colors.black,
                       ),
@@ -275,19 +274,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         hintText: "",
 
                         //make hint text
-                        hintStyle: TextStyle(
+                        hintStyle: GoogleFonts.nunito(
                           color: Colors.grey,
                           fontSize: 16,
-                          fontFamily: "verdana_regular",
                           fontWeight: FontWeight.w400,
                         ),
                         //create lable
-                        labelText: 'Full Name',
+                        labelText: 'Nama Lengkap',
                         //lable style
-                        labelStyle: TextStyle(
+                        labelStyle: GoogleFonts.nunito(
                           color: darkRedColor,
                           fontSize: 16,
-                          fontFamily: "verdana_regular",
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -301,7 +298,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     child: TextFormField(
                       controller: _emailAddressController,
                       enabled: false,
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                         fontSize: 14,
                         color: Colors.black,
                       ),
@@ -332,20 +329,18 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         hintText: "",
 
                         //make hint text
-                        hintStyle: TextStyle(
+                        hintStyle: GoogleFonts.nunito(
                           color: Colors.grey,
                           fontSize: 16,
-                          fontFamily: "verdana_regular",
                           fontWeight: FontWeight.w400,
                         ),
 
                         //create lable
-                        labelText: 'Email Address',
+                        labelText: 'Email',
                         //lable style
-                        labelStyle: TextStyle(
+                        labelStyle: GoogleFonts.nunito(
                           color: darkRedColor,
                           fontSize: 16,
-                          fontFamily: "verdana_regular",
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -404,8 +399,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   if (_nameController.text.isEmpty) {
                                     var snackBar = SnackBar(
                                       content: Text(
-                                        'Name is required',
-                                        style: TextStyle(color: Colors.white),
+                                        'Nama harus diisi',
+                                        style: GoogleFonts.nunito(color: Colors.white),
                                       ),
                                       backgroundColor: Colors.red,
                                     );

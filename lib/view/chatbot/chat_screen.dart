@@ -1,4 +1,3 @@
-import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/widgets/widgets/chat_item.dart';
 import 'package:aksonhealth/widgets/widgets/my_app_bar.dart';
 import 'package:aksonhealth/widgets/widgets/text_and_voice_field.dart';

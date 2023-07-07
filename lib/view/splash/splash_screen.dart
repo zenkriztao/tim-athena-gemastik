@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:aksonhealth/constants.dart';
-import 'package:aksonhealth/view/auth/login/login_screen.dart';
-import 'package:aksonhealth/view/auth/userType/usertype_screen.dart';
 import 'package:aksonhealth/view/onboarding/onboarding_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

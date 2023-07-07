@@ -119,7 +119,7 @@ class _SpecialistScreenState extends State<SpecialistScreen> {
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 10.0, bottom: 5),
+                                              bottom: 5),
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(15),
@@ -162,16 +162,24 @@ class _SpecialistScreenState extends State<SpecialistScreen> {
                                           padding:
                                               const EdgeInsets.only(bottom: 5),
                                           child: FittedBox(
-                                            child: Text(
-                                              snapshot
-                                                  .data!.docs[index]["phone"]
-                                                  .toString(),
-                                              overflow: TextOverflow.fade,
-                                              maxLines: 1,
-                                              style: GoogleFonts.nunito(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
+                                            child: Row(
+                                              children: [
+                                                Image.asset(
+                                                  "assets/logo.png",
+                                                  height: 30,
+                                                ),
+                                                Text(
+                                                  snapshot
+                                                      .data!.docs[index]["phone"]
+                                                      .toString(),
+                                                  overflow: TextOverflow.fade,
+                                                  maxLines: 1,
+                                                  style: GoogleFonts.nunito(
+                                                    fontSize: 15,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),

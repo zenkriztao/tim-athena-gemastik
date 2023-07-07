@@ -2,8 +2,6 @@
 import 'package:aksonhealth/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:get/get.dart';
-
 class Onboarding3Screen extends StatelessWidget {
   const Onboarding3Screen({Key? key, this.color}) : super(key: key);
   final Color? color;

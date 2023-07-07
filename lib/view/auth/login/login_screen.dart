@@ -11,8 +11,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:aksonhealth/constants.dart';
-
 class LoginScreen extends StatefulWidget {
   final String userType;
   const LoginScreen({Key? key, required this.userType}) : super(key: key);
@@ -56,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
       //resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Container(
-          //height: size.height,
+          height: 1000,
 
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -561,16 +559,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ],
                               ),
                             )),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    const Divider(
-                      height: 10,
-                      thickness: 1,
-                      indent: 80,
-                      endIndent: 80,
-                      color: darkBlueColor,
-                    ),
                     SizedBox(
                       height: 20,
                     ),

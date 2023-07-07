@@ -1,21 +1,11 @@
-import 'dart:io';
-
 import 'package:aksonhealth/constants.dart';
-import 'package:aksonhealth/model/behavior_models.dart';
 import 'package:aksonhealth/theme.dart';
-import 'package:aksonhealth/view/article/behavior_dictionary.dart';
 import 'package:aksonhealth/view/chat/chats.dart';
-import 'package:aksonhealth/view/detail/bookingDetail/booking_detail_screen.dart';
 import 'package:aksonhealth/view/doctor/bookings/bookings_screen.dart';
 import 'package:aksonhealth/view/parents/home/home_screen.dart';
-import 'package:aksonhealth/view/parents/perdict/perdict_screen.dart';
 import 'package:aksonhealth/view/parents/profile/profile_screen.dart';
-import 'package:aksonhealth/view/resources/resource_screen.dart';
-import 'package:aksonhealth/view/specialists/doctor_screen.dart';
-import 'package:aksonhealth/view/splash/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

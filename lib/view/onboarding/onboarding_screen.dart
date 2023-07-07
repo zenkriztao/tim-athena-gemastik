@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:aksonhealth/view/auth/login/login_screen.dart';
-import 'package:aksonhealth/view/auth/userType/usertype_screen.dart';
 import 'package:aksonhealth/view/onboarding/onboarding_1.dart';
 import 'package:aksonhealth/view/onboarding/onboarding_2.dart';
 import 'package:aksonhealth/view/onboarding/onboarding_3.dart';

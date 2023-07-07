@@ -4,7 +4,6 @@ import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/article/behavior_dictionary.dart';
 import 'package:aksonhealth/view/parents/home/home_screen.dart';
-import 'package:aksonhealth/view/parents/perdict/perdict_screen.dart';
 import 'package:aksonhealth/view/parents/profile/profile_screen.dart';
 import 'package:aksonhealth/view/specialists/consult_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -142,7 +141,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                       onTap: () {},
                     ),
                   ),
-                  label: 'Social',
+                  label: 'SOS',
                 ),
                 BottomNavigationBarItem(
                   icon: Padding(

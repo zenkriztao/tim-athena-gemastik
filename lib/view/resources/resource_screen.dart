@@ -1,5 +1,4 @@
 import 'package:aksonhealth/constants.dart';
-import 'package:aksonhealth/view/videos/videos_screen.dart';
 import 'package:flutter/material.dart';
 
 class ResourceScreen extends StatefulWidget {

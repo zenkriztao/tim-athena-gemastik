@@ -1,4 +1,3 @@
-import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/gamification/components/base_storyline.dart';
 import 'package:aksonhealth/view/gamification/components/from_index.dart';

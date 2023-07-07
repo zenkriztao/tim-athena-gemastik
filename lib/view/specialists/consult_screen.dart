@@ -1,4 +1,3 @@
-import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/specialists/consult_banner.dart';
