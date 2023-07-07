@@ -380,7 +380,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                   progressColor: total <= 4
                       ? Colors.green
                       : total > 4 && total <= 6
-                          ? Color.fromARGB(255, 30, 18, 160)
+                          ? darkBlueColor 
                           : total > 6
                               ? Colors.red
                               : darkBlueColor,

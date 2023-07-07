@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+// DB firestore
 class BehaviorOverview {
   static CollectionReference<Map<String, dynamic>>
       get behaviorOverviewsColRef =>
@@ -8,7 +8,7 @@ class BehaviorOverview {
   final String title;
   final String imageURL;
   final String description;
-
+// DB firestore
   BehaviorOverview({
     this.id,
     required this.title,
