@@ -5,12 +5,12 @@ import 'package:line_icons/line_icons.dart';
 class Data {
   static final categoriesList = [
     Category(
-      title: "Coming Soon",
+      title: "Cari Sekolah",
       doctorsNumber: 15,
       icon: LineIcons.spinner,
     ),
     Category(
-      title: "Coming Soon",
+      title: "Cari Klinik",
       doctorsNumber: 8,
       icon: LineIcons.spinner,
     ),

@@ -1,6 +1,8 @@
 import 'package:aksonhealth/data/data.dart';
 import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/parents/clinic/clinic_screen.dart';
+import 'package:aksonhealth/view/parents/clinic/clinic_test.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -76,6 +78,9 @@ class CategoriesList extends StatelessWidget {
                     ),
                   ),
                 ),
+                ElevatedButton(onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ClinicTesting()));
+                }, child: const Text('Testing')),
                 SizedBox(width: getRelativeWidth(0.04))
               ],
             );

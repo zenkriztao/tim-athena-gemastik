@@ -12,16 +12,10 @@ void main() async {
 
   if (Firebase.apps.length == 0) {
     if (Platform.isIOS) {
-      // await Firebase.initializeApp(
-      //     options: FirebaseOptions(apiKey: 'AIzaSyAFFk4hXMpio9X_Gz0wVCQvk4a5QAzllXM',
-      //         appId: '1:97089701565:android:02972d723ec132a52119d4',
-      //         messagingSenderId: '97089701565',
-      //         storageBucket:  "agriculture-store-flutter.appspot.com",
-      //         projectId: 'agriculture-store-flutter')
-      // );
+     
     } else {
       await Firebase.initializeApp(
-          options: FirebaseOptions(
+        options: FirebaseOptions(
         apiKey: 'AIzaSyBHlyvmiwPQqbaIXEHvw12LzNoIhtuHtEY',
         appId: '1:849090647277:android:3400fa8f113e69b41d28e4',
         messagingSenderId: '849090647277',
@@ -64,13 +58,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     print('Starting usertype');
-
-    // TODO: implement initState
-    // setState(() {
-    //   userType = '';
-    //   email = '';
-    //   uid = '';
-    // });
 
     super.initState();
     getData();

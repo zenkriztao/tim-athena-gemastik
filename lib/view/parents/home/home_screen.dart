@@ -3,6 +3,7 @@ import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/view/parents/home/banner.dart';
 import 'package:aksonhealth/view/parents/home/doctors_list.dart';
 import 'package:aksonhealth/view/parents/home/features_appbar.dart';
+import 'package:aksonhealth/view/parents/home/menu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -55,12 +56,13 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 30),
+                SizedBox(height: 20),
                 DoctorAppBar(),
-                SizedBox(height: 30),
+                SizedBox(height: 20),
                 DoctorBanner(),
-                SizedBox(height: 30),
+                SizedBox(height: 5),
                 CategoriesList(),
+                Menu(),
                 SizedBox(height: 30),
                 FeaturesAppBar(),
                 DoctorsList()

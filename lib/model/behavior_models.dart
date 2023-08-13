@@ -69,7 +69,7 @@ class BehaviorContent {
   static Future<BehaviorContent> getDataFromFirestore(String behaviorID) async {
     late BehaviorContent data;
     await behaviorContentsColRef
-        .where('behaviorID', isEqualTo: behaviorID)
+        .where('behaviorID') //isEqualTo: behaviorID
         .get()
         .then(
       (querySnapshot) {
