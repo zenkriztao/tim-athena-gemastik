@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'gridDashboard.dart';
+// import 'gridDashboard.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -54,7 +54,7 @@ class HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 40),
           //TODO Grid Dashboard
-          GridDashboard()
+          // GridDashboard()
         ],
       ),
     );
