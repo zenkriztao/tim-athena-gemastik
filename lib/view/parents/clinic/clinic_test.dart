@@ -92,8 +92,7 @@ class _ClinicTestingState extends State<ClinicTesting> {
       home: Scaffold(
         appBar: AppBar(
           title: Padding(
-            padding: EdgeInsets.only(
-                left: 16.0), // Sesuaikan angka sesuai kebutuhan Anda
+            padding: EdgeInsets.only(left: 16.0),
             child: CupertinoSearchTextField(
               controller: _searchController,
             ),
@@ -151,15 +150,6 @@ class CardWithMap extends StatefulWidget {
 }
 
 class _CardWithMapState extends State<CardWithMap> {
-  void _launchMap(String gMapAddress) async {
-    String url = gMapAddress;
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
   void _launchURLWebsite(String website) async {
     String urls = website;
     if (await canLaunch(urls)) {
@@ -192,7 +182,7 @@ class _CardWithMapState extends State<CardWithMap> {
                     color: Colors.blue,
                   ),
                   onPressed: () {
-                    _launchMap(widget.gMapAddress);
+                    launchUrl(Uri.parse(widget.website));
                   },
                 ),
               ),
@@ -238,6 +228,15 @@ class ContactnWebsite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _launchMap(String gMapAddress) async {
+      String url = gMapAddress;
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -245,8 +244,8 @@ class ContactnWebsite extends StatelessWidget {
           style: ButtonStyle(
             side: MaterialStateProperty.all<BorderSide>(
               BorderSide(
-                color: Colors.blue, // Warna border
-                width: 2.0, // Lebar border
+                color: Colors.blue,
+                width: 2.0,
               ),
             ),
             backgroundColor:
@@ -260,11 +259,10 @@ class ContactnWebsite extends StatelessWidget {
         ),
         FilledButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(
-                Colors.blue), // Warna latar belakang
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
           ),
           onPressed: () {
-            launchUrl(Uri.parse(widget.website));
+            _launchMap(widget.gMapAddress);
           },
           child: const Text('Get Directions'),
         )
