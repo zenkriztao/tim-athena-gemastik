@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../../donasi/donasi.dart';
 import '../../../size_config.dart';
 
 class Menu extends StatelessWidget {
@@ -45,7 +45,16 @@ class Menu extends StatelessWidget {
               (index) => CategoryCard(
                 icon: categorize[index]["icon"],
                 text: categorize[index]["text"],
-                press: () {},
+                press: () {
+                  if (categorize[index]["text"] == "Donasi") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Donasi()), // Replace "Donasi()" with your actual page route
+                    );
+                  }
+                },
               ),
             ),
           ),
@@ -79,16 +88,13 @@ class CategoryCard extends StatelessWidget {
               height: getScreenWidth(70), // Mengubah tinggi container
               width: getScreenWidth(70), // Mengubah lebar container
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  style: BorderStyle.solid,
-                  color: Color.fromARGB(255, 226, 233, 239),
-                  width: 1,
-                )
-                
-                
-              ),
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    style: BorderStyle.solid,
+                    color: Color.fromARGB(255, 226, 233, 239),
+                    width: 1,
+                  )),
               child: Image.asset(
                 icon!,
               ),
