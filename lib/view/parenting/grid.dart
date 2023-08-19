@@ -1,105 +1,127 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/data/parent_data.dart';
+import 'package:aksonhealth/view/parenting/parenting.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
 
-// class Grid extends StatelessWidget {
-//   Items item1 = new Items(
-//       title: "Calendar",
-//       subtitle: "March, Wednesday",
-//       event: "3 Events",
-//       img: "images/calendar.png");
+class Grid extends StatefulWidget {
+  @override
+  _GridState createState() => _GridState();
+}
 
-//   Items item2 = new Items(
-//     title: "Groceries",
-//     subtitle: "Bocali, Apple",
-//     event: "4 Items",
-//     img: "images/food.png",
-//   );
-//   Items item3 = new Items(
-//     title: "Locations",
-//     subtitle: "Lucy Mao going to Office",
-//     event: "",
-//     img: "images/map.png",
-//   );
-//   Items item4 = new Items(
-//     title: "Activity",
-//     subtitle: "Rose favirited your Post",
-//     event: "",
-//     img: "images/festival.png",
-//   );
-//   Items item5 = new Items(
-//     title: "To do",
-//     subtitle: "Homework, Design",
-//     event: "4 Items",
-//     img: "images/todo.png",
-//   );
-//   Items item6 = new Items(
-//     title: "Settings",
-//     subtitle: "",
-//     event: "2 Items",
-//     img: "images/setting.png",
-//   );
-
-//   @override
-//   Widget build(BuildContext context) {
-//     List<Items> myList = [item1, item2, item3, item4, item5, item6];
-//     var color = 0xff453658;
-//     return Flexible(
-//       child: GridView.count(
-//         childAspectRatio: 1.0,
-//         padding: EdgeInsets.only(left: 16, right: 16),
-//         crossAxisCount: 2,
-//         crossAxisSpacing: 18,
-//         mainAxisSpacing: 18,
-//         children: myList.map((data) {
-//           return Container(
-//             decoration: BoxDecoration(
-//               color: Color(color),
-//               borderRadius: BorderRadius.circular(10),
-//             ),
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: <Widget>[
-//                 Image.asset(data.img, width: 42),
-//                 SizedBox(height: 14),
-//                 Text(
-//                   data.title,
-//                   style: GoogleFonts.openSans(
-//                     textStyle: TextStyle(
-//                       color: Colors.white,
-//                       fontSize: 16,
-//                       fontWeight: FontWeight.w600,
-//                     ),
-//                   ),
-//                 ),
-//                 SizedBox(height: 8),
-//                 Text(
-//                   data.subtitle,
-//                   style: GoogleFonts.openSans(
-//                     textStyle: TextStyle(
-//                       color: Colors.white38,
-//                       fontSize: 10,
-//                       fontWeight: FontWeight.w600,
-//                     ),
-//                   ),
-//                 ),
-//                 SizedBox(height: 14),
-//                 Text(
-//                   data.event,
-//                   style: GoogleFonts.openSans(
-//                     textStyle: TextStyle(
-//                       color: Colors.white70,
-//                       fontSize: 11,
-//                       fontWeight: FontWeight.w600,
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           );
-//         }).toList(),
-//       ),
-//     );
-//   }
-// }
-
+class _GridState extends State<Grid> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: gradientEndColor,
+      body: Container(
+        decoration: BoxDecoration(
+            ),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(80.0),
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      'Untuk Orang tua',
+                      style: TextStyle(
+                        fontFamily: 'Avenir',
+                        fontSize: 30,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w900,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height:500,
+                padding: const EdgeInsets.only(left: 32),
+                child: Swiper(
+                  itemCount: planets.length,
+                  itemWidth: MediaQuery.of(context).size.width - 2 * 64,
+                  layout: SwiperLayout.STACK,
+                  pagination: SwiperPagination(
+                    builder:
+                        DotSwiperPaginationBuilder(activeSize: 20, space: 8),
+                  ),
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, a, b) => ParentingHome(
+                              planetInfo: planets[index],
+                            ),
+                          ),
+                        );
+                      },
+                      child: Stack(
+                        children: <Widget>[
+                          Column(
+                            children: <Widget>[
+                              SizedBox(height: 100),
+                              Card(
+                                elevation: 8,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(32),
+                                ),
+                                color: Colors.white,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(32.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      SizedBox(height: 100),
+                                      Text(
+                                        planets[index].name,
+                                        style: TextStyle(
+                                          fontFamily: 'Avenir',
+                                          fontSize: 30,
+                                          color: const Color(0xff47455f),
+                                          fontWeight: FontWeight.w900,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                      SizedBox(height: 32),
+                                      Row(
+                                        children: <Widget>[
+                                          Text(
+                                            'Pelajari Lebih Lanjut',
+                                          ),
+                                          Icon(
+                                            Icons.arrow_forward,
+                                            color: secondaryTextColor,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Hero(
+                            tag: planets[index].position,
+                            child: Image.asset(planets[index].iconImage),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -118,7 +118,7 @@ class _BehaviorDictionaryPageState extends State<BehaviorDictionaryPage> {
                     textStyle: GoogleFonts.nunito(
                         fontSize: 16, fontWeight: FontWeight.bold)),
                 onPressed: () => Navigator.of(context).pop(false),
-                //return false when click on "NO"
+                //return false when click on "NO
                 child: Text('Tidak'),
               ),
               ElevatedButton(

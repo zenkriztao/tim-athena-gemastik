@@ -58,12 +58,13 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SizedBox(height: 20),
                 DoctorAppBar(),
-                SizedBox(height: 20),
+                SizedBox(height: 5),
+                // CategoriesList(),
                 DoctorBanner(),
                 SizedBox(height: 5),
-                CategoriesList(),
+                FeaturesAppBar(),
                 Menu(),
-                SizedBox(height: 30),
+                SizedBox(height: 5),
                 FeaturesAppBar(),
                 DoctorsList()
               ],

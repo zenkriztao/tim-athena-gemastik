@@ -1,61 +1,118 @@
+import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/data/parent_data.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-// import 'gridDashboard.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  HomePageState createState() => new HomePageState();
-}
+class ParentingHome extends StatelessWidget {
+  final PlanetInfo planetInfo;
 
-class HomePageState extends State<HomePage> {
+  const ParentingHome({Key? key, required this.planetInfo}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff392850),
-      body: Column(
-        children: <Widget>[
-          SizedBox(height: 110),
-          Padding(
-            padding: EdgeInsets.only(left: 16, right: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "My Family",
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
+      body: SafeArea(
+        bottom: false,
+        child: Stack(
+          children: <Widget>[
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(32.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: 300),
+                        Text(
+                          planetInfo.name,
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 56,
+                            color: primaryTextColor,
+                            fontWeight: FontWeight.w900,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        Text(
+                          'Solar System',
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 20,
+                            color: primaryTextColor,
+                            fontWeight: FontWeight.w300,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        Divider(color: Colors.black38),
+                        SizedBox(height: 32),
+                        Text(
+                          planetInfo.description ?? '',
+                          maxLines: 5,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 20,
+                            color: contentTextColor,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(height: 32),
+                        Divider(color: Colors.black38),
+                      ],
                     ),
-                    SizedBox(height: 4),
-                    Text(
-                      "Home",
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                            color: Color(0xffa29aac),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 32.0),
+                    child: Text(
+                      'Gallery',
+                      style: TextStyle(
+                        fontFamily: 'Avenir',
+                        fontSize: 25,
+                        color: const Color(0xff47455f),
+                        fontWeight: FontWeight.w300,
                       ),
+                      textAlign: TextAlign.left,
                     ),
-                  ],
-                ),
-                IconButton(
-                  onPressed: () {},
-                  alignment: Alignment.topCenter,
-                  icon: Image.asset("images/notification.png", width: 24),
-                )
-              ],
+                  ),
+                  Container(
+                    height: 250,
+                    padding: const EdgeInsets.only(left: 32.0),
+                    child: ListView.builder(
+                        itemCount: planetInfo.images.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Card(
+                            clipBehavior: Clip.antiAlias,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                            child: AspectRatio(
+                                aspectRatio: 1,
+                                child: Image.network(
+                                  planetInfo.images[index],
+                                  fit: BoxFit.cover,
+                                )),
+                          );
+                        }),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(height: 40),
-          //TODO Grid Dashboard
-          // GridDashboard()
-        ],
+            Positioned(
+              right: -64,
+              child: Hero(
+                  tag: planetInfo.position,
+                  child: Image.asset(planetInfo.iconImage)),
+            ),
+            IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
