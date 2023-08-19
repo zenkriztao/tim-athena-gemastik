@@ -20,6 +20,15 @@ const buttonColor = Color(0xff2C64C5);
 const textColor = Color(0xff545043);
 const whiteColor = Color(0xffFFFFFF);
 
+Color primaryTextColor = Color(0xFF414C6B);
+Color secondaryTextColor = Color(0xFFE4979E);
+Color titleTextColor = Colors.white;
+Color contentTextColor = Color(0xff868686);
+Color navigationColor = Color(0xFF6751B5);
+Color gradientStartColor = Color.fromARGB(255, 147, 174, 206);
+Color gradientEndColor = Color.fromARGB(255, 3, 0, 210);
+
+
  TextStyle buttonStyle = GoogleFonts.nunito(
     color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16);
 

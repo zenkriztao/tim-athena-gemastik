@@ -1,3 +1,5 @@
+import 'package:aksonhealth/view/parenting/grid.dart';
+import 'package:aksonhealth/view/parenting/parenting.dart';
 import 'package:flutter/material.dart';
 
 import '../../../size_config.dart';
@@ -30,7 +32,9 @@ class Menu extends StatelessWidget {
               (index) => CategoryCard(
                 icon: categories[index]["icon"],
                 text: categories[index]["text"],
-                press: () {},
+                press: () {
+                  navigateToScreenTop(index, context);
+                },
               ),
             ),
           ),
@@ -45,7 +49,9 @@ class Menu extends StatelessWidget {
               (index) => CategoryCard(
                 icon: categorize[index]["icon"],
                 text: categorize[index]["text"],
-                press: () {},
+                press: () {
+                  navigateToScreenBottom(index, context);
+                },
               ),
             ),
           ),
@@ -54,6 +60,39 @@ class Menu extends StatelessWidget {
     );
   }
 }
+
+void navigateToScreenTop(int index, BuildContext context) {
+    switch (index) {
+      case 0:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Grid()));
+        break;
+      case 1:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Grid()));
+        break;
+      default:
+        print('Invalid Category Index');
+        break;
+    }
+  }
+
+void navigateToScreenBottom(int index, BuildContext context) {
+    switch (index) {
+      case 0:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Grid()));
+        break;
+      case 1:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Grid()));
+        break;
+      default:
+        print('Invalid Category Index');
+        break;
+    }
+  }
+
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
@@ -79,16 +118,13 @@ class CategoryCard extends StatelessWidget {
               height: getScreenWidth(70), // Mengubah tinggi container
               width: getScreenWidth(70), // Mengubah lebar container
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  style: BorderStyle.solid,
-                  color: Color.fromARGB(255, 226, 233, 239),
-                  width: 1,
-                )
-                
-                
-              ),
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    style: BorderStyle.solid,
+                    color: Color.fromARGB(255, 226, 233, 239),
+                    width: 1,
+                  )),
               child: Image.asset(
                 icon!,
               ),

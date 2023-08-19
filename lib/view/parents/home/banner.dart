@@ -76,25 +76,10 @@ class _DoctorBannerState extends State<DoctorBanner> {
               alignment: Alignment.center,
               children: [
                 Container(
-                  width: getRelativeWidth(0.88),
+                  width: getRelativeWidth(0.95),
                   height: getRelativeHeight(0.17),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 80,
-                        offset: Offset(0, 15),
-                        color: Color.fromARGB(255, 29, 70, 205),
-                      )
-                    ],
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color(0xffffff),
-                        Color.fromARGB(255, 50, 168, 227),
-                      ],
-                    ),
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
@@ -159,9 +144,12 @@ class _DoctorBannerState extends State<DoctorBanner> {
                               },
                               child: Container(
                                 margin: EdgeInsets.symmetric(
-                                    horizontal: getRelativeWidth(0.03)),
+                                    horizontal: getRelativeWidth(0.001)),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(
+                                    color: Colors.black
+                                  ),
                                   boxShadow: [],
                                 ),
                                 child: Row(
@@ -203,7 +191,7 @@ class _DoctorBannerState extends State<DoctorBanner> {
                                                   cardData[index]
                                                       ['description']!,
                                                   style: GoogleFonts.nunito(
-                                                    color: Colors.white
+                                                    color: darkBlueColor
                                                         .withOpacity(0.85),
                                                     fontSize:
                                                         getRelativeWidth(0.033),
@@ -232,34 +220,6 @@ class _DoctorBannerState extends State<DoctorBanner> {
             ),
           ),
         ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-                height: getRelativeWidth(0.12),
-                width: getRelativeWidth(0.12),
-                child: Image.asset("assets/images/gradient.png")),
-          ),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.topLeft,
-          ),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: getRelativeHeight(0.01),
-                  horizontal: getRelativeWidth(0.07)),
-              child: Container(
-                  height: getRelativeWidth(0.08),
-                  width: getRelativeWidth(0.08),
-                  child: Image.asset("assets/images/gradient.png")),
-            ),
-          ),
-        )
       ],
     );
   }
