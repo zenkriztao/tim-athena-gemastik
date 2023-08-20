@@ -20,43 +20,33 @@ List<PlanetInfo> planets = [
       name: 'Buku tentang - Highly Sensitive Person',
       iconImage: 'assets/HSP_parent.png',
       description:
-          "The second planet from the sun, Venus is Earth's twin in size. Radar images beneath its atmosphere reveal that its surface has various mountains and volcanoes. But beyond that, the two planets couldn't be more different. Because of its thick, toxic atmosphere that's made of sulfuric acid clouds, Venus is an extreme example of the greenhouse effect. It's scorching-hot, even hotter than Mercury. The average temperature on Venus' surface is 900 F (465 C). At 92 bar, the pressure at the surface would crush and kill you. And oddly, Venus spins slowly from east to west, the opposite direction of most of the other planets.",
+          "Blog ini tentang sensitivitas tinggi dan pencarian sensasi tinggi karena kami menerbitkan artikel terbaru tentang masalah ini. oleh Bianca Acevedo, Art Aron dan saya, Tracy Cooper, dan Robert Marhenke: “Sensitivitas pemrosesan sensorik dan hubungannya dengan pencarian sensasi,” dalam Current Research in Behavioral Sciences edisi 2023, 4, 100100. Baca artikel selengkapnya di sini.",
       images: [
-        'https://cdn.pixabay.com/photo/2011/12/13/14/39/venus-11022_1280.jpg',
-        'https://image.shutterstock.com/image-photo/solar-system-venus-second-planet-600w-515581927.jpg'
+        "https://images.gr-assets.com/authors/1401536347p5/89949.jpg"
       ]),
   PlanetInfo(2,
       name: 'Buku tentang - Highly Sensitive Child',
       iconImage: 'assets/HSP_child.png',
       description:
-          "The third planet from the sun, Earth is a waterworld, with two-thirds of the planet covered by ocean. It's the only world known to harbor life. Earth's atmosphere is rich in nitrogen and oxygen. Earth's surface rotates about its axis at 1,532 feet per second (467 meters per second) — slightly more than 1,000 mph (1,600 kph) — at the equator. The planet zips around the sun at more than 18 miles per second (29 km per second).",
+          "Penulis buku laris dan psikolog yang bukunya mencapai 240.000 eksemplar sekarang mengatasi sifat pada anak-anak-dan menawarkan terobosan buku panduan pengasuhan untuk anak-anak yang sangat sensitif dan pengasuh mereka.",
       images: [
-        'https://cdn.pixabay.com/photo/2011/12/13/14/31/earth-11015_1280.jpg',
-        'https://cdn.pixabay.com/photo/2011/12/14/12/11/astronaut-11080_1280.jpg',
-        'https://cdn.pixabay.com/photo/2016/01/19/17/29/earth-1149733_1280.jpg',
-        'https://image.shutterstock.com/image-photo/3d-render-planet-earth-viewed-600w-1069251782.jpg'
+          "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320565354i/923949.jpg",
       ]),
   PlanetInfo(3,
       name: 'Akson Multiple Literacies',
       iconImage: 'assets/book.png',
       description:
-          "Zipping around the sun in only 88 days, Mercury is the closest planet to the sun, and it's also the smallest, only a little bit larger than Earth's moon. Because its so close to the sun (about two-fifths the distance between Earth and the sun), Mercury experiences dramatic changes in its day and night temperatures: Day temperatures can reach a scorching 840  F (450 C), which is hot enough to melt lead. Meanwhile on the night side, temperatures drop to minus 290 F (minus 180 C).",
+          "Definisi Literasi: kompetensi atau pengetahuan, kefasihan, pemahaman yang begitu mendasar, krusial & mendasar sehingga tanpanya, kehidupan seseorang akan sangat kurang optimal.",
       images: [
-        'https://cdn.pixabay.com/photo/2013/07/18/10/57/mercury-163610_1280.jpg',
-        'https://cdn.pixabay.com/photo/2014/07/01/11/38/planet-381127_1280.jpg',
-        'https://cdn.pixabay.com/photo/2015/06/26/18/48/mercury-822825_1280.png',
-        'https://image.shutterstock.com/image-illustration/mercury-high-resolution-images-presents-600w-367615301.jpg'
+        "https://www.researchgate.net/publication/277832873/figure/fig1/AS:669477951782934@1536627390774/Multiple-literacies-a-conceptual-framework.png",
       ]),
   PlanetInfo(4,
-      name: 'Common Sense pada Orang tua',
-      iconImage: 'assets/common_sense.png',
-      description:
-          "The fourth planet from the sun is Mars, and it's a cold, desert-like place covered in dust. This dust is made of iron oxides, giving the planet its iconic red hue. Mars shares similarities with Earth: It is rocky, has mountains, valleys and canyons, and storm systems ranging from localized tornado-like dust devils to planet-engulfing dust storms. ",
-      images: []),
-  PlanetInfo(5,
-      name: 'Thrivers dan UnSelfie pada Orang tua',
+      name: 'Buku Thrivers pada Orang tua',
       iconImage: 'assets/thrivers_parent.png',
       description:
-          "The fifth planet from the sun, Jupiter is a giant gas world that is the most massive planet in our solar system — more than twice as massive as all the other planets combined, according to NASA. Its swirling clouds are colorful due to different types of trace gases. And a major feature in its swirling clouds is the Great Red Spot, a giant storm more than 10,000 miles wide. It has raged at more than 400 mph for the last 150 years, at least. Jupiter has a strong magnetic field, and with 75 moons, it looks a bit like a miniature solar system.",
-      images: []),
+          "Michele Borba telah menjadi guru, konsultan pendidikan, dan orang tua selama 40 tahun -- dan dia tidak pernah lebih khawatir daripada dirinya tentang generasi anak-anak saat ini. Siswa berprestasi tinggi yang dia ajak bicara setiap hari lebih berprestasi, berpendidikan lebih baik, dan lebih diistimewakan daripada sebelumnya. Mereka juga lebih stres, tidak bahagia, dan bergumul dengan kecemasan, depresi, dan kelelahan pada usia yang semakin muda -- kata seorang remaja muda.Thrivers berbeda: mereka berkembang di dunia kita yang serba cepat, didorong oleh digital, dan seringkali tidak pasti. Mengapa? Dr. Borba menyisir studi ilmiah tentang ketahanan, berbicara dengan puluhan peneliti/ahli di lapangan dan mewawancarai lebih dari 100 anak muda dari semua lapisan masyarakat, dan dia menemukan sesuatu yang mengejutkan: perbedaan antara mereka yang berjuang dan mereka yang berhasil semakin berkurang. bukan untuk nilai atau skor ujian, tetapi untuk tujuh ciri karakter yang membedakan Thrivers (dan mengaturnya untuk kebahagiaan dan pencapaian yang lebih besar di kemudian hari). Ciri-ciri ini--kepercayaan diri, empati, pengendalian diri, integritas, rasa ingin tahu, ketekunan, dan optimisme--akan memungkinkan anak-anak untuk mengatasi pukulan dan berhasil dalam hidup. Dan berita yang lebih baik lagi: sifat-sifat ini dapat diajarkan kepada anak-anak pada usia berapa pun...bahkan, orang tua dan pendidikan harus melakukannya. Dalam Thrivers, Dr. Borba menawarkan cara-cara yang praktis dan dapat ditindaklanjuti untuk mengembangkan sifat-sifat ini pada anak-anak dari prasekolah hingga sekolah menengah, menunjukkan cara mengajari anak-anak cara mengatasi hari ini sehingga mereka dapat berkembang di masa depan.",
+      images: [
+        "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1612802561i/56997619.jpg"
+      ]),
+
 ];
