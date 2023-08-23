@@ -4,11 +4,14 @@ import 'package:aksonhealth/view/parents/home/banner.dart';
 import 'package:aksonhealth/view/parents/home/doctors_list.dart';
 import 'package:aksonhealth/view/parents/home/features_appbar.dart';
 import 'package:aksonhealth/view/parents/home/menu.dart';
+import 'package:aksonhealth/view/parents/schools/schools.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../gamification/pages/nst.dart';
+import '../clinic/clinic_test.dart';
 import 'appbar.dart';
 import 'categories_list.dart';
 
@@ -64,6 +67,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 5),
                 FeaturesAppBar(),
                 Menu(),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      color: Colors.red,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => NST()),
+                          );
+                        },
+                        child: Text('NST-Testing'),
+                      ),
+                    ),
+                    SizedBox(width: 24),
+                    Container(
+                      color: Colors.red,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => SchoolsForChildren()),
+                          );
+                        },
+                        child: Text('SCHOOLS-Testing'),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5),
                 SizedBox(height: 5),
                 FeaturesAppBar(),
                 DoctorsList()
