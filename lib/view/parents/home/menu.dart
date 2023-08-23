@@ -58,8 +58,8 @@ class Menu extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              Event()), // Replace "Donasi()" with your actual page route
+                        builder: (context) => Event(),
+                      ), // Replace "Donasi()" with your actual page route
                     );
                   }
                 },
