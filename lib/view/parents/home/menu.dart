@@ -1,7 +1,6 @@
-import 'package:aksonhealth/view/parenting/grid.dart';
-import 'package:aksonhealth/view/parenting/parenting.dart';
 import 'package:flutter/material.dart';
-
+import '../../donasi/donasi.dart';
+import '../../event/event.dart';
 import '../../../size_config.dart';
 
 class Menu extends StatelessWidget {
@@ -17,8 +16,8 @@ class Menu extends StatelessWidget {
     List<Map<String, dynamic>> categorize = [
       {"icon": "assets/icons/training.png", "text": "Donasi"},
       {"icon": "assets/icons/donate.png", "text": "Pelatihan"},
-      {"icon": "assets/icons/error.png", "text": "Coming Soon"},
-      {"icon": "assets/icons/error.png", "text": "Coming Soon"},
+      {"icon": "assets/icons/error.png", "text": "Event"},
+      {"icon": "assets/icons/error.png", "text": "Permainan"},
     ];
     return Padding(
       padding: EdgeInsets.all(getScreenWidth(20)),
@@ -32,9 +31,7 @@ class Menu extends StatelessWidget {
               (index) => CategoryCard(
                 icon: categories[index]["icon"],
                 text: categories[index]["text"],
-                press: () {
-                  navigateToScreenTop(index, context);
-                },
+                press: () {},
               ),
             ),
           ),
@@ -50,7 +47,21 @@ class Menu extends StatelessWidget {
                 icon: categorize[index]["icon"],
                 text: categorize[index]["text"],
                 press: () {
-                  navigateToScreenBottom(index, context);
+                  if (categorize[index]["text"] == "Donasi") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Donasi()), // Replace "Donasi()" with your actual page route
+                    );
+                  } else if (categorize[index]["text"] == "Event") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Event(),
+                      ), // Replace "Donasi()" with your actual page route
+                    );
+                  }
                 },
               ),
             ),
@@ -60,39 +71,6 @@ class Menu extends StatelessWidget {
     );
   }
 }
-
-void navigateToScreenTop(int index, BuildContext context) {
-    switch (index) {
-      case 0:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Grid()));
-        break;
-      case 1:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Grid()));
-        break;
-      default:
-        print('Invalid Category Index');
-        break;
-    }
-  }
-
-void navigateToScreenBottom(int index, BuildContext context) {
-    switch (index) {
-      case 0:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Grid()));
-        break;
-      case 1:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Grid()));
-        break;
-      default:
-        print('Invalid Category Index');
-        break;
-    }
-  }
-
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({

@@ -23,7 +23,7 @@ class ParentingHome extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        SizedBox(height: 300),
+                        SizedBox(height: 100),
                         Text(
                           planetInfo.name,
                           style: TextStyle(
@@ -34,22 +34,10 @@ class ParentingHome extends StatelessWidget {
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        Text(
-                          'Solar System',
-                          style: TextStyle(
-                            fontFamily: 'Avenir',
-                            fontSize: 20,
-                            color: primaryTextColor,
-                            fontWeight: FontWeight.w300,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
                         Divider(color: Colors.black38),
                         SizedBox(height: 32),
                         Text(
                           planetInfo.description ?? '',
-                          maxLines: 5,
-                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 20,
@@ -98,12 +86,6 @@ class ParentingHome extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            Positioned(
-              right: -64,
-              child: Hero(
-                  tag: planetInfo.position,
-                  child: Image.asset(planetInfo.iconImage)),
             ),
             IconButton(
               icon: Icon(Icons.arrow_back_ios),

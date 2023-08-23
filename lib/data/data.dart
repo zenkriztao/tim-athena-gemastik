@@ -2,6 +2,7 @@ import 'package:aksonhealth/model/category_model.dart';
 import 'package:aksonhealth/model/doctor_model.dart';
 import 'package:line_icons/line_icons.dart';
 
+
 class Data {
   static final categoriesList = [
     Category(

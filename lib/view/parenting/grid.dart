@@ -40,7 +40,7 @@ class _GridState extends State<Grid> {
                 ),
               ),
               Container(
-                height:500,
+                height: 600,
                 padding: const EdgeInsets.only(left: 32),
                 child: Swiper(
                   itemCount: planets.length,
@@ -70,11 +70,11 @@ class _GridState extends State<Grid> {
                               Card(
                                 elevation: 8,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(32),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                                 color: Colors.white,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(32.0),
+                                  padding: const EdgeInsets.all(60.0),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -84,7 +84,7 @@ class _GridState extends State<Grid> {
                                         planets[index].name,
                                         style: TextStyle(
                                           fontFamily: 'Avenir',
-                                          fontSize: 30,
+                                          fontSize: 25,
                                           color: const Color(0xff47455f),
                                           fontWeight: FontWeight.w900,
                                         ),
@@ -110,7 +110,10 @@ class _GridState extends State<Grid> {
                           ),
                           Hero(
                             tag: planets[index].position,
-                            child: Image.asset(planets[index].iconImage),
+                            child: Image.asset(planets[index].iconImage,
+                                height: 250,
+                                
+                              ),
                           ),
                         ],
                       ),
