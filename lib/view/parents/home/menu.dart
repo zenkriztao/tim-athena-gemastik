@@ -1,3 +1,4 @@
+import 'package:aksonhealth/view/parents/clinic/clinic_test.dart';
 import 'package:flutter/material.dart';
 import '../../donasi/donasi.dart';
 import '../../event/event.dart';
@@ -10,14 +11,14 @@ class Menu extends StatelessWidget {
       {"icon": "assets/icons/clinic.png", "text": "Klinik"},
       {"icon": "assets/icons/school.png", "text": "Sekolah"},
       {"icon": "assets/icons/forum.png", "text": "Forum"},
-      {"icon": "assets/icons/parent.png", "text": "Parenting"},
+      {"icon": "assets/icons/parenting.png", "text": "Parenting"},
     ];
 
     List<Map<String, dynamic>> categorize = [
-      {"icon": "assets/icons/training.png", "text": "Donasi"},
-      {"icon": "assets/icons/donate.png", "text": "Pelatihan"},
-      {"icon": "assets/icons/error.png", "text": "Event"},
-      {"icon": "assets/icons/error.png", "text": "Permainan"},
+      {"icon": "assets/icons/charity.png", "text": "Donasi"},
+      {"icon": "assets/icons/training.png", "text": "Pelatihan"},
+      {"icon": "assets/icons/event.png", "text": "Event"},
+      {"icon": "assets/icons/game.png", "text": "Permainan"},
     ];
     return Padding(
       padding: EdgeInsets.all(getScreenWidth(20)),
@@ -47,18 +48,18 @@ class Menu extends StatelessWidget {
                 icon: categorize[index]["icon"],
                 text: categorize[index]["text"],
                 press: () {
-                  if (categorize[index]["text"] == "Donasi") {
+                  if (categorize[index]["text"] == "Klinik") {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Donasi()), // Replace "Donasi()" with your actual page route
+                              Event()), // Replace "Donasi()" with your actual page route
                     );
                   } else if (categorize[index]["text"] == "Event") {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Event(),
+                        builder: (context) => ClinicTesting(),
                       ), // Replace "Donasi()" with your actual page route
                     );
                   }
@@ -88,7 +89,7 @@ class CategoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: SizedBox(
-        width: getScreenWidth(80), // Mengubah lebar container
+        width: getScreenWidth(60), // Mengubah lebar container
         child: Column(
           children: [
             Container(
@@ -105,12 +106,14 @@ class CategoryCard extends StatelessWidget {
                   )),
               child: Image.asset(
                 icon!,
+                height: 100,
               ),
             ),
             SizedBox(height: 10), // Mengubah jarak antara ikon dan teks
             Text(
               text!,
               style: TextStyle(
+                // fontFamily: '',
                 fontSize: 13, // Mengubah ukuran teks
                 fontWeight: FontWeight.bold, // Menambah tebal pada teks
               ),

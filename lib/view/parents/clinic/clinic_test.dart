@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:webview_flutter/webview_flutter.dart';
@@ -84,7 +85,7 @@ class _ClinicTestingState extends State<ClinicTesting> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Authentication',
+      title: '',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blue,
@@ -172,9 +173,13 @@ class _CardWithMapState extends State<CardWithMap> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListTile(
-                title: Text(widget.nameClinic),
+                title: Text(widget.nameClinic,
+                style: GoogleFonts.nunito(
+                    fontSize: 20
+                )),
                 subtitle: Text(
                   '${widget.province} (${widget.city})',
+                  style: GoogleFonts.nunito(),
                 ),
                 trailing: IconButton(
                   icon: Icon(
@@ -200,7 +205,8 @@ class _CardWithMapState extends State<CardWithMap> {
               SizedBox(height: 16),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: Text(widget.address),
+                child: Text(widget.address,
+                style: GoogleFonts.nunito()),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -254,7 +260,7 @@ class ContactnWebsite extends StatelessWidget {
           onPressed: () {},
           child: Text(
             widget.telephone,
-            style: TextStyle(color: Colors.blue),
+            style: GoogleFonts.nunito(color: Colors.blue),
           ),
         ),
         FilledButton(
@@ -264,7 +270,9 @@ class ContactnWebsite extends StatelessWidget {
           onPressed: () {
             _launchMap(widget.gMapAddress);
           },
-          child: const Text('Get Directions'),
+          child: Text('Get Directions', 
+          style: GoogleFonts.nunito()
+          ),
         )
       ],
     );

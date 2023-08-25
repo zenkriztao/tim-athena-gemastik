@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/article/behavior_dictionary.dart';
@@ -32,7 +30,6 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
   List<Widget> _pages = [
     HomeScreen(),
     ConsultScreen(),
-    HomeScreen(),
     BehaviorDictionaryPage(),
     ProfileScreen(),
   ];
@@ -75,12 +72,6 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
       extendBody: true,
       backgroundColor: lightGreyColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: _selectedIndex == 2 ? blueColor : darkBlueColor,
-        onPressed: () {},
-        child: FaIcon(FontAwesomeIcons.bolt),
-        elevation: 2.0,
-      ),
       body: _pages.elementAt(_selectedIndex),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
@@ -134,23 +125,35 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                   ),
                   label: 'Konsultasi',
                 ),
-                BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: EdgeInsets.only(bottom: 4),
-                    child: InkWell(
-                      onTap: () {},
-                    ),
-                  ),
-                  label: 'SOS',
-                ),
+                // BottomNavigationBarItem(
+                //   icon: Padding(
+                //     padding: EdgeInsets.only(bottom: 4),
+                //     child: InkWell(
+                //         onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       PageRouteBuilder(
+                //         pageBuilder: (c, a1, a2) => QuestionareScreen(number: 1,type: 'MChat'),
+                //         transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                //         transitionDuration: Duration(milliseconds: 100),
+                //       ),
+                //     ).then((value) {
+
+                //     });
+
+                //   }
+                //     ),
+                //   ),
+                //   label: 'SOS',
+                // ),
                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          _selectedIndex = 3;
-                          _pages[3] = BehaviorDictionaryPage();
+                          _selectedIndex = 2;
+                          _pages[2] = BehaviorDictionaryPage();
                         });
                       },
                       child: FaIcon(
@@ -167,8 +170,8 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          _selectedIndex = 4;
-                          _pages[4] = ProfileScreen();
+                          _selectedIndex = 3;
+                          _pages[3] = ProfileScreen();
                         });
                       },
                       child: FaIcon(

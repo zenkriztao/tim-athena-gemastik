@@ -5,6 +5,7 @@ import 'package:aksonhealth/view/parents/home/doctors_list.dart';
 import 'package:aksonhealth/view/parents/home/features_appbar.dart';
 import 'package:aksonhealth/view/parents/home/menu.dart';
 import 'package:aksonhealth/view/parents/schools/schools.dart';
+import 'package:aksonhealth/view/specialists/consult_banner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -61,10 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SizedBox(height: 20),
                 DoctorAppBar(),
-                SizedBox(height: 5),
+                SizedBox(height: 10),
                 // CategoriesList(),
-                DoctorBanner(),
-                SizedBox(height: 5),
+                ConsultBanner(),
+                SizedBox(height: 10),
                 FeaturesAppBar(),
                 Menu(),
                 SizedBox(height: 5),
@@ -100,7 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 5),
                 SizedBox(height: 5),
                 FeaturesAppBar(),
-                DoctorsList()
+                DoctorsList(),
+                DoctorBanner()
               ],
             ),
           ),

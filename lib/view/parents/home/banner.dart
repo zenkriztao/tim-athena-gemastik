@@ -1,6 +1,5 @@
 import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/theme.dart';
-import 'package:aksonhealth/view/parents/questionare/questionare_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,16 +15,16 @@ class DoctorBanner extends StatefulWidget {
 class _DoctorBannerState extends State<DoctorBanner> {
   final List<Map<String, String>> cardData = [
     {
-      'title': 'Autism MCT',
+      'title': 'Galang Dana untuk anak Autisme',
       'description':
-          'Test berdasarkan studi kasus yang kami buat dari survey Mchat dengan keakuratan 90%',
+        'Disini kita bisa melihat dan membantu anak anak autisme dan disleksia di Indonesia yang membutuhkan',
       'image': 'assets/images/testautism.png',
     },
     {
-      'title': 'Autism SCQ Data',
+      'title': 'Webinar menarik tentang paranting',
       'description':
-          'Test berdasarkan studi kasus yang kami buat dari survey SCQData dengan keakuratan 90%',
-      'image': 'assets/images/dyslexia.png',
+        'Disini kita bisa melihat dan membantu anak anak autisme dan disleksia di Indonesia yang membutuhkan',
+      'image': 'assets/images/testautism.png',
     },
   ];
 
@@ -109,39 +108,39 @@ class _DoctorBannerState extends State<DoctorBanner> {
                               );
                             },
                             child: GestureDetector(
-                              onTap: () {
-                                if (index == 0) {
-                                  Navigator.push(
-                                    context,
-                                    PageRouteBuilder(
-                                      pageBuilder: (c, a1, a2) =>
-                                          QuestionareScreen(
-                                              number: 1, type: 'MChat'),
-                                      transitionsBuilder:
-                                          (c, anim, a2, child) =>
-                                              FadeTransition(
-                                                  opacity: anim, child: child),
-                                      transitionDuration:
-                                          Duration(milliseconds: 100),
-                                    ),
-                                  ).then((value) {});
-                                } else if (index == 1) {
-                                  Navigator.push(
-                                    context,
-                                    PageRouteBuilder(
-                                      pageBuilder: (c, a1, a2) =>
-                                          QuestionareScreen(
-                                              number: 1, type: 'SCQ'),
-                                      transitionsBuilder:
-                                          (c, anim, a2, child) =>
-                                              FadeTransition(
-                                                  opacity: anim, child: child),
-                                      transitionDuration:
-                                          Duration(milliseconds: 100),
-                                    ),
-                                  ).then((value) {});
-                                }
-                              },
+                              // onTap: () {
+                              //   if (index == 0) {
+                              //     Navigator.push(
+                              //       context,
+                              //       PageRouteBuilder(
+                              //         pageBuilder: (c, a1, a2) =>
+                              //             QuestionareScreen(
+                              //                 number: 1, type: 'MChat'),
+                              //         transitionsBuilder:
+                              //             (c, anim, a2, child) =>
+                              //                 FadeTransition(
+                              //                     opacity: anim, child: child),
+                              //         transitionDuration:
+                              //             Duration(milliseconds: 100),
+                              //       ),
+                              //     ).then((value) {});
+                              //   } else if (index == 1) {
+                              //     Navigator.push(
+                              //       context,
+                              //       PageRouteBuilder(
+                              //         pageBuilder: (c, a1, a2) =>
+                              //             QuestionareScreen(
+                              //                 number: 1, type: 'SCQ'),
+                              //         transitionsBuilder:
+                              //             (c, anim, a2, child) =>
+                              //                 FadeTransition(
+                              //                     opacity: anim, child: child),
+                              //         transitionDuration:
+                              //             Duration(milliseconds: 100),
+                              //       ),
+                              //     ).then((value) {});
+                              //   }
+                              // },
                               child: Container(
                                 margin: EdgeInsets.symmetric(
                                     horizontal: getRelativeWidth(0.001)),
