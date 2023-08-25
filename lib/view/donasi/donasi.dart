@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Donasi extends StatelessWidget {
+class Donation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +74,6 @@ class DonationOptionCard extends StatelessWidget {
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Donasi(),
+    home: Donation(),
   ));
 }

@@ -1,4 +1,6 @@
+import 'package:aksonhealth/view/parenting/grid.dart';
 import 'package:aksonhealth/view/parents/clinic/clinic_test.dart';
+import 'package:aksonhealth/view/parents/schools/schools.dart';
 import 'package:flutter/material.dart';
 import '../../donasi/donasi.dart';
 import '../../event/event.dart';
@@ -53,9 +55,51 @@ class Menu extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Event()), // Replace "Donasi()" with your actual page route
+                              ClinicTesting()), // Replace "Donasi()" with your actual page route
+                    );
+                  } else if (categorize[index]["text"] == "Sekolah") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SchoolsForChildren(),
+                      ), // Replace "Donasi()" with your actual page route
+                    );
+                  } else if (categorize[index]["text"] == "Forum") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ClinicTesting(),
+                      ), // Replace "Donasi()" with your actual page route
+                    );
+                  } else if (categorize[index]["text"] == "Parenting") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Grid(),
+                      ), // Replace "Donasi()" with your actual page route
+                    );
+                  } else if (categorize[index]["text"] == "Donasi") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Donation(),
+                      ), // Replace "Donasi()" with your actual page route
+                    );
+                  } else if (categorize[index]["text"] == "Pelatihan") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ClinicTesting(),
+                      ), // Replace "Donasi()" with your actual page route
                     );
                   } else if (categorize[index]["text"] == "Event") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Event(),
+                      ), // Replace "Donasi()" with your actual page route
+                    );
+                  } else if (categorize[index]["text"] == "Permainan") {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
