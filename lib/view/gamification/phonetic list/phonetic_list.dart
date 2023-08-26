@@ -1,31 +1,48 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-class PhoneticList extends StatelessWidget {
-  const PhoneticList({super.key});
+class FonetikList extends StatelessWidget {
+  FonetikList({super.key});
+
+  final player = AudioPlayer();
+
+  // Function to generate a single card
+  Widget generateCard(String letter) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () async {
+          player.play(AssetSource('$letter.mp3'));
+        },
+        child: Card(
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            child: Image.asset('assets/images/letter-a.png'),
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          Card(
-            child: Container(padding : EdgeInsets.all(10),
-            child: Image.asset('assets/ABC/a.jpg'),),
+      appBar: AppBar(
+        title: const Text('Text'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: List.generate(
+            13, // Number of rows (from 'a' to 'z' is 26 letters, 2 letters per row)
+            (index) => Row(
+              children: [
+                generateCard(
+                    String.fromCharCode(97 + index * 2)), // ASCII of 'a' is 97
+                generateCard(
+                    String.fromCharCode(98 + index * 2)), // ASCII of 'b' is 98
+              ],
+            ),
           ),
-          Card(
-            child: Container(padding : EdgeInsets.all(10),
-            child: Image.asset('assets/ABC/b.jpg'),),
-          ),
-          Card(
-            child: Container(padding : EdgeInsets.all(10),
-            child: Image.asset('assets/ABC/c.jpg'),),
-          ),
-          Card(
-            child: Container(padding : EdgeInsets.all(10),
-            child: Image.asset('assets/ABC/d.jpg'),),
-          ),
-        ],
+        ),
       ),
     );
   }

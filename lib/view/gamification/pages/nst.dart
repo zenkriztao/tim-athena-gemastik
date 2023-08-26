@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:quickalert/quickalert.dart';
@@ -13,7 +12,6 @@ class _NSTState extends State<NST> {
   int answer = 1;
   int answerRight = 0;
   int answerWrong = 0;
-
   List<int> angkaList = List.generate(36, (index) => index + 1);
   int? angkaAcak;
 
