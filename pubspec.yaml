@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   animated_text_kit: ^4.2.2
+  audioplayers: ^5.1.0
   cached_network_image: ^3.2.3
   carousel_slider: ^4.2.1
   chat_gpt_sdk:
