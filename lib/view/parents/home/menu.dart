@@ -1,4 +1,8 @@
+// <<<<<<< HEAD
 import 'package:aksonhealth/view/gamification/phonetic%20list/phonetic_list.dart';
+// =======
+import 'package:aksonhealth/view/gamification/pages/home_page.dart';
+// >>>>>>> 7c011123d9d6daca0b7e98595e0539787a0de769
 import 'package:aksonhealth/view/parenting/grid.dart';
 import 'package:aksonhealth/view/parents/clinic/clinic_test.dart';
 import 'package:aksonhealth/view/parents/schools/schools.dart';
@@ -108,7 +112,7 @@ class Menu extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ClinicTesting(),
+                        builder: (context) => HomePage(),
                       ), // Replace "Donasi()" with your actual page route
                     );
                   }
