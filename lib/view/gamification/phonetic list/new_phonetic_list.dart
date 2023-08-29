@@ -1,62 +1,23 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-class NewPhoneticList extends StatefulWidget {
+class NewPhoneticList extends StatelessWidget {
   NewPhoneticList({super.key});
 
-  @override
-  _NewPhoneticListState createState() => _NewPhoneticListState();
-}
-
-class _NewPhoneticListState extends State<NewPhoneticList>
-    with SingleTickerProviderStateMixin {
   final player = AudioPlayer();
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 100),
-      vsync: this,
-    );
-    _animation = Tween<double>(begin: 1, end: 0.95).animate(_controller);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   // Function to generate a single card
   Widget generateCard(String letter) {
     return Expanded(
       child: GestureDetector(
-        onTapDown: (details) {
-          _controller.forward();
+        onTap: () async {
+          player.play(AssetSource('$letter.mp3'));
         },
-        onTapUp: (details) async {
-          _controller.reverse();
-          await player.play(AssetSource('$letter.mp3'));
-        },
-        onTapCancel: () {
-          _controller.reverse();
-        },
-        child: AnimatedBuilder(
-          animation: _animation,
-          builder: (context, child) {
-            return Transform.scale(
-              scale: _animation.value,
-              child: Card(
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Image.asset('assets/icons8-$letter-100.png'),
-                ),
-              ),
-            );
-          },
+        child: Card(
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            child: Image.asset('assets/icons8-$letter-100.png'),
+          ),
         ),
       ),
     );
@@ -66,7 +27,7 @@ class _NewPhoneticListState extends State<NewPhoneticList>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('new phonetic list'),
+        title: const Text('Text'),
       ),
       body: SingleChildScrollView(
         child: Column(
