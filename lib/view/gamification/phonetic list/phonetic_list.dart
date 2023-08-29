@@ -1,8 +1,8 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-class FonetikList extends StatelessWidget {
-  FonetikList({super.key});
+class PhonetikList extends StatelessWidget {
+  PhonetikList({super.key});
 
   final player = AudioPlayer();
 
@@ -16,7 +16,7 @@ class FonetikList extends StatelessWidget {
         child: Card(
           child: Container(
             padding: const EdgeInsets.all(10),
-            child: Image.asset('assets/images/letter-a.png'),
+            child: Image.asset('assets/icons8-$letter-100.png'),
           ),
         ),
       ),

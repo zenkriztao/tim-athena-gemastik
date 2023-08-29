@@ -1,3 +1,4 @@
+import 'package:aksonhealth/view/gamification/phonetic%20list/phonetic_list.dart';
 import 'package:aksonhealth/view/parenting/grid.dart';
 import 'package:aksonhealth/view/parents/clinic/clinic_test.dart';
 import 'package:aksonhealth/view/parents/schools/schools.dart';
@@ -6,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../donasi/donasi.dart';
 import '../../event/event.dart';
 import '../../../size_config.dart';
+import '../../gamification/phonetic list/new_phonetic_list.dart';
 
 class Menu extends StatelessWidget {
   @override
@@ -81,7 +83,7 @@ class Menu extends StatelessWidget {
                 icon: categorize[index]["icon"],
                 text: categorize[index]["text"],
                 press: () {
-                   if (categorize[index]["text"] == "Donasi") {
+                  if (categorize[index]["text"] == "Donasi") {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -113,6 +115,23 @@ class Menu extends StatelessWidget {
                 },
               ),
             ),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PhonetikList()));
+            },
+            child: Text('Phonetic Testing'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => NewPhoneticList()));
+            },
+            child: Text('New Phonetic Testing'),
           ),
         ],
       ),
