@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Game untuk penyandang Autisme",
+                                    "Permainan Pra Membaca cocok gambar NST untuk Disleksia",
                                     style: GoogleFonts.nunito(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
