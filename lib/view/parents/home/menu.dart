@@ -1,8 +1,6 @@
-import 'package:aksonhealth/view/parenting/grid.dart';
+import 'package:aksonhealth/view/gamification/pages/nst.dart';
 import 'package:aksonhealth/view/parents/clinic/clinic_test.dart';
-import 'package:aksonhealth/view/parents/schools/schools.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../donasi/donasi.dart';
 import '../../event/event.dart';
 import '../../../size_config.dart';
@@ -35,37 +33,7 @@ class Menu extends StatelessWidget {
               (index) => CategoryCard(
                 icon: categories[index]["icon"],
                 text: categories[index]["text"],
-                press: () {
-                  if (categories[index]["text"] == "Klinik") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              ClinicTesting()), // Replace "Donasi()" with your actual page route
-                    );
-                  } else if (categories[index]["text"] == "Sekolah") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SchoolsForChildren(),
-                      ), // Replace "Donasi()" with your actual page route
-                    );
-                  } else if (categories[index]["text"] == "Forum") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ClinicTesting(),
-                      ), // Replace "Donasi()" with your actual page route
-                    );
-                  } else if (categories[index]["text"] == "Parenting") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Grid(),
-                      ), // Replace "Donasi()" with your actual page route
-                    );
-                  }
-                },
+                press: () {},
               ),
             ),
           ),
@@ -81,34 +49,23 @@ class Menu extends StatelessWidget {
                 icon: categorize[index]["icon"],
                 text: categorize[index]["text"],
                 press: () {
-                   if (categorize[index]["text"] == "Donasi") {
+                  if (categorize[index]["text"] == "Klinik") {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Donation(),
-                      ), // Replace "Donasi()" with your actual page route
-                    );
-                  } else if (categorize[index]["text"] == "Pelatihan") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ClinicTesting(),
-                      ), // Replace "Donasi()" with your actual page route
+                          builder: (context) =>
+                              Event()), // Replace "Donasi()" with your actual page route
                     );
                   } else if (categorize[index]["text"] == "Event") {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Event(),
-                      ), // Replace "Donasi()" with your actual page route
-                    );
-                  } else if (categorize[index]["text"] == "Permainan") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
                         builder: (context) => ClinicTesting(),
                       ), // Replace "Donasi()" with your actual page route
                     );
+                  } else if (categorize[index]["text"] == "Permainan") {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => NST()));
                   }
                 },
               ),
@@ -159,8 +116,8 @@ class CategoryCard extends StatelessWidget {
             SizedBox(height: 10), // Mengubah jarak antara ikon dan teks
             Text(
               text!,
-              style: GoogleFonts.nunito(
-                color: Color.fromARGB(255, 113, 113, 113),
+              style: TextStyle(
+                // fontFamily: '',
                 fontSize: 13, // Mengubah ukuran teks
                 fontWeight: FontWeight.bold, // Menambah tebal pada teks
               ),
