@@ -1,6 +1,8 @@
 import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/article/behavior_dictionary.dart';
+import 'package:aksonhealth/view/chatbot/chat_screen.dart';
+import 'package:aksonhealth/view/chatbot/floating_menu.dart';
 import 'package:aksonhealth/view/parents/home/home_screen.dart';
 import 'package:aksonhealth/view/parents/profile/profile_screen.dart';
 import 'package:aksonhealth/view/specialists/consult_screen.dart';
@@ -30,6 +32,7 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
   List<Widget> _pages = [
     HomeScreen(),
     ConsultScreen(),
+    ChatScreenBot(),
     BehaviorDictionaryPage(),
     ProfileScreen(),
   ];
@@ -72,6 +75,21 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
       extendBody: true,
       backgroundColor: lightGreyColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: _selectedIndex == 2 ? primaryColor : Color.fromARGB(255, 56, 107, 208),
+        onPressed: () {
+          setState(() {
+            _selectedIndex = 2;
+            _pages[2] = FloatingMenu();
+          });
+
+        },
+        child: FaIcon(
+                        FontAwesomeIcons.robot,
+                        size: 23,
+                      ),
+        elevation: 2.0,
+      ),
       body: _pages.elementAt(_selectedIndex),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
@@ -125,35 +143,28 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                   ),
                   label: 'Konsultasi',
                 ),
-                // BottomNavigationBarItem(
-                //   icon: Padding(
-                //     padding: EdgeInsets.only(bottom: 4),
-                //     child: InkWell(
-                //         onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       PageRouteBuilder(
-                //         pageBuilder: (c, a1, a2) => QuestionareScreen(number: 1,type: 'MChat'),
-                //         transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
-                //         transitionDuration: Duration(milliseconds: 100),
-                //       ),
-                //     ).then((value) {
-
-                //     });
-
-                //   }
-                //     ),
-                //   ),
-                //   label: 'SOS',
-                // ),
+                BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: EdgeInsets.only(bottom: 4),
+                    child: InkWell(
+                    onTap: () {
+                        setState(() {
+                          _selectedIndex = 2;
+                          _pages[1] = FloatingMenu();
+                        });
+                      },
+                    ),
+                  ),
+                  label: 'Tanya AI',
+                ),
                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4),
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          _selectedIndex = 2;
-                          _pages[2] = BehaviorDictionaryPage();
+                          _selectedIndex = 3;
+                          _pages[3] = BehaviorDictionaryPage();
                         });
                       },
                       child: FaIcon(
@@ -170,8 +181,8 @@ class _AppBottomNavBarScreenState extends State<AppBottomNavBarScreen> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          _selectedIndex = 3;
-                          _pages[3] = ProfileScreen();
+                          _selectedIndex = 4;
+                          _pages[4] = ProfileScreen();
                         });
                       },
                       child: FaIcon(

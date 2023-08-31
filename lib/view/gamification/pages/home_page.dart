@@ -1,6 +1,8 @@
 import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/gamification/auth.dart';
+import 'package:aksonhealth/view/gamification/pages/nst.dart';
+import 'package:aksonhealth/view/gamification/phonetic%20list/phonetic_list.dart';
 import 'package:aksonhealth/view/gamification/storylines/first_storyline.dart';
 import 'package:aksonhealth/view/gamification/storylines/second_storyline.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -53,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Gamification",
+                        "Playground",
                         style: GoogleFonts.nunito(
                           color: darkBlueColor,
                           fontSize: 35.0,
@@ -71,7 +73,7 @@ class _HomePageState extends State<HomePage> {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => FirstStoryLine(user: user)));
+                    builder: (context) => NST()));
               },
               child: Stack(
                 alignment: Alignment.center,
@@ -131,7 +133,7 @@ class _HomePageState extends State<HomePage> {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => SecondStoryLine(user: user)));
+                    builder: (context) => PhonetikList()));
               },
               child: Stack(
                 alignment: Alignment.center,
@@ -187,63 +189,6 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(
               height: 30,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => SecondStoryLine(user: user)));
-              },
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    width: getRelativeWidth(0.90),
-                    height: getRelativeHeight(0.20),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.green),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getRelativeWidth(0.03)),
-                      child: Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Daftar kata dengan 2 suku kata",
-                                    style: GoogleFonts.nunito(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  SizedBox(height: getRelativeHeight(0.02)),
-                                ],
-                              ),
-                            ),
-                            Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Image.asset(
-                                  'assets/images/dyslexia1.png',
-                                  height: 300,
-                                  width: 100,
-                                )
-                              ],
-                            ),
-                            SizedBox(width: getRelativeWidth(0.012)),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
           ],
         ),

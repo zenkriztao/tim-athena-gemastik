@@ -105,7 +105,7 @@ class Menu extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Event(),
+                        builder: (context) => EventScreen(),
                       ), // Replace "Donasi()" with your actual page route
                     );
                   } else if (categorize[index]["text"] == "Permainan") {
@@ -120,23 +120,23 @@ class Menu extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 16,
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => PhonetikList()));
-            },
-            child: Text('Phonetic Testing'),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => NewPhoneticList()));
-            },
-            child: Text('New Phonetic Testing'),
-          ),
+          // SizedBox(
+          //   height: 16,
+          // ),
+          // TextButton(
+          //   onPressed: () {
+          //     Navigator.push(context,
+          //         MaterialPageRoute(builder: (context) => PhonetikList()));
+          //   },
+          //   child: Text('Phonetic Testing'),
+          // ),
+          // TextButton(
+          //   onPressed: () {
+          //     Navigator.push(context,
+          //         MaterialPageRoute(builder: (context) => NewPhoneticList()));
+          //   },
+          //   child: Text('New Phonetic Testing'),
+          // ),
         ],
       ),
     );
