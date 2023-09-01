@@ -5,7 +5,7 @@ import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/chatbot/chat_screen.dart';
 import 'package:aksonhealth/view/gamification/pages/home_page.dart';
-import 'package:aksonhealth/view/parenting/parenting.view.dart';
+import 'package:aksonhealth/view/parenting/grid.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,7 +28,7 @@ class DoctorsList extends StatelessWidget {
 
     void navigateScreenParenting(Doctor doctor) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ParentingView()));
+          context, MaterialPageRoute(builder: (context) => Grid()));
     }
 
     void featuresAction(Doctor doctor) {

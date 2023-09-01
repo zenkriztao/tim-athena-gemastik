@@ -11,12 +11,12 @@ class NewPhoneticList extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: () async {
-          player.play(AssetSource('$letter.mp3'));
+          player.play(AssetSource('assets/sound/$letter.mp3'));
         },
         child: Card(
           child: Container(
             padding: const EdgeInsets.all(10),
-            child: Image.asset('assets/icons8-$letter-100.png'),
+            child: Image.asset('assets/phonetic/icons8-$letter-100.png'),
           ),
         ),
       ),

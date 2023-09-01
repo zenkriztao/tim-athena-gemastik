@@ -107,6 +107,10 @@ flutter:
     - assets/nst/
     - assets/icons/
     - assets/images/
+    - assets/badges/
+    - assets/certificate/
+    - assets/illustrations/
+    - assets/logos/
     - .env
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/size_config.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/campaign/campaign_banner.dart';
 import 'package:aksonhealth/view/parents/home/banner.dart';
 import 'package:aksonhealth/view/parents/home/doctors_list.dart';
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return WillPopScope(
       onWillPop: showExitPopup,
       child: Scaffold(
-        backgroundColor: whiteColor,
+        backgroundColor: Colors.white,
         body: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -62,7 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(height: 30),
-                // Flexible is important for the children widgets added here.
                 Flexible(child: DoctorBanner())
               ],
             )
@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => Navigator.of(context).pop(true),
                 //return true when click on "Yes"
                 style: ElevatedButton.styleFrom(
-                    primary: redColor,
+                    primary: Colors.red,
                     textStyle: GoogleFonts.nunito(
                         fontSize: 16, fontWeight: FontWeight.bold)),
                 child: Text('Ya'),
@@ -140,11 +140,12 @@ class ExpandingAppBar extends ConsumerWidget {
     return SliverAppBar(
       expandedHeight: state.highestHeight,
       pinned: true,
+      backgroundColor: darkBlueColor,
       primary: true,
       forceElevated: true,
       title: Image(
-        height: 50,
-        image: AssetImage("assets/logo-white.png"),
+        height: 100,
+        image: AssetImage("assets/logo.png"),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(state.radius)),
@@ -192,7 +193,7 @@ class RoundedHeaderNotifier extends StateNotifier<RoundedHeaderState> {
 
       // Setting state triggers an rebuild, the PostFrameCallback let Flutter
       // postpone the upcoming rebuild at a later time.
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         state = newState;
       });
     }
