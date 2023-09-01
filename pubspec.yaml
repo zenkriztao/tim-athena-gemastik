@@ -70,6 +70,7 @@ dependencies:
   place_picker: ^0.10.0
   quickalert: ^1.0.1
   shared_preferences: ^2.0.15
+  sliding_up_panel: ^2.0.0+1
   smooth_page_indicator: ^1.0.1
   speech_to_text: ^6.3.0
   url_launcher: ^6.1.10

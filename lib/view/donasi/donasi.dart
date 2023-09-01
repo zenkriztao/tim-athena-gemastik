@@ -1,4 +1,6 @@
+import 'package:aksonhealth/view/donasi/donasi_payment.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DonationCampaign {
   final String title;
@@ -28,9 +30,11 @@ class Donation extends StatelessWidget {
 class DonationScreen extends StatelessWidget {
   final List<DonationCampaign> campaigns = [
     DonationCampaign(
-      title: 'Support Autism Education',
-      description: 'Help us provide education for children with autism.',
-      imageUrl: 'https://www.communitycare.co.uk/wp_content/uploads/sites/7//2016/04/Fotolia_106551158_S.jpg',
+      title: 'Membantu Yayasan Autisme di Indonesia melalui Akson',
+      description:
+          'Selamat datang di kampanye donasi untuk mendukung Yayasan Autisme di Indonesia! Yayasan ini berkomitmen untuk meningkatkan pemahaman, dukungan, dan kualitas hidup bagi individu dengan spektrum autisme di seluruh negeri. Dengan memberikan sumbangan Anda, Anda turut berperan dalam mewujudkan perubahan positif dan inklusif bagi mereka yang membutuhkan.',
+      imageUrl:
+          'https://www.communitycare.co.uk/wp_content/uploads/sites/7//2016/04/Fotolia_106551158_S.jpg',
     ),
   ];
 
@@ -38,7 +42,10 @@ class DonationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Autism Awareness Campaign'),
+        title: Text(
+          'Peduli untuk mereka',
+          style: GoogleFonts.nunito(),
+        ),
       ),
       body: ListView.builder(
         itemCount: campaigns.length,
@@ -75,7 +82,7 @@ class DonationCard extends StatelessWidget {
               children: [
                 Text(
                   campaign.title,
-                  style: TextStyle(
+                  style: GoogleFonts.nunito(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -83,15 +90,20 @@ class DonationCard extends StatelessWidget {
                 SizedBox(height: 8.0),
                 Text(
                   campaign.description,
-                  style: TextStyle(fontSize: 16.0),
+                  style: GoogleFonts.nunito(fontSize: 16.0),
                 ),
                 SizedBox(height: 16.0),
-                ElevatedButton(
-                  onPressed: () {
-                    // Add donation button logic here
-                  },
-                  child: Text('Donate Now'),
-                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 50, left: 50),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DonationPayment()));
+                      },
+                      child: Text("Donasi Sekarang")),
+                )
               ],
             ),
           ),

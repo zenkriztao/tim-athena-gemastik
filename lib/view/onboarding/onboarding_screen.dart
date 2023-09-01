@@ -109,28 +109,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  onLastPage
-                      ? SizedBox(
-                          height: 18,
-                        )
-                      : GestureDetector(
-                          onTap: () {
-                            Get.to(() => LoginScreen(
-                                  userType: 'Doctors',
-                                ));
-                          },
-                          child: Text(
-                            'Lewati',
-                            style: GoogleFonts.nunito(
-                              color: blueColor,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                  // const SizedBox(
+                  //   height: 20,
+                  // ),
+                  // onLastPage
+                  //     ? SizedBox(
+                  //         height: 18,
+                  //       )
+                  //     : GestureDetector(
+                  //         onTap: () {
+                  //           Get.to(() => LoginScreen(
+                  //                 userType: 'Doctors',
+                  //               ));
+                  //         },
+                  //         child: Text(
+                  //           'Lewati',
+                  //           style: GoogleFonts.nunito(
+                  //             color: blueColor,
+                  //             fontSize: 15,
+                  //             fontWeight: FontWeight.w600,
+                  //           ),
+                  //         ),
+                  //       ),
                   const SizedBox(
                     height: 20,
                   ),

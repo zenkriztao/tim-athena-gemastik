@@ -39,7 +39,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
         .get()
         .then((value) {
       if (value.docs.isEmpty) {
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 20; i++) {
           FirebaseFirestore.instance
               .collection(widget.type == 'MChat' ? 'MChatData' : 'SCQData')
               .doc(_auth.currentUser!.uid + i.toString())
@@ -54,7 +54,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
               print('Sorry Not document exists ');
             }
 
-            if (i == 10) {
+            if (i == 20) {
               setState(() {
                 showResult = 'yes';
               });
@@ -305,7 +305,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            total.toString() + ' / 10',
+                            total.toString() + ' / 20',
                             style: GoogleFonts.nunito(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w500,
@@ -349,12 +349,12 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             total <= 4
-                                ? 'Hasil ini menunjukkan risiko rendah autisme, tidak perlu membawa anak Anda ke dokter'
-                                : total > 4 && total <= 6
-                                    ? 'Hasil ini menunjukkan risiko autisme sedang, Anda diharuskan membawa anak Anda ke dokter untuk pemeriksaan lanjutan. Anda juga dapat mencari layanan intervensi dini untuk anak Anda di Aplikasi Akson.'
-                                    : total > 6
-                                        ? 'Hasil ini menunjukkan risiko tinggi autisme, Anda wajib membawa anak Anda ke dokter untuk pemeriksaan lanjutan. Anda juga dapat mencari layanan intervensi dini untuk anak Anda di Aplikasi Akson'
-                                        : 'Kalkulasi Autisme',
+                                ? 'Hasil ini menunjukan resiko rendah anak anda menunjukan gejala autisme, anda harus membawa anak anda periksa ke dokter lanjutan.'
+                                : total > 2 && total <= 7
+                                    ? 'Hasil ini menunjukan resiko sedang anak anda menunjukan gejala autisme, anda harus membawa anak anda periksa ke dokter lanjutan.'
+                                    : total > 18
+                                        ? 'Hasil ini menunjukan resiko tinggi anak anda menunjukan gejala autisme, anda harus membawa anak anda periksa ke dokter lanjutan.'
+                                        : 'Kalkulasi Autisme ',
                             style: GoogleFonts.nunito(
                                 color: total <= 4
                                     ? Colors.green
@@ -375,8 +375,8 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                 new CircularPercentIndicator(
                   radius: 45.0,
                   lineWidth: 10.0,
-                  percent: total / 10,
-                  center: new Text('${(total / 10) * 100}' + '\%'),
+                  percent: total / 20,
+                  center: new Text('${(total / 20) * 100}' + '\%'),
                   progressColor: total <= 4
                       ? Colors.green
                       : total > 4 && total <= 6
@@ -449,7 +449,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                                 ? 'Low risk don\'t need to take your child to doctor'
                                 : total > 4 && total <= 9
                                     ? 'You should take your child to his/her doctor to follow up screening.You can also seek early intervention services for your child.'
-                                    : total == 10
+                                    : total == 20
                                         ? 'You must have to take your child to his/her doctor to follow up screening.You can also seek early intervention services for your child.'
                                         : 'Calculation Autism',
                             'case': total <= 4
@@ -536,7 +536,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                             child: Text(
                               " Pertanyaan dari " +
                                   widget.number.toString() +
-                                  '/10',
+                                  '/20',
                               style: GoogleFonts.notoSans(
                                   color: darkBlueColor,
                                   fontSize: 17,
@@ -555,7 +555,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                             lineHeight: 20.0,
                             barRadius: Radius.circular(20),
                             // animationDuration: 2500,
-                            percent: widget.number / 10,
+                            percent: widget.number / 20,
                             // center: Text("80.0%"),
                             linearStrokeCap: LinearStrokeCap.roundAll,
                             progressColor: Colors.green,

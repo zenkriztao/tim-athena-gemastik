@@ -84,7 +84,7 @@ class Onboarding1Screen extends StatelessWidget {
                       height: 12,
                     ),
                     Text(
-                      'Kami akan mencarikan jalan terbaik untuk kesembuhanmu!',
+                      'Mencerminkan tekad kami untuk mendampingi perjalananmu dengan mudah dan nyaman. Dalam beberapa langkah sederhana, kamu akan merasakan dukungan penuh dari tim kami. Mari kita mulai petualangan baru ini bersama-sama!"',
                       style: GoogleFonts.nunito(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,

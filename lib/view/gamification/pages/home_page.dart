@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => PhonetikList()));
+                    builder: (context) => PhoneticList()));
               },
               child: Stack(
                 alignment: Alignment.center,

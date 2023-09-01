@@ -1,4 +1,5 @@
 // <<<<<<< HEAD
+import 'package:aksonhealth/view/course/screens/home_screen.dart';
 import 'package:aksonhealth/view/gamification/phonetic%20list/phonetic_list.dart';
 // =======
 import 'package:aksonhealth/view/gamification/pages/home_page.dart';
@@ -98,7 +99,7 @@ class Menu extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ClinicTesting(),
+                        builder: (context) => CourseScreen(),
                       ), // Replace "Donasi()" with your actual page route
                     );
                   } else if (categorize[index]["text"] == "Event") {

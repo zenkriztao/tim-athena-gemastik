@@ -221,7 +221,7 @@ class PopularEventTile extends StatelessWidget {
                   children: <Widget>[
                     Text(desc, style: GoogleFonts.nunito(
                         color: Colors.white,
-                      fontSize: 18
+                      fontSize: 15
                     ),),
                     SizedBox(height: 8,),
                     Row(
@@ -230,7 +230,7 @@ class PopularEventTile extends StatelessWidget {
                         SizedBox(width: 8,),
                         Text(date, style: GoogleFonts.nunito(
                             color: Colors.white,
-                            fontSize: 10
+                            fontSize: 13
                         ),)
                       ],
                     ),
@@ -241,7 +241,7 @@ class PopularEventTile extends StatelessWidget {
                         SizedBox(width: 8,),
                         Text(address, style: GoogleFonts.nunito(
                           color: Colors.white,
-                          fontSize: 10
+                          fontSize: 13
                         ),)
                       ],
                     ),

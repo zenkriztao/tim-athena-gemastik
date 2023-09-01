@@ -80,7 +80,7 @@ class Onboarding2Screen extends StatelessWidget {
                       height: 12,
                     ),
                     Text(
-                      'Kami akan mencarikan jalan terbaik untuk kesembuhanmu!',
+                      'Di sini, kami bukan hanya sekadar aplikasi, tetapi sahabat yang akan mendampingi Anda dalam perjalanan menuju pulih. Anda akan merasakan kehangatan dan panduan yang kami tawarkan',
                       style: GoogleFonts.nunito(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,

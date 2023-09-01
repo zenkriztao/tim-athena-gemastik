@@ -79,7 +79,7 @@ class Onboarding3Screen extends StatelessWidget {
                       height: 12,
                     ),
                     Text(
-                      'Kami akan mencarikan jalan terbaik untuk kesembuhanmu!',
+                      'Kami akan memandu Anda untuk memanfaatkan kecerdasan buatan (AI) dalam mengatasi tantangan autisme dan disleksia. Dengan panduan langkah demi langkah, Anda akan memahami bagaimana AI dapat menjadi mitra Anda dalam perjalanan di aplikasi ini"',
                       style: GoogleFonts.nunito(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
