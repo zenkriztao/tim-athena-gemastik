@@ -9,6 +9,7 @@ import 'package:aksonhealth/view/course/components/cards/course_sections_card.da
 import 'package:aksonhealth/view/course/components/list/course_sections_list.dart';
 import 'package:aksonhealth/view/course/components/list/explore_course_list.dart';
 import 'package:aksonhealth/view/course/screens/course_sections_screen.dart';
+import 'package:aksonhealth/view/doctor/home/categories_list.dart';
 import 'package:aksonhealth/view/parents/home/banner.dart';
 import 'package:aksonhealth/view/parents/home/doctors_list.dart';
 import 'package:aksonhealth/view/parents/home/features_appbar.dart';
@@ -109,6 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SizedBox(height: 10),
                 // DoctorAppBar(),
+                CategoriesList(),
                 Menu(),
                 SizedBox(height: 5),
                 FeaturesAppBar(),

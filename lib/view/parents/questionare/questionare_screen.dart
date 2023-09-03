@@ -354,7 +354,7 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
                                     ? 'Hasil ini menunjukan resiko sedang anak anda menunjukan gejala autisme, anda harus membawa anak anda periksa ke dokter lanjutan.'
                                     : total > 18
                                         ? 'Hasil ini menunjukan resiko tinggi anak anda menunjukan gejala autisme, anda harus membawa anak anda periksa ke dokter lanjutan.'
-                                        : 'Kalkulasi Autisme ',
+                                        : 'Hasil ini menunjukan resiko tinggi anak anda menunjukan gejala autisme, anda harus membawa anak anda periksa ke dokter lanjutan',
                             style: GoogleFonts.nunito(
                                 color: total <= 4
                                     ? Colors.green

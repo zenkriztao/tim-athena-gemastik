@@ -204,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                     height: getRelativeHeight(0.20),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Color.fromARGB(255, 12, 91, 156)),
+                        color: Color.fromARGB(255, 174, 18, 93)),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: getRelativeWidth(0.03)),

@@ -7,23 +7,8 @@ import 'package:line_icons/line_icons.dart';
 class Data {
   static final categoriesList = [
     Category(
-      title: "Cari Sekolah",
+      title: "Tanya chatbot",
       doctorsNumber: 15,
-      icon: LineIcons.spinner,
-    ),
-    Category(
-      title: "Cari Klinik",
-      doctorsNumber: 8,
-      icon: LineIcons.spinner,
-    ),
-    Category(
-      title: "Coming Soon",
-      doctorsNumber: 7,
-      icon: LineIcons.spinner,
-    ),
-    Category(
-      title: "Coming Soon",
-      doctorsNumber: 10,
       icon: LineIcons.spinner,
     ),
   ];
