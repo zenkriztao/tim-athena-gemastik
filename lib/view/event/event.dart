@@ -19,7 +19,7 @@ class _HomeScreenState extends State<EventScreen> {
   List<EventsModel> events = [];
 
 
-  String todayDateIs = "12";
+  String todayDateIs = "13";
 
   @override
   void initState() {
@@ -56,6 +56,7 @@ class _HomeScreenState extends State<EventScreen> {
                     ),
                     Text("Semua Event", style: GoogleFonts.nunito(
                       color: Colors.blue,
+                      fontWeight: FontWeight.bold,
                       fontSize: 20
                     ),),
                     SizedBox(height: 16,),
@@ -92,6 +93,7 @@ class _HomeScreenState extends State<EventScreen> {
                     SizedBox(height: 16,),
                     Text("Event Populer", style: GoogleFonts.nunito(
                         color: Colors.blue,
+                        fontWeight: FontWeight.bold,
                         fontSize: 20
                     ),),
                     Container(
@@ -134,7 +136,7 @@ class DateTile extends StatelessWidget {
       margin: EdgeInsets.only(right: 10),
       padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-        color: isSelected ? Color(0xffFCCD00) : Colors.transparent,
+        color: isSelected ? Color.fromARGB(255, 7, 224, 80) : Colors.transparent,
         borderRadius: BorderRadius.circular(10)
       ),
       child: Column(

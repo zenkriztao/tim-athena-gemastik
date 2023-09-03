@@ -21,7 +21,7 @@ class FeaturesAppBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Features",
+                "Campaign",
                 style: GoogleFonts.nunito(
                     color: darkBlueColor,
                     fontWeight: FontWeight.w800,
@@ -29,7 +29,7 @@ class FeaturesAppBar extends StatelessWidget {
               ),
               SizedBox(height: getRelativeHeight(0.003)),
               Text(
-                "Mulai dari Artificial, game dan juga fitur Parenting",
+                "Saling peduli untuk memahami mereka lebih dalam",
                 style: GoogleFonts.nunito(
                     color: Colors.blueGrey[400],
                     fontSize: getRelativeWidth(0.036)),

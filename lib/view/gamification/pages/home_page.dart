@@ -1,5 +1,6 @@
 import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/theme.dart';
+import 'package:aksonhealth/view/gamification/animal_test/animal_test.dart';
 import 'package:aksonhealth/view/gamification/auth.dart';
 import 'package:aksonhealth/view/gamification/pages/nst.dart';
 import 'package:aksonhealth/view/gamification/phonetic%20list/phonetic_list.dart';
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => PhoneticList()));
+                    builder: (context) => PhonetikList()));
               },
               child: Stack(
                 alignment: Alignment.center,
@@ -157,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Game untuk penyandang Dislexia",
+                                    "Terapi Bermain untuk penyandang Dislexia",
                                     style: GoogleFonts.nunito(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -173,6 +174,66 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Image.asset(
                                   'assets/images/dyslexia1.png',
+                                  height: 300,
+                                  width: 100,
+                                )
+                              ],
+                            ),
+                            SizedBox(width: getRelativeWidth(0.012)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+             SizedBox(
+              height: 30,
+            ),
+             GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AnimalTest()));
+              },
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: getRelativeWidth(0.90),
+                    height: getRelativeHeight(0.20),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Color.fromARGB(255, 12, 91, 156)),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: getRelativeWidth(0.03)),
+                      child: Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Terapi Audio dan Visual untuk penyandang Autisme",
+                                    style: GoogleFonts.nunito(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  SizedBox(height: getRelativeHeight(0.02)),
+                                ],
+                              ),
+                            ),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/animal_test.png',
                                   height: 300,
                                   width: 100,
                                 )

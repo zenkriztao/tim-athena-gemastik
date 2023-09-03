@@ -1,9 +1,14 @@
 import 'dart:math';
 
 import 'package:aksonhealth/constants.dart';
+import 'package:aksonhealth/model/firebase_auth.dart';
 import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/campaign/campaign_banner.dart';
+import 'package:aksonhealth/view/course/components/cards/course_sections_card.dart';
+import 'package:aksonhealth/view/course/components/list/course_sections_list.dart';
+import 'package:aksonhealth/view/course/components/list/explore_course_list.dart';
+import 'package:aksonhealth/view/course/screens/course_sections_screen.dart';
 import 'package:aksonhealth/view/parents/home/banner.dart';
 import 'package:aksonhealth/view/parents/home/doctors_list.dart';
 import 'package:aksonhealth/view/parents/home/features_appbar.dart';
@@ -24,29 +29,52 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   String name = '', email = '', uid = '', userType = '';
-  String text = '';
-  int current = 0;
+
+  MethodsHandler _methodsHandler = MethodsHandler();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  getData() async {
+  bool status = false;
+
+  String? profileImage,
+      docId,
+      driverEmail = '',
+      driverName = '',
+      driverUid = '';
+
+  getDriver() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      //userType = prefs.getString('userType')!;
-      email = prefs.getString('userEmail')!;
-      uid = prefs.getString('userId')!;
+      userType = prefs.getString('userType')!;
     });
 
-    FirebaseFirestore.instance
-        .collection('Parents')
-        .where('uid', isEqualTo: _auth.currentUser!.uid.toString())
+    await FirebaseFirestore.instance
+        .collection(userType == 'Doctors' ? 'Doctors' : 'Parents')
+        .where('uid', isEqualTo: _auth.currentUser!.uid)
         .get()
         .then((value) {
       setState(() {
-        name = value.docs[0]['name'];
-        email = value.docs[0]['email'];
+        driverName = value.docs[0]['name'];
+        driverEmail = value.docs[0]['email'];
+        driverUid = _auth.currentUser!.uid;
       });
     });
+
+    print(driverName.toString() + ' name is here');
   }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    setState(() {
+      driverEmail = '';
+      driverName = '';
+    });
+    getDriver();
+    setState(() {
+    });
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +88,18 @@ class _HomeScreenState extends State<HomeScreen> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             ExpandingAppBar(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                SizedBox(height: 30),
-                Flexible(child: DoctorBanner())
+                 Text(
+              "Hi ${name}, bagaimana harimu", 
+              style: GoogleFonts.nunito(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+              SizedBox(height: 5),
+                Flexible(child: ExploreCourseList())
               ],
             )
           ];
@@ -79,6 +115,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 20),
                 CampaignBanner(),
                 // FeaturesAppBar(),
+                // CourseSectionsScreen()
+                // CourseSectionList()
                 // DoctorsList(),
                 // SizedBox(height: 5),
               ],
@@ -143,9 +181,20 @@ class ExpandingAppBar extends ConsumerWidget {
       backgroundColor: darkBlueColor,
       primary: true,
       forceElevated: true,
-      title: Image(
-        height: 100,
-        image: AssetImage("assets/logo.png"),
+      title: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              Text(
+              "Akson",
+              style: GoogleFonts.sourceSerif4(
+                fontSize: 30,
+                color: Color.fromARGB(255, 236, 236, 236)
+              ),
+            ),
+           
+            ]
+          ),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(state.radius)),
@@ -171,7 +220,7 @@ class ExpandingAppBar extends ConsumerWidget {
 
 @immutable
 class RoundedHeaderState {
-  final double highestHeight = 220;
+  final double highestHeight = 200;
   final double smallestHeight = kToolbarHeight + 24;
   final double currentHeight;
   final double contentOpacity = 1;
@@ -179,7 +228,7 @@ class RoundedHeaderState {
   const RoundedHeaderState({this.currentHeight = 256});
 
   double get scrollFraction => min(max((currentHeight - smallestHeight) / (highestHeight - smallestHeight), 0), 1);
-  double get radius => 120 * scrollFraction;
+  double get radius => 130 * scrollFraction;
 }
 
 class RoundedHeaderNotifier extends StateNotifier<RoundedHeaderState> {

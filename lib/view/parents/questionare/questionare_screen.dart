@@ -516,7 +516,6 @@ class _QuestionareScreenState extends State<QuestionareScreen> {
               : Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    height: size.height * 0.7,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: [

@@ -108,9 +108,11 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/badges/
-    - assets/certificate/
     - assets/illustrations/
     - assets/logos/
+    - assets/sound/
+    - assets/animal/
+    - assets/phonetic/
     - .env
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

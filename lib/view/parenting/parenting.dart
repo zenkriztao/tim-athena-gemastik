@@ -1,6 +1,7 @@
 import 'package:aksonhealth/constants.dart';
 import 'package:aksonhealth/data/parent_data.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ParentingHome extends StatelessWidget {
   final PlanetInfo planetInfo;
@@ -19,15 +20,14 @@ class ParentingHome extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(32.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         SizedBox(height: 100),
                         Text(
                           planetInfo.name,
-                          style: TextStyle(
-                            fontFamily: 'Avenir',
+                          style: GoogleFonts.nunito(
                             fontSize: 56,
                             color: primaryTextColor,
                             fontWeight: FontWeight.w900,
@@ -38,8 +38,7 @@ class ParentingHome extends StatelessWidget {
                         SizedBox(height: 32),
                         Text(
                           planetInfo.description ?? '',
-                          style: TextStyle(
-                            fontFamily: 'Avenir',
+                          style: GoogleFonts.nunito(
                             fontSize: 20,
                             color: contentTextColor,
                             fontWeight: FontWeight.w500,
@@ -54,8 +53,7 @@ class ParentingHome extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 32.0),
                     child: Text(
                       'Gallery',
-                      style: TextStyle(
-                        fontFamily: 'Avenir',
+                      style: GoogleFonts.nunito(
                         fontSize: 25,
                         color: const Color(0xff47455f),
                         fontWeight: FontWeight.w300,
@@ -86,12 +84,6 @@ class ParentingHome extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              onPressed: () {
-                Navigator.pop(context);
-              },
             ),
           ],
         ),

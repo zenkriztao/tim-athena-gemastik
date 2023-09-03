@@ -11,7 +11,6 @@ class RecentCourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.topRight,
       children: [
         Padding(
           padding: EdgeInsets.only(top: 20.0),
@@ -20,7 +19,7 @@ class RecentCourseCard extends StatelessWidget {
             height: 240,
             decoration: BoxDecoration(
                 gradient: course.background,
-                borderRadius: BorderRadius.circular(41.0),
+                borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
                       color: course.background.colors[0].withOpacity(0.3),

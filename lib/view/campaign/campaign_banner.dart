@@ -11,7 +11,7 @@ class _SwiperWithDotsState extends State<CampaignBanner> {
 
   final List<String> imagePaths = [
     'assets/images/campaign.png',
-    'assets/images/campaign.png',
+    'assets/images/syndrom.png',
   ];
 
   @override

@@ -107,131 +107,140 @@ class _NSTState extends State<NST> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: showExitPopup,
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              Text(
-                'Pilih gambar yang cocok',
-                style: TextStyle(
-                  fontSize: 32,
-                ),
-              ),
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(16),
-                child: Image.asset(
-                  'assets/nst/$angkaAcak.png',
-                  width: 100,
-                  height: 100,
-                ),
-              ),
-              Text(
-                '${answer}',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 24),
-              Expanded(
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 6,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: darkBlueColor,
+        title: Text("NST untuk Disleksia", style: GoogleFonts.nunito(
+          fontWeight: FontWeight.bold
+        ),),
+      ),
+      body: WillPopScope(
+        onWillPop: showExitPopup,
+        child: Scaffold(
+          body: SafeArea(
+            child: Column(
+              children: [
+                SizedBox(height: 20,),
+                Text(
+                  'Temukan Gambar yang Sama',
+                  style: GoogleFonts.nunito(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
                   ),
-                  itemCount: gridData.length * 6,
-                  itemBuilder: (context, index) {
-                    int row = index ~/ 6;
-                    int col = index % 6;
-                    String imagePath = 'assets/nst/${gridData[row][col]}.png';
-                    return GestureDetector(
-                      onTap: () {
-                        if (gridData[row][col] == angkaAcak && answer == 10) {
-                          answerRight++;
-                          showSnackBarResult();
-                          randomizeGrid();
-
-                          answer = 1;
-                          answerRight = 0;
-                          answerWrong = 0;
-                        } else if (answer == 10) {
-                          showSnackBarResult();
-                          randomizeGrid();
-                          answer = 1;
-                          answerRight = 0;
-                          answerWrong = 0;
-                        } else if (gridData[row][col] == angkaAcak) {
-                          showSnackBar();
-                          randomizeGrid();
-                          answerRight++;
-                          answer++;
-                        } else {
-                          showSnackBarFailed();
-                          randomizeGrid();
-                          answerWrong++;
-                          answer++;
-                        }
-
-                        print('Answerd: $answer');
-                        print('Right: $answerRight');
-                        print('Wrong: $answerWrong');
-                      },
-                      child: GridTile(
-                        child: Container(
-                          child: Center(
-                            child: Image.asset(
-                              imagePath,
-                              width: 60,
-                              height: 60,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(16),
+                  child: Image.asset(
+                    'assets/nst/$angkaAcak.png',
+                    width: 100,
+                    height: 100,
+                  ),
+                ),
+                Text(
+                  '${answer}',
+                  style: GoogleFonts.nunito(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 24),
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 6,
+                    ),
+                    itemCount: gridData.length * 6,
+                    itemBuilder: (context, index) {
+                      int row = index ~/ 6;
+                      int col = index % 6;
+                      String imagePath = 'assets/nst/${gridData[row][col]}.png';
+                      return GestureDetector(
+                        onTap: () {
+                          if (gridData[row][col] == angkaAcak && answer == 10) {
+                            answerRight++;
+                            showSnackBarResult();
+                            randomizeGrid();
+    
+                            answer = 1;
+                            answerRight = 0;
+                            answerWrong = 0;
+                          } else if (answer == 10) {
+                            showSnackBarResult();
+                            randomizeGrid();
+                            answer = 1;
+                            answerRight = 0;
+                            answerWrong = 0;
+                          } else if (gridData[row][col] == angkaAcak) {
+                            showSnackBar();
+                            randomizeGrid();
+                            answerRight++;
+                            answer++;
+                          } else {
+                            showSnackBarFailed();
+                            randomizeGrid();
+                            answerWrong++;
+                            answer++;
+                          }
+    
+                          print('Answerd: $answer');
+                          print('Right: $answerRight');
+                          print('Wrong: $answerWrong');
+                        },
+                        child: GridTile(
+                          child: Container(
+                            child: Center(
+                              child: Image.asset(
+                                imagePath,
+                                width: 60,
+                                height: 60,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          floatingActionButton: TextButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.pressed))
+                    return Colors.red[400]!;
+                  return Colors.red[300]!;
+                },
+              ),
+              padding: MaterialStateProperty.all(
+                  EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  side: BorderSide(color: Colors.white, width: 2),
                 ),
               ),
-            ],
-          ),
-        ),
-        floatingActionButton: TextButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.resolveWith<Color>(
-              (Set<MaterialState> states) {
-                if (states.contains(MaterialState.pressed))
-                  return Colors.red[400]!;
-                return Colors.red[300]!;
-              },
-            ),
-            padding: MaterialStateProperty.all(
-                EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
-            shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-                side: BorderSide(color: Colors.white, width: 2),
+              textStyle: MaterialStateProperty.all(
+                GoogleFonts.nunito(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
+              overlayColor: MaterialStateProperty.all(Colors.yellow[100]),
+              elevation: MaterialStateProperty.all(5),
+              shadowColor: MaterialStateProperty.all(Colors.yellow[700]),
             ),
-            textStyle: MaterialStateProperty.all(
-              TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+            child: Text(
+              'Kembali',
+              style: GoogleFonts.nunito(color: Colors.white),
             ),
-            overlayColor: MaterialStateProperty.all(Colors.yellow[100]),
-            elevation: MaterialStateProperty.all(5),
-            shadowColor: MaterialStateProperty.all(Colors.yellow[700]),
+            onPressed: () {
+              audioPlayer.stop();
+                  Navigator.of(context).pop();
+            },
           ),
-          child: Text(
-            'Kembali',
-            style: TextStyle(color: Colors.white),
-          ),
-          onPressed: () {
-            audioPlayer.stop();
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomeScreen()));
-          },
         ),
       ),
     );

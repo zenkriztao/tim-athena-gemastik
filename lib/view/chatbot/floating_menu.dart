@@ -35,7 +35,17 @@ class FloatingMenu extends StatelessWidget {
 
     SizeConfig.init(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: darkBlueColor,
+        title: Text(
+          "Tanya Ai",
+          style: GoogleFonts.nunito(
+            fontWeight: FontWeight.bold,
+            fontSize: 24
+          ),
+        ),
+      ),
       body: Container(
         height: getRelativeHeight(0.35),
         child: ListView.builder(

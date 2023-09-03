@@ -1,7 +1,6 @@
 // <<<<<<< HEAD
+import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/course/screens/home_screen.dart';
-import 'package:aksonhealth/view/gamification/phonetic%20list/phonetic_list.dart';
-// =======
 import 'package:aksonhealth/view/gamification/pages/home_page.dart';
 // >>>>>>> 7c011123d9d6daca0b7e98595e0539787a0de769
 import 'package:aksonhealth/view/parenting/grid.dart';
@@ -12,7 +11,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../donasi/donasi.dart';
 import '../../event/event.dart';
 import '../../../size_config.dart';
-import '../../gamification/phonetic list/new_phonetic_list.dart';
 
 class Menu extends StatelessWidget {
   @override
@@ -20,15 +18,15 @@ class Menu extends StatelessWidget {
     List<Map<String, dynamic>> categories = [
       {"icon": "assets/icons/clinic.png", "text": "Klinik"},
       {"icon": "assets/icons/school.png", "text": "Sekolah"},
-      {"icon": "assets/icons/forum.png", "text": "Forum"},
+      {"icon": "assets/icons/playground.png", "text": "Permainan"},
       {"icon": "assets/icons/parenting.png", "text": "Parenting"},
     ];
 
     List<Map<String, dynamic>> categorize = [
-      {"icon": "assets/icons/charity.png", "text": "Donasi"},
       {"icon": "assets/icons/training.png", "text": "Pelatihan"},
       {"icon": "assets/icons/event.png", "text": "Event"},
-      {"icon": "assets/icons/game.png", "text": "Permainan"},
+      {"icon": "assets/icons/forum.png", "text": "Forum"},
+      {"icon": "assets/icons/charity.png", "text": "Donasi"},
     ];
     return Padding(
       padding: EdgeInsets.all(getScreenWidth(20)),
@@ -57,11 +55,11 @@ class Menu extends StatelessWidget {
                         builder: (context) => SchoolsForChildren(),
                       ), // Replace "Donasi()" with your actual page route
                     );
-                  } else if (categories[index]["text"] == "Forum") {
+                  } else if (categories[index]["text"] == "Permainan") {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ClinicTesting(),
+                        builder: (context) => HomePage(),
                       ), // Replace "Donasi()" with your actual page route
                     );
                   } else if (categories[index]["text"] == "Parenting") {
@@ -109,11 +107,40 @@ class Menu extends StatelessWidget {
                         builder: (context) => EventScreen(),
                       ), // Replace "Donasi()" with your actual page route
                     );
-                  } else if (categorize[index]["text"] == "Permainan") {
+                  } else if (categorize[index]["text"] == "Forum") {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomePage(),
+                        builder: (context) => AlertDialog(
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255), // Warna biru
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                'assets/images/development.png', // Ganti dengan path gambar yang sesuai
+                width: 200,
+                height: 200,
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Maaf fitur ini sedang dikembangkan ke tahap lanjut',
+                style: GoogleFonts.nunito(color: darkBlueColor, fontSize: 20),
+              ),
+              SizedBox(height: 20),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Oke',
+                style: TextStyle(color: darkBlueColor),
+              ),
+            ),
+          ],
+        ),
                       ), // Replace "Donasi()" with your actual page route
                     );
                   }
@@ -168,7 +195,7 @@ class CategoryCard extends StatelessWidget {
               height: getScreenWidth(70), // Mengubah tinggi container
               width: getScreenWidth(70), // Mengubah lebar container
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: Color.fromARGB(255, 234, 234, 234),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     style: BorderStyle.solid,
@@ -196,3 +223,4 @@ class CategoryCard extends StatelessWidget {
     );
   }
 }
+

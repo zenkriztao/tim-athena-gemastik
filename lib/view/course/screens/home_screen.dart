@@ -2,6 +2,7 @@ import 'package:aksonhealth/view/course/components/home_screen_navbar.dart';
 import 'package:aksonhealth/view/course/components/list/explore_course_list.dart';
 import 'package:aksonhealth/view/course/components/list/recent_course_list.dart';
 import 'package:aksonhealth/view/course/screens/continue_watching_screen.dart';
+import 'package:aksonhealth/view/parents/home/features_appbar.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -54,63 +55,35 @@ class _CourseScreenState extends State<CourseScreen> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: kBackgroundColor,
+        color: Colors.white,
         child: Stack(children: [
           SafeArea(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  HomeScreenNavBar(triggerAnimation: () {
-                    setState(() {
-                      sidebarHidden = !sidebarHidden;
-                    });
-                    sidebarAnimationController.forward();
-                  }),
+                  SizedBox(height: 50,),
+                  FeaturesAppBar(),
                   SizedBox(
                     height: 20,
                   ),
-                  RecentCourseList(),
+                  ExploreCourseList(),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 25, 20, 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          "Explore",
+                          "Daftar Pelatihan",
                           style: kTitle1Style,
                         ),
                       ],
                     ),
                   ),
-                  ExploreCourseList(),
+                  RecentCourseList(),
                 ],
               ),
             ),
           ),
-          ContinueWatchingScreen(),
-          IgnorePointer(
-            ignoring: sidebarHidden,
-            child: Stack(
-              children: [
-                FadeTransition(
-                  opacity: fadeAnimation,
-                  child: GestureDetector(
-                    child: Container(
-                      color: Color.fromRGBO(36, 38, 41, 0.4),
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                    ),
-                    onTap: () => {
-                      sidebarAnimationController.reverse(),
-                      setState(() {
-                        sidebarHidden = !sidebarHidden;
-                      })
-                    },
-                  ),
-                ),
-              ],
-            ),
-          )
         ]),
       ),
     );

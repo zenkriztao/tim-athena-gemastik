@@ -19,8 +19,8 @@ class Course {
 // Recent Courses
 var recentCourses = [
   Course(
-    courseTitle: "Flutter for Designers",
-    courseSubtitle: "12 sections",
+    courseTitle: "Apa itu Autisme",
+    courseSubtitle: "",
     background: LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
@@ -33,8 +33,8 @@ var recentCourses = [
     logo: 'flutter-logo.png',
   ),
   Course(
-    courseTitle: "Prototyping with ProtoPie",
-    courseSubtitle: "10 sections",
+    courseTitle: "Tips Cara Belajar untuk Anak ADHD",
+    courseSubtitle: "",
     background: LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
@@ -47,8 +47,8 @@ var recentCourses = [
     logo: 'protopie-logo.png',
   ),
   Course(
-    courseTitle: "Build an app with SwiftUI",
-    courseSubtitle: "22 sections",
+    courseTitle: "Cara Belajar Anak Autis Dengan Metode ABA",
+    courseSubtitle: "",
     background: LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
@@ -65,30 +65,17 @@ var recentCourses = [
 // Explore Courses
 var exploreCourses = [
   Course(
-    courseTitle: "Build an app with Flutter",
-    courseSubtitle: "22 sections",
+    courseTitle: "Skrining Autisme",
+    courseSubtitle: "Test berdasarkan studi kasus yang kami buat dari survey MCHAT dengan keakuratan sangat baik",
     background: LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: [
-        Color(0xFF5BCEA6),
-        Color(0xFF1997AB),
+        Color.fromARGB(255, 255, 255, 255),
+        Color.fromARGB(255, 218, 218, 218),
       ],
     ),
     illustration: 'illustration-04.png',
-  ),
-  Course(
-    courseTitle: "Build an app with Flutter",
-    courseSubtitle: "22 sections",
-    background: LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: [
-        Color(0xFFA931E5),
-        Color(0xFF4B02FE),
-      ],
-    ),
-    illustration: 'illustration-05.png',
   ),
 ];
 
@@ -125,7 +112,7 @@ var continueWatchingCourses = [
 // Course Sections
 var courseSections = [
   Course(
-    courseTitle: "Build an app with SwiftUI",
+    courseTitle: "Cara Belajar Anak Autis Dengan Metode ABA",
     courseSubtitle: "01 Section",
     background: LinearGradient(
       begin: Alignment.topLeft,
@@ -138,8 +125,8 @@ var courseSections = [
     illustration: 'illustration-01.png',
   ),
   Course(
-    courseTitle: "Flutter for Designers",
-    courseSubtitle: "02 Section",
+    courseTitle: "Apa itu Autisme",
+    courseSubtitle: "",
     background: LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
@@ -151,8 +138,8 @@ var courseSections = [
     illustration: 'illustration-08.png',
   ),
   Course(
-    courseTitle: "ProtoPie Prototyping",
-    courseSubtitle: "03 Section",
+    courseTitle: "Tips Cara Belajar untuk Anak ADHD",
+    courseSubtitle: "",
     background: LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,

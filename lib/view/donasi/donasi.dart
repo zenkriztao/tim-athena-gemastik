@@ -1,3 +1,4 @@
+import 'package:aksonhealth/theme.dart';
 import 'package:aksonhealth/view/donasi/donasi_payment.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,11 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 class DonationCampaign {
   final String title;
   final String description;
+  final String validation;
+  final String address;
   final String imageUrl;
 
   DonationCampaign({
     required this.title,
     required this.description,
+    required this.validation,
+    required this.address,
     required this.imageUrl,
   });
 }
@@ -33,6 +38,8 @@ class DonationScreen extends StatelessWidget {
       title: 'Membantu Yayasan Autisme di Indonesia melalui Akson',
       description:
           'Selamat datang di kampanye donasi untuk mendukung Yayasan Autisme di Indonesia! Yayasan ini berkomitmen untuk meningkatkan pemahaman, dukungan, dan kualitas hidup bagi individu dengan spektrum autisme di seluruh negeri. Dengan memberikan sumbangan Anda, Anda turut berperan dalam mewujudkan perubahan positif dan inklusif bagi mereka yang membutuhkan.',
+      validation: '',
+      address: 'Jl. Srijaya Negara, Bukit Lama, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan, Indonesia',
       imageUrl:
           'https://www.communitycare.co.uk/wp_content/uploads/sites/7//2016/04/Fotolia_106551158_S.jpg',
     ),
@@ -46,6 +53,7 @@ class DonationScreen extends StatelessWidget {
           'Peduli untuk mereka',
           style: GoogleFonts.nunito(),
         ),
+        backgroundColor: darkBlueColor,
       ),
       body: ListView.builder(
         itemCount: campaigns.length,
@@ -93,16 +101,33 @@ class DonationCard extends StatelessWidget {
                   style: GoogleFonts.nunito(fontSize: 16.0),
                 ),
                 SizedBox(height: 16.0),
+                Text(
+                  campaign.address,
+                  style: GoogleFonts.nunito(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                CampaignProgress(),
+
+                SizedBox(height: 16.0),
                 Padding(
-                  padding: const EdgeInsets.only(right: 50, left: 50),
+                  padding: EdgeInsets.symmetric(horizontal: 80),
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(darkBlueColor)
+
+                    ),
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => DonationPayment()));
                       },
-                      child: Text("Donasi Sekarang")),
+                      child: Text("Donasi Sekarang", style: GoogleFonts.nunito(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18
+                      ),)),
                 )
               ],
             ),
@@ -110,5 +135,83 @@ class DonationCard extends StatelessWidget {
         ],
       ),
     );
+    
+  }
+
+ 
+}
+
+
+
+class CampaignProgress extends StatelessWidget {
+  final double currentProgress = 0.6; // Misalnya, 0.6 untuk 60% progress
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 200.0,
+      height: 50.0,
+      child: CustomPaint(
+        foregroundPainter: LinearProgressBarPainter(
+          lineColor: Colors.grey,
+          completeColor: Colors.green,
+          completePercent: currentProgress,
+          height: 20.0,
+        ),
+        child: Center(
+          child: Text(
+            '${(currentProgress * 100).toInt()}% dari Rp.100.000.000',
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LinearProgressBarPainter extends CustomPainter {
+  Color lineColor;
+  Color completeColor;
+  double completePercent;
+  double height;
+
+  LinearProgressBarPainter({
+    required this.lineColor,
+    required this.completeColor,
+    required this.completePercent,
+    required this.height,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint line = Paint()
+      ..color = lineColor
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = height;
+
+    Paint complete = Paint()
+      ..color = completeColor
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = height;
+
+    Offset startPoint = Offset(0, size.height / 2);
+    Offset endPoint = Offset(size.width, size.height / 2);
+
+    canvas.drawLine(startPoint, endPoint, line);
+
+    double width = size.width * completePercent;
+
+    canvas.drawLine(startPoint, Offset(width, size.height / 2), complete);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }

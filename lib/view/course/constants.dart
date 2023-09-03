@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Colors
 const kBackgroundColor = Color(0xFFE7EEFB);
@@ -10,99 +11,86 @@ const kShadowColor = Color.fromRGBO(72, 76, 82, 0.16);
 const kCourseElementIconColor = Color(0xFF17294D);
 
 // Text Styles
-var kLargeTitleStyle = TextStyle(
+var kLargeTitleStyle = GoogleFonts.nunito(
   fontSize: 28.0,
   fontWeight: FontWeight.bold,
   color: kPrimaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kTitle1Style = TextStyle(
+var kTitle1Style = GoogleFonts.nunito(
   fontSize: 22.0,
   fontWeight: FontWeight.bold,
   color: kPrimaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kCardTitleStyle = TextStyle(
-  fontFamily: 'SF Pro Text',
+var kCardTitleStyle = GoogleFonts.nunito(
   fontWeight: FontWeight.bold,
-  color: Colors.white,
+  color: const Color.fromARGB(255, 0, 0, 0),
   fontSize: 22.0,
   decoration: TextDecoration.none,
 );
 
-var kTitle2Style = TextStyle(
+var kTitle2Style = GoogleFonts.nunito(
   fontSize: 20.0,
   fontWeight: FontWeight.bold,
   color: kPrimaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kHeadlineLabelStyle = TextStyle(
+var kHeadlineLabelStyle = GoogleFonts.nunito(
   fontSize: 17.0,
   fontWeight: FontWeight.w800,
   color: kPrimaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kSubtitleStyle = TextStyle(
+var kSubtitleStyle = GoogleFonts.nunito(
   fontSize: 16.0,
   color: kSecondaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kBodyLabelStyle = TextStyle(
+var kBodyLabelStyle = GoogleFonts.nunito(
   fontSize: 16.0,
   color: Colors.black,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kCalloutLabelStyle = TextStyle(
+var kCalloutLabelStyle = GoogleFonts.nunito(
   fontSize: 16.0,
   fontWeight: FontWeight.w800,
   color: kPrimaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kSecondaryCalloutLabelStyle = TextStyle(
+var kSecondaryCalloutLabelStyle = GoogleFonts.nunito(
   fontSize: 16.0,
   color: kSecondaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kSearchPlaceholderStyle = TextStyle(
+var kSearchPlaceholderStyle = GoogleFonts.nunito(
   fontSize: 13.0,
   color: kSecondaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kSearchTextStyle = TextStyle(
+var kSearchTextStyle = GoogleFonts.nunito(
   fontSize: 13.0,
   color: kPrimaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );
 
-var kCardSubtitleStyle = TextStyle(
-  fontFamily: 'SF Pro Text',
-  color: Color(0xE6FFFFFF),
+var kCardSubtitleStyle = GoogleFonts.nunito(
+  color: Color.fromARGB(230, 0, 0, 0),
   fontSize: 13.0,
   decoration: TextDecoration.none,
 );
 
-var kCaptionLabelStyle = TextStyle(
+var kCaptionLabelStyle = GoogleFonts.nunito(
   fontSize: 12.0,
   color: kSecondaryLabelColor,
-  fontFamily: 'SF Pro Text',
   decoration: TextDecoration.none,
 );

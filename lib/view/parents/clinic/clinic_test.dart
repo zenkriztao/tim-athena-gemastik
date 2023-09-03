@@ -1,4 +1,5 @@
 import 'package:aksonhealth/size_config.dart';
+import 'package:aksonhealth/theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -88,13 +89,16 @@ class _ClinicTestingState extends State<ClinicTesting> {
       title: '',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        primaryColor: darkBlueColor,
       ),
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: darkBlueColor,
           title: Padding(
             padding: EdgeInsets.only(left: 16.0),
             child: CupertinoSearchTextField(
+              placeholder: "Contoh: Palembang",
+              backgroundColor: Colors.white,
               controller: _searchController,
             ),
           ),
@@ -175,6 +179,7 @@ class _CardWithMapState extends State<CardWithMap> {
               ListTile(
                 title: Text(widget.nameClinic,
                 style: GoogleFonts.nunito(
+                    fontWeight: FontWeight.bold,
                     fontSize: 20
                 )),
                 subtitle: Text(
@@ -204,7 +209,14 @@ class _CardWithMapState extends State<CardWithMap> {
               ),
               SizedBox(height: 16),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Text("Alamat", style: GoogleFonts.nunito(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20
+                ),),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
                 child: Text(widget.address,
                 style: GoogleFonts.nunito()),
               ),
@@ -270,7 +282,7 @@ class ContactnWebsite extends StatelessWidget {
           onPressed: () {
             _launchMap(widget.gMapAddress);
           },
-          child: Text('Get Directions', 
+          child: Text('Petunjuk Arah', 
           style: GoogleFonts.nunito()
           ),
         )

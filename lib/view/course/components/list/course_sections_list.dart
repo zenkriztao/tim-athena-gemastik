@@ -1,4 +1,5 @@
 import 'package:aksonhealth/model/course_model.dart';
+import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/view/course/components/cards/course_sections_card.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,8 @@ class CourseSectionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(
+        context); 
     return Expanded(
       child: ListView(
         children: courseSectionsWidgets(),

@@ -1,8 +1,10 @@
+import 'package:aksonhealth/theme.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class NewPhoneticList extends StatelessWidget {
-  NewPhoneticList({super.key});
+class AnimalTest extends StatelessWidget {
+  AnimalTest({super.key});
 
   final player = AudioPlayer();
 
@@ -11,12 +13,12 @@ class NewPhoneticList extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: () async {
-          player.play(AssetSource('assets/sound/$letter.mp3'));
+          player.play(AssetSource('sound/animal-$letter.mp3'));
         },
         child: Card(
           child: Container(
             padding: const EdgeInsets.all(10),
-            child: Image.asset('assets/phonetic/icons8-$letter-100.png'),
+            child: Image.asset('assets/animal/animal-$letter.png'),
           ),
         ),
       ),
@@ -27,7 +29,10 @@ class NewPhoneticList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Text'),
+        backgroundColor: darkBlueColor,
+        title: Text('Tebak hewan untuk Autisme', style: GoogleFonts.nunito(
+          fontWeight: FontWeight.bold,
+        ),),
       ),
       body: SingleChildScrollView(
         child: Column(

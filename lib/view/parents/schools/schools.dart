@@ -1,7 +1,9 @@
+import 'package:aksonhealth/theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:webview_flutter/webview_flutter.dart';
@@ -86,13 +88,16 @@ class _SchoolsForChildrenState extends State<SchoolsForChildren> {
       title: 'Authentication',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        primaryColor: darkBlueColor,
       ),
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: darkBlueColor,
           title: Padding(
             padding: EdgeInsets.only(left: 16.0),
             child: CupertinoSearchTextField(
+              placeholder: "Contoh: Palembang",
+              backgroundColor: Colors.white,
               controller: _searchController,
             ),
           ),
@@ -171,7 +176,10 @@ class _CardWithMapState extends State<CardWithMap> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListTile(
-                title: Text(widget.nameSchool),
+                title: Text(widget.nameSchool, style: GoogleFonts.nunito(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20
+                ),),
                 subtitle: Text(
                   '${widget.province} (${widget.city})',
                 ),
@@ -197,6 +205,13 @@ class _CardWithMapState extends State<CardWithMap> {
                 ),
               ),
               SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Text("Alamat", style: GoogleFonts.nunito(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20
+                ),),
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: Text(widget.address),
@@ -263,7 +278,7 @@ class ContactnWebsite extends StatelessWidget {
           onPressed: () {
             _launchMap(widget.gMapAddress);
           },
-          child: const Text('Get Directions'),
+          child: const Text('Petunjuk Arah'),
         )
       ],
     );

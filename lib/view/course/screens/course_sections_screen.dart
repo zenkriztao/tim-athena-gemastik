@@ -1,3 +1,4 @@
+import 'package:aksonhealth/size_config.dart';
 import 'package:aksonhealth/view/course/components/list/course_sections_list.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,8 @@ import '../constants.dart';
 class CourseSectionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+     SizeConfig.init(
+        context); 
     return Container(
       decoration: BoxDecoration(
         color: kBackgroundColor,
